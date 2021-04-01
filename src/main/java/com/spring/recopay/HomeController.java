@@ -37,6 +37,23 @@ public class HomeController {
 		return rtnPage;
 	}
 	
+	/**
+	 * Request view_theater_info.jsp
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("/theater")
+	public String viewTheather(HttpServletRequest request) {
+		logger.debug("###INDEX PAGE###");
+		String rtnPage = "theater/view_theater_info";
+		String ipAddress = request.getHeader("X-FORWARDED-FOR");
+		if (ipAddress == null) {
+			ipAddress = request.getRemoteAddr();
+		}
+		logger.info(ipAddress + " : " + rtnPage);
+		return rtnPage;
+	}
+	
 	@RequestMapping("/login")
 	public String login(HttpServletRequest request) {
 		logger.debug("###INDEX PAGE###");
