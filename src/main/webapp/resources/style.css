@@ -1300,7 +1300,7 @@ img {
     border: 1px solid #d8d8d8; }
     @media only screen and (max-width: 767px) {
       .single-blog-post .blog-content {
-        padding: 30px 20px; } }
+        padding: 30px 20px;} }
     .single-blog-post .blog-content .post-title {
       font-size: 24px;
       display: block; }
