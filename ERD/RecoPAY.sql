@@ -148,7 +148,7 @@ CREATE TABLE Perform (
 	prf_avgsc	number(2,1)		NULL
 );
 
-SELECT * FROM perform;
+SELECT * FROM perform ORDER BY prf_from DESC;
 CREATE SEQUENCE perform_seq;
 DROP SEQUENCE perform_seq;
 

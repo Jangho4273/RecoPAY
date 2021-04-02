@@ -48,7 +48,7 @@
                             <div class="classynav">
                                 <ul>
                                     <li><a href="<%=request.getContextPath() %>/index">Home</a></li>
-                                    <li><a href="#">연극</a>
+                                    <li><a href="perform">연극</a>
                                     	<ul class="dropdown">
                                     		<li><a href="">연극소개</a></li>
                                     		<li><a href="">장르</a></li>
