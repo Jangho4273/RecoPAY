@@ -28,7 +28,7 @@ public class PerformStore {
 	public static final String PASSWD = "recopay";
 	
 	public static final String SQL_INSERT =
-			"INSERT INTO " + "\"Perform\" " + 
+			"INSERT INTO " + "Perform " + 
 			"(prf_uid, prf_id, prf_name, prf_from, prf_to, prf_fcltynm, prf_poster, prf_state, prf_openrun, th_uid)" + 
 					" VALUES(perform_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
@@ -40,7 +40,7 @@ public class PerformStore {
 		
 		
 		
-		String url = "http://www.kopis.or.kr/openApi/restful/pblprfr?service=de93ee9825c24143a98506d9e7f616bd&stdate=20160101&eddate=20160630&rows=100&cpage=1&shcate=AAAA";
+		String url = "http://www.kopis.or.kr/openApi/restful/pblprfr?service=de93ee9825c24143a98506d9e7f616bd&stdate=20210401&eddate=20210402&rows=100&cpage=1&shcate=AAAA";
 		
 		try {
 			Class.forName(DRIVER);
@@ -63,7 +63,7 @@ public class PerformStore {
 			NodeList nList = doc.getElementsByTagName("db");
 			System.out.println("파싱할 리스트 수 : "+ nList.getLength());  // 파싱할 리스트 수
 
-			for(int temp = 0; temp < 10; temp++) {
+			for(int temp = 0; temp < nList.getLength(); temp++) {
 				Node nNode = nList.item(temp);
 				if(nNode.getNodeType() == Node.ELEMENT_NODE){
 					Element eElement = (Element) nNode;

@@ -132,23 +132,25 @@ CREATE TABLE "FavoritePerform" (
 	"user_uid"	number		NOT NULL
 );
 
-DROP TABLE "Perform";
+DROP TABLE Perform;
 
-CREATE TABLE "Perform" (
-	"prf_uid"	number		NOT NULL,
-	"prf_id"	varchar2(15)		NOT NULL,
-	"prf_name"	varchar2(30)		NOT NULL,
-	"prf_from"	varchar2(30)		NULL,
-	"prf_to"	varchar2(30)		NULL,
-	"prf_fcltynm"	varchar2(30)		NOT NULL,
-	"prf_poster"	varchar2(100)		NULL,
-	"prf_state"	varchar2(10)		NOT NULL,
-	"prf_openrun"	char(1)		NULL,
-	"th_uid"	varchar2(30)		NULL,
-	"prf_avgsc"	number(2,1)		NULL
+CREATE TABLE Perform (
+	prf_uid	number		NOT NULL,
+	prf_id	varchar2(15)		NOT NULL,
+	prf_name	varchar2(100)		NOT NULL,
+	prf_from	varchar2(10)		NULL,
+	prf_to	varchar2(100)		NULL,
+	prf_fcltynm	varchar2(100)		NOT NULL,
+	prf_poster	varchar2(100)		NULL,
+	prf_state	varchar2(20)		NOT NULL,
+	prf_openrun	char(1)		NULL,
+	th_uid	varchar2(30)		NULL,
+	prf_avgsc	number(2,1)		NULL
 );
 
+SELECT * FROM perform;
 CREATE SEQUENCE perform_seq;
+DROP SEQUENCE perform_seq;
 
 DROP TABLE "Timetable";
 
