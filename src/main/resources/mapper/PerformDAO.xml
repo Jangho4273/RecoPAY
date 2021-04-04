@@ -7,5 +7,12 @@
 	FROM Perform
 	ORDER BY prf_from DESC
 	</select> 
-
+	
+	
+	<select id="viewByUid" resultType="com.spring.recopay.domain.PerformDTO">
+	SELECT prf_uid "uid", prf_id "id", prf_name "name", prf_from "from", prf_to "to", prf_fcltynm "fcltynm", 
+	prf_poster "poster", prf_state "state", prf_openrun "openrun", th_uid "tuid"
+	FROM Perform
+	WHERE prf_uid=#{uid}
+	</select>
 </mapper>

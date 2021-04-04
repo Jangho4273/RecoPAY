@@ -28,6 +28,10 @@ public class PerformService {
 	public List<PerformDTO> list() {
 		return sessionGet().select();
 	}
+
+	public List<PerformDTO> viewByUid(int uid) {
+		return sessionGet().viewByUid(uid);
+	}
 	
 	
 }

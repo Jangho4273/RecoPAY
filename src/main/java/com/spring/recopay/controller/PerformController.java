@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring.recopay.service.PerformService;
@@ -31,6 +32,12 @@ public class PerformController {
 	public String performIntro(Model model) {
 		model.addAttribute("list", ps.list());
 		return "perform/intro";
+	}
+	
+	@RequestMapping("/intro/{uid}")
+	public String performDetail(@PathVariable int uid, Model model) {
+		model.addAttribute("list", ps.viewByUid(uid));
+		return "perform/detail";
 	}
 	
 	@RequestMapping("/genre")
