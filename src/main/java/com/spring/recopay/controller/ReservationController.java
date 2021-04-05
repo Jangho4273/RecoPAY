@@ -14,13 +14,13 @@ public class ReservationController {
 	@RequestMapping("")
 	public String reservationHome(HttpServletRequest request) {
 
-		return "reservation/reservation";
+		return "reservation/select";
 	}
 	
-	@RequestMapping("/reservation")
-	public String reservation(HttpServletRequest request) {
+	@RequestMapping("/select")
+	public String select(HttpServletRequest request) {
 
-		return "reservation/reservation";
+		return "reservation/select";
 	}
 	
 	@RequestMapping("/schedule")
