@@ -11,7 +11,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>One Music - Modern Music HTML5 Template</title>
+    <title>고객센터</title>
 
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/favicon.ico">
@@ -58,41 +58,50 @@
                             </div>
 
                             <!-- Nav Start -->
-                            <div class="classynav">
+                           <div class="classynav">
                                 <ul>
-                                    <li><a href="index">Home</a></li>
-                                    <li><a href="albums-store">Albums</a></li>
-                                    <li><a href="#">Pages</a>
-                                        <ul class="dropdown">
-                                            <li><a href="index">Home</a></li>
-                                            <li><a href="albums-store">Albums</a></li>
-                                            <li><a href="event">Events</a></li>
-                                            <li><a href="blog">News</a></li>
-                                            <li><a href="contact">Contact</a></li>
-                                            <li><a href="elements">Elements</a></li>
-                                            <li><a href="login">Login</a></li>
-                                            <li><a href="#">Dropdown</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="#">Even Dropdown</a></li>
-                                                    <li><a href="#">Even Dropdown</a></li>
-                                                    <li><a href="#">Even Dropdown</a></li>
-                                                    <li><a href="#">Even Dropdown</a>
-                                                        <ul class="dropdown">
-                                                            <li><a href="#">Deeply Dropdown</a></li>
-                                                            <li><a href="#">Deeply Dropdown</a></li>
-                                                            <li><a href="#">Deeply Dropdown</a></li>
-                                                            <li><a href="#">Deeply Dropdown</a></li>
-                                                            <li><a href="#">Deeply Dropdown</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="#">Even Dropdown</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
+                                    <li><a href="/recopay/index">Home</a></li>
+                                    <li><a href="/recopay/perform">연극</a>
+                                    	<ul class="dropdown">
+                                    		<li><a href="/recopay/perform/intro">연극소개</a></li>
+                                    		<li><a href="">장르</a></li>
+                                    		<li><a href="">후기</a></li>
+                                    	</ul>
                                     </li>
-                                    <li><a href="event">Events</a></li>
-                                    <li><a href="blog">News</a></li>
-                                    <li><a href="contact">Contact</a></li>
+                                    <li><a href="reservation">예매</a>
+                                    	<ul class="dropdown">
+                                    		<li><a href="/recopay/reservation/schedule">연극 일정</a></li>
+                                    		<li><a href="/recopay/reservation">연극 예매</a></li>
+                                    		<li><a href="/recopay/reservation/ticketCheck">예매 확인 및 취소</a></li>
+                                    	</ul>
+                                    </li>
+                                    <li><a href="blog">극장</a>
+                                   		<ul class="dropdown">
+                                    		<li><a href="">공연장 정보</a></li>
+                                    		<li><a href="">오시는 길</a></li>
+                                    	</ul>
+                                    </li>
+                                    <li><a href="contact">Event</a>
+                                    	<ul class="dropdown">
+                                    		<li><a href="">할인</a></li>
+                                    		<li><a href="">진행중인 이벤트</a></li>
+                                    		<li><a href="">종료된 이벤트</a></li>
+                                    	</ul>
+                                    </li>
+                                    <li><a href="contact">고객센터</a>
+                                    	<ul class="dropdown">
+                                    		<li><a href="">공지사항</a></li>
+                                    		<li><a href="">1:1문의</a></li>
+                                    		<li><a href="">자주하는 질문</a></li>
+                                    	</ul>
+                                    </li>
+                                    <li><a href="contact">소개</a>
+                                    	<ul class="dropdown">
+                                    		<li><a href="">인사말</a></li>
+                                    		<li><a href="">조직도</a></li>
+                                    		<li><a href="">RecoPAY 소개</a></li>
+                                    	</ul>
+                                    </li>
                                 </ul>
 
                                 <!-- Login/Register & Cart Button -->
@@ -121,8 +130,8 @@
     <!-- ##### Breadcumb Area Start ##### -->
     <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/breadcumb.jpg);">
         <div class="bradcumbContent">
-            <p>See whatâs new</p>
-            <h2>Contact</h2>
+            <p>안녕하세요 Recopay 고객센터입니다</p>
+            <h2>무엇을 도와 드릴까요?</h2>
         </div>
     </section>
     <!-- ##### Breadcumb Area End ##### -->
@@ -136,7 +145,7 @@
                     <div class="contact-content mb-100">
                         <!-- Title -->
                         <div class="contact-title mb-50">
-                            <h5>Contact Info</h5>
+                            <h5>Recopay</h5>
                         </div>
 
                         <!-- Single Contact Info -->
@@ -144,7 +153,7 @@
                             <div class="icon mr-30">
                                 <span class="icon-placeholder"></span>
                             </div>
-                            <p>1481 Creekside Lane Avila Beach, CA 931</p>
+                            <p>공지 사항</p>
                         </div>
 
                         <!-- Single Contact Info -->
@@ -152,7 +161,7 @@
                             <div class="icon mr-30">
                                 <span class="icon-smartphone"></span>
                             </div>
-                            <p>+53 345 7953 32453</p>
+                            <p>1대1 문의</p>
                         </div>
 
                         <!-- Single Contact Info -->
@@ -160,7 +169,7 @@
                             <div class="icon mr-30">
                                 <span class="icon-mail"></span>
                             </div>
-                            <p>yourmail@gmail.com</p>
+                            <p>자주하는 질문</p>
                         </div>
 
                         <!-- Contact Social Info -->
@@ -176,15 +185,37 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-lg-9">
-                    <!-- ##### Google Maps ##### -->
-                    <div class="map-area mb-100">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22236.40558254599!2d-118.25292394686001!3d34.057682914027104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2z4Kay4Ka4IOCmj-CmnuCnjeCmnOCnh-CmsuCnh-CmuCwg4KaV4KeN4Kav4Ka-4Kay4Ka_4Kar4KeL4Kaw4KeN4Kao4Ka_4Kav4Ka84Ka-LCDgpq7gpr7gprDgp43gppXgpr_gpqgg4Kav4KeB4KaV4KeN4Kak4Kaw4Ka-4Ka34KeN4Kaf4KeN4Kaw!5e0!3m2!1sbn!2sbd!4v1532328708137" allowfullscreen></iframe>
-                    </div>
-                </div>
+   <div id="RecopayHead" role="banner">
 
+		    <div class="cs_head">
+
+		        <h1 class="tit_cs"><a href="" class="bg_cs cs_logo"><span class="ir_wa">고객센터</span></a></h1>
+		        <h2 class="screen_out">검색</h2>
+
+                <div id="searchBox" class="wrap_search">
+                    <form id="Search" class="sform_comm" name="search" method="get" autocomplete="off" onsubmit="searchBoxBeforeSubmitFunc(this)">
+                        <fieldset class="fld_inside opt_on">                      
+                            <div class="box_searchbar">
+                                <label class="lab_keyword" for="qTop" id="labKeyword">궁금한 점이 있다면 도움말을 검색해 보세요.</label>
+                                <div>
+                                    <input id="qTop" class="tf_keyword" type="text" name="q" autocomplete="off" title="검색어 입력" value="">
+                                                                        <button id="daumBtnSearch" class="ico_search btn_search" type="submit"><span class="ir_wa">검색</span></button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+				<div class="suggestBox box_sub" style="display: none;"><div class="baseBox bg"></div>
+		    </div>
+	    </div>
             </div>
         </div>
+        <div class="item_arae">
+					<ul>	
+						<li class="item_01"><a href="" target="_blank"><i></i>예매문의</a></li>										
+						<li class="item_02"><a href="" target="_self"><i></i>극장문의</a></li>
+						<li class="item_03"><a href="" target="_self"><i></i>이벤트 문의</a></li>
+					</ul>
+				</div>
     </section>
     <!-- ##### Contact Area End ##### -->
 
