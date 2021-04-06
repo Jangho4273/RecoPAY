@@ -91,12 +91,12 @@
 									<button type="button" class="btn btn-default btn-sm move-day"
 										data-action="move-prev">
 										<i class="calendar-icon ic-arrow-line-left"
-											data-action="move-prev"></i>
+											data-action="move-prev">&lt;</i>
 									</button>
 									<button type="button" class="btn btn-default btn-sm move-day"
 										data-action="move-next">
 										<i class="calendar-icon ic-arrow-line-right"
-											data-action="move-next"></i>
+											data-action="move-next">&gt;</i>
 									</button>
 								</span> <span id="renderRange" class="render-range"></span>
 							</div>
