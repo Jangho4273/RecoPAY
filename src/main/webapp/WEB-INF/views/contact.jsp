@@ -11,7 +11,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>고객센터</title>
+    <title>One Music - Modern Music HTML5 Template</title>
 
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/favicon.ico">
@@ -58,50 +58,41 @@
                             </div>
 
                             <!-- Nav Start -->
-                           <div class="classynav">
+                            <div class="classynav">
                                 <ul>
-                                    <li><a href="/recopay/index">Home</a></li>
-                                    <li><a href="/recopay/perform">연극</a>
-                                    	<ul class="dropdown">
-                                    		<li><a href="/recopay/perform/intro">연극소개</a></li>
-                                    		<li><a href="">장르</a></li>
-                                    		<li><a href="">후기</a></li>
-                                    	</ul>
+                                    <li><a href="index">Home</a></li>
+                                    <li><a href="albums-store">Albums</a></li>
+                                    <li><a href="#">Pages</a>
+                                        <ul class="dropdown">
+                                            <li><a href="index">Home</a></li>
+                                            <li><a href="albums-store">Albums</a></li>
+                                            <li><a href="event">Events</a></li>
+                                            <li><a href="blog">News</a></li>
+                                            <li><a href="contact">Contact</a></li>
+                                            <li><a href="elements">Elements</a></li>
+                                            <li><a href="login">Login</a></li>
+                                            <li><a href="#">Dropdown</a>
+                                                <ul class="dropdown">
+                                                    <li><a href="#">Even Dropdown</a></li>
+                                                    <li><a href="#">Even Dropdown</a></li>
+                                                    <li><a href="#">Even Dropdown</a></li>
+                                                    <li><a href="#">Even Dropdown</a>
+                                                        <ul class="dropdown">
+                                                            <li><a href="#">Deeply Dropdown</a></li>
+                                                            <li><a href="#">Deeply Dropdown</a></li>
+                                                            <li><a href="#">Deeply Dropdown</a></li>
+                                                            <li><a href="#">Deeply Dropdown</a></li>
+                                                            <li><a href="#">Deeply Dropdown</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a href="#">Even Dropdown</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
                                     </li>
-                                    <li><a href="reservation">예매</a>
-                                    	<ul class="dropdown">
-                                    		<li><a href="/recopay/reservation/schedule">연극 일정</a></li>
-                                    		<li><a href="/recopay/reservation">연극 예매</a></li>
-                                    		<li><a href="/recopay/reservation/ticketCheck">예매 확인 및 취소</a></li>
-                                    	</ul>
-                                    </li>
-                                    <li><a href="blog">극장</a>
-                                   		<ul class="dropdown">
-                                    		<li><a href="">공연장 정보</a></li>
-                                    		<li><a href="">오시는 길</a></li>
-                                    	</ul>
-                                    </li>
-                                    <li><a href="contact">Event</a>
-                                    	<ul class="dropdown">
-                                    		<li><a href="">할인</a></li>
-                                    		<li><a href="">진행중인 이벤트</a></li>
-                                    		<li><a href="">종료된 이벤트</a></li>
-                                    	</ul>
-                                    </li>
-                                    <li><a href="contact">고객센터</a>
-                                    	<ul class="dropdown">
-                                    		<li><a href="">공지사항</a></li>
-                                    		<li><a href="">1:1문의</a></li>
-                                    		<li><a href="">자주하는 질문</a></li>
-                                    	</ul>
-                                    </li>
-                                    <li><a href="contact">소개</a>
-                                    	<ul class="dropdown">
-                                    		<li><a href="">인사말</a></li>
-                                    		<li><a href="">조직도</a></li>
-                                    		<li><a href="">RecoPAY 소개</a></li>
-                                    	</ul>
-                                    </li>
+                                    <li><a href="event">Events</a></li>
+                                    <li><a href="blog">News</a></li>
+                                    <li><a href="contact">Contact</a></li>
                                 </ul>
 
                                 <!-- Login/Register & Cart Button -->
@@ -128,103 +119,250 @@
     <!-- ##### Header Area End ##### -->
 
     <!-- ##### Breadcumb Area Start ##### -->
-    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/breadcumb.jpg);">
+    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/breadcumb3.jpg);">
         <div class="bradcumbContent">
-            <p>안녕하세요 Recopay 고객센터입니다</p>
-            <h2>무엇을 도와 드릴까요?</h2>
+            <p>See whatâs new</p>
+            <h2>Events</h2>
         </div>
     </section>
     <!-- ##### Breadcumb Area End ##### -->
 
-    <!-- ##### Contact Area Start ##### -->
-    <section class="contact-area section-padding-100-0">
+    <!-- ##### Events Area Start ##### -->
+    <section class="events-area section-padding-100">
         <div class="container">
             <div class="row">
 
-                <div class="col-12 col-lg-3">
-                    <div class="contact-content mb-100">
-                        <!-- Title -->
-                        <div class="contact-title mb-50">
-                            <h5>Recopay</h5>
+                <!-- Single Event Area -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-event-area mb-30">
+                        <div class="event-thumbnail">
+                            <img src="img/bg-img/e1.jpg" alt="">
                         </div>
-
-                        <!-- Single Contact Info -->
-                        <div class="single-contact-info d-flex align-items-center">
-                            <div class="icon mr-30">
-                                <span class="icon-placeholder"></span>
+                        <div class="event-text">
+                            <h4>Dj Night Party</h4>
+                            <div class="event-meta-data">
+                                <a href="#" class="event-place">VIP Sala</a>
+                                <a href="#" class="event-date">June 15, 2018</a>
                             </div>
-                            <p>공지 사항</p>
+                            <a href="#" class="btn see-more-btn">See Event</a>
                         </div>
-
-                        <!-- Single Contact Info -->
-                        <div class="single-contact-info d-flex align-items-center">
-                            <div class="icon mr-30">
-                                <span class="icon-smartphone"></span>
-                            </div>
-                            <p>1대1 문의</p>
-                        </div>
-
-                        <!-- Single Contact Info -->
-                        <div class="single-contact-info d-flex align-items-center">
-                            <div class="icon mr-30">
-                                <span class="icon-mail"></span>
-                            </div>
-                            <p>자주하는 질문</p>
-                        </div>
-
-                        <!-- Contact Social Info -->
-                        <div class="contact-social-info mt-50">
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Behance"><i class="fa fa-behance" aria-hidden="true"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                        </div>
-
                     </div>
                 </div>
 
-   <div id="RecopayHead" role="banner">
-
-		    <div class="cs_head">
-
-		        <h1 class="tit_cs"><a href="" class="bg_cs cs_logo"><span class="ir_wa">고객센터</span></a></h1>
-		        <h2 class="screen_out">검색</h2>
-
-                <div id="searchBox" class="wrap_search">
-                    <form id="Search" class="sform_comm" name="search" method="get" autocomplete="off" onsubmit="searchBoxBeforeSubmitFunc(this)">
-                        <fieldset class="fld_inside opt_on">                      
-                            <div class="box_searchbar">
-                                <label class="lab_keyword" for="qTop" id="labKeyword">궁금한 점이 있다면 도움말을 검색해 보세요.</label>
-                                <div>
-                                    <input id="qTop" class="tf_keyword" type="text" name="q" autocomplete="off" title="검색어 입력" value="">
-                                                                        <button id="daumBtnSearch" class="ico_search btn_search" type="submit"><span class="ir_wa">검색</span></button>
-                                </div>
+                <!-- Single Event Area -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-event-area mb-30">
+                        <div class="event-thumbnail">
+                            <img src="img/bg-img/e2.jpg" alt="">
+                        </div>
+                        <div class="event-text">
+                            <h4>The Mission</h4>
+                            <div class="event-meta-data">
+                                <a href="#" class="event-place">Gold Arena</a>
+                                <a href="#" class="event-date">June 15, 2018</a>
                             </div>
-                        </fieldset>
-                    </form>
-				<div class="suggestBox box_sub" style="display: none;"><div class="baseBox bg"></div>
-		    </div>
-	    </div>
+                            <a href="#" class="btn see-more-btn">See Event</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Event Area -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-event-area mb-30">
+                        <div class="event-thumbnail">
+                            <img src="img/bg-img/e3.jpg" alt="">
+                        </div>
+                        <div class="event-text">
+                            <h4>Planet ibiza</h4>
+                            <div class="event-meta-data">
+                                <a href="#" class="event-place">Space Ibiza</a>
+                                <a href="#" class="event-date">June 15, 2018</a>
+                            </div>
+                            <a href="#" class="btn see-more-btn">See Event</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Event Area -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-event-area mb-30">
+                        <div class="event-thumbnail">
+                            <img src="img/bg-img/e4.jpg" alt="">
+                        </div>
+                        <div class="event-text">
+                            <h4>Dj Night Party</h4>
+                            <div class="event-meta-data">
+                                <a href="#" class="event-place">VIP Sala</a>
+                                <a href="#" class="event-date">June 15, 2018</a>
+                            </div>
+                            <a href="#" class="btn see-more-btn">See Event</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Event Area -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-event-area mb-30">
+                        <div class="event-thumbnail">
+                            <img src="img/bg-img/e5.jpg" alt="">
+                        </div>
+                        <div class="event-text">
+                            <h4>The Mission</h4>
+                            <div class="event-meta-data">
+                                <a href="#" class="event-place">Gold Arena</a>
+                                <a href="#" class="event-date">June 15, 2018</a>
+                            </div>
+                            <a href="#" class="btn see-more-btn">See Event</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Event Area -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-event-area mb-30">
+                        <div class="event-thumbnail">
+                            <img src="img/bg-img/e6.jpg" alt="">
+                        </div>
+                        <div class="event-text">
+                            <h4>Planet ibiza</h4>
+                            <div class="event-meta-data">
+                                <a href="#" class="event-place">Space Ibiza</a>
+                                <a href="#" class="event-date">June 15, 2018</a>
+                            </div>
+                            <a href="#" class="btn see-more-btn">See Event</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Event Area -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-event-area mb-30">
+                        <div class="event-thumbnail">
+                            <img src="img/bg-img/e7.jpg" alt="">
+                        </div>
+                        <div class="event-text">
+                            <h4>Dj Night Party</h4>
+                            <div class="event-meta-data">
+                                <a href="#" class="event-place">VIP Sala</a>
+                                <a href="#" class="event-date">June 15, 2018</a>
+                            </div>
+                            <a href="#" class="btn see-more-btn">See Event</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Event Area -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-event-area mb-30">
+                        <div class="event-thumbnail">
+                            <img src="img/bg-img/e8.jpg" alt="">
+                        </div>
+                        <div class="event-text">
+                            <h4>The Mission</h4>
+                            <div class="event-meta-data">
+                                <a href="#" class="event-place">Gold Arena</a>
+                                <a href="#" class="event-date">June 15, 2018</a>
+                            </div>
+                            <a href="#" class="btn see-more-btn">See Event</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Event Area -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-event-area mb-30">
+                        <div class="event-thumbnail">
+                            <img src="img/bg-img/e9.jpg" alt="">
+                        </div>
+                        <div class="event-text">
+                            <h4>Planet ibiza</h4>
+                            <div class="event-meta-data">
+                                <a href="#" class="event-place">Space Ibiza</a>
+                                <a href="#" class="event-date">June 15, 2018</a>
+                            </div>
+                            <a href="#" class="btn see-more-btn">See Event</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="load-more-btn text-center mt-70">
+                        <a href="#" class="btn oneMusic-btn">Load More <i class="fa fa-angle-double-right"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="item_arae">
-					<ul>	
-						<li class="item_01"><a href="" target="_blank"><i></i>예매문의</a></li>										
-						<li class="item_02"><a href="" target="_self"><i></i>극장문의</a></li>
-						<li class="item_03"><a href="" target="_self"><i></i>이벤트 문의</a></li>
-					</ul>
-				</div>
     </section>
-    <!-- ##### Contact Area End ##### -->
+    <!-- ##### Events Area End ##### -->
+
+    <!-- ##### Newsletter & Testimonials Area Start ##### -->
+    <section class="newsletter-testimonials-area">
+        <div class="container">
+            <div class="row">
+
+                <!-- Newsletter Area -->
+                <div class="col-12 col-lg-6">
+                    <div class="newsletter-area mb-100">
+                        <div class="section-heading text-left mb-50">
+                            <p>See whatâs new</p>
+                            <h2>Subscribe to newsletter</h2>
+                        </div>
+                        <div class="newsletter-form">
+                            <form action="#">
+                                <input type="search" name="search" id="newsletterSearch" placeholder="E-mail">
+                                <button type="submit" class="btn oneMusic-btn">Subscribe <i class="fa fa-angle-double-right"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonials Area -->
+                <div class="col-12 col-lg-6">
+                    <div class="testimonials-area mb-100 bg-img bg-overlay" style="background-image: url(img/bg-img/bg-3.jpg);">
+                        <div class="section-heading white text-left mb-50">
+                            <p>See whatâs new</p>
+                            <h2>Testimonial</h2>
+                        </div>
+                        <!-- Testimonial Slide -->
+                        <div class="testimonials-slide owl-carousel">
+                            <!-- Single Slide -->
+                            <div class="single-slide">
+                                <p>Nam tristique ex vel magna tincidunt, ut porta nisl finibus. Vivamus eu dolor eu quam varius rutrum. Fusce nec justo id sem aliquam fringilla nec non lacus. Suspendisse eget lobortis nisi, ac cursus odio. Vivamus nibh velit, rutrum.</p>
+                                <div class="testimonial-info d-flex align-items-center">
+                                    <div class="testimonial-thumb">
+                                        <img src="img/bg-img/t1.jpg" alt="">
+                                    </div>
+                                    <p>William Smith, Customer</p>
+                                </div>
+                            </div>
+                            <!-- Single Slide -->
+                            <div class="single-slide">
+                                <p>Nam tristique ex vel magna tincidunt, ut porta nisl finibus. Vivamus eu dolor eu quam varius rutrum. Fusce nec justo id sem aliquam fringilla nec non lacus. Suspendisse eget lobortis nisi, ac cursus odio. Vivamus nibh velit, rutrum.</p>
+                                <div class="testimonial-info d-flex align-items-center">
+                                    <div class="testimonial-thumb">
+                                        <img src="img/bg-img/t1.jpg" alt="">
+                                    </div>
+                                    <p>Nazrul Islam, Developer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ##### Newsletter & Testimonials Area End ##### -->
 
     <!-- ##### Contact Area Start ##### -->
-    <section class="contact-area section-padding-0-100">
+    <section class="contact-area section-padding-100 bg-img bg-overlay bg-fixed has-bg-img" style="background-image: url(img/bg-img/bg-2.jpg);">
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="section-heading">
+                    <div class="section-heading white">
                         <p>See whatâs new</p>
                         <h2>Get In Touch</h2>
                     </div>
