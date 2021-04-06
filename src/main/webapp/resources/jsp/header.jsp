@@ -55,10 +55,10 @@
                                     		<li><a href="">후기</a></li>
                                     	</ul>
                                     </li>
-                                    <li><a href="reservation">예매</a>
+                                    <li><a href="schedule">예매</a>
                                     	<ul class="dropdown">
                                     		<li><a href="<%=request.getContextPath() %>/reservation/schedule">연극 일정</a></li>
-                                    		<li><a href="<%=request.getContextPath() %>/reservation">연극 예매</a></li>
+                                    		<li><a href="<%=request.getContextPath() %>/reservation/select">연극 예매</a></li>
                                     		<li><a href="<%=request.getContextPath() %>/reservation/ticketCheck">예매 확인 및 취소</a></li>
                                     	</ul>
                                     </li>

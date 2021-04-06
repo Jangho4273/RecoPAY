@@ -18,6 +18,13 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/style.css">
+    
+    
+	<link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.css">
+	<link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.css">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/calender/dist/tui-calendar.css">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/calender/css/default.css">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/calender/css/icons.css">
 
 </head>
 
@@ -29,7 +36,7 @@
     <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<%=request.getContextPath() %>/resources/img/bg-img/breadcumb.jpg);">
         <div class="bradcumbContent">
             <p>무엇을 볼 것이냐?</p>
-            <h2>공 연 일 정</h2>
+            <h2>연 극 일 정</h2>
         </div>
     </section>
     <!-- ##### Breadcumb Area End ##### -->
@@ -43,7 +50,7 @@
                     <div class="contact-content mb-100">
                         <!-- Title -->
                         <div class="contact-title mb-50">
-                            <h5>Contact Info</h5>
+                            <h5>Reservation</h5>
                         </div>
 
                         <!-- Single Contact Info -->
@@ -51,7 +58,7 @@
                             <div class="icon mr-30">
                                 <span class="icon-placeholder"></span>
                             </div>
-                            <p>1481 Creekside Lane Avila Beach, CA 931</p>
+                            <p><a href="<%=request.getContextPath() %>/reservation/schedule">연극 일정</a></p>
                         </div>
 
                         <!-- Single Contact Info -->
@@ -59,7 +66,7 @@
                             <div class="icon mr-30">
                                 <span class="icon-smartphone"></span>
                             </div>
-                            <p>+53 345 7953 32453</p>
+                            <p><a href="<%=request.getContextPath() %>/reservation/select">연극 예매</a></p>
                         </div>
 
                         <!-- Single Contact Info -->
@@ -67,17 +74,7 @@
                             <div class="icon mr-30">
                                 <span class="icon-mail"></span>
                             </div>
-                            <p>yourmail@gmail.com</p>
-                        </div>
-
-                        <!-- Contact Social Info -->
-                        <div class="contact-social-info mt-50">
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Behance"><i class="fa fa-behance" aria-hidden="true"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            <p><a href="<%=request.getContextPath() %>/reservation/ticketCheck">예매 확인 및 취소</a></p>
                         </div>
 
                     </div>
@@ -86,8 +83,55 @@
                 <div class="col-12 col-lg-9">
                     <!-- ##### Google Maps ##### -->
                     <div class="map-area mb-100">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22236.40558254599!2d-118.25292394686001!3d34.057682914027104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2z4Kay4Ka4IOCmj-CmnuCnjeCmnOCnh-CmsuCnh-CmuCwg4KaV4KeN4Kav4Ka-4Kay4Ka_4Kar4KeL4Kaw4KeN4Kao4Ka_4Kav4Ka84Ka-LCDgpq7gpr7gprDgp43gppXgpr_gpqgg4Kav4KeB4KaV4KeN4Kak4Kaw4Ka-4Ka34KeN4Kaf4KeN4Kaw!5e0!3m2!1sbn!2sbd!4v1532328708137" allowfullscreen></iframe>
-                    </div>
+						<div class="code-html">
+							<div id="menu">
+								<span id="menu-navi">
+									<button type="button" class="btn btn-default btn-sm move-today"
+										data-action="move-today">Today</button>
+									<button type="button" class="btn btn-default btn-sm move-day"
+										data-action="move-prev">
+										<i class="calendar-icon ic-arrow-line-left"
+											data-action="move-prev">&lt;</i>
+									</button>
+									<button type="button" class="btn btn-default btn-sm move-day"
+										data-action="move-next">
+										<i class="calendar-icon ic-arrow-line-right"
+											data-action="move-next">&gt;</i>
+									</button>
+								</span> <span id="renderRange" class="render-range"></span>
+							</div>
+
+							<div id="calendar" style="position: relative;"></div>
+						</div>
+
+						<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+							integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+							crossorigin="anonymous"></script>
+						<script
+							src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+						<script
+							src="https://uicdn.toast.com/tui.code-snippet/v1.5.2/tui-code-snippet.min.js"></script>
+						<script
+							src="https://uicdn.toast.com/tui.time-picker/v2.0.3/tui-time-picker.min.js"></script>
+						<script
+							src="https://uicdn.toast.com/tui.date-picker/v4.0.3/tui-date-picker.min.js"></script>
+						<script
+							src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+						<script
+							src="https://cdnjs.cloudflare.com/ajax/libs/chance/1.0.13/chance.min.js"></script>
+						<script
+							src="<%=request.getContextPath()%>/resources/calender/dist/tui-calendar.js"></script>
+						<script
+							src="<%=request.getContextPath()%>/resources/calender/js/data/calendars.js"></script>
+						<%-- <script src="<%=request.getContextPath() %>/resources/calender/js/data/schedules.js"></script> --%>
+						<script type="text/javascript" class="code-js">
+							var cal = new tui.Calendar('#calendar', {
+								defaultView : 'month' // monthly view option
+							});
+						</script>
+						<script
+							src="<%=request.getContextPath()%>/resources/calender/js/default.js"></script>
+					</div>
                 </div>
 
             </div>
@@ -95,55 +139,7 @@
     </section>
     <!-- ##### Contact Area End ##### -->
 
-    <!-- ##### Contact Area Start ##### -->
-    <section class="contact-area section-padding-0-100">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-heading">
-                        <p>See whatâs new</p>
-                        <h2>Get In Touch</h2>
-                    </div>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-12">
-                    <!-- Contact Form Area -->
-                    <div class="contact-form-area">
-                        <form action="#" method="post">
-                            <div class="row">
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="name" placeholder="Name">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" id="email" placeholder="E-mail">
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="subject" placeholder="Subject">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-12 text-center">
-                                    <button class="btn oneMusic-btn mt-30" type="submit">Send <i class="fa fa-angle-double-right"></i></button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ##### Contact Area End ##### -->
 
 	<jsp:include page="/resources/jsp/footer.jsp"></jsp:include>
 	
