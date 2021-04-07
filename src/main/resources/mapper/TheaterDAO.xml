@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.spring.recopay.domain.TheaterDAO">
+	<select id="select" resultType="com.spring.recopay.domain.TheaterDTO">
+	SELECT th_uid "uid", th_id "id", th_name "name", th_location "location", th_totalseat "totalseat", th_state "state", 
+	th_telno "telno", th_chartr "chartr" 
+	FROM Theater
+	</select> 
+	
+	<select id="viewByUid" resultType="com.spring.recopay.domain.TheaterDTO">
+	SELECT th_uid "uid", th_id "id", th_name "name", th_location "location", th_totalseat "totalseat", th_state "state", 
+	th_telno "telno", th_chartr "chartr" 
+	FROM Theater where th_uid = #{uid}
+	</select>
+</mapper>

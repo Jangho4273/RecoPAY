@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.recopay.domain.PerformDAO">
+
 	<select id="select" resultType="com.spring.recopay.domain.PerformDTO">
 	SELECT prf_uid "uid", prf_id "id", prf_name "name", prf_from "from", prf_to "to", prf_fcltynm "fcltynm", 
 	prf_poster "poster", prf_state "state", prf_openrun "openrun", th_uid "tuid"
@@ -15,4 +16,7 @@
 	FROM Perform
 	WHERE prf_uid=#{uid}
 	</select>
+	
+	
+	
 </mapper>
