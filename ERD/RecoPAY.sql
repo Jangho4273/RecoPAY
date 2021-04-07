@@ -37,17 +37,26 @@ CREATE TABLE Qna_Board (
 );
 
 
-DROP TABLE  Theater ;
+DROP TABLE  Theater CASCADE CONSTRAINTS;
+
+DROP SEQUENCE theater_seq;
+
+CREATE SEQUENCE theater_seq;
+
 
 CREATE TABLE  Theater  (
 	th_uid 	number		NOT NULL,
-	th_name 	varchar2(50)		NOT NULL,
-	th_location 	varchar2(100)		NULL,
+	th_id varchar(10)  NOT NULL,
+	th_name 	varchar2(80)		NOT NULL,
+	th_location 	varchar2(120)		NULL,
 	th_totalseat 	number		NULL,
-	th_content 	varchar2(1500)		NULL,
-	th_state 	char(1)		NULL,
-	th_img 	varchar2(200)		NULL
+	th_state 	char(1)	DEFAULT 0	NULL ,
+	th_telno varchar2(20) NULL,
+	th_chartr varchar2(30) NULL
 );
+
+SELECT * FROM THEATER t ;
+
 
 DROP TABLE  Reservation ;
 
@@ -119,6 +128,7 @@ CREATE TABLE  Review  (
 	re_score 	number		NULL,
 	user_uid 	number		NULL
 );
+
 DROP TABLE  FavoritePerform ;
 
 CREATE TABLE  FavoritePerform  (
@@ -126,6 +136,7 @@ CREATE TABLE  FavoritePerform  (
 	prf_uid 	number		NULL,
 	user_uid 	number		NOT NULL
 );
+
 DROP TABLE Perform;
 
 CREATE TABLE Perform (
@@ -142,6 +153,7 @@ CREATE TABLE Perform (
 	prf_avgsc	number(2,1)		NULL
 );
 
+SELECT * FROM THEATER t ;
 
 
 SELECT * FROM perform ORDER BY prf_from DESC;
@@ -158,6 +170,7 @@ CREATE TABLE  Timetable  (
 	tt_visit 	number		NOT NULL,
 	prf_uid 	number		NOT NULL
 );
+
 ALTER TABLE  Member  ADD CONSTRAINT  PK_MEMBER  PRIMARY KEY (
 	user_uid 
 );
