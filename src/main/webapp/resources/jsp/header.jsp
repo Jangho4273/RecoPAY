@@ -62,9 +62,9 @@
                                     		<li><a href="<%=request.getContextPath() %>/reservation/ticketCheck">예매 확인 및 취소</a></li>
                                     	</ul>
                                     </li>
-                                    <li><a href="blog">극장</a>
+                                    <li><a href="theater">극장</a>
                                    		<ul class="dropdown">
-                                    		<li><a href="">공연장 정보</a></li>
+                                    		<li><a href="<%=request.getContextPath() %>/theater/list">공연장 정보</a></li>
                                     		<li><a href="">오시는 길</a></li>
                                     	</ul>
                                     </li>
