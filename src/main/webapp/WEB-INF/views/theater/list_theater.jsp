@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.spring.recopay.domain.TheaterDTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -96,7 +99,7 @@
 
 
 				<div class="col-12 col-lg-9">
-
+					
 					<select id="locationSearch">
 						<option value="" selected="selected"></option>
 						<option value="서울">서울</option>
@@ -108,6 +111,10 @@
 					</select> <input id="searchName"/>
 					<button type="button" id="searchbut"> 검색
 					</button>
+					
+					
+					<input style="margin-left:10px;" type="radio" name="chk_info" value="0" checked="checked"> 모두
+					<input type="radio" name="chk_info" value="1" > 상영중
 
 					<table>
 						<tr>
@@ -118,6 +125,7 @@
 							<th>기타 특징</th>
 						</tr>
 
+						
 						<c:choose>
 							<c:when test="${empty list || fn:length(list) == 0 }">
 							</c:when>
@@ -125,6 +133,17 @@
 								<c:forEach var="dto" items="${list }" varStatus="vs">
 									<tr class="load-more-btn text-center wow fadeInUp"
 										style="display: none;" id="a${vs.index}">
+										<% 
+											ArrayList<TheaterDTO> arrlist = (ArrayList<TheaterDTO>) request.getAttribute("list");
+										%>	
+								
+										<script>
+											
+											<%-- locationName.push('<%= arrlist.get(2).getLocation() %>'); --%>
+											locationName.push('${dto.location}');
+											id.push('${vs.index}');
+										</script>
+										
 										<td><a
 											href="<%=request.getContextPath()%>/theater/view/${dto.name }">${dto.name }</a></td>
 										<td>${dto.location }</td>
