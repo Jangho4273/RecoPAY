@@ -27,13 +27,11 @@
 </head>
 
 <body>
-
 	<jsp:include page="/resources/jsp/header.jsp"></jsp:include>
 	 <!-- ##### Breadcumb Area Start ##### -->
     <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<%=request.getContextPath() %>/resources/img/bg-img/breadcumb.jpg);">
        
     </section>
-   
 
     <!-- ##### Buy Now Area Start ##### -->
     <section class="oneMusic-buy-now-area has-fluid bg-gray section-padding-100">
@@ -73,7 +71,12 @@
                             <a href="#">
                                 <h5>${dto.name }</h5>
                             </a>
+                            
+                            <!--  link to theater page -->
+                            <a href="${pageContext.request.contextPath }/theater/view/${dto.fcltynm}">
                             <p>${dto.fcltynm }</p>
+                            </a>
+                            
                         </div>
                     </div>
                 </div>
@@ -81,7 +84,6 @@
 				</c:otherwise>
 				</c:choose>
             </div>
-            
             
 
             <div class="row">
