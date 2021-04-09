@@ -1,14 +1,14 @@
 package com.spring.recopay.domain;
 
 public class TheaterDTO {
-	private int uid;
-	private String id;
-	private String name;
-	private String location;
-	private String totalseat;
-	private String state;
-	private String telno;
-	private String chartr;
+	private int uid; // DB_uid
+	private String id; // api_id
+	private String name; // 극장명
+	private String location; // 극장 위치
+	private String totalseat; // 극장 총 좌석 
+	private String state; // 극장 운영 상태 
+	private String telno; // 극장 전화번호
+	private String chartr; // 극장 특이사항
 	
 	
 	public int getUid() {

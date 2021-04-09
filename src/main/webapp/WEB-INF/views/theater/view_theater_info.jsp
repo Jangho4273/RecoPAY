@@ -80,7 +80,7 @@
 		
 				<!-- ##### google map ##### -->
 				<div id="googleMap" style="width: 100%; height: 400px;"></div>
-
+					
 
 				<!-- ##### Import google map ##### -->
 				<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAz5nIT_54PG7ke2yMKUiqwKR86mVMwJgk&callback=initMap"></script>
