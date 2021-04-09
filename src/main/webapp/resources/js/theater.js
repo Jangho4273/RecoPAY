@@ -17,7 +17,6 @@ $(document)
 
 function getPerformanceXML() {
 	
-	
 	// prfstate=02  -> 공연중 
 	var url = "http://www.kopis.or.kr/openApi/restful/pblprfr?service=" + api_key +
 	"&stdate=20160601&eddate="+ eddate +"&cpage=1&rows=10&prfstate=02&shprfnmfct=" + fcltynm;

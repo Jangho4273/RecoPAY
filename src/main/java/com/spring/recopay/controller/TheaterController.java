@@ -24,6 +24,11 @@ public class TheaterController {
 		return "theater/view_theater_info";
 	}
 	
+	@RequestMapping("/map")
+	public String theaterMap(HttpServletRequest request) {
+		return "theater/map_theater";
+	}
+	
 	@RequestMapping("/list")
 	public String theaterList(HttpServletRequest request, Model model) {
 		model.addAttribute("list",ts.select());

@@ -10,7 +10,7 @@ public class C {
 	public static final String API_KEY = "b9540b392fb0493c963e4b00ad293087";
 	
 	
-	public static final String ROWS = "100";
+	public static final String ROWS = "300";
 	
 	public static final String THEATER_XML_URL = "http://www.kopis.or.kr/openApi/restful/prfplc?service="
 			+ API_KEY + "&cpage=1&rows=" + ROWS;
