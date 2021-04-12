@@ -137,7 +137,7 @@
 										</script>
 
 										<td><a
-											href="<%=request.getContextPath()%>/theater/view/${dto.name }">${dto.name }</a></td>
+											href="<%=request.getContextPath()%>/theater/view/${dto.id }">${dto.name }</a></td>
 										<td>${dto.location }</td>
 										<td>${dto.totalseat }</td>
 										<td>${dto.telno }</td>

@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface TheaterDAO {
 	List<PerformDTO> select();
-	List<PerformDTO> viewByUid(int uid);
+	List<PerformDTO> viewById(String id);
 }

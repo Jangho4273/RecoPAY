@@ -5,13 +5,13 @@
 <mapper namespace="com.spring.recopay.domain.TheaterDAO">
 	<select id="select" resultType="com.spring.recopay.domain.TheaterDTO">
 	SELECT th_uid "uid", th_id "id", th_name "name", th_location "location", th_totalseat "totalseat", th_state "state", 
-	th_telno "telno", th_chartr "chartr" 
+	th_telno "telno", th_chartr "chartr", th_lng "lng", th_lat "lat", th_url "url", th_totalno "totalno",th_opendate "opendate"
 	FROM Theater
 	</select> 
 	
-	<select id="viewByUid" resultType="com.spring.recopay.domain.TheaterDTO">
+	<select id="viewById" resultType="com.spring.recopay.domain.TheaterDTO">
 	SELECT th_uid "uid", th_id "id", th_name "name", th_location "location", th_totalseat "totalseat", th_state "state", 
-	th_telno "telno", th_chartr "chartr" 
-	FROM Theater where th_uid = #{uid}
+	th_telno "telno", th_chartr "chartr", th_lng "lng", th_lat "lat", th_url "url", th_totalno "totalno",th_opendate "opendate"
+	FROM Theater where th_id = #{id}
 	</select>
 </mapper>

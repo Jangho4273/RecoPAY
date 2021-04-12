@@ -10,6 +10,12 @@ public class TheaterDTO {
 	private String telno; // 극장 전화번호
 	private String chartr; // 극장 특이사항
 	
+	private float lng; // 위도
+	private float lat; // 경도
+	private String url; // 홈페이지
+	private int totalno; // 전화번호
+	private String opendate; // 극장 오픈 일자
+	
 	
 	public int getUid() {
 		return uid;
@@ -60,6 +66,36 @@ public class TheaterDTO {
 		this.chartr = chartr;
 	}
 	
+	public float getLng() {
+		return lng;
+	}
+	public void setLng(float lng) {
+		this.lng = lng;
+	}
+	public float getLat() {
+		return lat;
+	}
+	public void setLat(float lat) {
+		this.lat = lat;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	public int getTotalno() {
+		return totalno;
+	}
+	public void setTotalno(int totalno) {
+		this.totalno = totalno;
+	}
+	public String getOpendate() {
+		return opendate;
+	}
+	public void setOpendate(String opendate) {
+		this.opendate = opendate;
+	}
 	
 	
 }

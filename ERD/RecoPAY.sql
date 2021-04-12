@@ -47,15 +47,24 @@ CREATE SEQUENCE theater_seq;
 CREATE TABLE  Theater  (
 	th_uid 	number		NOT NULL,
 	th_id varchar(10)  NOT NULL,
-	th_name 	varchar2(80)		NOT NULL,
+	th_name 	varchar2(100)		NOT NULL,
 	th_location 	varchar2(120)		NULL,
 	th_totalseat 	number		NULL,
 	th_state 	char(1)	DEFAULT 0	NULL ,
 	th_telno varchar2(20) NULL,
-	th_chartr varchar2(30) NULL
+	th_chartr varchar2(30) NULL,
+	th_lng float NULL,
+	th_lat float NULL,
+	th_url varchar2(300) NULL,
+	th_totalno NUMBER NULL,
+	th_opendate varchar2(40) NULL
 );
 
 SELECT * FROM THEATER t ;
+
+SELECT th_uid "uid", th_id "id", th_name "name", th_location "location", th_totalseat "totalseat", th_state "state", 
+	th_telno "telno", th_chartr "chartr", th_lng "lng", th_lat "lat", th_url "url", th_totalno "totalno",th_opendate "opendate" 
+	FROM Theater where th_id = 'FC002633';
 
 
 DROP TABLE  Reservation ;
