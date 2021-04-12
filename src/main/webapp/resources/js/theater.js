@@ -4,22 +4,19 @@
 
 var api_key = "b9540b392fb0493c963e4b00ad293087";
 var eddate = getFormatDate(new Date());
-var fcltynm = "";
+var lat, lng, id;
 
-$(document)
-	.ready(
-		function() {
-
-			fcltynm = document.getElementById("fcltynm").value;
-			getPerformanceXML();
-			getFacilityID();
-		});
+$(document).ready( function() {
+	getPerformanceXML();
+});
 
 function getPerformanceXML() {
 	
-	// prfstate=02  -> 공연중 
+	// prfstate=02  -> 공연중 추가해야댐 
 	var url = "http://www.kopis.or.kr/openApi/restful/pblprfr?service=" + api_key +
-	"&stdate=20160601&eddate="+ eddate +"&cpage=1&rows=10&prfstate=02&shprfnmfct=" + fcltynm;
+	"&stdate=20160601&eddate="+ eddate +"&cpage=1&rows=10&prfplccd=" + id;
+	console.log(url);
+	
 	
 	$.ajax({
 		url: url,
@@ -34,87 +31,6 @@ function getPerformanceXML() {
 		}
 	});
 }
-
-function getFacilityXML(mt10id) {
-
-	var url = "http://www.kopis.or.kr/openApi/restful/prfplc/" + mt10id +"?service=" + api_key;
-	
-	// 공연시설목록
-	$.ajax({
-		url: url,
-		type: "GET",
-		cache: false,
-		success: function(data, status, xhr) {
-			//alert(xhr.status);
-			if (status == "success") {
-				parseFacilityXML(data);
-			} else {
-				alert('openAPI loading 실패 - 문의해주세요.');
-			}
-
-		}
-	});
-}
-
-function getFacilityID() {
-	
-	var url = "http://www.kopis.or.kr/openApi/restful/prfplc?service=" + 
-	api_key + "&cpage=1&rows=1&shprfnmfct=" + fcltynm;
-	
-	$.ajax({
-		url: url,
-		type: "GET",
-		cache: false,
-		success: function(data, status, xhr) {
-			//alert(xhr.status);
-			if (status == "success") {
-				
-				$(data).find("db").each(function() {
-					mt10id =  $(this).find("mt10id").text();
-					getFacilityXML(mt10id);
-				});
-					
-			} else {
-				alert('openAPI loading 실패 - 문의해주세요.');
-			}
-
-		}
-	});
-}
-
-
-function parseFacilityXML(xmlDOM) {
-
-	$(xmlDOM).find("db").each(function() {
-		
-		$("#theater_name").html("극장명 : " +  fcltynm);
-		
-		var hompage_url = $(this).find("relateurl").text();
-	
-		if (hompage_url == "") {
-			$("#theater_homepage").html("● 홈페이지 제공 안함");
-		} else {
-			$("#theater_homepage").html("▷ " + hompage_url);
-			document.getElementById("theater_homepage")
-				.setAttribute("href", hompage_url);
-		}
-
-		$("#theater_num").html(
-			"공연장 수 : " + $(this).find("mt13cnt").text());
-		$("#theater_feature").html(
-			"시설 특성 : " + $(this).find("fcltychartr").text());
-		$("#theater_openyear").html(
-			"개관 연도 : " + $(this).find("opende").text());
-		$("#theater_seat_num").html(
-			"객석 수 : " + $(this).find("seatscale").text());
-		$("#theater_phone").html(
-			"전화번호 : " + $(this).find("telno").text());
-		$("#theater_addr").html(
-			"주소 : " + $(this).find("adres").text());
-		setMap($(this).find("la").text(), $(this).find("lo").text());
-	});
-}
-
 
 function parsePerformanceXML(xmlDOM) {
 	var img_url = "";
@@ -141,6 +57,8 @@ function initMap() {
 		zoom: 17
 	}
 	var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+	
+	setMap(lat, lng);
 }
 
 

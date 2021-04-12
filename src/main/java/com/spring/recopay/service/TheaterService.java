@@ -35,9 +35,9 @@ public class TheaterService implements TheaterDAO{
 	}
 
 	@Override
-	public List<PerformDTO> viewByUid(int uid) {
+	public List<PerformDTO> viewById(String id) {
 		// TODO Auto-generated method stub
-		return getSession().viewByUid(uid);
+		return getSession().viewById(id);
 	}
 
 

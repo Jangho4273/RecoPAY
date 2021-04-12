@@ -89,11 +89,9 @@ public class PerformStore {
 					pstmt.setString(9, getTagValue("mt10id", eE));
 					int cnt = pstmt.executeUpdate();
 					System.out.println(cnt + "개 행(row) INSERT 성공");
-
 				
 				}
 			}
-
 		} catch (Exception e){	
 			e.printStackTrace();
 		}	// try~catch end

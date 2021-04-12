@@ -18,11 +18,6 @@ public class TheaterController {
 		super();
 		this.ts = ts;
 	}
-
-	@RequestMapping("/view")
-	public String theaterViewer(HttpServletRequest request) {
-		return "theater/view_theater_info";
-	}
 	
 	@RequestMapping("/map")
 	public String theaterMap(HttpServletRequest request) {
@@ -35,9 +30,11 @@ public class TheaterController {
 		return "theater/list_theater";
 	}
 	
-	@RequestMapping("/view/{fcltynm}")
-	public String theaterViewerByName(@PathVariable String fcltynm, Model model) {
-		model.addAttribute("fcltynm", fcltynm);
+	@RequestMapping("/view/{id}")
+	public String theaterViewerByName(HttpServletRequest request, @PathVariable String id, Model model) {
+		model.addAttribute("list", ts.viewById(id));
 		return "/theater/view_theater_info";
 	}
+	
+
 }
