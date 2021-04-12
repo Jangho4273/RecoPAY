@@ -100,8 +100,17 @@
 				<script
 					src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAz5nIT_54PG7ke2yMKUiqwKR86mVMwJgk&callback=initMap"></script>
 
-				<div></div>
+				<div style="margin-left: 290px; width: 400px; height: 520px; font-weight: bold;">
+				<p id="totalDistance"></p>
+				<p id="payment">총 요금 : </p>
+				<p id="totalTime">소요 시간 : </p>
+				<p id="firstStartStation">출발역 : </p><p id="lastEndStation">도착역 : </p>
+				<p id="totalStationCount">몇 정거장? : </p>
+				
+				</div>
 				<br><br><br>
+				
+				
 				<jsp:include page="/resources/jsp/footer.jsp"></jsp:include>
 </body>
 
