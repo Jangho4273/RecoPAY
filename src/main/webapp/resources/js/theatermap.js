@@ -7,8 +7,7 @@ API 홈페이지에서 내껄로 로그인해서 IP등록해야 api 이용 가�
 var api_key = "qFd4EJ0onv0YbXergB2gvhL+Dtn+uK1XGsAO6bzfhfE";
 var mapObject = "";
 var currentLocationX, currentLocationY;
-var endLocationX = 126.926493082645;
-var endLocationY = 37.6134436427887;
+var endLocationX, endLocationY;
 var map;
 var pathArr = [];
 var distance = [];
@@ -18,11 +17,9 @@ var graph_url;
 
 $(document).ready(function() {
 
-	
 });
 
 function loadXML() {
-	console.log(url);
 	$.ajax({
 		url: url,
 		type: "GET",
@@ -66,7 +63,6 @@ function parseXML(xmlDOM) {
 	for(var i =0; i < distance.length; i++) {
 		if(min == distance[i]) {
 			graph_url = "https://api.odsay.com/v1/api/loadLane?apiKey=" + encodeURIComponent(api_key) + "&output=xml&mapObject=126:37@" + mapObj[i];
-			console.log(graph_url);
 			loadGraphXML();
 			break;
 		}

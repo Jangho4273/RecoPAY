@@ -6,7 +6,7 @@ var scheduleId = 1;
 
 
 $(document).ready(function() {
-		
+	
 		loadXML();
 		
 });

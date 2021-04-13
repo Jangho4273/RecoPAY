@@ -46,9 +46,14 @@
 </head>
 
 <body>
-
+	<script>
+	
+		endLocationY = <%= Float.parseFloat(request.getParameter("lat")) %>
+		endLocationX = <%= Float.parseFloat(request.getParameter("lng")) %>
+		
+		
+	</script>
 	<jsp:include page="/resources/jsp/header.jsp"></jsp:include>
-
 	<!-- ##### Breadcumb Area Start ##### -->
 	<section class="breadcumb-area bg-img bg-overlay"
 		style="background-image: url(<%=request.getContextPath()%>/resources/img/bg-img/breadcumb.jpg);">

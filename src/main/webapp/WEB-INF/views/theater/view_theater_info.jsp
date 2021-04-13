@@ -92,6 +92,9 @@
 
 						<div id="googleMap" style="width: 100%; height: 400px;"></div>
 						<br>
+						
+						<button type="button" onclick="location.href='<%=request.getContextPath() %>/theater/map?lat=${list[0].lat }&lng=${list[0].lng }'">극장까지 가는 길 찾기</button>
+						
 						<br>
 						<p style="font-weight: bold; font-size: x-large;">이 극장에서 상영중인
 							작품들</p>
