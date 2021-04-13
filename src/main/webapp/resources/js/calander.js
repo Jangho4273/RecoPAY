@@ -2,7 +2,8 @@
 var api_key = "b9540b392fb0493c963e4b00ad293087";
 var startdate, enddate,prftitle;
 var schedule = [];
-var scheduleId = 1;
+var scheduleId = 0;
+var colorlist = ['#257e4a','#ff94b3','#d8cd34','#5c43f3','#e62938'];
 
 
 $(document).ready(function() {
@@ -13,7 +14,6 @@ $(document).ready(function() {
 
 function setCalander(schedule) {
 	var calendarEl = document.getElementById('calendar');
-	alert("배열 길이 : " + schedule.length);
 	var calendar = new FullCalendar.Calendar(calendarEl, {
 		plugins: ['interaction', 'dayGrid'],
 		header: {
@@ -72,7 +72,8 @@ function setSchedule(title,sdate,edate) {
 			groupId: scheduleId,
 			title: title,
 			start: sdate,
-			end: edate
+			end: edate,
+			color: colorlist[scheduleId]
 		}
 	);
 	scheduleId += 1;
