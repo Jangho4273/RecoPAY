@@ -114,17 +114,38 @@ CREATE TABLE  Faq_Board  (
 	faq_type 	varchar2(20)		NOT NULL
 );
 
+select sysdate from dual;
+
 DROP TABLE  Event_Board ;
+
+
 
 CREATE TABLE  Event_Board  (
 	event_uid 	number		NOT NULL,
-	event_title 	varchar2(50)		NOT NULL,
+	event_title 	varchar2(200)		NOT NULL,
 	event_contents 	varchar2(2000)		NOT NULL,
-	event_uploadedtime 	date		NULL,
-	event_img 	varchar2(50)		NULL,
-	event_viewcnt 	number	DEFAULT 0	NULL,
-	user_uid 	number		NOT NULL
+	event_img 	varchar2(500)		NULL,
+	user_uid 	number		NOT NULL,
+	event_startdate date NULL,
+	event_enddate date NULL,
+	event_isfinish char(1) NULL
 );
+
+INSERT INTO EVENT_BOARD (event_uid, 
+event_title , event_contents, event_img ,user_uid , event_startdate , event_enddate , event_isfinish) 
+VALUES (event_seq.nextval, 'test','test','test',123,TO_DATE('2021-04-01','YYYY-MM-DD'),TO_DATE('2021-04-01','YYYY-MM-DD'),'1');
+
+SELECT event_uid, event_title , event_contents, event_img , 
+user_uid , TO_CHAR(TO_DATE(event_startdate,'YYYY-MM-DD'))  , TO_CHAR(TO_DATE(event_enddate,'YYYY-MM-DD')) , event_isfinish , (event_enddate - event_startdate) AS remainday 
+FROM EVENT_BOARD eb 
+ORDER BY (event_enddate - event_startdate) asc;
+
+
+SELECT * FROM EVENT_BOARD eb ;
+
+CREATE SEQUENCE event_seq;
+
+DROP SEQUENCE event_seq;
 
 DROP TABLE  Review ;
 

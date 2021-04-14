@@ -70,9 +70,7 @@
                                     </li>
                                     <li><a href="contact">Event</a>
                                     	<ul class="dropdown">
-                                    		<li><a href="">할인</a></li>
-                                    		<li><a href="">진행중인 이벤트</a></li>
-                                    		<li><a href="">종료된 이벤트</a></li>
+                                    		<li><a href="<%=request.getContextPath() %>/event/list">이벤트</a></li>
                                     	</ul>
                                     </li>
                                     <li><a href="contact">고객센터</a>

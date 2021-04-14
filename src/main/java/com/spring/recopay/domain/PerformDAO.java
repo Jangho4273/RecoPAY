@@ -5,5 +5,4 @@ import java.util.List;
 public interface PerformDAO {
 	List<PerformDTO> select();
 	List<PerformDTO> viewByUid(int uid);
-	
 }
