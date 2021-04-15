@@ -139,10 +139,28 @@ SELECT event_uid "uid", event_title "title", event_contents "contents", event_im
 user_uid "user_uid", TO_DATE(TO_CHAR(event_startdate,'YYYY-MM-DD')) "startdate" , 
 TO_DATE(TO_CHAR(event_enddate,'YYYY-MM-DD')) "enddate", 
 event_isfinish "isfinish", (event_enddate - event_startdate) AS remainday, 
-(TO_DATE(TO_CHAR(event_enddate,'YYYY-MM-DD')) - TO_DATE(TO_CHAR(SYSDATE,'YYYY-MM-DD'))) AS remainfromtoday 
+(TO_DATE(TO_CHAR(event_enddate,'YYYY-MM-DD')) - TO_DATE(TO_CHAR(SYSDATE,'YYYY-MM-DD'))) AS remainfromtoday, 
+(1-((TO_DATE(TO_CHAR(event_enddate,'YYYY-MM-DD')) - TO_DATE(TO_CHAR(SYSDATE,'YYYY-MM-DD')))/(event_enddate - event_startdate)))*100 AS percentage
 FROM EVENT_BOARD 
-ORDER BY remainfromtoday ASC;
+ORDER BY percentage ASC;
 
+SELECT 
+count(*) AS total, 
+count(event_isfinish == 1) AS finished, 
+count(event_isfinish == 0) AS ongoing 
+FROM EVENT_BOARD ;
+
+		SELECT 
+			(SELECT count(*) FROM EVENT_BOARD) total,
+			(SELECT count(*) FROM EVENT_BOARD WHERE EVENT_ISFINISH = 1) AS finished,
+			(SELECT count(*) FROM EVENT_BOARD WHERE EVENT_ISFINISH = 0) AS ongoing 
+		FROM dual;
+
+
+
+UPDATE EVENT_BOARD 
+SET event_isfinish = 1  
+WHERE (TO_DATE(TO_CHAR(event_enddate,'YYYY-MM-DD')) - TO_DATE(TO_CHAR(SYSDATE,'YYYY-MM-DD'))) < 0 ;
 
 SELECT * FROM EVENT_BOARD eb ;
 

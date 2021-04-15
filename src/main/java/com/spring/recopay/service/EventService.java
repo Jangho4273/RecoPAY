@@ -35,4 +35,16 @@ public class EventService implements EventDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.getMapper(EventDAO.class).selectAllListOrderedByRemaindayAsc();
 	}
+
+	@Override
+	public int setIsfinish() {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(EventDAO.class).setIsfinish();
+	}
+
+	@Override
+	public EventDTO countIsfinished() {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(EventDAO.class).countIsfinished();
+	}
 }

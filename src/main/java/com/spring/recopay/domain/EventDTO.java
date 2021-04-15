@@ -15,12 +15,34 @@ public class EventDTO {
 	private String isfinish; // 이벤트 종료 여부
 	private int remainday; // 이벤트 남은 일 수
 	private int remainfromtoday; // 오늘로 부터 남은 이벤트 일 수
-	private double percentage;
+	private double percentage; // 퍼샌트 계산
+	private int total; // 총 row 갯수
+	private int finished; // 종료된 이벤트 갯수
+	private int ongoing; // 진행중인 이벤트 갯수 
 	
-	
+	public int getTotal() {
+		return total;
+	}
+	public void setTotal(int total) {
+		this.total = total;
+	}
+	public int getFinished() {
+		return finished;
+	}
+	public void setFinished(int finished) {
+		this.finished = finished;
+	}
+	public int getOngoing() {
+		return ongoing;
+	}
+	public void setOngoing(int ongoing) {
+		this.ongoing = ongoing;
+	}
 	public double getPercentage() {
-		double per = (1-(((double)remainfromtoday/(double)remainday)))*100;
-		return Math.round(per);
+		return Math.round(percentage);
+	}
+	public void setPercentage(double percentage) {
+		this.percentage = percentage;
 	}
 	
 	public int getRemainfromtoday() {
