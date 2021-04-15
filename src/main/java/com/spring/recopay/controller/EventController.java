@@ -23,7 +23,9 @@ public class EventController {
 
 	@RequestMapping("/list")
 	public String theaterMap(HttpServletRequest request, Model model) {
+		es.setIsfinish(); // List 출력 마다 isfinish 값 (이벤트가 끝난지 아닌지 ) check 
 		model.addAttribute("list", es.selectAllListOrderedByRemaindayAsc());
+		model.addAttribute("table",es.countIsfinished());
 		return "event/eventlist";
 	}
 	

@@ -5,7 +5,15 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
+<style>
+.custom{
+flex-direction: row !important;
+}
+.customli {
+	width: 100% !important;
+	
+}
+</style>
 <head>
 <meta charset="UTF-8">
 <meta name="description" content="">
@@ -40,13 +48,8 @@
 <!-- ##### Import ajax ##### -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-<script>
-	$('#myModal').on('shown.bs.modal', function() {
-		$('#myInput').trigger('focus')
-	})
-</script>
-
+<!-- ##### Import javascript ##### -->
+<script src="${pageContext.request.contextPath }/js/event.js"></script>
 
 </head>
 
@@ -63,21 +66,21 @@
 
 	<section class="contact-area section-padding-100-0">
 		<div class="container">
-			<div class="row">
+			<div class="row" style="margin-bottom:100px">
 
 				<div style="width: 100%; margin-bottom: 70px">
-					<ul class="list-group list-group-horizontal">
+					<ul class="list-group list-group-horizontal custom">
 						<li
-							class="list-group-item d-flex justify-content-between align-items-center">
-							모든 이벤트 보기 <span class="badge rounded-pill bg-warning text-dark">16</span>
+							class="list-group-item d-flex justify-content-between align-items-center customli"> <a href="javascript:void(0); onclick=totalLoadFunction();">
+							모든 이벤트 보기 </a> <span class="badge rounded-pill bg-warning text-dark">${table.total }</span>
 						</li>
 						<li
-							class="list-group-item d-flex justify-content-between align-items-center">
-							진행중인 이벤트 <span class="badge rounded-pill bg-warning text-dark">6</span>
+							class="list-group-item d-flex justify-content-between align-items-center customli"> <a href="javascript:void(0); onclick=ongoingLoadFunction();">
+							진행중인 이벤트 </a> <span class="badge rounded-pill bg-warning text-dark">${table.ongoing }</span>
 						</li>
 						<li
-							class="list-group-item d-flex justify-content-between align-items-center">
-							종료된 이벤트 <span class="badge rounded-pill bg-warning text-dark">10</span>
+							class="list-group-item d-flex justify-content-between align-items-center customli"> <a href="javascript:void(0); onclick=finishLoadFunction();">
+							종료된 이벤트 </a> <span class="badge rounded-pill bg-warning text-dark">${table.finished }</span>
 						</li>
 					</ul>
 				</div>
@@ -93,21 +96,37 @@
 					</c:when>
 					<c:otherwise>
 						<c:forEach var="dto" items="${list }" varStatus="vs">
-
-							<div class="card" style="width: 18rem;">
+								<!-- 진행중인 이벤트이면  -->
+								<c:if test="${dto.isfinish eq 0}">
+									<script> 
+										ongoingIdArr.push("n${vs.index }");
+									</script>
+								</c:if>
+								
+								<!-- 종료된 이벤트이면  -->
+								<c:if test="${dto.isfinish eq 1}">
+									<script> 
+										finishedIdArr.push("n${vs.index }");
+									</script>
+								</c:if>
+								
+								
+							<div class="card" style="width: 16rem; margin-right: 26px; margin-bottom:15px" id="n${vs.index }">
 								<img src="${dto.img }" class="card-img-top" alt="...">
 								<div class="card-body">
-
-
 
 									<h5 class="card-title">${dto.title }
 										&nbsp;
 										<c:if test="${dto.remainfromtoday < 0}">
 											<span class="badge rounded-pill bg-danger">종료된 이벤트</span>
 										</c:if>
-										<c:if test="${dto.remainfromtoday > -1}">
+										<c:if test="${dto.remainfromtoday > 0}">
 											<span class="badge rounded-pill bg-warning text-dark">
 												${dto.remainfromtoday }일 남음!!</span>
+										</c:if>
+										<c:if test="${dto.remainfromtoday eq 0}">
+											<span class="badge rounded-pill bg-success">
+												오늘 종료!!</span>
 										</c:if>
 									</h5>
 
@@ -174,11 +193,11 @@
 
 
 
-				<jsp:include page="/resources/jsp/footer.jsp"></jsp:include>
 			</div>
 		</div>
 	</section>
 
+				<jsp:include page="/resources/jsp/footer.jsp"></jsp:include>
 </body>
 
 </html>
