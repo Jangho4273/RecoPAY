@@ -124,6 +124,7 @@
 
 						<c:choose>
 							<c:when test="${empty list || fn:length(list) == 0 }">
+								<script>alert('DB 배치파일 먼저 돌리고 하셈');</script>	
 							</c:when>
 							<c:otherwise>
 								<c:forEach var="dto" items="${list }" varStatus="vs">

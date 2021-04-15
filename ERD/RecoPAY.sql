@@ -135,10 +135,13 @@ INSERT INTO EVENT_BOARD (event_uid,
 event_title , event_contents, event_img ,user_uid , event_startdate , event_enddate , event_isfinish) 
 VALUES (event_seq.nextval, 'test','test','test',123,TO_DATE('2021-04-01','YYYY-MM-DD'),TO_DATE('2021-04-01','YYYY-MM-DD'),'1');
 
-SELECT event_uid, event_title , event_contents, event_img , 
-user_uid , TO_CHAR(TO_DATE(event_startdate,'YYYY-MM-DD'))  , TO_CHAR(TO_DATE(event_enddate,'YYYY-MM-DD')) , event_isfinish , (event_enddate - event_startdate) AS remainday 
-FROM EVENT_BOARD eb 
-ORDER BY (event_enddate - event_startdate) asc;
+SELECT event_uid "uid", event_title "title", event_contents "contents", event_img "img", 
+user_uid "user_uid", TO_DATE(TO_CHAR(event_startdate,'YYYY-MM-DD')) "startdate" , 
+TO_DATE(TO_CHAR(event_enddate,'YYYY-MM-DD')) "enddate", 
+event_isfinish "isfinish", (event_enddate - event_startdate) AS remainday, 
+(TO_DATE(TO_CHAR(event_enddate,'YYYY-MM-DD')) - TO_DATE(TO_CHAR(SYSDATE,'YYYY-MM-DD'))) AS remainfromtoday 
+FROM EVENT_BOARD 
+ORDER BY remainfromtoday ASC;
 
 
 SELECT * FROM EVENT_BOARD eb ;

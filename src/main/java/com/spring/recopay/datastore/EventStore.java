@@ -41,7 +41,7 @@ public class EventStore {
 				pstmt.setString(2, "대충 할인 이벤트를 진행하고 있다는 내용" + i);
 				pstmt.setString(3, C.EVENT_TEST_URL);
 				pstmt.setString(4, getRandomDate("2021-03-01", "2021-04-01")); // 이벤트 시작 랜덤 날짜
-				pstmt.setString(5, getRandomDate("2021-04-01", "2021-04-15")); // 이벤트 끝 랜덤 날짜
+				pstmt.setString(5, getRandomDate("2021-04-04", "2021-05-05")); // 이벤트 끝 랜덤 날짜
 				pstmt.setString(6, getRandomNum(0, 1,totalcnt)); // isfinish -> 0 : 이벤트 중 1 : 이벤트 끝
 
 				totalcnt += pstmt.executeUpdate();
@@ -63,7 +63,6 @@ public class EventStore {
 				.plusDays((long) (Math.random() * 10000) % (toDay.toEpochDay() - fromDay.toEpochDay()));
 
 		return randDay.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-
 	}
 
 	private static String getRandomNum(int startNo, int endNo, int totalcnt) {
