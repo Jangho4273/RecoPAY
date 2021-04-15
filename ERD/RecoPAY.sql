@@ -137,29 +137,81 @@ CREATE TABLE  FavoritePerform  (
 	user_uid 	number		NOT NULL
 );
 
-DROP TABLE Perform;
+CREATE TABLE favperform(
+	fav_uid NUMBER NOT NULL,
+	prf_uid varchar2(15) NOT NULL,
+	user_uid NUMBER NOT null
+)
+
+CREATE TABLE PerformRec (
+	rec_uid NUMBER NOT NULL,
+	prf_id varchar2(15) NOT NULL,
+	relprf_id varchar2(15) NOT NULL,
+	sim number(4,3) NOT null
+)
+
+SELECT * FROM performRec
+
+INSERT INTO favperform VALUES(1,'PF173066' ,1);
+INSERT INTO favperform VALUES(2, 'PF172498' ,1);
+
+SELECT p.PRF_NAME "prfname", k.prf_id "prfid", k.relprf_id "relprfid", k.sim "sim", k.prf_name "relprfname", k.prf_poster "relprfposter", k.prf_uid "reluid", k.PRF_FCLTYNM "relprffacilty"
+FROM 
+(SELECT r.rec_uid "uid", r.prf_id, r.relprf_id, r.sim, p.PRF_NAME, p.PRF_POSTER, p.PRF_UID, p.PRF_FCLTYNM 
+FROM PerformRec r, favperform f, Perform p
+WHERE f.user_uid=1 and r.prf_id = f.prf_uid AND r.relprf_id = p.prf_id
+ORDER BY r.prf_id) k, PERFORM p
+WHERE k.prf_id = p.prf_id;
+
+
 
 CREATE TABLE Perform (
 	prf_uid	number		NOT NULL,
 	prf_id	varchar2(15)		NOT NULL,
-	prf_name	varchar2(100)		NOT NULL,
-	prf_from	varchar2(10)		NULL,
-	prf_to	varchar2(100)		NULL,
-	prf_fcltynm	varchar2(100)		NOT NULL,
-	prf_poster	varchar2(100)		NULL,
+	prf_name	varchar2(200)		NOT NULL,
+	prf_from	varchar2(20)		NULL,
+	prf_to	varchar2(20)		NULL,
+	prf_fcltynm	varchar2(200)		NULL,
+	prf_poster	varchar2(200)		NULL,
 	prf_state	varchar2(20)		NOT NULL,
 	prf_openrun	char(1)		NULL,
 	th_uid	varchar2(30)		NULL,
-	prf_avgsc	number(2,1)		NULL
+	prf_avgsc	number(2,1)		NULL,
+	prf_summary clob NULL
 );
 
+
+
+SELECT * FROM PERFORMrec;
 SELECT * FROM THEATER t ;
 
-
+SELECT * FROM perform;
 SELECT * FROM perform ORDER BY prf_from DESC;
+SELECT * FROM perform WHERE PRF_UID < 5198 ORDER BY PRF_ID DESC;
+SELECT * FROM perform WHERE PRF_STATE = '공연중' ORDER BY PRF_ID DESC;
 CREATE SEQUENCE perform_seq;
 DROP SEQUENCE perform_seq;
 
+CREATE TABLE test_write (
+	wr_uid NUMBER NOT NULL,
+	wr_subject varchar2(50),
+	wr_content clob,
+	wr_name varchar2(20),
+	wr_viewcnt NUMBER DEFAULT 0,
+	wr_regdate DATE DEFAULT sysdate,
+	wr_score NUMBER,
+	wr_prfname varchar2(50)
+);
+
+alter table test_write modify (wr_prfname varchar2(200)) ;
+
+INSERT INTO test_write (wr_uid, wr_subject, wr_content, wr_name, wr_score, wr_prfname) 
+(SELECT test_write_seq.nextval, wr_subject, wr_content, wr_name, wr_score, wr_prfname FROM test_write);
+SELECT * FROM test_write;
+DROP TABLE test_write;
+
+CREATE SEQUENCE test_write_seq;
+DROP SEQUENCE test_write_seq;
 DROP TABLE  Timetable ;
 
 CREATE TABLE  Timetable  (

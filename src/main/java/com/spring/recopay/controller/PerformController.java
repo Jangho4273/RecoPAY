@@ -41,14 +41,20 @@ public class PerformController {
 	}
 	
 	@RequestMapping("/genre")
-	public String performGenre(HttpServletRequest request) {
+	public String performGenre(Model model) {
+		int userid = 1;
+		model.addAttribute("list", ps.recByUser(userid));
 		return "perform/genre";
 	}
 	
-	@RequestMapping("/review")
-	public String performReview(HttpServletRequest request) {
-		return "perform/review";
+	// REST 게시판 작성
+	@RequestMapping(value = "/rest")
+	public String rest() {
+		return "perform/rest";
 	}
+	
+	
+
 	
 	
 }

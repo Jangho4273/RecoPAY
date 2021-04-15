@@ -142,6 +142,8 @@ function initMap() {
 		zoom: 17
 	}
 	var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+	
+	
 }
 
 

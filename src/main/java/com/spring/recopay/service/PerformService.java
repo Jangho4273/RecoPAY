@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.recopay.domain.PerformDAO;
 import com.spring.recopay.domain.PerformDTO;
+import com.spring.recopay.domain.RecoDTO;
 
 @Service
 public class PerformService {
@@ -33,5 +34,8 @@ public class PerformService {
 		return sessionGet().viewByUid(uid);
 	}
 	
+	public List<RecoDTO> recByUser(int userid) {
+		return sessionGet().recByUser(userid);
+	}
 	
 }
