@@ -47,15 +47,24 @@ CREATE SEQUENCE theater_seq;
 CREATE TABLE  Theater  (
 	th_uid 	number		NOT NULL,
 	th_id varchar(10)  NOT NULL,
-	th_name 	varchar2(80)		NOT NULL,
+	th_name 	varchar2(100)		NOT NULL,
 	th_location 	varchar2(120)		NULL,
 	th_totalseat 	number		NULL,
 	th_state 	char(1)	DEFAULT 0	NULL ,
 	th_telno varchar2(20) NULL,
-	th_chartr varchar2(30) NULL
+	th_chartr varchar2(30) NULL,
+	th_lng float NULL,
+	th_lat float NULL,
+	th_url varchar2(300) NULL,
+	th_totalno NUMBER NULL,
+	th_opendate varchar2(40) NULL
 );
 
 SELECT * FROM THEATER t ;
+
+SELECT th_uid "uid", th_id "id", th_name "name", th_location "location", th_totalseat "totalseat", th_state "state", 
+	th_telno "telno", th_chartr "chartr", th_lng "lng", th_lat "lat", th_url "url", th_totalno "totalno",th_opendate "opendate" 
+	FROM Theater where th_id = 'FC002633';
 
 
 DROP TABLE  Reservation ;
@@ -105,17 +114,41 @@ CREATE TABLE  Faq_Board  (
 	faq_type 	varchar2(20)		NOT NULL
 );
 
+select sysdate from dual;
+
 DROP TABLE  Event_Board ;
+
+
 
 CREATE TABLE  Event_Board  (
 	event_uid 	number		NOT NULL,
-	event_title 	varchar2(50)		NOT NULL,
+	event_title 	varchar2(200)		NOT NULL,
 	event_contents 	varchar2(2000)		NOT NULL,
-	event_uploadedtime 	date		NULL,
-	event_img 	varchar2(50)		NULL,
-	event_viewcnt 	number	DEFAULT 0	NULL,
-	user_uid 	number		NOT NULL
+	event_img 	varchar2(500)		NULL,
+	user_uid 	number		NOT NULL,
+	event_startdate date NULL,
+	event_enddate date NULL,
+	event_isfinish char(1) NULL
 );
+
+INSERT INTO EVENT_BOARD (event_uid, 
+event_title , event_contents, event_img ,user_uid , event_startdate , event_enddate , event_isfinish) 
+VALUES (event_seq.nextval, 'test','test','test',123,TO_DATE('2021-04-01','YYYY-MM-DD'),TO_DATE('2021-04-01','YYYY-MM-DD'),'1');
+
+SELECT event_uid "uid", event_title "title", event_contents "contents", event_img "img", 
+user_uid "user_uid", TO_DATE(TO_CHAR(event_startdate,'YYYY-MM-DD')) "startdate" , 
+TO_DATE(TO_CHAR(event_enddate,'YYYY-MM-DD')) "enddate", 
+event_isfinish "isfinish", (event_enddate - event_startdate) AS remainday, 
+(TO_DATE(TO_CHAR(event_enddate,'YYYY-MM-DD')) - TO_DATE(TO_CHAR(SYSDATE,'YYYY-MM-DD'))) AS remainfromtoday 
+FROM EVENT_BOARD 
+ORDER BY remainfromtoday ASC;
+
+
+SELECT * FROM EVENT_BOARD eb ;
+
+CREATE SEQUENCE event_seq;
+
+DROP SEQUENCE event_seq;
 
 DROP TABLE  Review ;
 

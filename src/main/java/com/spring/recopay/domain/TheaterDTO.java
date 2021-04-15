@@ -1,14 +1,20 @@
 package com.spring.recopay.domain;
 
 public class TheaterDTO {
-	private int uid;
-	private String id;
-	private String name;
-	private String location;
-	private String totalseat;
-	private String state;
-	private String telno;
-	private String chartr;
+	private int uid; // DB_uid
+	private String id; // api_id
+	private String name; // 극장명
+	private String location; // 극장 위치
+	private String totalseat; // 극장 총 좌석 
+	private String state; // 극장 운영 상태 
+	private String telno; // 극장 전화번호
+	private String chartr; // 극장 특이사항
+	
+	private float lng; // 위도
+	private float lat; // 경도
+	private String url; // 홈페이지
+	private int totalno; // 전화번호
+	private String opendate; // 극장 오픈 일자
 	
 	
 	public int getUid() {
@@ -60,6 +66,36 @@ public class TheaterDTO {
 		this.chartr = chartr;
 	}
 	
+	public float getLng() {
+		return lng;
+	}
+	public void setLng(float lng) {
+		this.lng = lng;
+	}
+	public float getLat() {
+		return lat;
+	}
+	public void setLat(float lat) {
+		this.lat = lat;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	public int getTotalno() {
+		return totalno;
+	}
+	public void setTotalno(int totalno) {
+		this.totalno = totalno;
+	}
+	public String getOpendate() {
+		return opendate;
+	}
+	public void setOpendate(String opendate) {
+		this.opendate = opendate;
+	}
 	
 	
 }

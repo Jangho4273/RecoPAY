@@ -1,6 +1,3 @@
-<%@page import="java.util.ArrayList"%>
-<%@page import="com.spring.recopay.domain.TheaterDTO"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,7 +15,7 @@
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title -->
-<title>Theater List</title>
+<title>Theater map</title>
 
 <!-- Favicon -->
 <link rel="icon"
@@ -43,21 +40,26 @@
 <!-- ##### Import ajax ##### -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath }/js/theaterlist.js"></script>
+<script src="${pageContext.request.contextPath }/js/theatermap.js"></script>
 
 
 </head>
 
 <body>
-
+	<script>
+	
+		endLocationY = <%= Float.parseFloat(request.getParameter("lat")) %>
+		endLocationX = <%= Float.parseFloat(request.getParameter("lng")) %>
+		
+		
+	</script>
 	<jsp:include page="/resources/jsp/header.jsp"></jsp:include>
-
 	<!-- ##### Breadcumb Area Start ##### -->
 	<section class="breadcumb-area bg-img bg-overlay"
 		style="background-image: url(<%=request.getContextPath()%>/resources/img/bg-img/breadcumb.jpg);">
 		<div class="bradcumbContent">
 			<p>공연장 정보</p>
-			<h2>공 연 장 리 스 트</h2>
+			<h2>공 연 장 길 찾 기</h2>
 		</div>
 	</section>
 
@@ -93,86 +95,28 @@
 									길</a>
 							</p>
 						</div>
-
 					</div>
 				</div>
 
+				<div id="googleMap"
+					style="float: right; width: 720px; height: 720px;"></div>
 
-				<div class="col-12 col-lg-9">
+				<!-- ##### Import google map ##### -->
+				<script
+					src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAz5nIT_54PG7ke2yMKUiqwKR86mVMwJgk&callback=initMap"></script>
 
-					<select id="selectOption">
-						<option value="위치" selected="selected">위치</option>
-						<option value="극장명">극장명</option>
-					</select> <input id="searchName" />
-					<button type="button" id="searchbut">검색</button>
-
-
-					<input name="radiobut" type="radio" value="total" checked="checked">모두</input> 
-					<input name="radiobut" type="radio" value="ongoing">상영중</input>
-
-
-
-
-					<table>
-						<tr>
-							<th>극장명</th>
-							<th>위치</th>
-							<th>총 좌석</th>
-							<th>전화번호</th>
-							<th>기타 특징</th>
-						</tr>
-
-						<c:choose>
-							<c:when test="${empty list || fn:length(list) == 0 }">
-								<script>alert('DB 배치파일 먼저 돌리고 하셈');</script>	
-							</c:when>
-							<c:otherwise>
-								<c:forEach var="dto" items="${list }" varStatus="vs">
-									<tr class="load-more-btn text-center wow fadeInUp"
-										style="display: none;" id="a${vs.index}">
-
-										<script>
-											locationName.push('${dto.location}');
-											theaterName.push("${dto.name }");
-											id.push('${vs.index}');
-										</script>
-
-										<td><a
-											href="<%=request.getContextPath()%>/theater/view/${dto.id }">${dto.name }</a></td>
-										<td>${dto.location }</td>
-										<td>${dto.totalseat }</td>
-										<td>${dto.telno }</td>
-										<td>${dto.chartr }</td>
-									</tr>
-								</c:forEach>
-							</c:otherwise>
-						</c:choose>
-
-					</table>
-
-					<div class="row">
-						<div class="col-12">
-							<div class="load-more-btn text-center wow fadeInUp"
-								data-wow-delay="300ms">
-								<button id="but" type="button" class="btn oneMusic-btn">
-									Load More <i class="fa fa-angle-double-right"></i>
-								</button>
-							</div>
-						</div>
-					</div>
-
+				<div style="margin-left: 290px; width: 400px; height: 520px; font-weight: bold;">
+				<p id="totalDistance"></p>
+				<p id="payment">총 요금 : </p>
+				<p id="totalTime">소요 시간 : </p>
+				<p id="firstStartStation">출발역 : </p><p id="lastEndStation">도착역 : </p>
+				<p id="totalStationCount">몇 정거장? : </p>
+				
 				</div>
-			</div>
-		</div>
-	</section>
-	<!-- ##### Contact Area End ##### -->
-
-
-
-	<jsp:include page="/resources/jsp/footer.jsp"></jsp:include>
-
-
-
+				<br><br><br>
+				
+				
+				<jsp:include page="/resources/jsp/footer.jsp"></jsp:include>
 </body>
 
 </html>

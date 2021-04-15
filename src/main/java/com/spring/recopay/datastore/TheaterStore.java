@@ -14,7 +14,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 /**
- * 극장정보 DB에 저장 - ORACLE table도 수정했음 
+ * 극장정보 DB에 저장(Batch) - ORACLE table도 수정했음 
  * @author aflhzv
  *
  */
@@ -53,6 +53,7 @@ public class TheaterStore {
 				Node nNode = nList.item(temp);
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element eElement = (Element) nNode;
+					
 					String th_id = getTagValue("mt10id", eElement);
 					String urls = "http://www.kopis.or.kr/openApi/restful/prfplc/" + th_id
 							+ "?service=" + C.API_KEY;
@@ -68,8 +69,14 @@ public class TheaterStore {
 					pstmt.setString(4, getTagValue("seatscale", eE));
 					pstmt.setString(5, getTagValue("telno", eE));
 					pstmt.setString(6, getTagValue("fcltychartr", eE));
+					
+					pstmt.setString(7, getTagValue("lo", eE));
+					pstmt.setString(8, getTagValue("la", eE));
+					pstmt.setString(9, getTagValue("relateurl", eE));
+					pstmt.setString(10, getTagValue("mt13cnt", eE));
+					pstmt.setString(11, getTagValue("opende", eE));
 					totalcnt += pstmt.executeUpdate();
-					System.out.println("총 " + totalcnt + "개 행(row) INSERT 성공");
+					System.out.println("총 (" + totalcnt + "/" + C.THEATER_ROWS + ")개 행(row) INSERT 성공");
 				}
 			}
 

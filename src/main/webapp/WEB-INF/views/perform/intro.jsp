@@ -73,7 +73,7 @@
                             </a>
                             
                             <!--  link to theater page -->
-                            <a href="${pageContext.request.contextPath }/theater/view/${dto.fcltynm}">
+                            <a href="${pageContext.request.contextPath }/theater/view/${dto.tuid}">
                             <p>${dto.fcltynm }</p>
                             </a>
                             

@@ -6,39 +6,33 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.recopay.domain.EventDAO;
+import com.spring.recopay.domain.EventDTO;
 import com.spring.recopay.domain.PerformDAO;
-import com.spring.recopay.domain.PerformDTO;
 import com.spring.recopay.domain.TheaterDAO;
 
+
 @Service
-public class TheaterService implements TheaterDAO{
+public class EventService implements EventDAO {
 	
 	private SqlSession sqlSession;
 	
-	public TheaterService(SqlSession sqlSession) {
+	public EventService() {
+		
+	}
 
+	public SqlSession getSqlSession() {
+		return sqlSession;
 	}
 	
 	@Autowired
 	public void setSqlSession(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 	}
-	
-	public TheaterDAO getSession() {
-		return sqlSession.getMapper(TheaterDAO.class);
-	}
 
 	@Override
-	public List<PerformDTO> select() {
+	public List<EventDTO> selectAllListOrderedByRemaindayAsc() {
 		// TODO Auto-generated method stub
-		return getSession().select();
+		return sqlSession.getMapper(EventDAO.class).selectAllListOrderedByRemaindayAsc();
 	}
-
-	@Override
-	public List<PerformDTO> viewById(String id) {
-		// TODO Auto-generated method stub
-		return getSession().viewById(id);
-	}
-
-
 }

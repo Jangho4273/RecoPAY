@@ -60,19 +60,17 @@ public class PerformStore {
 				System.out.println("---page: " + i + "---" );
 				url = "http://www.kopis.or.kr/openApi/restful/pblprfr?service=de93ee9825c24143a98506d9e7f616bd&stdate=20050101&eddate=20210402&rows=100&cpage="+ i +"&shcate=AAAA";
 				Document doc = dBuilder.parse(url);
-				
 				doc.getDocumentElement().normalize();
 				System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
 				
 				NodeList nList = doc.getElementsByTagName("db");
 				System.out.println("파싱할 리스트 수 : "+ nList.getLength());  // 파싱할 리스트 수
-				
+	
 				for(int temp = 0; temp < nList.getLength(); temp++) {
-					System.out.print("row: " + temp + "/");
 					Node nNode = nList.item(temp);
 					if(nNode.getNodeType() == Node.ELEMENT_NODE){
 						Element eElement = (Element) nNode;
-						String prf_id = getTagValue("mt20id", eElement);
+						String prf_id  = getTagValue("mt20id", eElement);
 						String urls = "http://www.kopis.or.kr/openApi/restful/pblprfr/" + prf_id + "?service=de93ee9825c24143a98506d9e7f616bd";
 						doc = dBuilder.parse(urls);
 						NodeList nL = doc.getElementsByTagName("db");
@@ -94,12 +92,10 @@ public class PerformStore {
 						pstmt.setString(9, getTagValue("mt10id", eE));
 						int cnt = pstmt.executeUpdate();
 						System.out.println(cnt + "개 행(row) INSERT 성공");
-	
 					
 					}
 				}
 			}
-
 		} catch (Exception e){	
 			e.printStackTrace();
 		}	// try~catch end

@@ -25,8 +25,6 @@ public class ReservationController {
 	
 	@RequestMapping("/schedule")
 	public String schedule(HttpServletRequest request) {
-
-		 
 		return "reservation/schedule";
 	}
 	
