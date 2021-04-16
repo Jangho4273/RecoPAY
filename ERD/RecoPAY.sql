@@ -1,17 +1,24 @@
 ﻿DROP TABLE Member;
 
+SELECT * FROM MEMBER;
+
+CREATE SEQUENCE member_seq;
+DROP SEQUENCE member_seq;
+
 CREATE TABLE Member (
 	user_uid	number		NOT NULL,
 	user_id	varchar2(30)		NOT NULL,
-	user_password	varchar2(30)		NOT NULL,
-	user_birth	date		NOT NULL,
-	user_phone	varchar2(20)		NOT NULL,
+	user_password	varchar2(60)		NOT NULL,
+	user_name varchar2(20) NOT NULL,
 	user_email	varchar2(50)		NOT NULL,
 	user_addr	varchar2(80)		NOT NULL,
 	user_joindate	date	DEFAULT SYSDATE	NOT NULL,
-	user_isadmin	char(1)		NOT NULL,
-	user_isCall	char(1)		NULL
+	user_isCall	number		NULL,
+	user_auth varchar2(40)  DEFAULT 'ROLE_MEMBER' NOT NULL,
+	user_enabled NUMBER  DEFAULT 1 NOT NULL
 );
+
+UPDATE MEMBER SET user_auth='ROLE_ADMIN' WHERE user_id = 'admin';
 
 DROP TABLE Non_Member;
 
