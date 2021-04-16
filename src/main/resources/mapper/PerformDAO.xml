@@ -6,6 +6,7 @@
 	SELECT prf_uid "uid", prf_id "id", prf_name "name", prf_from "from", prf_to "to", prf_fcltynm "fcltynm", 
 	prf_poster "poster", prf_state "state", prf_openrun "openrun", th_uid "tuid"
 	FROM Perform
+	WHERE prf_state = '공연중'
 	ORDER BY prf_from DESC
 	</select> 
 	
@@ -17,6 +18,16 @@
 	WHERE prf_uid=#{uid}
 	</select>
 	
+	<select id="recByUser" resultType="com.spring.recopay.domain.RecoDTO">
+	SELECT p.PRF_NAME "prfname", k.prf_id "prfid", k.relprf_id "relprfid", k.sim "sim", k.prf_name "relprfname", k.prf_poster "relprfposter", k.prf_uid "reluid", k.PRF_FCLTYNM "relprffacilty"
+	FROM 
+	(SELECT r.rec_uid "uid", r.prf_id, r.relprf_id, r.sim, p.PRF_NAME, p.PRF_POSTER, p.PRF_UID, p.PRF_FCLTYNM 
+	FROM PerformRec r, favperform f, Perform p
+	WHERE f.user_uid=#{userid} and r.prf_id = f.prf_uid AND r.relprf_id = p.prf_id
+	ORDER BY r.prf_id) k, PERFORM p
+	WHERE k.prf_id = p.prf_id
+	</select>
 	
+
 	
 </mapper>

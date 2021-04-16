@@ -121,17 +121,59 @@ CREATE TABLE  Faq_Board  (
 	faq_type 	varchar2(20)		NOT NULL
 );
 
+select sysdate from dual;
+
 DROP TABLE  Event_Board ;
+
+
 
 CREATE TABLE  Event_Board  (
 	event_uid 	number		NOT NULL,
-	event_title 	varchar2(50)		NOT NULL,
+	event_title 	varchar2(200)		NOT NULL,
 	event_contents 	varchar2(2000)		NOT NULL,
-	event_uploadedtime 	date		NULL,
-	event_img 	varchar2(50)		NULL,
-	event_viewcnt 	number	DEFAULT 0	NULL,
-	user_uid 	number		NOT NULL
+	event_img 	varchar2(500)		NULL,
+	user_uid 	number		NOT NULL,
+	event_startdate date NULL,
+	event_enddate date NULL,
+	event_isfinish char(1) NULL
 );
+
+INSERT INTO EVENT_BOARD (event_uid, 
+event_title , event_contents, event_img ,user_uid , event_startdate , event_enddate , event_isfinish) 
+VALUES (event_seq.nextval, 'test','test','test',123,TO_DATE('2021-04-01','YYYY-MM-DD'),TO_DATE('2021-04-01','YYYY-MM-DD'),'1');
+
+SELECT event_uid "uid", event_title "title", event_contents "contents", event_img "img", 
+user_uid "user_uid", TO_DATE(TO_CHAR(event_startdate,'YYYY-MM-DD')) "startdate" , 
+TO_DATE(TO_CHAR(event_enddate,'YYYY-MM-DD')) "enddate", 
+event_isfinish "isfinish", (event_enddate - event_startdate) AS remainday, 
+(TO_DATE(TO_CHAR(event_enddate,'YYYY-MM-DD')) - TO_DATE(TO_CHAR(SYSDATE,'YYYY-MM-DD'))) AS remainfromtoday, 
+(1-((TO_DATE(TO_CHAR(event_enddate,'YYYY-MM-DD')) - TO_DATE(TO_CHAR(SYSDATE,'YYYY-MM-DD')))/(event_enddate - event_startdate)))*100 AS percentage
+FROM EVENT_BOARD 
+ORDER BY percentage ASC;
+
+SELECT 
+count(*) AS total, 
+count(event_isfinish == 1) AS finished, 
+count(event_isfinish == 0) AS ongoing 
+FROM EVENT_BOARD ;
+
+		SELECT 
+			(SELECT count(*) FROM EVENT_BOARD) total,
+			(SELECT count(*) FROM EVENT_BOARD WHERE EVENT_ISFINISH = 1) AS finished,
+			(SELECT count(*) FROM EVENT_BOARD WHERE EVENT_ISFINISH = 0) AS ongoing 
+		FROM dual;
+
+
+
+UPDATE EVENT_BOARD 
+SET event_isfinish = 1  
+WHERE (TO_DATE(TO_CHAR(event_enddate,'YYYY-MM-DD')) - TO_DATE(TO_CHAR(SYSDATE,'YYYY-MM-DD'))) < 0 ;
+
+SELECT * FROM EVENT_BOARD eb ;
+
+CREATE SEQUENCE event_seq;
+
+DROP SEQUENCE event_seq;
 
 DROP TABLE  Review ;
 
@@ -153,29 +195,81 @@ CREATE TABLE  FavoritePerform  (
 	user_uid 	number		NOT NULL
 );
 
-DROP TABLE Perform;
+CREATE TABLE favperform(
+	fav_uid NUMBER NOT NULL,
+	prf_uid varchar2(15) NOT NULL,
+	user_uid NUMBER NOT null
+)
+
+CREATE TABLE PerformRec (
+	rec_uid NUMBER NOT NULL,
+	prf_id varchar2(15) NOT NULL,
+	relprf_id varchar2(15) NOT NULL,
+	sim number(4,3) NOT null
+)
+
+SELECT * FROM performRec
+
+INSERT INTO favperform VALUES(1,'PF173066' ,1);
+INSERT INTO favperform VALUES(2, 'PF172498' ,1);
+
+SELECT p.PRF_NAME "prfname", k.prf_id "prfid", k.relprf_id "relprfid", k.sim "sim", k.prf_name "relprfname", k.prf_poster "relprfposter", k.prf_uid "reluid", k.PRF_FCLTYNM "relprffacilty"
+FROM 
+(SELECT r.rec_uid "uid", r.prf_id, r.relprf_id, r.sim, p.PRF_NAME, p.PRF_POSTER, p.PRF_UID, p.PRF_FCLTYNM 
+FROM PerformRec r, favperform f, Perform p
+WHERE f.user_uid=1 and r.prf_id = f.prf_uid AND r.relprf_id = p.prf_id
+ORDER BY r.prf_id) k, PERFORM p
+WHERE k.prf_id = p.prf_id;
+
+
 
 CREATE TABLE Perform (
 	prf_uid	number		NOT NULL,
 	prf_id	varchar2(15)		NOT NULL,
-	prf_name	varchar2(100)		NOT NULL,
-	prf_from	varchar2(10)		NULL,
-	prf_to	varchar2(100)		NULL,
-	prf_fcltynm	varchar2(100)		NOT NULL,
-	prf_poster	varchar2(100)		NULL,
+	prf_name	varchar2(200)		NOT NULL,
+	prf_from	varchar2(20)		NULL,
+	prf_to	varchar2(20)		NULL,
+	prf_fcltynm	varchar2(200)		NULL,
+	prf_poster	varchar2(200)		NULL,
 	prf_state	varchar2(20)		NOT NULL,
 	prf_openrun	char(1)		NULL,
 	th_uid	varchar2(30)		NULL,
-	prf_avgsc	number(2,1)		NULL
+	prf_avgsc	number(2,1)		NULL,
+	prf_summary clob NULL
 );
 
+
+
+SELECT * FROM PERFORMrec;
 SELECT * FROM THEATER t ;
 
-
+SELECT * FROM perform;
 SELECT * FROM perform ORDER BY prf_from DESC;
+SELECT * FROM perform WHERE PRF_UID < 5198 ORDER BY PRF_ID DESC;
+SELECT * FROM perform WHERE PRF_STATE = '공연중' ORDER BY PRF_ID DESC;
 CREATE SEQUENCE perform_seq;
 DROP SEQUENCE perform_seq;
 
+CREATE TABLE test_write (
+	wr_uid NUMBER NOT NULL,
+	wr_subject varchar2(50),
+	wr_content clob,
+	wr_name varchar2(20),
+	wr_viewcnt NUMBER DEFAULT 0,
+	wr_regdate DATE DEFAULT sysdate,
+	wr_score NUMBER,
+	wr_prfname varchar2(50)
+);
+
+alter table test_write modify (wr_prfname varchar2(200)) ;
+
+INSERT INTO test_write (wr_uid, wr_subject, wr_content, wr_name, wr_score, wr_prfname) 
+(SELECT test_write_seq.nextval, wr_subject, wr_content, wr_name, wr_score, wr_prfname FROM test_write);
+SELECT * FROM test_write;
+DROP TABLE test_write;
+
+CREATE SEQUENCE test_write_seq;
+DROP SEQUENCE test_write_seq;
 DROP TABLE  Timetable ;
 
 CREATE TABLE  Timetable  (

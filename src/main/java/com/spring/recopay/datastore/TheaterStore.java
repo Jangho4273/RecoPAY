@@ -76,7 +76,7 @@ public class TheaterStore {
 					pstmt.setString(10, getTagValue("mt13cnt", eE));
 					pstmt.setString(11, getTagValue("opende", eE));
 					totalcnt += pstmt.executeUpdate();
-					System.out.println("총 (" + totalcnt + "/" + C.ROWS + ")개 행(row) INSERT 성공");
+					System.out.println("총 (" + totalcnt + "/" + C.THEATER_ROWS + ")개 행(row) INSERT 성공");
 				}
 			}
 
