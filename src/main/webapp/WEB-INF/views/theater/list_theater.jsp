@@ -113,10 +113,10 @@
 
 
 
-					<table>
-						<tr>
-							<th>극장명</th>
-							<th>위치</th>
+					<table class="table table-striped table-hover" style="margin-top: 10px">
+						<tr class="table-dark">
+							<th class="text-center">극장명</th>
+							<th class="text-center">위치</th>
 							<th>총 좌석</th>
 							<th>전화번호</th>
 							<th>기타 특징</th>

@@ -231,7 +231,7 @@ CREATE TABLE Perform (
 	prf_summary clob NULL
 );
 
-
+SELECT * FROM perform;
 
 SELECT * FROM PERFORMrec;
 SELECT * FROM THEATER t ;

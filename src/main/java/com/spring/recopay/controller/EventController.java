@@ -29,5 +29,9 @@ public class EventController {
 		return "event/eventlist";
 	}
 	
+	@RequestMapping("/test")
+	public String test(HttpServletRequest request) {
+		return "reservation/selectseat";
+	}
 	
 }

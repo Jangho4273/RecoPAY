@@ -1,8 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
+<style>
+.res {
+min-width : 100% !important;
+}
 
+.resbtn {
+margin-bottom: 10px !important;
+}
+
+.custompadding {
+padding-bottom: 0px !important;
+}
+</style>
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="">
@@ -18,25 +32,22 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/style.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath }/js/select.js"></script>
 
 </head>
-
 <body>
 
 	<jsp:include page="/resources/jsp/header.jsp"></jsp:include>
 	
-    <!-- ##### HEADER 공간 ##### -->
     <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<%=request.getContextPath() %>/resources/img/bg-img/breadcumb.jpg);">
-        <div class="bradcumbContent">
-            <p>예매하시겠습니까 고갱님?</p>
-            <h2>예매</h2>
-        </div>
     </section>
-    <!-- ##### HEADER 공간 ##### -->
     
     <!-- ##### WHAT'S NEW 슬라이드 ##### -->
-    <section class="latest-albums-area section-padding-100">
-        <div class="container">
+    <section class="latest-albums-area section-padding-100 custompadding">
+        <section class="oneMusic-buy-now-area has-fluid section-padding-100 custompadding">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
                     <div class="section-heading style-2">
@@ -44,89 +55,53 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="albums-slideshow owl-carousel">
-                        <!-- Single Album -->
-                        <div class="single-album">
-                            <img src="img/bg-img/a1.jpg" alt="">
-                            <div class="album-info">
-                                <a href="#">
-                                    <h5>The Cure</h5>
-                                </a>
-                                <p>Second Song</p>
-                            </div>
-                        </div>
-
-                        <!-- Single Album -->
-                        <div class="single-album">
-                            <img src="img/bg-img/a2.jpg" alt="">
-                            <div class="album-info">
-                                <a href="#">
-                                    <h5>Sam Smith</h5>
-                                </a>
-                                <p>Underground</p>
-                            </div>
-                        </div>
-
-                        <!-- Single Album -->
-                        <div class="single-album">
-                            <img src="img/bg-img/a3.jpg" alt="">
-                            <div class="album-info">
-                                <a href="#">
-                                    <h5>Will I am</h5>
-                                </a>
-                                <p>First</p>
-                            </div>
-                        </div>
-
-                        <!-- Single Album -->
-                        <div class="single-album">
-                            <img src="img/bg-img/a4.jpg" alt="">
-                            <div class="album-info">
-                                <a href="#">
-                                    <h5>The Cure</h5>
-                                </a>
-                                <p>Second Song</p>
-                            </div>
-                        </div>
-
-                        <!-- Single Album -->
-                        <div class="single-album">
-                            <img src="img/bg-img/a5.jpg" alt="">
-                            <div class="album-info">
-                                <a href="#">
-                                    <h5>DJ SMITH</h5>
-                                </a>
-                                <p>The Album</p>
-                            </div>
-                        </div>
-
-                        <!-- Single Album -->
-                        <div class="single-album">
-                            <img src="img/bg-img/a6.jpg" alt="">
-                            <div class="album-info">
-                                <a href="#">
-                                    <h5>The Ustopable</h5>
-                                </a>
-                                <p>Unplugged</p>
-                            </div>
-                        </div>
-
-                        <!-- Single Album -->
-                        <div class="single-album">
-                            <img src="img/bg-img/a7.jpg" alt="">
-                            <div class="album-info">
-                                <a href="#">
-                                    <h5>Beyonce</h5>
-                                </a>
-                                <p>Songs</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+			<div class="row">
+				<!-- 공연 리스트  -->
+				<c:choose>
+					<c:when test="${empty list || fn:length(list) == 0 }">
+						<a>공연 리스트 0</a>
+					</c:when>
+					<c:otherwise>
+					<div class="col-12">
+						<div class="albums-slideshow owl-carousel">
+							<c:forEach var="dto" items="${list }" varStatus="vs" begin="0" end="9">
+							<c:if test="${dto.state eq '공연중' }">
+								<div class="single-album" id="a${vs.index}">
+									<div class="single-album-area wow fadeInUp"
+										data-wow-delay="100ms">
+										<div class="album-thumb">
+											<a href="${pageContext.request.contextPath }/perform/intro/${dto.uid}">
+												<img src="${dto.poster}" alt="">
+											</a>
+										</div>
+										<div class="album-info">
+											<a href="#">
+												<h5>${dto.name }</h5>
+											</a>
+		
+											<!--  link to theater page -->
+											<a href="${pageContext.request.contextPath }/theater/view/${dto.fcltynm}">
+												<p>${dto.fcltynm }</p>
+											</a>
+		
+										</div>
+										<div class="oneMusic-buttons-area resbtn">
+											<a href="${pageContext.request.contextPath }/reservation/reservation/${dto.uid}" class="btn oneMusic-btn btn-2 res">예매하기<i class="fa fa-angle-double-right"></i></a>
+										</div>
+										<div class="oneMusic-buttons-area mb-100 ">
+											<a href="${pageContext.request.contextPath }/perform/intro/${dto.uid}" class="btn oneMusic-btn btn res">연극소개<i class="fa fa-angle-double-right"></i></a>
+										</div>
+									</div>
+								</div>
+							</c:if>
+							</c:forEach>
+						</div>
+						</div>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</div>
+		</section>
     </section>
     <!-- ##### WHAT'S NEW 슬라이드 ##### -->
     
@@ -142,222 +117,53 @@
 	                    </div>
 	                </div>
 	            </div>
-	
-	            <div class="row">
-	
-	                <!-- Single Album Area -->
-	                <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-	                    <div class="single-album-area wow fadeInUp" data-wow-delay="100ms">
-	                        <div class="album-thumb">
-	                            <img src="<%=request.getContextPath() %>/img/bg-img/b1.jpg" alt="">
-	                            <!-- Album Price -->
-	                            <div class="album-price">
-	                                <p>$0.90</p>
-	                            </div>
-	                            <!-- Play Icon -->
-	                            <div class="play-icon">
-	                                <a href="#" class="video--play--btn"><span class="icon-play-button"></span></a>
-	                            </div>
-	                        </div>
-	                        <div class="album-info">
-	                            <a href="#">
-	                                <h5>Garage Band</h5>
-	                            </a>
-	                            <p>Radio Station</p>
-	                        </div>
-	                    </div>
-	                </div>
-	
-	                <!-- Single Album Area -->
-	                <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-	                    <div class="single-album-area wow fadeInUp" data-wow-delay="200ms">
-	                        <div class="album-thumb">
-	                            <img src="img/bg-img/b2.jpg" alt="">
-	                        </div>
-	                        <div class="album-info">
-	                            <a href="#">
-	                                <h5>Noises</h5>
-	                            </a>
-	                            <p>Buble Gum</p>
-	                        </div>
-	                    </div>
-	                </div>
-	
-	                <!-- Single Album Area -->
-	                <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-	                    <div class="single-album-area wow fadeInUp" data-wow-delay="300ms">
-	                        <div class="album-thumb">
-	                            <img src="img/bg-img/b3.jpg" alt="">
-	                        </div>
-	                        <div class="album-info">
-	                            <a href="#">
-	                                <h5>Jess Parker</h5>
-	                            </a>
-	                            <p>The Album</p>
-	                        </div>
-	                    </div>
-	                </div>
-	
-	                <!-- Single Album Area -->
-	                <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-	                    <div class="single-album-area wow fadeInUp" data-wow-delay="400ms">
-	                        <div class="album-thumb">
-	                            <img src="img/bg-img/b4.jpg" alt="">
-	                        </div>
-	                        <div class="album-info">
-	                            <a href="#">
-	                                <h5>Noises</h5>
-	                            </a>
-	                            <p>Buble Gum</p>
-	                        </div>
-	                    </div>
-	                </div>
-	
-	                <!-- Single Album Area -->
-	                <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-	                    <div class="single-album-area wow fadeInUp" data-wow-delay="500ms">
-	                        <div class="album-thumb">
-	                            <img src="img/bg-img/b1.jpg" alt="">
-	                            <!-- Album Price -->
-	                            <div class="album-price">
-	                                <p>$0.90</p>
-	                            </div>
-	                            <!-- Play Icon -->
-	                            <div class="play-icon">
-	                                <a href="#" class="video--play--btn"><span class="icon-play-button"></span></a>
-	                            </div>
-	                        </div>
-	                        <div class="album-info">
-	                            <a href="#">
-	                                <h5>Garage Band</h5>
-	                            </a>
-	                            <p>Radio Station</p>
-	                        </div>
-	                    </div>
-	                </div>
-	
-	                <!-- Single Album Area -->
-	                <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-	                    <div class="single-album-area wow fadeInUp" data-wow-delay="600ms">
-	                        <div class="album-thumb">
-	                            <img src="img/bg-img/b2.jpg" alt="">
-	                        </div>
-	                        <div class="album-info">
-	                            <a href="#">
-	                                <h5>Noises</h5>
-	                            </a>
-	                            <p>Buble Gum</p>
-	                        </div>
-	                    </div>
-	                </div>
-	
-	                <!-- Single Album Area -->
-	                <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-	                    <div class="single-album-area wow fadeInUp" data-wow-delay="100ms">
-	                        <div class="album-thumb">
-	                            <img src="img/bg-img/b3.jpg" alt="">
-	                        </div>
-	                        <div class="album-info">
-	                            <a href="#">
-	                                <h5>Jess Parker</h5>
-	                            </a>
-	                            <p>The Album</p>
-	                        </div>
-	                    </div>
-	                </div>
-	
-	                <!-- Single Album Area -->
-	                <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-	                    <div class="single-album-area wow fadeInUp" data-wow-delay="200ms">
-	                        <div class="album-thumb">
-	                            <img src="img/bg-img/b4.jpg" alt="">
-	                        </div>
-	                        <div class="album-info">
-	                            <a href="#">
-	                                <h5>Noises</h5>
-	                            </a>
-	                            <p>Buble Gum</p>
-	                        </div>
-	                    </div>
-	                </div>
-	
-	                <!-- Single Album Area -->
-	                <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-	                    <div class="single-album-area wow fadeInUp" data-wow-delay="300ms">
-	                        <div class="album-thumb">
-	                            <img src="img/bg-img/b1.jpg" alt="">
-	                            <!-- Album Price -->
-	                            <div class="album-price">
-	                                <p>$0.90</p>
-	                            </div>
-	                            <!-- Play Icon -->
-	                            <div class="play-icon">
-	                                <a href="#" class="video--play--btn"><span class="icon-play-button"></span></a>
-	                            </div>
-	                        </div>
-	                        <div class="album-info">
-	                            <a href="#">
-	                                <h5>Garage Band</h5>
-	                            </a>
-	                            <p>Radio Station</p>
-	                        </div>
-	                    </div>
-	                </div>
-	
-	                <!-- Single Album Area -->
-	                <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-	                    <div class="single-album-area wow fadeInUp" data-wow-delay="400ms">
-	                        <div class="album-thumb">
-	                            <img src="img/bg-img/b2.jpg" alt="">
-	                        </div>
-	                        <div class="album-info">
-	                            <a href="#">
-	                                <h5>Noises</h5>
-	                            </a>
-	                            <p>Buble Gum</p>
-	                        </div>
-	                    </div>
-	                </div>
-	
-	                <!-- Single Album Area -->
-	                <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-	                    <div class="single-album-area wow fadeInUp" data-wow-delay="500ms">
-	                        <div class="album-thumb">
-	                            <img src="img/bg-img/b3.jpg" alt="">
-	                        </div>
-	                        <div class="album-info">
-	                            <a href="#">
-	                                <h5>Jess Parker</h5>
-	                            </a>
-	                            <p>The Album</p>
-	                        </div>
-	                    </div>
-	                </div>
-	
-	                <!-- Single Album Area -->
-	                <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-	                    <div class="single-album-area wow fadeInUp" data-wow-delay="600ms">
-	                        <div class="album-thumb">
-	                            <img src="img/bg-img/b4.jpg" alt="">
-	                        </div>
-	                        <div class="album-info">
-	                            <a href="#">
-	                                <h5>Noises</h5>
-	                            </a>
-	                            <p>Buble Gum</p>
-	                        </div>
-	                    </div>
-	                </div>
-	
-	            </div>
-	
-	            <div class="row">
-	                <div class="col-12">
-	                    <div class="load-more-btn text-center wow fadeInUp" data-wow-delay="300ms">
-	                        <a href="#" class="btn oneMusic-btn">Load More <i class="fa fa-angle-double-right"></i></a>
-	                    </div>
-	                </div>
-	            </div>
+
+				<div class="row">
+					<!-- Single Album Area -->
+					<c:choose>
+						<c:when test="${empty list || fn:length(list) == 0 }">
+							<a>공연 리스트 0</a>
+						</c:when>
+						<c:otherwise>
+							<div class="col-12">
+								<div class="albums-slideshow owl-carousel">
+									<c:forEach var="dto" items="${list }" varStatus="vs" begin="10" end="19">
+										<div class="single-album" id="a${vs.index}">
+											<div class="single-album-area wow fadeInUp"
+												data-wow-delay="100ms">
+												<div class="album-thumb">
+													<a
+														href="${pageContext.request.contextPath }/perform/intro/${dto.uid}">
+														<img src="${dto.poster}" alt="">
+													</a>
+												</div>
+												<div class="album-info">
+													<a href="#">
+														<h5>${dto.name }</h5>
+													</a>
+
+													<!--  link to theater page -->
+													<a
+														href="${pageContext.request.contextPath }/theater/view/${dto.fcltynm}">
+														<p>${dto.fcltynm }</p>
+													</a>
+
+												</div>
+												<div class="oneMusic-buttons-area resbtn">
+													<a href="${pageContext.request.contextPath }/reservation/reservation/${dto.uid}" class="btn oneMusic-btn btn-2 res">예매하기<i class="fa fa-angle-double-right"></i></a>
+												</div>
+												<div class="oneMusic-buttons-area mb-100">
+													<a href="${pageContext.request.contextPath }/perform/intro/${dto.uid}" class="btn oneMusic-btn res">연극소개<i class="fa fa-angle-double-right"></i></a>
+												</div>
+											</div>
+										</div>
+									</c:forEach>
+								</div>
+							</div>
+						</c:otherwise>
+					</c:choose>
+				</div>
+
 	        </div>
 	    </section>
 	    <!-- ##### Buy Now Area End ##### -->

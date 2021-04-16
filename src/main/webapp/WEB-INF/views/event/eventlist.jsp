@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -126,7 +127,7 @@ flex-direction: row !important;
 										</c:if>
 										<c:if test="${dto.remainfromtoday eq 0}">
 											<span class="badge rounded-pill bg-success">
-												오늘 종료!!</span>
+												오늘 종료!!</span> 
 										</c:if>
 									</h5>
 
