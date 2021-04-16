@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
+  
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -22,7 +23,20 @@
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/style.css">
 
 </head>
+<script>
+function chkSubmit(){
+	frm = document.forms['frm'];
+	
+	var title = frm['title'].value.trim();
 
+	if(subject == ""){
+		alert("제목은 반드시 작성해야 합니다");
+        frm["title"].focus();
+        return false;
+	}
+	return true;
+}
+</script>
 <body>
 
 	<jsp:include page="/resources/jsp/header.jsp"></jsp:include>
@@ -79,51 +93,36 @@
     </section>
     <!-- ##### Contact Area End ##### -->
 
-  <!-- 게시판 메인 페이지 영역 시작 -->
+  <!-- 게시판 글쓰기 수정 영역 시작 -->
 	<div class="container">
 		<div class="row">
-			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
-				<thead>
-					<tr>
-						<th style="background-color: #eeeeee; text-align: center;">번호</th>
-						<th style="background-color: #eeeeee; text-align: center;">제목</th>
-						<th style="background-color: #eeeeee; text-align: center;">작성자</th>
-						<th style="background-color: #eeeeee; text-align: center;">조회수</th>
-						<th style="background-color: #eeeeee; text-align: center;">작성일</th>
-					</tr>
-				</thead>
-		<tbody>
-					<c:choose>
-		<c:when test="${empty list || fn:length(list) == 0 }">
-		</c:when>
-		<c:otherwise>
-			<c:forEach var="dto" items="${list }">
-				<tr>
-					<td>${dto.n_uid }</td>  <%-- getN_uid() --%>
-					<td><a href="view?N_uid=${dto.n_uid }">${dto.title }</a></td>
-					<td>${dto.name}</td>  <%-- getname() --%>
-					<td>${dto.viewcnt }</td>
-					<td>${dto.uploadtime }</td> <%-- getuploadTime() --%>
-				</tr>			
-			</c:forEach>
-		</c:otherwise>
-		</c:choose>
-				</tbody>
-			</table>
-			<!-- 글쓰기 버튼 생성 -->
-			<a href="write.do" class="btn btn-primary pull-right">글쓰기</a>
+		<body>
+		<h2>수정</h2>
+		<form name="frm" action="updateOk" method="post" onsubmit="return chkSubmit()">
+			<input type="hidden" name="N_uid" value="${list[0].n_uid }"/>
+			작성자: ${list[0].name }<br> <%-- 작성자 이름은 변경 불가 --%>
+			제목:
+			<input type="text" name="title" value="${list[0].title }"/><br>
+			내용:<br>
+			<textarea name="content">${list[0].content }</textarea>
+			<br><br>
+			<input type="submit" value="수정"/>
+		</form>
+		<button onclick="history.back();">이전으로</button>
+		<button onclick="location.href='notice'">목록보기</button>
+		<br>
+		</body>
+			
+			</form>
 		</div>
 	</div>
-	<!-- 게시판 메인 페이지 영역 끝 -->
+	<!-- 게시판 글쓰기 수정 영역 끝 -->
 	
 	<!-- 부트스트랩 참조 영역 -->
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
 </body>
 </html>
-
-    <!-- ##### Contact Area End ##### -->
-
 
 	<jsp:include page="/resources/jsp/footer.jsp"></jsp:include>
 	

@@ -88,31 +88,54 @@ CREATE TABLE  Theater_Seat  (
 	th_uid 	number		NOT NULL
 );
 
-DROP TABLE  Notice_Board ;
+DROP TABLE  Notice_Board ; 
 
 CREATE TABLE  Notice_Board  (
-	notice_uid 	number		NOT NULL,
-	notice_title 	varchar2(50)		NOT NULL,
-	notice_content 	varchar2(2000)		NOT NULL,
-	notice_uploadedtime 	date		NULL,
-	notice_img 	varchar2(50)		NULL,
-	notice_viewcnt 	number	DEFAULT 0	NULL,
-	user_uid 	number		NOT NULL,
-	notice_type 	varchar2(20)		NOT NULL
+	notice_n_uid 	number		NOT NULL,
+	notice_title 	varchar2(50) 	NOT NULL ,
+	notice_content 	varchar2(2000) 	NOT NULL ,
+	notice_uploadedtime 	DATE 	DEFAULT 	SYSDATE,
+	notice_name 	varchar2(50)	NOT NULL ,
+	notice_viewcnt 	number	DEFAULT 0,
+	user_uid 	number		,
+	notice_type 	varchar2(20)
 );
+
+SELECT notice_n_uid "n_uid", notice_title "title", notice_content "content", notice_name "name", notice_viewcnt "viewcnt", notice_uploadedtime "uploadtime"
+FROM Notice_Board
+WHERE notice_n_uid = '41';
+
+
+SELECT notice_n_uid "n_uid", notice_title "title", notice_content "content", notice_name "name", notice_viewcnt "viewcnt", notice_uploadedtime "uploadtime"
+FROM Notice_Board
+ORDER BY notice_n_uid DESC;
+
+UPDATE Notice_Board 
+SET notice_title = '#{a.title }', notice_content = '#{a.content }' 
+WHERE notice_n_uid = '41';
+	
+SELECT * FROM NOTICE_BOARD nb ;
+
+CREATE SEQUENCE notice_seq;
+
+CREATE SEQUENCE userid_seq;
 
 DROP TABLE  Faq_Board ;
 
 CREATE TABLE  Faq_Board  (
-	faq_uid 	number		NOT NULL,
+	faq_f_uid 	number		NOT NULL,
 	faq_title 	varchar2(50)		NOT NULL,
 	faq_content 	varchar2(2000)		NOT NULL,
 	faq_uploadedtime 	date		NULL,
-	faq_img 	varchar2(50)		NULL,
+	faq_name 	varchar2(50)		NULL,
 	faq_viewcnt 	number	DEFAULT 0	NULL,
 	user_uid 	number		NOT NULL,
 	faq_type 	varchar2(20)		NOT NULL
 );
+
+SELECT faq_f_uid "f_uid", faq_title  "title", faq_name "name", faq_viewcnt "viewcnt", faq_uploadedtime "uploadtime"
+FROM Faq_Board
+ORDER BY faq_f_uid DESC;
 
 DROP TABLE  Event_Board ;
 
