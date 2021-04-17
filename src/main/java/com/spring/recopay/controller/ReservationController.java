@@ -29,6 +29,11 @@ public class ReservationController {
 		return "reservation/select";
 	}
 	
+	@RequestMapping("/schedule")
+	public String schedule(HttpServletRequest request) {
+		return "reservation/schedule";
+	}
+	
 	@RequestMapping("/select")
 	public String select(Model model) {
 		model.addAttribute("list", rs.list());

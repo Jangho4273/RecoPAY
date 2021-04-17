@@ -239,7 +239,6 @@ CREATE TABLE Perform (
 );
 
 
-
 SELECT * FROM PERFORMrec;
 SELECT * FROM THEATER t ;
 

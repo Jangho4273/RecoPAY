@@ -32,165 +32,123 @@
         </div>
     </section>
     <!-- ##### Breadcumb Area End ##### -->
-    
-	    <!-- ##### Blog Area Start ##### -->
-    <div class="blog-area section-padding-100">
+
+    <!-- ##### Events Area Start ##### -->
+    <section class="events-area section-padding-100">
         <div class="container">
             <div class="row">
-                <div class="col-12">
 
-                    <!-- Single Post Start -->
-                    <div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="100ms">
-                        <!-- Post Thumb -->
-                        <div class="blog-post-thumb mt-30">
-                            <a href="#"><img src="<%=request.getContextPath() %>/img/bg-img/blog1.jpg" alt=""></a>
-                            <!-- Post Date -->
-                            <div class="post-date">
-                                <span>21</span>
-                                <span>March</span>
-                            </div>
+                <!-- Single Event Area -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-event-area mb-30">
+                        <div class="event-thumbnail">
+                            <img src="img/bg-img/e6.jpg" alt="">
                         </div>
-
-                        <!-- Blog Content -->
-                        <div class="blog-content">
-                            <!-- Post Title -->
-                            <a href="#" class="post-title">첫 팀프로젝트의 시작</a>
-                            <!-- Post Meta -->
-                            <div class="post-meta d-flex mb-30">
-                                <p class="post-author">By<a href="#"> PoC (Piece Of Cake)</a></p>
-                                <p class="tags">in<a href="#"> 2021</a></p>
+                        <div class="event-text">
+                            <h4>Team RECOPAY</h4>
+                            <div class="event-meta-data">
+                                <a href="#" class="event-place">팀 원 소 개</a>
+                                <a href="#" class="event-date">March 22, 2021</a>
                             </div>
-                            <!-- Post Excerpt -->
-                            <p>국비과정 (AI활용 소프트웨어 개발 및 응용) AI활용 소프트웨어 개발 및 응용과정을 통해 팀원 선정 후 처음으로 만나 팀 프로젝트를 시작하게 되었습니다.</p>
+                            <a href="#" class="btn see-more-btn">See Event</a>
                         </div>
                     </div>
-
-                    <!-- Single Post Start -->
-                    <div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="100ms">
-                        <!-- Post Thumb -->
-                        <div class="blog-post-thumb mt-30">
-                            <a href="#"><img src="<%=request.getContextPath() %>/img/bg-img/blog2.jpg" alt=""></a>
-                            <!-- Post Date -->
-                            <div class="post-date">
-                                <span>27</span>
-                                <span>March</span>
-                            </div>
+                </div>
+                
+                <!-- Single Event Area -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-event-area mb-30">
+                        <div class="event-thumbnail">
+                            <img src="img/bg-img/e1.jpg" alt="">
                         </div>
-
-                        <!-- Blog Content -->
-                        <div class="blog-content">
-                            <!-- Post Title -->
-                            <a href="#" class="post-title">첫 회동</a>
-                            <!-- Post Meta -->
-                            <div class="post-meta d-flex mb-30">
-                                <p class="post-author">By<a href="#"> P.O.C</a></p>
-                                <p class="tags">in<a href="#"> 2021</a></p>
+                        <div class="event-text">
+                            <h4>Im JangHo</h4>
+                            <div class="event-meta-data">
+                                <a href="#" class="event-place">변변찮은 팀장</a>
+                                <a href="#" class="event-date">August 1, 1995</a>
                             </div>
-                            <!-- Post Excerpt -->
-                            <p>비대면으로 인해 프로젝트 진행이 더디게 되어서 5명의 팀원이 처음 만나고 ERD와 프로젝트의 진행방향, 기획, 스토리보드 제작을 하였습니다. (코로나19 방역수칙을 지키며 진행했습니다.)</p>
+                            <a href="#" class="btn see-more-btn">See Event</a>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Single Post Start -->
-                    <div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="100ms">
-                        <!-- Post Thumb -->
-                        <div class="blog-post-thumb mt-30">
-                            <a href="#"><img src="<%=request.getContextPath() %>/img/bg-img/blog3.jpg" alt=""></a>
-                            <!-- Post Date -->
-                            <div class="post-date">
-                                <span>30</span>
-                                <span>March</span>
-                            </div>
+                <!-- Single Event Area -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-event-area mb-30">
+                        <div class="event-thumbnail">
+                            <img src="img/bg-img/e2.jpg" alt="">
                         </div>
-
-                        <!-- Blog Content -->
-                        <div class="blog-content">
-                            <!-- Post Title -->
-                            <a href="#" class="post-title">프로젝트 규모 검토</a>
-                            <!-- Post Meta -->
-                            <div class="post-meta d-flex mb-30">
-                                <p class="post-author">By<a href="#"> P.O.C</a></p>
-                                <p class="tags">in<a href="#"> 2021</a></p>
+                        <div class="event-text">
+                            <h4>Gong SukWon</h4>
+                            <div class="event-meta-data">
+                                <a href="#" class="event-place">믿음직한 맏형</a>
+                                <a href="#" class="event-date">June 15, 1991</a>
                             </div>
-                            <!-- Post Excerpt -->
-                            <p>그동안 진행해왔던 스토리보드와 ERD, 프로젝트의 규모와 난이도 조절을 검토받고 약간의 수정단계를 거쳐서 개발단계에 착수했습니다.</p>
+                            <a href="#" class="btn see-more-btn">See Event</a>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Single Post Start -->
-                    <div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="100ms">
-                        <!-- Post Thumb -->
-                        <div class="blog-post-thumb mt-30">
-                            <a href="#"><img src="<%=request.getContextPath() %>/img/bg-img/blog3.jpg" alt=""></a>
-                            <!-- Post Date -->
-                            <div class="post-date">
-                                <span>7</span>
-                                <span>April</span>
-                            </div>
+                <!-- Single Event Area -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-event-area mb-30">
+                        <div class="event-thumbnail">
+                            <img src="img/bg-img/e3.jpg" alt="">
                         </div>
-
-                        <!-- Blog Content -->
-                        <div class="blog-content">
-                            <!-- Post Title -->
-                            <a href="#" class="post-title">개발 후 첫 모임</a>
-                            <!-- Post Meta -->
-                            <div class="post-meta d-flex mb-30">
-                                <p class="post-author">By<a href="#"> P.O.C</a></p>
-                                <p class="tags">in<a href="#"> 2021</a></p>
+                        <div class="event-text">
+                            <h4>Lee Sak</h4>
+                            <div class="event-meta-data">
+                                <a href="#" class="event-place">만능 재주꾼</a>
+                                <a href="#" class="event-date">June 15, 1996</a>
                             </div>
-                            <!-- Post Excerpt -->
-                            <p>기본적으로 사용할 템플릿과 폴더 및 경로 셋팅, Git 연동 등 기본적인 베이스를 셋팅하고 Git을 통해 프로젝트를 나눈 뒤 각자 맡은 파트를 진행하고 진행 상황과 방향을 재설정하기위해 모임을 가졌습니다. </p>
+                            <a href="#" class="btn see-more-btn">See Event</a>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Single Post Start -->
-                    <div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="100ms">
-                        <!-- Post Thumb -->
-                        <div class="blog-post-thumb mt-30">
-                            <a href="#"><img src="<%=request.getContextPath() %>/img/bg-img/blog3.jpg" alt=""></a>
-                            <!-- Post Date -->
-                            <div class="post-date">
-                                <span>12</span>
-                                <span>April</span>
-                            </div>
+                <!-- Single Event Area -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-event-area mb-30">
+                        <div class="event-thumbnail">
+                            <img src="img/bg-img/e4.jpg" alt="">
                         </div>
-
-                        <!-- Blog Content -->
-                        <div class="blog-content">
-                            <!-- Post Title -->
-                            <a href="#" class="post-title">개발 상황 리뷰</a>
-                            <!-- Post Meta -->
-                            <div class="post-meta d-flex mb-30">
-                                <p class="post-author">By<a href="#"> P.O.C</a></p>
-                                <p class="tags">in<a href="#"> 2021</a></p>
+                        <div class="event-text">
+                            <h4>Park SaeByeol</h4>
+                            <div class="event-meta-data">
+                                <a href="#" class="event-place">홍일점</a>
+                                <a href="#" class="event-date">June 15, 1997</a>
                             </div>
-                            <!-- Post Excerpt -->
-                            <p>비대면 상황으로 간단한 브리핑을 통해 현재 진행율을 확인하기 힘들어 다시 모여 파트의 난이도 조절 및 파트 재분담, 진행하면서 느낀 수정사항을 나누며 진행율을 높이기 위해 회의를 진행했습니다. </p>
+                            <a href="#" class="btn see-more-btn">See Event</a>
                         </div>
                     </div>
+                </div>
 
+                <!-- Single Event Area -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-event-area mb-30">
+                        <div class="event-thumbnail">
+                            <img src="img/bg-img/e5.jpg" alt="">
+                        </div>
+                        <div class="event-text">
+                            <h4>Kang TaeMin</h4>
+                            <div class="event-meta-data">
+                                <a href="#" class="event-place">막둥이</a>
+                                <a href="#" class="event-date">June 15, 1998</a>
+                            </div>
+                            <a href="#" class="btn see-more-btn">See Event</a>
+                        </div>
+                    </div>
                 </div>
 
             </div>
+
         </div>
-    </div>
-    <!-- ##### Blog Area End ##### -->
+    </section>
+    <!-- ##### Events Area End ##### -->
 	
  
 
  	<jsp:include page="/resources/jsp/footer.jsp"></jsp:include>
-
-    <!-- ##### All Javascript Script ##### -->
-    <!-- jQuery-2.2.4 js -->
-    <script src="js/jquery/jquery-2.2.4.min.js"></script>
-    <!-- Popper js -->
-    <script src="js/bootstrap/popper.min.js"></script>
-    <!-- Bootstrap js -->
-    <script src="js/bootstrap/bootstrap.min.js"></script>
-    <!-- All Plugins js -->
-    <script src="js/plugins/plugins.js"></script>
-    <!-- Active js -->
-    <script src="js/active.js"></script>
 </body>
 
 </html>
