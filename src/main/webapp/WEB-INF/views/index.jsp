@@ -14,10 +14,10 @@
     <title>RecoPAY</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="<%=request.getContextPath() %>/img/core-img/favicon.ico">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="resources/style.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/style.css">
 
 </head>
 

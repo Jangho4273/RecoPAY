@@ -56,7 +56,7 @@ public class PerformStore {
 			DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactoty.newDocumentBuilder();
 			
-			for(int i=30; i<71; i++) {
+			for(int i=1; i<10; i++) {
 				System.out.println("---page: " + i + "---" );
 				url = "http://www.kopis.or.kr/openApi/restful/pblprfr?service=de93ee9825c24143a98506d9e7f616bd&stdate=20050101&eddate=20210402&rows=100&cpage="+ i +"&shcate=AAAA";
 				Document doc = dBuilder.parse(url);
