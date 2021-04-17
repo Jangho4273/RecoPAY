@@ -10,7 +10,7 @@
 	<bean id="customAccessDenied" class="com.spring.recopay.controller.CustomAccessDeniedHandler"/>
 	<bean id="customLoginSuccess" class="com.spring.recopay.controller.CustomLoginSuccessHandler"/>
 	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>	
-		
+	<bean id="customLogoutSuccess" class="com.spring.recopay.controller.CustomLogoutSuccessHandler"/>	
 	<security:http>
 		<security:intercept-url pattern = "/perform/*" access = "hasRole('ROLE_ADMIN')"/>
 		
@@ -18,7 +18,7 @@
 		
 		<security:access-denied-handler ref="customAccessDenied"/>
 		
-		<security:logout logout-url="/login/logout" invalidate-session="true"/>
+		<security:logout logout-url="/login/logout" success-handler-ref="customLogoutSuccess" invalidate-session="false"/>
 		
 	</security:http>
 	

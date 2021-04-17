@@ -1,5 +1,12 @@
 package com.spring.recopay.controller;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,6 +100,12 @@ public class MemberController {
 
 	@GetMapping("/login")
 	public void loginInput(String error, String logout, Model model) {
+		System.out.println("login page 입성");
+		
+	}
+	
+	@PostMapping("/login")
+	public void loginInput2(String error, String logout, Model model) {
 		System.out.println("error: " + error);
 		System.out.println("logout: " + logout);
 
@@ -122,6 +135,7 @@ public class MemberController {
 	@PostMapping("/logout")
 	public void logoutPost() {
 		System.out.println("POST:logout");
+		
 	}
 	
 	@GetMapping("/indexLogin")
@@ -129,4 +143,32 @@ public class MemberController {
 		System.out.println("POST:logout");
 	}
 
+//	@PostMapping("/loginCheck")
+//	public String loginCheck(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+//
+//		String username = request.getParameter("username");
+//		
+//		HttpSession session = request.getSession();
+//		
+//		session.setAttribute("memberId", username);
+//		
+//		return "index";
+//	}
+//	
+//	@GetMapping("/logoutCheck")
+//	public String logoutCheck(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+//		
+//		HttpSession session = request.getSession();
+//		
+//		session.invalidate();
+//		
+////		response.sendRedirect("index.jsp");
+//		
+//		return "index";
+//		
+//	}
+	
+	
+	
+	
 }

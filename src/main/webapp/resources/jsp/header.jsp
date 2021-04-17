@@ -1,9 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+#zzzz {
+
+    width:100px;
+
+    background-color: #f8585b;
+
+    border: none;
+
+    color:#fff;
+
+    padding: 15px 0;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    display: inline-block;
+
+    font-size: 15px;
+
+    margin: 4px;
+
+    cursor: pointer;
+
+}
+
+
+
+출처: https://nimolove.tistory.com/44 [Chaeni_vlog 🌈]
+</style>
 <meta charset="UTF-8">
 <title>Header</title>
 </head>
@@ -88,16 +120,36 @@
                                     	</ul>
                                     </li>
                                 </ul>
-
+								
+								<sec:authorize access="isAuthenticated()">
+								<!-- Login/Register & Cart Button -->
+                                <div class="login-register-cart-button d-flex align-items-center">
+                                    <!-- Login/Register -->
+                                    <div class="login-register-btn mr-50">
+                                    	<sec:authentication property="principal.username" var="user_id" />
+                                    	${user_id } 님, 환영합니다.
+										<form action="${pageContext.request.contextPath }/login/logout" method='post'>
+										<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
+										<button id="zzzz" class="">Logout</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                </sec:authorize>
+								
+								
+								
+									
+								
+								<sec:authorize access="isAnonymous()">
                                 <!-- Login/Register & Cart Button -->
                                 <div class="login-register-cart-button d-flex align-items-center">
                                     <!-- Login/Register -->
                                     <div class="login-register-btn mr-50">
                                         <a href="<%=request.getContextPath() %>/login/login" id="loginBtn">Login / Register</a>
                                     </div>
-                                    
-
                                 </div>
+                                </sec:authorize>
+                               
                             </div>
                             <!-- Nav End -->
 
