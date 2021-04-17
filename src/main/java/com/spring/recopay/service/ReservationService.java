@@ -8,9 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.spring.recopay.domain.PerformDAO;
 import com.spring.recopay.domain.PerformDTO;
+import com.spring.recopay.domain.ReservationDAO;
+import com.spring.recopay.domain.ReservationDTO;
 
 @Service
-public class ReservationService {
+public class ReservationService implements ReservationDAO {
 
 	private SqlSession sqlSession;
 	
@@ -22,18 +24,11 @@ public class ReservationService {
 	public void setSqlSession(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 	}
-	
-	public PerformDAO sessionGet() {
-		return sqlSession.getMapper(PerformDAO.class);
-	}
-	
-	public List<PerformDTO> list() {
-		return sessionGet().select();
+
+	@Override
+	public int insertBuyingTicket(ReservationDTO dto) {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(ReservationDAO.class).insertBuyingTicket(dto);
 	}
 
-	public List<PerformDTO> viewByUid(int uid) {
-		return sessionGet().viewByUid(uid);
-	}
-	
-	
 }

@@ -77,16 +77,24 @@ SELECT th_uid "uid", th_id "id", th_name "name", th_location "location", th_tota
 DROP TABLE  Reservation ;
 
 CREATE TABLE  Reservation  (
-	res_number 	varchar2(30)		NOT NULL,
-	res_data 	date		NOT NULL,
-	res_visit 	number		NOT NULL,
-	res_paycost 	number		NOT NULL,
+	res_id 	varchar2(30)		NOT NULL,
+	res_prfdate date  NOT NULL,
+	res_title varchar(150) NULL,
+	res_payment number NULL,
 	user_uid 	number		NULL,
 	nm_uid 	number		NULL,
-	res_isCancel 	char(1)		NOT NULL,
-	res_seat 	varchar2(25)		NOT NULL,
-	tt_uid 	number		NOT NULL
+	res_isfinished 	char(1)		null,
+	res_iscancel	char(1)		NULL,
+	res_seat 	varchar2(25)    NULL,
+	tt_uid 	number		NULL,
+	res_ticketnum number null
 );
+
+INSERT INTO RESERVATION (res_id,res_prfdate) VALUES (concat(TO_CHAR(SYSDATE,'YYYY-MMDD'),'-0001'),sysdate);
+
+SELECT * FROM RESERVATION r ;
+
+CREATE SEQUENCE reservation_seq;
 
 DROP TABLE  Theater_Seat ;
 
