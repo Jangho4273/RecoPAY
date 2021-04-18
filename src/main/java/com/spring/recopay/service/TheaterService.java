@@ -47,9 +47,9 @@ public class TheaterService implements TheaterDAO{
 	}
 
 	@Override
-	public int insertSeat(String seat, String theaterName, String userId) {
+	public int insertSeat(String seat, String theaterName, String userId, String time) {
 		// TODO Auto-generated method stub
-		return getSession().insertSeat(seat, theaterName, userId);
+		return getSession().insertSeat(seat, theaterName, userId,time);
 	}
 
 

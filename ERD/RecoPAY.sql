@@ -112,8 +112,15 @@ DROP TABLE  Theater_Seat ;
 CREATE TABLE  Theater_Seat  (
 	seat_num 	varchar2(10)  NOT NULL,
 	th_uid 	number		NOT NULL, 
+	prf_time varchar(50)  NOT NULL,
 	user_uid number     NOT NULL
 );
+
+SELECT * FROM theater_seat;
+
+insert into Theater_Seat (seat_num , th_uid , user_uid , prf_time) values
+ 		('A2', (SELECT th_uid from Theater where th_name = '63아트홀' ) , 
+    	 (SELECT user_uid from Member where user_id = 'asdqwd') , '4월 13일 14:00');
 
 SELECT th_totalseat - (select count(*) from theater_seat where th_uid = (SELECT TH_UID FROM THEATER WHERE th_name='2001 아울렛키즈홀 [구로]') ) "leftSeat" 
 FROM theater WHERE th_name = '2001 아울렛키즈홀 [구로]';

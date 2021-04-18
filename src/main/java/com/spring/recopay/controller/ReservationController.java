@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -88,13 +89,14 @@ public class ReservationController {
 	}
 	
 	@RequestMapping("/buying")
+	@Transactional
 	public String buyingTicket(HttpServletRequest request,ReservationDTO dto) {
+
 		
 		int result = rs.insertBuyingTicket(dto);
-		System.out.println("결과 : " + result);
+		int result2 = ts.insertSeat(dto.getSeat(), dto.getTheaterName(), "asdqwd" ,dto.getPrfdate());
 		
-		
-		if(result == 1) {
+		if(result == 1 ) {
 			return "reservation/reservationOk";
 		} else {
 			return "reservation/reservationFail";

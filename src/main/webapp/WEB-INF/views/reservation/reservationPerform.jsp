@@ -198,7 +198,7 @@
 									<div class="ctr-box clearfix">
 										<button type="button" title="prev" class="btn-cal prev">
 										</button>
-										<span class="cal-month"></span> <span class="cal-year"></span>
+										<span class="cal-year"></span> <span class="cal-month"></span>
 										<button type="button" title="next" class="btn-cal next">
 										</button>
 									</div>
@@ -248,8 +248,6 @@
 		
 						<button id="buyingBtn">예매하기</button>
                     </form>
-
-					
 					
 					
 					<div class="oneMusic-buttons-area res">

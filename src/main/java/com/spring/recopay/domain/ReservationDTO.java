@@ -16,8 +16,15 @@ public class ReservationDTO {
 	private String seat;	//공연좌석
 	private int uid;		//공연일정번호
 	private int ticketnum; // 구매한 티켓 갯수
+	private String theaterName;
 	
 	
+	public String getTheaterName() {
+		return theaterName;
+	}
+	public void setTheaterName(String theaterName) {
+		this.theaterName = theaterName;
+	}
 	public String getId() {
 		return id;
 	}
@@ -84,8 +91,5 @@ public class ReservationDTO {
 	public void setTicketnum(int ticketnum) {
 		this.ticketnum = ticketnum;
 	}
-	
-	
-	
-	
+
 }

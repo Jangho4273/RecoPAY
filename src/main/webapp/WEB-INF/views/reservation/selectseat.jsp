@@ -140,13 +140,14 @@
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">닫기</button>
 					<form action="<%=request.getContextPath() %>/reservation/buying" method="post">
-					        <input type="hidden" name="prfdate" value="${prfTime }"><br> 
-           					<input type="hidden" name=title value="${list[0].name }"><br>
-            				<input type="hidden" name="payment" value="${prfPrice }"><br>
+					        <input type="hidden" name="prfdate" value="${prfTime }"/><br> 
+           					<input type="hidden" name=title value="${list[0].name }"/><br>
+            				<input type="hidden" name="payment" value="${prfPrice }"/><br>
             				<sec:authentication property="principal.username" var="user_id" />
-            				<input type="hidden" name="uid" value="00"><br>
-            				<input type="hidden" name="seat" value=""><br>
-            				<input type="hidden" name="ticketnum" value=""><br>
+            				<input type="hidden" name="uid" value="00"/><br>
+            				<input type="hidden" name="seat"/><br>
+            				<input type="hidden" name="ticketnum"/><br>
+            				<input type="hidden" name="theaterName" value="${list[0].fcltynm }"/><br>
             				<button type="submit" class="btn btn-primary">티켓 구매하기</button>
 					</form>
 					

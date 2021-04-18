@@ -34,11 +34,11 @@ function reply_click(id) {
 	document.getElementById("popupSelectedSeat").innerHTML = "선택한 좌석 : " + clickedseat_val; // 선택된 좌석 출력 
 	document.getElementById("popupTicketNum").innerHTML = "티켓 갯수 : " + clickedArr.length;
 	
+
 	$('input[name=seat]').attr('value',clickedseat_val);
 	$('input[name=ticketnum]').attr('value',clickedArr.length);
+	
 
-
-	totalseat_val = clickedArr.length;
 	
 }
 

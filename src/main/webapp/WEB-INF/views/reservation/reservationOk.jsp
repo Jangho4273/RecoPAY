@@ -1,13 +1,10 @@
-<%@page import="com.spring.recopay.domain.ReservationDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="ko">
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
+<!DOCTYPE html>
+<html lang="ko">
 
 <head>
 <meta charset="UTF-8">
@@ -18,43 +15,49 @@
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title -->
-<title>좌석 선택</title>
+<title>Theater</title>
 
 <!-- Favicon -->
-<link rel="icon"
-	href="<%=request.getContextPath()%>/resources/img/core-img/favicon.ico">
+<link rel="icon" href="img/core-img/favicon.ico">
 
 <!-- Stylesheet -->
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/style.css">
+	href="${pageContext.request.contextPath }/resources/style.css">
 
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/resources/calender/css/bootstrap.min.css">
-
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css">
-
-<script
-	src="${pageContext.request.contextPath }/js/bootstrap/bootstrap.min.js"></script>
-
+<!-- ##### Import ajax ##### -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-<script src="${pageContext.request.contextPath }/js/reservation/selectseat.js"></script>
-
 </head>
+
 
 <body>
 
 	<jsp:include page="/resources/jsp/header.jsp"></jsp:include>
+	<!-- ##### Breadcumb Area Start ##### -->
+	<section class="breadcumb-area bg-img bg-overlay"
+		style="background-image: url(<%=request.getContextPath() %>/resources/img/bg-img/breadcumb.jpg);">
+	</section>
 
+	<section class="elements-area mt-30 section-padding-100-0">
+		<div class="container">
+			<div class="row">
 
-	<div> 예매가 완료되었습니다. </div>
+				<!-- Single Post Start -->
+				<div class="single-blog-post mb-100 wow fadeInUp"
+					data-wow-delay="100ms">
+					
+					
+					<h5> 예매가 완료되었습니다. </h5>
 
-	<button type="button" onclick="location.href='<%=request.getContextPath() %>/reservation/mypage"> 예약 확인하기(MyPage) </button>
-						
+					<button type="button" onclick="location.href='<%=request.getContextPath() %>/reservation/mypage"> 예약 확인하기(MyPage) </button>
+					
+					
+					</div>
+			</div>
+		</div>
+	</section>
+
 	<jsp:include page="/resources/jsp/footer.jsp"></jsp:include>
-
 
 </body>
 
