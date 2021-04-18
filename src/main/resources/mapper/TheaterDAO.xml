@@ -38,7 +38,7 @@
 	<select id="getLeftSeat" resultType="com.spring.recopay.domain.TheaterDTO">
 		<![CDATA[ 
 			SELECT th_totalseat - (select count(*) from theater_seat where th_uid = (SELECT TH_UID FROM THEATER WHERE th_name=#{theaterName} ) "leftSeat" 
-			FROM theater WHERE th_name = #{theaterName};
+			FROM theater WHERE th_name = #{theaterName}
 		]]>	
 	</select>
 	
@@ -55,14 +55,11 @@
     	 (SELECT user_uid from Member where user_id = #{userId}) , #{time})
      -->
 	
-	
-	
-	
 	<!-- 예약된 좌석들 정보 가져오기 -->
-	<select id="getBookedSeats" resultType="com.spring.recopay.domain.TheaterSeatDTO">
-		SELECT seat_num "seat", th_uid, user_uid FROM Theater_Seat
+	<select id="getAllBookedSeats" resultType="com.spring.recopay.domain.TheaterSeatDTO">
+		SELECT seat_num "seat", th_uid, user_uid, prf_time "time" FROM Theater_Seat
 	</select>
-
+	
 	
 	
 </mapper>

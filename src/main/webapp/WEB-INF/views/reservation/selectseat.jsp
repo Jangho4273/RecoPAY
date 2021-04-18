@@ -6,7 +6,8 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
 
 <head>
@@ -40,7 +41,8 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-<script src="${pageContext.request.contextPath }/js/reservation/selectseat.js"></script>
+<script
+	src="${pageContext.request.contextPath }/js/reservation/selectseat.js"></script>
 
 </head>
 
@@ -59,6 +61,7 @@
 	<!-- ##### Breadcumb Area End ##### -->
 
 
+
 	<!-- 좌석 시작 -->
 	<div class="container">
 		<p class="text-center" style="font-size: 40px;">== Stage 방향 ==</p>
@@ -67,8 +70,25 @@
 				<p class="text-center" style="font-size: 40px;">A</p>
 				<div class="row">
 					<c:forEach var="i" begin="0" end="98">
-						<div class="seat" style="border: 1px solid; width: 30px"
-							id="a${i }" onClick="reply_click(this.id)">A${i }</div>
+
+						<c:set var="currentId" value="a${i }" />
+						<c:set var="isSeated" value="0" />
+
+						<!-- 예약된 자리이면  -->
+						<c:forEach var="j" begin="0" end="98">
+							<c:if test="${currentId eq seatlist[j].seat}">
+								<div class="seat"
+									style="border: 1px solid; background-color: #ff0000; width: 30px"
+									id="a${i }">A${i }</div>
+								<c:set var="isSeated" value="1" />
+							</c:if>
+
+						</c:forEach>
+
+						<c:if test="${isSeated eq 0}">
+							<div class="seat" style="border: 1px solid; width: 30px"
+								id="a${i }" onClick="reply_click(this.id)">A${i }</div>
+						</c:if>
 					</c:forEach>
 				</div>
 			</div>
@@ -76,8 +96,24 @@
 				<p class="text-center" style="font-size: 40px;">B</p>
 				<div class="row">
 					<c:forEach var="i" begin="0" end="98">
-						<div class="seat" style="border: 1px solid; width: 30px"
-							id="b${i }" onClick="reply_click(this.id)">B${i }</div>
+						<c:set var="currentId" value="b${i }" />
+						<c:set var="isSeated" value="0" />
+
+						<!-- 예약된 자리이면  -->
+						<c:forEach var="j" begin="0" end="98">
+							<c:if test="${currentId eq seatlist[j].seat}">
+								<div class="seat"
+									style="border: 1px solid; background-color: #ff0000; width: 30px"
+									id="b${i }">B${i }</div>
+								<c:set var="isSeated" value="1" />
+							</c:if>
+
+						</c:forEach>
+
+						<c:if test="${isSeated eq 0}">
+							<div class="seat" style="border: 1px solid; width: 30px"
+								id="b${i }" onClick="reply_click(this.id)">B${i }</div>
+						</c:if>
 					</c:forEach>
 				</div>
 			</div>
@@ -85,8 +121,24 @@
 				<p class="text-center" style="font-size: 40px;">C</p>
 				<div class="row">
 					<c:forEach var="i" begin="0" end="98">
-						<div class="seat" style="border: 1px solid; width: 30px"
-							id="c${i }" onClick="reply_click(this.id)">C${i }</div>
+						<c:set var="currentId" value="c${i }" />
+						<c:set var="isSeated" value="0" />
+
+						<!-- 예약된 자리이면  -->
+						<c:forEach var="j" begin="0" end="98">
+							<c:if test="${currentId eq seatlist[j].seat}">
+								<div class="seat"
+									style="border: 1px solid; background-color: #ff0000; width: 30px"
+									id="c${i }">C${i }</div>
+								<c:set var="isSeated" value="1" />
+							</c:if>
+
+						</c:forEach>
+
+						<c:if test="${isSeated eq 0}">
+							<div class="seat" style="border: 1px solid; width: 30px"
+								id="c${i }" onClick="reply_click(this.id)">C${i }</div>
+						</c:if>
 					</c:forEach>
 				</div>
 			</div>
@@ -94,15 +146,31 @@
 				<p class="text-center" style="font-size: 40px;">D</p>
 				<div class="row">
 					<c:forEach var="i" begin="0" end="98">
-						<div class="seat" style="border: 1px solid; width: 30px"
-							id="d${i }" onClick="reply_click(this.id)">D${i }</div>
+						<c:set var="currentId" value="d${i }" />
+						<c:set var="isSeated" value="0" />
+
+						<!-- 예약된 자리이면  -->
+						<c:forEach var="j" begin="0" end="98">
+							<c:if test="${currentId eq seatlist[j].seat}">
+								<div class="seat"
+									style="border: 1px solid; background-color: #ff0000; width: 30px"
+									id="d${i }">D${i }</div>
+								<c:set var="isSeated" value="1" />
+							</c:if>
+
+						</c:forEach>
+
+						<c:if test="${isSeated eq 0}">
+							<div class="seat" style="border: 1px solid; width: 30px"
+								id="d${i }" onClick="reply_click(this.id)">D${i }</div>
+						</c:if>
 					</c:forEach>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- 좌석 끝 -->
-	
+
 	<br>
 	<br>
 
@@ -112,7 +180,7 @@
 		<p id="totalseat"></p>
 		<br>
 	</div>
-	
+
 
 	<!-- 예약 진행 버튼 시작 -->
 	<!-- Button trigger modal -->
@@ -131,26 +199,27 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					상영일자 : ${prfTime }시 <br>공연 가격 : ${prfPrice }
-					<br>공연장 : ${list[0].fcltynm } 
-					<br> <p id="popupSelectedSeat"></p>
+					상영일자 : ${prfTime }시 <br>공연 가격 : ${prfPrice } <br>공연장 :
+					${list[0].fcltynm } <br>
+					<p id="popupSelectedSeat"></p>
 					<p id="popupTicketNum"></p>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">닫기</button>
-					<form action="<%=request.getContextPath() %>/reservation/buying" method="post">
-					        <input type="hidden" name="prfdate" value="${prfTime }"/><br> 
-           					<input type="hidden" name=title value="${list[0].name }"/><br>
-            				<input type="hidden" name="payment" value="${prfPrice }"/><br>
-            				<sec:authentication property="principal.username" var="user_id" />
-            				<input type="hidden" name="uid" value="00"/><br>
-            				<input type="hidden" name="seat"/><br>
-            				<input type="hidden" name="ticketnum"/><br>
-            				<input type="hidden" name="theaterName" value="${list[0].fcltynm }"/><br>
-            				<button type="submit" class="btn btn-primary">티켓 구매하기</button>
+					<form action="<%=request.getContextPath() %>/reservation/buying"
+						method="post">
+						<input type="hidden" name="prfdate" value="${prfTime }" /><br>
+						<input type="hidden" name=title value="${list[0].name }" /><br>
+						<input type="hidden" name="payment" value="${prfPrice }" /><br>
+						<sec:authentication property="principal.username" var="user_id" />
+						<input type="hidden" name="uid" value="00" /><br> <input
+							type="hidden" name="seat" /><br> <input type="hidden"
+							name="ticketnum" /><br> <input type="hidden"
+							name="theaterName" value="${list[0].fcltynm }" /><br>
+						<button type="submit" class="btn btn-primary">티켓 구매하기</button>
 					</form>
-					
+
 				</div>
 			</div>
 		</div>

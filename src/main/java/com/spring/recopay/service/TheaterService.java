@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.spring.recopay.domain.PerformDAO;
 import com.spring.recopay.domain.PerformDTO;
 import com.spring.recopay.domain.TheaterDAO;
+import com.spring.recopay.domain.TheaterSeatDTO;
 
 @Service
 public class TheaterService implements TheaterDAO{
@@ -50,6 +51,12 @@ public class TheaterService implements TheaterDAO{
 	public int insertSeat(String seat, String theaterName, String userId, String time) {
 		// TODO Auto-generated method stub
 		return getSession().insertSeat(seat, theaterName, userId,time);
+	}
+
+	@Override
+	public List<TheaterSeatDTO> getAllBookedSeats() {
+		// TODO Auto-generated method stub
+		return getSession().getAllBookedSeats();
 	}
 
 

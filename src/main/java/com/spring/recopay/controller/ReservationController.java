@@ -76,6 +76,8 @@ public class ReservationController {
 	@RequestMapping(value = "/selectseat", method = RequestMethod.POST)
 	public String selectSeat(HttpServletRequest request,Model model) {
 		
+		model.addAttribute("seatlist", ts.getAllBookedSeats());
+		
 		// Post 값 받기 
 		String prfTime = request.getParameter("prfTime");
 		model.addAttribute("prfTime",prfTime);
@@ -96,13 +98,11 @@ public class ReservationController {
 		int result = rs.insertBuyingTicket(dto);
 		int result2 = ts.insertSeat(dto.getSeat(), dto.getTheaterName(), "asdqwd" ,dto.getPrfdate());
 		
-		if(result == 1 ) {
+		if(result + result2 == 2) {
 			return "reservation/reservationOk";
 		} else {
 			return "reservation/reservationFail";
 		}
-		
-		
 	}
 	
 	

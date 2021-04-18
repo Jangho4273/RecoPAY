@@ -116,6 +116,8 @@ CREATE TABLE  Theater_Seat  (
 	user_uid number     NOT NULL
 );
 
+SELECT seat_num "seat", th_uid, user_uidm prf_time "time" FROM Theater_Seat
+
 SELECT * FROM theater_seat;
 
 insert into Theater_Seat (seat_num , th_uid , user_uid , prf_time) values
