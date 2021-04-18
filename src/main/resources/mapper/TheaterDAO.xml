@@ -34,14 +34,7 @@
 		SELECT th_lat "lat", th_lng "lng" FROM theater WHERE th_name = #{name};
 	</select>
 	
-	<!-- 남은 좌석 수 가져오기 -->
-	<select id="getLeftSeat" resultType="com.spring.recopay.domain.TheaterDTO">
-		<![CDATA[ 
-			SELECT th_totalseat - (select count(*) from theater_seat where th_uid = (SELECT TH_UID FROM THEATER WHERE th_name=#{theaterName} ) "leftSeat" 
-			FROM theater WHERE th_name = #{theaterName}
-		]]>	
-	</select>
-	
+
 	<!-- 선택한 좌석 insert -->
     <insert id="insertSeat">
 		insert into Theater_Seat (seat_num , th_uid , user_uid , prf_time) values
@@ -60,7 +53,19 @@
 		SELECT seat_num "seat", th_uid, user_uid, prf_time "time" FROM Theater_Seat
 	</select>
 	
+		<!-- 예약된 좌석들 정보 가져오기 -->
+	<select id="getBookedSeatsByNameAndTime" resultType="com.spring.recopay.domain.TheaterSeatDTO">
+			SELECT seat_num "seat", th_uid, user_uid, prf_time "time" FROM Theater_Seat where prf_time = #{param1} 
+		 and th_uid = (select th_uid from theater where th_name = #{param2})
+	</select>
 	
+	<!-- 남은 좌석 수 가져오기 -->
+	<select id="getLeftSeat" resultType="com.spring.recopay.domain.TheaterSeatDTO">
+		<![CDATA[ 
+			SELECT th_totalseat - (select count(*) from theater_seat where th_uid = (SELECT TH_UID FROM THEATER WHERE th_name=#{param1}) and prf_time = #{param2}) "leftSeat" 
+			FROM theater WHERE th_name = #{param1}
+		]]>	
+	</select>
 	
 </mapper>
 

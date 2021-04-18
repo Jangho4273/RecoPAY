@@ -227,10 +227,6 @@
 	<!-- 버튼 끝 -->
 
 
-
-
-
-
 	<jsp:include page="/resources/jsp/footer.jsp"></jsp:include>
 
 

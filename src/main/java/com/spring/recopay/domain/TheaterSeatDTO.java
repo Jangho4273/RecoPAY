@@ -5,9 +5,22 @@ public class TheaterSeatDTO {
 	private int th_uid;
 	private int user_uid;
 	private String time;
+	private String theaterName;
+	private int leftSeat;
 	
 
-
+	public int getLeftSeat() {
+		return leftSeat;
+	}
+	public void setLeftSeat(int leftSeat) {
+		this.leftSeat = leftSeat;
+	}
+	public String getTheaterName() {
+		return theaterName;
+	}
+	public void setTheaterName(String theaterName) {
+		this.theaterName = theaterName;
+	}
 	public String getSeat() {
 		return seat;
 	}

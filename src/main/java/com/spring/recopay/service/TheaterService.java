@@ -59,5 +59,17 @@ public class TheaterService implements TheaterDAO{
 		return getSession().getAllBookedSeats();
 	}
 
+	@Override
+	public List<TheaterSeatDTO> getBookedSeatsByNameAndTime(String time, String theaterName) {
+		// TODO Auto-generated method stub
+		return getSession().getBookedSeatsByNameAndTime(time, theaterName);
+	}
+
+	@Override
+	public List<TheaterSeatDTO> getLeftSeat(String theaterName, String time) {
+		// TODO Auto-generated method stub
+		return getSession().getLeftSeat(theaterName, time);
+	}
+
 
 }

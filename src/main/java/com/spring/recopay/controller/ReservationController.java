@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.recopay.domain.PerformDTO;
 import com.spring.recopay.domain.ReservationDTO;
+import com.spring.recopay.domain.TheaterSeatDTO;
 import com.spring.recopay.service.ReservationService;
 import com.spring.recopay.service.TheaterService;
 
@@ -76,8 +77,6 @@ public class ReservationController {
 	@RequestMapping(value = "/selectseat", method = RequestMethod.POST)
 	public String selectSeat(HttpServletRequest request,Model model) {
 		
-		model.addAttribute("seatlist", ts.getAllBookedSeats());
-		
 		// Post 값 받기 
 		String prfTime = request.getParameter("prfTime");
 		model.addAttribute("prfTime",prfTime);
@@ -85,7 +84,9 @@ public class ReservationController {
 		model.addAttribute("prfPrice",prfPrice);
 		int uid = Integer.parseInt(request.getParameter("uid"));
 		model.addAttribute("list", rs.viewByUid(uid));
-		
+		List<PerformDTO> dto = rs.viewByUid(uid);
+
+		model.addAttribute("seatlist", ts.getBookedSeatsByNameAndTime(prfTime,dto.get(0).getFcltynm()));
 		
 		return "reservation/selectseat";
 	}
@@ -110,6 +111,16 @@ public class ReservationController {
 	public String reservationPerform(@PathVariable int uid, Model model) {
 		model.addAttribute("list", rs.viewByUid(uid));
 		model.addAttribute("uid", uid);
+		
+//		List<PerformDTO> dto = rs.list();
+//		
+//		for (PerformDTO e : dto) {
+//			if(e.getUid() == uid) {
+//				model.addAttribute("leftseat" , ts.getLeftSeat(e.getFcltynm(), e.getRunday()));
+//			}
+//		}
+		
+		
 		//String name = (String) model.getAttribute("name");
 		//model.addAttribute("map", ts.getMapCordXY(name));
 		return "reservation/reservationPerform";

@@ -59,7 +59,7 @@ DROP SEQUENCE theater_seq;
 CREATE SEQUENCE theater_seq;
 
 
-CREATE TABLE  Theater  (
+CREATE TABLE Theater  (
 	th_uid 	number		NOT NULL,
 	th_id varchar(10)  NOT NULL,
 	th_name 	varchar2(100)		NOT NULL,
@@ -75,9 +75,12 @@ CREATE TABLE  Theater  (
 	th_opendate varchar2(40) NULL
 );
 
+
+
+
 SELECT * FROM THEATER t ;
 
-SELECT th_lat, th_lng FROM theater WHERE th_name = '국립극장';
+SELECT * FROM theater WHERE th_name = '국립극장';
 
 
 SELECT th_uid "uid", th_id "id", th_name "name", th_location "location", th_totalseat "totalseat", th_state "state", 
@@ -116,7 +119,10 @@ CREATE TABLE  Theater_Seat  (
 	user_uid number     NOT NULL
 );
 
-SELECT seat_num "seat", th_uid, user_uidm prf_time "time" FROM Theater_Seat
+
+
+
+SELECT seat_num "seat", th_uid, user_uidm prf_time "time" FROM Theater_Seat;
 
 SELECT * FROM theater_seat;
 
