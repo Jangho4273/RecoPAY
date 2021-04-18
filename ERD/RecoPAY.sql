@@ -5,6 +5,8 @@ SELECT * FROM MEMBER;
 CREATE SEQUENCE member_seq;
 DROP SEQUENCE member_seq;
 
+DROP TABLE member CASCADE CONSTRAINTS;
+
 CREATE TABLE Member (
 	user_uid	number		NOT NULL,
 	user_id	varchar2(30)		NOT NULL,
@@ -17,6 +19,12 @@ CREATE TABLE Member (
 	user_auth varchar2(40)  DEFAULT 'ROLE_MEMBER' NOT NULL,
 	user_enabled NUMBER  DEFAULT 1 NOT NULL
 );
+
+UPDATE MEMBER SET user_auth='ROLE_ADMIN' WHERE user_id = 'asdqwd';
+
+SELECT * FROM MEMBER;
+
+
 
 UPDATE MEMBER SET user_auth='ROLE_ADMIN' WHERE user_id = 'admin';
 
@@ -69,6 +77,9 @@ CREATE TABLE  Theater  (
 
 SELECT * FROM THEATER t ;
 
+SELECT th_lat, th_lng FROM theater WHERE th_name = '국립극장';
+
+
 SELECT th_uid "uid", th_id "id", th_name "name", th_location "location", th_totalseat "totalseat", th_state "state", 
 	th_telno "telno", th_chartr "chartr", th_lng "lng", th_lat "lat", th_url "url", th_totalno "totalno",th_opendate "opendate" 
 	FROM Theater where th_id = 'FC002633';
@@ -78,9 +89,9 @@ DROP TABLE  Reservation ;
 
 CREATE TABLE  Reservation  (
 	res_id 	varchar2(30)		NOT NULL,
-	res_prfdate date  NOT NULL,
+	res_prfdate varchar(100)  NOT NULL,
 	res_title varchar(150) NULL,
-	res_payment number NULL,
+	res_payment varchar(100) NULL,
 	user_uid 	number		NULL,
 	nm_uid 	number		NULL,
 	res_isfinished 	char(1)		null,
@@ -99,10 +110,24 @@ CREATE SEQUENCE reservation_seq;
 DROP TABLE  Theater_Seat ;
 
 CREATE TABLE  Theater_Seat  (
-	seat_num 	varchar2(10)		NOT NULL,
-	th_uid 	number		NOT NULL
+	seat_num 	varchar2(10)  NOT NULL,
+	th_uid 	number		NOT NULL, 
+	user_uid number     NOT NULL
 );
 
+SELECT th_totalseat - (select count(*) from theater_seat where th_uid = (SELECT TH_UID FROM THEATER WHERE th_name='2001 아울렛키즈홀 [구로]') ) "leftSeat" 
+FROM theater WHERE th_name = '2001 아울렛키즈홀 [구로]';
+
+(select count(*) from theater_seat where th_uid = (SELECT TH_UID FROM THEATER WHERE th_name='242') );
+
+insert into Theater_Seat (seat_num , th_uid , user_uid) values
+  ('A32', (SELECT th_uid from Theater where th_name ='242' ) , 
+     (SELECT user_uid from Member where user_id = 'asdqwd'));  
+
+    SELECT * FROM THEATER_SEAT ts ;
+
+    
+    
 DROP TABLE  Notice_Board ;
 
 CREATE TABLE  Notice_Board  (
@@ -230,6 +255,7 @@ ORDER BY r.prf_id) k, PERFORM p
 WHERE k.prf_id = p.prf_id;
 
 
+DROP TABLE perform CASCADE CONSTRAINTS;
 
 CREATE TABLE Perform (
 	prf_uid	number		NOT NULL,
@@ -240,15 +266,18 @@ CREATE TABLE Perform (
 	prf_fcltynm	varchar2(200)		NULL,
 	prf_poster	varchar2(200)		NULL,
 	prf_state	varchar2(20)		NOT NULL,
+	prf_runday varchar2(100)		NULL,
+	prf_runtime  varchar2(50)		NULL,
+	prf_ticketprice varchar2(100)   NULL,
 	prf_openrun	char(1)		NULL,
 	th_uid	varchar2(30)		NULL,
 	prf_avgsc	number(2,1)		NULL,
 	prf_summary clob NULL
 );
 
+SELECT count(*) FROM perform;
 
-
-SELECT * FROM PERFORMrec;
+SELECT * FROM PERFORM;
 SELECT * FROM THEATER t ;
 
 SELECT * FROM perform;

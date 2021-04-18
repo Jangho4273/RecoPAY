@@ -2,6 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec"
+    uri="http://www.springframework.org/security/tags"%>
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <style>
@@ -119,6 +123,7 @@
 
 					</div>
 				</div>
+			
 
 				<div class="col-12 col-lg-9">
 					<!-- ##### 연극 예매 ##### -->
@@ -155,6 +160,8 @@
 								<table id="demoXML"></table>
 							</div>
 						</div>
+
+						
 
 						<%-- 					<div class="reserve-container">
 							<div class="perform-part">
@@ -220,28 +227,37 @@
 						<div class="time-right on">
 							<div class="time-right tit">
 
-								<select id="selectTime" class="form-select form-select-lg mb-3"
-									aria-label=".form-select-lg example">
-									<option value="1" selected="selected">공연시간선택</option>
-								</select> <select id="selectPrice"
-									class="form-select form-select-lg mb-3"
-									aria-label=".form-select-lg example">
-									<option value="1" selected="selected">공연가격선택</option>
-								</select>
+
+								<button type="button" onclick="location.href='<%=request.getContextPath() %>/theater/map?lat=${map.lat }&lng=${map.lng }'">공연장 가는길 보기</button>
 
 							</div>
-							
-							<div class="time-wrap">
-								<div class="time-seatSelect" style="height: 200px;">
-									<a>js 연결</a>
-								</div>
-							</div>
+				
 						</div>
 					</div>
+					
+					
+					
+					<form action="<%=request.getContextPath() %>/reservation/selectseat" method='post'>
+						
+								<select id="selectTime" name="prfTime">
+									<option value="1" selected="selected">공연시간선택</option>
+								</select> <select id="selectPrice" name="prfPrice">
+									<option value="1" selected="selected">공연가격선택</option>
+								</select>
+								<input type="hidden" name="uid" value="${uid }"/>
+		
+						<button id="buyingBtn">예매하기</button>
+                    </form>
+
+					
+					
+					
 					<div class="oneMusic-buttons-area res">
-						<a href="#" class="btn oneMusic-btn btn-2">예매하기<i
+						<a href="<%=request.getContextPath() %>/reservation/select" class="btn oneMusic-btn btn-2">목록보러 가기<i
 							class="fa fa-angle-double-right"></i></a>
 					</div>
+					
+					
 					<p style="clear: both;">&nbsp;</p>
 				</div>
 			</div>

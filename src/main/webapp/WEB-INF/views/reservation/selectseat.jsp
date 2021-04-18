@@ -1,3 +1,4 @@
+<%@page import="com.spring.recopay.domain.ReservationDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -5,6 +6,8 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 
 <head>
 <meta charset="UTF-8">
@@ -36,8 +39,8 @@
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	
-<script src="${pageContext.request.contextPath }/js/selectseat.js"></script>
+
+<script src="${pageContext.request.contextPath }/js/reservation/selectseat.js"></script>
 
 </head>
 
@@ -100,13 +103,60 @@
 	</div>
 	<!-- 좌석 끝 -->
 	
-	<br><br>
-	
+	<br>
+	<br>
+
 	<div>
-		<p id="state"> </p><br>
-		<p id="totalseat"> </p><br>
+		<p id="state"></p>
+		<br>
+		<p id="totalseat"></p>
+		<br>
 	</div>
-		
+	
+
+	<!-- 예약 진행 버튼 시작 -->
+	<!-- Button trigger modal -->
+	<button type="button" class="btn btn-primary" data-toggle="modal"
+		data-target="#exampleModal">좌석 선택 완료</button>
+
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">${list[0].name }</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					상영일자 : ${prfTime }시 <br>공연 가격 : ${prfPrice }
+					<br>공연장 : ${list[0].fcltynm } 
+					<br> <p id="popupSelectedSeat"></p>
+					<p id="popupTicketNum"></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">닫기</button>
+					<form action="<%=request.getContextPath() %>/reservation/buying" method="post">
+					        <input type="hidden" name="prfdate" value="${prfTime }"><br> 
+           					<input type="hidden" name=title value="${list[0].name }"><br>
+            				<input type="hidden" name="payment" value="${prfPrice }"><br>
+            				<sec:authentication property="principal.username" var="user_id" />
+            				<input type="hidden" name="uid" value="00"><br>
+            				<input type="hidden" name="seat" value=""><br>
+            				<input type="hidden" name="ticketnum" value=""><br>
+            				<button type="submit" class="btn btn-primary">티켓 구매하기</button>
+					</form>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 버튼 끝 -->
+
+
 
 
 

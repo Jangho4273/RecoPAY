@@ -29,8 +29,8 @@ public class PerformStore {
 	
 	public static final String SQL_INSERT =
 			"INSERT INTO " + "Perform " + 
-			"(prf_uid, prf_id, prf_name, prf_from, prf_to, prf_fcltynm, prf_poster, prf_state, prf_openrun, th_uid)" + 
-					" VALUES(perform_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			"(prf_uid, prf_id, prf_name, prf_from, prf_to, prf_fcltynm, prf_poster, prf_state, prf_openrun, th_uid,prf_runday,prf_ticketprice,prf_runtime)" + 
+					" VALUES(perform_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?)";
 	
 	public static void main(String[] args) {
 		
@@ -90,6 +90,9 @@ public class PerformStore {
 						pstmt.setString(7, getTagValue("prfstate", eElement));
 						pstmt.setString(8, getTagValue("openrun", eElement));
 						pstmt.setString(9, getTagValue("mt10id", eE));
+						pstmt.setString(10, getTagValue("dtguidance	", eElement));
+						pstmt.setString(11, getTagValue("pcseguidance", eElement));
+						pstmt.setString(12, getTagValue("prfruntime", eElement));
 						int cnt = pstmt.executeUpdate();
 						System.out.println(cnt + "개 행(row) INSERT 성공");
 					

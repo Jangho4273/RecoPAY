@@ -30,5 +30,18 @@ public class ReservationService implements ReservationDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.getMapper(ReservationDAO.class).insertBuyingTicket(dto);
 	}
+	
+	public PerformDAO sessionGet() {
+		return sqlSession.getMapper(PerformDAO.class);
+	}
+	
+	public List<PerformDTO> list() {
+		return sessionGet().select();
+	}
+
+	public List<PerformDTO> viewByUid(int uid) {
+		return sessionGet().viewByUid(uid);
+	}
+	
 
 }

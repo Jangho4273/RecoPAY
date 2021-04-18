@@ -40,5 +40,17 @@ public class TheaterService implements TheaterDAO{
 		return getSession().viewById(id);
 	}
 
+	@Override
+	public PerformDTO getMapCordXY(String name) {
+		// TODO Auto-generated method stub
+		return getSession().getMapCordXY(name);
+	}
+
+	@Override
+	public int insertSeat(String seat, String theaterName, String userId) {
+		// TODO Auto-generated method stub
+		return getSession().insertSeat(seat, theaterName, userId);
+	}
+
 
 }

@@ -9,7 +9,7 @@ var clickedday;
 // 페이지 최초 로딩 
 $(document).ready(function() {
 	loadPage(pfid);
-
+	
 });
 
 function loadPage(pid) {
@@ -28,10 +28,13 @@ function loadPage(pid) {
 
 function showDetail(xmlDOM) {
 
+	
+
 	var table = "";
 
 	table += "<tr><th>공연장소</th><td class='tdcontent'>"
-	table += $(xmlDOM).find("fcltynm").text()
+	table += $(xmlDOM).find("fcltynm").text();
+
 
 	table += "<tr><th>공연시간</th><td class='tdcontent'>"
 	prfTime = $(xmlDOM).find("dtguidance").text();
@@ -52,9 +55,13 @@ function showDetail(xmlDOM) {
 
 	table += "<tr><th>기획·제작</th><td class='tdcontent'>"
 	table += $(xmlDOM).find("entrpsnm").text()
-
+	
+	table += "<tr><th>상영 시간</th><td class='tdcontent'>"
+	table += $(xmlDOM).find("prfruntime").text()
+	
 
 	$("#demoXML").html(table);
+	
 
 
 	//document.getElementById("cal-date").innerHTML = "";
@@ -345,7 +352,7 @@ $calBody.addEventListener('click', (e) => {
 	for (var i = 0; i < parsedTimeArr.length; i++) {
 		if (clickedWeek == parsedTimeArr[i].weekday) {
 			document.getElementById("showtime").innerHTML += parsedTimeArr[i].timeday + " (잔여좌석:40)<br>";
-			document.getElementById("selectTime").innerHTML = "<option>"+parsedTimeArr[i].timeday+"시 시작 </option>";
+			document.getElementById("selectTime").innerHTML = "<option>"+ clickedday+"일 " +parsedTimeArr[i].timeday+"</option>";
 		}
 	}
 

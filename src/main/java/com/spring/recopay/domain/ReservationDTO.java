@@ -6,9 +6,9 @@ import java.time.format.DateTimeFormatter;
 
 public class ReservationDTO {
 	private String id;	//공연예매번호
-	private LocalDateTime prfdate;	//공연예매날짜
+	private String prfdate;	//공연예매날짜
 	private String title;  //구매한 공연 제목
-	private int payment;    // 결재 금액 
+	private String payment;    // 결재 금액 
 	private int user_uid;	//회원UID
 	private int nm_uid; 	//비회원 UID
 	private char isfinish;
@@ -24,23 +24,23 @@ public class ReservationDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public LocalDateTime getPrfdate() {
+	public String getPayment() {
+		return payment;
+	}
+	public String getPrfdate() {
 		return prfdate;
 	}
-	public void setPrfdate(LocalDateTime prfdate) {
+	public void setPrfdate(String prfdate) {
 		this.prfdate = prfdate;
+	}
+	public void setPayment(String payment) {
+		this.payment = payment;
 	}
 	public String getTitle() {
 		return title;
 	}
 	public void setTitle(String title) {
 		this.title = title;
-	}
-	public int getPayment() {
-		return payment;
-	}
-	public void setPayment(int payment) {
-		this.payment = payment;
 	}
 	public int getUser_uid() {
 		return user_uid;
