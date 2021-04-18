@@ -277,7 +277,11 @@ CREATE TABLE Perform (
 
 SELECT count(*) FROM perform;
 
+<<<<<<< HEAD
 SELECT * FROM PERFORM;
+=======
+SELECT * FROM PERFORMrec;
+>>>>>>> branch 'master' of https://github.com/Jangho4273/RecoPAY.git
 SELECT * FROM THEATER t ;
 
 SELECT * FROM perform;
