@@ -60,15 +60,18 @@
 	-->
 	<insert id="insert" flushCache="true">
 		INSERT INTO test_write
-			(wr_uid, wr_subject, wr_content, wr_name, wr_score, wr_prfname )
+			(wr_uid, wr_subject, wr_content, wr_name, wr_score, wr_prfname, wr_prfid )
 		VALUES
 			(test_write_seq.nextval, 
-			#{subject}, #{content}, #{name}, #{score}, #{prfname})
+			#{subject}, #{content}, (SELECT USER_name
+			FROM MEMBER
+			WHERE USER_id = #{name}), #{score}, #{prfname}, #{fprfid})
 	</insert>
 
 	<!-- /updateOk.ajax : 글 수정
 		parameter: DTO
 	 -->	
+	 
  	<update id="update" flushCache="true">
 		UPDATE test_write 
 		SET wr_subject = #{subject}, wr_content = #{content}, wr_score = #{score}, wr_prfname = #{prfname}
@@ -101,7 +104,7 @@
  	  <select id="getPrfnames" 
 		resultType="com.spring.recopay.domain.PerformDTO">
 		SELECT 
-			prf_uid "uid", 
+			prf_id "id", 
 			prf_name "name"
 		FROM Perform 
 		WHERE prf_name

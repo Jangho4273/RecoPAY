@@ -3,6 +3,9 @@ package com.spring.recopay.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -161,7 +164,7 @@ public class AjaxController {
 	}
 	
 	// C. 글 작성
-	@PostMapping("")
+	@GetMapping("/a/b/w")
 	public AjaxWriteResult writeOk(WriteDTO dto) {
 		int count = 0;
 		
@@ -169,8 +172,9 @@ public class AjaxController {
 		StringBuffer message = new StringBuffer();
 		String status = "FAIL";  // 기본 FAIL
 		System.out.println(dto.getPrfname());
+		
 		try {
-
+			
 			count = ajaxService.write(dto);
 			
 			if(count == 0) {
@@ -192,7 +196,7 @@ public class AjaxController {
 	}
 	
 	// D. 글 수정
-	@PutMapping("")
+	@GetMapping("a/b/u")
 	public AjaxWriteResult updateOk(WriteDTO dto) {
 		int count = 0;
 		
@@ -222,7 +226,7 @@ public class AjaxController {
 	}
 	
 	// F. 글 삭제
-	@DeleteMapping("")
+	@GetMapping("/a/b/d")
 	public AjaxWriteResult deleteOk(int [] uid) {
 		int count = 0;
 		
@@ -248,6 +252,11 @@ public class AjaxController {
 		return result;	
 	}
 	
+	public static String currentUserName() { 
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		User user = (User) authentication.getPrincipal(); 
+		return user.getUsername(); 
+	}
 	
 	
 	

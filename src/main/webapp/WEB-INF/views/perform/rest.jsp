@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -22,7 +24,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://kit.fontawesome.com/bb29575d31.js"></script>
-	<script src="${pageContext.request.contextPath }/js/board.js"></script>
+	<script src="${pageContext.request.contextPath }/js/board.js?ver=1"></script>
 	
 	<script type="text/javascript">
 	
@@ -177,6 +179,7 @@ ul.pagination a:hover:not(.active) {background-color: #ddd;}
 	
 	
 </style>
+
 </head>
 
 <body>
@@ -248,7 +251,7 @@ ul.pagination a:hover:not(.active) {background-color: #ddd;}
 			<div id="dlg_write" class="modal">
 				<form class="modal-content animate" id="frmWrite" name="frmWrite" method="post">
 					<div class="container">
-						<h3 class="title">새글 작성</h3>
+						<h3 class="title">새글 작성 </h3>
 						
 						<span id="clo" class="close" title="Close Modal">&times;</span>
 						
@@ -266,9 +269,8 @@ ul.pagination a:hover:not(.active) {background-color: #ddd;}
 						
 						<label for="subject"><b>글제목</b></label>
 						<input type="text" placeholder="글제목(필수)" name="subject" required>
-					
-						<label for="name"><b>작성자</b></label>
-						<input type="text" placeholder="작성자(필수)" name="name" required>
+						<sec:authentication property="principal.username" var="user_id" />
+						<input type="hidden" name="name" value="${user_id }">
 					      
 						<label for="content"><b>내용</b></label>
 						<textarea placeholder="글내용" name="content"></textarea>
@@ -287,6 +289,7 @@ ul.pagination a:hover:not(.active) {background-color: #ddd;}
 						<div id="scoretext"></div>
 						<label for="prfname"><b>연극명</b></label>
 						<input style="width:60%;" type="text"  placeholder="연극명" name="prfname" id="prfna">
+						<input type="hidden" name="fprfid" id="fprfid">
 						<button id="findperf" type="button">찾아보기</button>
 						
 						<div id="dlg_write1" class="modal" >

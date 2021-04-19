@@ -372,8 +372,11 @@ function updatePerf(jsonObj) {
    	$("#pertexts").html(result);  // 업데이트
    	$("#pertexts").show();
    	$("#ok").click(function() {
+		var idx = $("#pert option").index( $("#pert option:selected") )
+
    		sev = $("#pert option:selected").val();
    		$("#prfna").val(sev);
+		$("#fprfid").val(items[idx].id);
    		$("#dlg_write1").hide();
    	});
 }
@@ -384,8 +387,8 @@ function chkWrite(){
     var data = $("#frmWrite").serialize();
 
     $.ajax({
-        url : ".",
-        type : "POST",
+        url : "./a/b/w",
+        type : "GET",
         cache : false,
         data : data,  // POST 로 ajax request 할 경우 data 에 parameter 넘기기
 
@@ -456,8 +459,8 @@ function chkDelete(){
         // alert(data);    // uid=10&uid=20  
 
         $.ajax({
-            url : ".",    // URL : /board
-            type : "DELETE",
+            url : "./a/b/d",    // URL : /board
+            type : "GET",
             data : data,
             cache : false,
             success : function(data, status){
@@ -484,8 +487,8 @@ function deleteUid(uid){
 	
 	// DELETE 방식
 	$.ajax({
-		url : ".",  // URL: /board
-		type : "DELETE",
+		url : "./a/b/d",  // URL: /board
+		type : "GET",
 		data : "uid=" + uid,			
 		cache : false,
 		success : function(data, status){
@@ -509,8 +512,8 @@ function deleteUid(uid){
 function chkUpdate() {
     var data = $("#frmWrite").serialize();
     $.ajax({
-        url: ".", // URL: /board
-        type: "PUT",
+        url: "./a/b/u", // URL: /board
+        type: "GET",
         cache: false,
         data: data,
         success: function(data, status) {

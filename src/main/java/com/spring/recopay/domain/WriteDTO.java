@@ -17,6 +17,7 @@ public class WriteDTO {
 	private LocalDateTime regDate; // wr_regdate
 	private int score;
 	private String prfname;
+	private String fprfid;
 
 	// 웹개발시...
 	// 가능한, 다음 3가지는 이름을 일치시켜주는게 좋습니다.
@@ -24,6 +25,14 @@ public class WriteDTO {
 
 	public int getScore() {
 		return score;
+	}
+
+	public String getFprfid() {
+		return fprfid;
+	}
+
+	public void setFprfid(String fprfid) {
+		this.fprfid = fprfid;
 	}
 
 	public void setScore(int score) {

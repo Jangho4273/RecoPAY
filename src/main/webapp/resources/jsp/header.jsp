@@ -83,7 +83,7 @@
                                     <li><a href="<%=request.getContextPath() %>/perform">연극</a>
                                     	<ul class="dropdown">
                                     		<li><a href="<%=request.getContextPath() %>/perform/intro">연극소개</a></li>
-                                    		<li><a href="<%=request.getContextPath() %>/perform/genre">장르</a></li>
+                                    		<li><a href="<%=request.getContextPath() %>/perform/genre">추천</a></li>
                                     		<li><a href="<%=request.getContextPath() %>/perform/rest">후기</a></li>
                                     	</ul>
                                     </li>

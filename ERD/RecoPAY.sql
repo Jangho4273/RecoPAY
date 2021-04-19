@@ -20,6 +20,74 @@ CREATE TABLE Member (
 
 UPDATE MEMBER SET user_auth='ROLE_ADMIN' WHERE user_id = 'admin';
 
+CREATE TABLE test_write (
+	wr_uid NUMBER NOT NULL,
+	wr_subject varchar2(50),
+	wr_content clob,
+	wr_name varchar2(20),
+	wr_viewcnt NUMBER DEFAULT 0,
+	wr_regdate DATE DEFAULT sysdate,
+	wr_score NUMBER,
+	wr_prfname varchar2(50),
+	wr_prfid varchar2(40)
+);
+
+DROP TABLE test_write;
+
+INSERT INTO test_write (wr_uid, wr_subject, wr_content, wr_name, wr_score, wr_prfname)
+VALUES (1, 'a', 'a', (SELECT USER_name
+FROM MEMBER
+WHERE USER_id = 'admin'), '3', 'love');
+
+SELECT prf_id FROM PERFORM
+WHERE PRF_NAME = (SELECT WR_PRFNAME FROM test_write
+WHERE WR_SCORE >= 3) AND ROWNUM = 1
+
+
+SELECT * FROM Review;
+CREATE TABLE PerformRec (
+	rec_uid NUMBER NOT NULL,
+	prf_id varchar2(15) NOT NULL,
+	relprf_id varchar2(15) NOT NULL,
+	sim number(4,3) NOT null
+);
+SELECT p.PRF_NAME "prfname", k.prf_id "prfid", k.relprf_id "relprfid", k.sim "sim", k.prf_name "relprfname", k.prf_poster "relprfposter", k.prf_uid "reluid", k.PRF_FCLTYNM "relprffacilty"
+FROM (SELECT t.prf_id  ,t.relprf_id , t.sim, p.prf_name , p.PRF_FCLTYNM , p.PRF_POSTER , p.PRF_UID
+FROM ( SELECT * FROM performRec 
+WHERE prf_id = ( SELECT prf_id FROM PERFORM
+WHERE PRf_id = (SELECT wr_prfid FROM test_write WHERE WR_SCORE >= 3 AND WR_NAME = (SELECT USER_NAME FROM MEMBER WHERE user_id = 'admin') ) 
+)) t, PERFORM p
+WHERE p.prf_id = t.relprf_id 
+ORDER BY sim DESC) k, Perform p
+WHERE k.prf_id = p.prf_id;
+
+SELECT USER_NAME FROM MEMBER WHERE user_id = 'admin';
+
+
+SELECT * FROM TEST_WRITE ;
+SELECT * from
+(SELECT *
+FROM PERFORM a, 
+(SELECT WR_PRFNAME FROM test_write WHERE WR_SCORE >= 3 AND 
+WR_NAME = (SELECT USER_NAME FROM MEMBER WHERE user_id = 'admin')) b
+WHERE a.prf_name = b.wr_prfname) 
+
+SELECT * FROM 
+test_write;
+WHERE WR_SCORE >= 3 AND WR_NAME = (SELECT USER_NAME FROM MEMBER WHERE user_id = 'admin') AND ROWID IN (SELECT MAX(ROWID) FROM TEST_WRITE GROUP BY WR_PRFNAME);
+
+SELECT * from
+(SELECT * from
+performRec a,(SELECT wr_prfid FROM test_write WHERE WR_SCORE >= 3 AND 
+WR_NAME = (SELECT USER_NAME FROM MEMBER WHERE user_id = 'admin')) b
+WHERE a.PRF_ID = b.wr_prfid) a1, Perform b1
+WHERE a1.prf_id = b1.prf_id;
+
+
+SELECT USER_NAME FROM MEMBER WHERE user_id = 'admin';
+
+SELECT * FROM PERFORMREC;
+
 DROP TABLE Non_Member;
 
 CREATE TABLE Non_Member (
@@ -73,7 +141,17 @@ SELECT th_uid "uid", th_id "id", th_name "name", th_location "location", th_tota
 	th_telno "telno", th_chartr "chartr", th_lng "lng", th_lat "lat", th_url "url", th_totalno "totalno",th_opendate "opendate" 
 	FROM Theater where th_id = 'FC002633';
 
+DROP TABLE  Review ;
 
+CREATE TABLE  Review  (
+	re_uid	number		NOT NULL,
+	re_title 	varchar(500)		NOT NULL,
+	re_content 	clob		NOT NULL,
+	re_regdate 	date	DEFAULT SYSDATE	NOT NULL,
+	re_score 	number		NULL,
+	prf_id 	number		NOT NULL,
+	user_id 	number		NOT NULL
+);
 DROP TABLE  Reservation ;
 
 CREATE TABLE  Reservation  (
@@ -175,17 +253,7 @@ CREATE SEQUENCE event_seq;
 
 DROP SEQUENCE event_seq;
 
-DROP TABLE  Review ;
 
-CREATE TABLE  Review  (
-	re_uid 	number		NOT NULL,
-	re_title 	varchar(500)		NOT NULL,
-	re_content 	clob		NOT NULL,
-	prf_uid 	number		NOT NULL,
-	re_regdate 	date	DEFAULT SYSDATE	NOT NULL,
-	re_score 	number		NULL,
-	user_uid 	number		NULL
-);
 
 DROP TABLE  FavoritePerform ;
 
