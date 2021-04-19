@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.recopay.domain.ReservationDAO">
+   
+    <!-- 티켓 구입  -->
+    <insert id="insertBuyingTicket">
+     insert into Reservation (res_id, res_prfdate, res_title, 
+     res_payment, user_uid, res_seat,res_ticketnum)
+      values(concat(TO_CHAR(SYSDATE,'YYYY-MMDD-'),reservation_seq.nextval),
+       #{prfdate}, #{title}, #{payment}, #{uid} , #{seat},#{ticketnum})   
+    </insert>
+
+ 
+     <!-- 구매한 내역 조회   -->
+    <insert id="ttt">
+     insert into Member (res_id, res_prfdate, res_title, res_payment, user_uid, res_isfinished, res_seat,)
+      values(member_seq.nextval, #{username}, #{password}, #{name}, #{emailbf} , #{addr}, #{call})   
+    </insert>
+	
+</mapper>

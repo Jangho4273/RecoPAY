@@ -122,7 +122,8 @@ public class MemberController {
 	// 로그인 페이지 이동
 	@GetMapping("/accessError")
 	public void accessDenied(Authentication auth, Model model) {
-		System.out.println("access Denied zzz: " + auth);
+		System.out.println("access Denied : " + auth);
+		model.addAttribute("msg", "접근 권한 거부");
 	}
 	
 	//logout

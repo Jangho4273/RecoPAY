@@ -12,8 +12,30 @@ public class PerformDTO {
 	private String state	;
 	private String openrun  ;
     private String tuid		;
-	
-    public int getUid() {
+    private String ticketprice; // 티켓 가격
+    private String runday; // 상영되는 요일-시간  ex) 월요일~금요일(14:30)
+    private String runtime; // 총 상영 시간 ex) 1시간 30분 
+
+    
+	public String getTicketprice() {
+		return ticketprice;
+	}
+	public void setTicketprice(String ticketprice) {
+		this.ticketprice = ticketprice;
+	}
+	public String getRunday() {
+		return runday;
+	}
+	public void setRunday(String runday) {
+		this.runday = runday;
+	}
+	public String getRuntime() {
+		return runtime;
+	}
+	public void setRuntime(String runtime) {
+		this.runtime = runtime;
+	}
+	public int getUid() {
 		return uid;
 	}
 	public void setUid(int uid) {

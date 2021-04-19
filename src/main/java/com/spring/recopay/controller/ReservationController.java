@@ -1,24 +1,45 @@
 package com.spring.recopay.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.recopay.domain.PerformDTO;
+import com.spring.recopay.domain.ReservationDTO;
+import com.spring.recopay.domain.TheaterSeatDTO;
 import com.spring.recopay.service.ReservationService;
+import com.spring.recopay.service.TheaterService;
 
 @Controller
 @RequestMapping("/reservation")
+
 public class ReservationController {
 
 	private ReservationService rs;
+	private TheaterService ts;
+	
 	
 	@Autowired
 	public void setRs(ReservationService rs) {
 		this.rs = rs;
+	}
+	
+	@Autowired
+	public void setTs(TheaterService ts) {
+		this.ts = ts;
 	}
 
 	public ReservationController() {}
@@ -27,6 +48,11 @@ public class ReservationController {
 	public String reservationHome(Model model) {
 		model.addAttribute("list", rs.list());
 		return "reservation/select";
+	}
+	
+	@RequestMapping("/schedule")
+	public String schedule(HttpServletRequest request) {
+		return "reservation/schedule";
 	}
 	
 	@RequestMapping("/select")
@@ -41,9 +67,62 @@ public class ReservationController {
 		return "reservation/reservation";
 	}
 	
+	@RequestMapping("/mypage")
+	public String mypage(HttpServletRequest request) {
+		
+		return "reservation/mypage";
+	}
+	
+	
+	@RequestMapping(value = "/selectseat", method = RequestMethod.POST)
+	public String selectSeat(HttpServletRequest request,Model model) {
+		
+		// Post 값 받기 
+		String prfTime = request.getParameter("prfTime");
+		model.addAttribute("prfTime",prfTime);
+		String prfPrice = request.getParameter("prfPrice");
+		model.addAttribute("prfPrice",prfPrice);
+		int uid = Integer.parseInt(request.getParameter("uid"));
+		model.addAttribute("list", rs.viewByUid(uid));
+		List<PerformDTO> dto = rs.viewByUid(uid);
+
+		model.addAttribute("seatlist", ts.getBookedSeatsByNameAndTime(prfTime,dto.get(0).getFcltynm()));
+		
+		return "reservation/selectseat";
+	}
+	
+	@RequestMapping("/buying")
+	@Transactional
+	public String buyingTicket(HttpServletRequest request,ReservationDTO dto) {
+
+		
+		int result = rs.insertBuyingTicket(dto);
+		int result2 = ts.insertSeat(dto.getSeat(), dto.getTheaterName(), "asdqwd" ,dto.getPrfdate());
+		
+		if(result + result2 == 2) {
+			return "reservation/reservationOk";
+		} else {
+			return "reservation/reservationFail";
+		}
+	}
+	
+	
 	@RequestMapping("/reservation/{uid}")
 	public String reservationPerform(@PathVariable int uid, Model model) {
 		model.addAttribute("list", rs.viewByUid(uid));
+		model.addAttribute("uid", uid);
+		
+//		List<PerformDTO> dto = rs.list();
+//		
+//		for (PerformDTO e : dto) {
+//			if(e.getUid() == uid) {
+//				model.addAttribute("leftseat" , ts.getLeftSeat(e.getFcltynm(), e.getRunday()));
+//			}
+//		}
+		
+		
+		//String name = (String) model.getAttribute("name");
+		//model.addAttribute("map", ts.getMapCordXY(name));
 		return "reservation/reservationPerform";
 	}
 	

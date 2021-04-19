@@ -34,7 +34,7 @@ public class PerformService {
 		return sessionGet().viewByUid(uid);
 	}
 	
-	public List<RecoDTO> recByUser(String userid) {
+	public List<RecoDTO> recByUser(int userid) {
 		return sessionGet().recByUser(userid);
 	}
 	

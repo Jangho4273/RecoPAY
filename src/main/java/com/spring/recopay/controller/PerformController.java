@@ -1,14 +1,10 @@
 package com.spring.recopay.controller;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -26,7 +22,7 @@ public class PerformController {
 
 	public PerformController() {}
 	
-	@GetMapping("")
+	@RequestMapping("")
 	public String performHome(Model model) {
 		model.addAttribute("list", ps.list());
 		return "perform/intro";
@@ -45,8 +41,8 @@ public class PerformController {
 	}
 	
 	@RequestMapping("/genre")
-	public String performGenre(Model model, HttpSession session) {
-		String userid = currentUserName();
+	public String performGenre(Model model) {
+		int userid = 1;
 		model.addAttribute("list", ps.recByUser(userid));
 		return "perform/genre";
 	}
@@ -56,13 +52,6 @@ public class PerformController {
 	public String rest() {
 		return "perform/rest";
 	}
-	
-	public static String currentUserName() { 
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		User user = (User) authentication.getPrincipal(); 
-		return user.getUsername(); 
-	}
-
 	
 	
 

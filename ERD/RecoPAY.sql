@@ -5,6 +5,8 @@ SELECT * FROM MEMBER;
 CREATE SEQUENCE member_seq;
 DROP SEQUENCE member_seq;
 
+DROP TABLE member CASCADE CONSTRAINTS;
+
 CREATE TABLE Member (
 	user_uid	number		NOT NULL,
 	user_id	varchar2(30)		NOT NULL,
@@ -18,75 +20,13 @@ CREATE TABLE Member (
 	user_enabled NUMBER  DEFAULT 1 NOT NULL
 );
 
+UPDATE MEMBER SET user_auth='ROLE_ADMIN' WHERE user_id = 'asdqwd';
+
+SELECT * FROM MEMBER;
+
+
+
 UPDATE MEMBER SET user_auth='ROLE_ADMIN' WHERE user_id = 'admin';
-
-CREATE TABLE test_write (
-	wr_uid NUMBER NOT NULL,
-	wr_subject varchar2(50),
-	wr_content clob,
-	wr_name varchar2(20),
-	wr_viewcnt NUMBER DEFAULT 0,
-	wr_regdate DATE DEFAULT sysdate,
-	wr_score NUMBER,
-	wr_prfname varchar2(50),
-	wr_prfid varchar2(40)
-);
-
-DROP TABLE test_write;
-
-INSERT INTO test_write (wr_uid, wr_subject, wr_content, wr_name, wr_score, wr_prfname)
-VALUES (1, 'a', 'a', (SELECT USER_name
-FROM MEMBER
-WHERE USER_id = 'admin'), '3', 'love');
-
-SELECT prf_id FROM PERFORM
-WHERE PRF_NAME = (SELECT WR_PRFNAME FROM test_write
-WHERE WR_SCORE >= 3) AND ROWNUM = 1
-
-
-SELECT * FROM Review;
-CREATE TABLE PerformRec (
-	rec_uid NUMBER NOT NULL,
-	prf_id varchar2(15) NOT NULL,
-	relprf_id varchar2(15) NOT NULL,
-	sim number(4,3) NOT null
-);
-SELECT p.PRF_NAME "prfname", k.prf_id "prfid", k.relprf_id "relprfid", k.sim "sim", k.prf_name "relprfname", k.prf_poster "relprfposter", k.prf_uid "reluid", k.PRF_FCLTYNM "relprffacilty"
-FROM (SELECT t.prf_id  ,t.relprf_id , t.sim, p.prf_name , p.PRF_FCLTYNM , p.PRF_POSTER , p.PRF_UID
-FROM ( SELECT * FROM performRec 
-WHERE prf_id = ( SELECT prf_id FROM PERFORM
-WHERE PRf_id = (SELECT wr_prfid FROM test_write WHERE WR_SCORE >= 3 AND WR_NAME = (SELECT USER_NAME FROM MEMBER WHERE user_id = 'admin') ) 
-)) t, PERFORM p
-WHERE p.prf_id = t.relprf_id 
-ORDER BY sim DESC) k, Perform p
-WHERE k.prf_id = p.prf_id;
-
-SELECT USER_NAME FROM MEMBER WHERE user_id = 'admin';
-
-
-SELECT * FROM TEST_WRITE ;
-SELECT * from
-(SELECT *
-FROM PERFORM a, 
-(SELECT WR_PRFNAME FROM test_write WHERE WR_SCORE >= 3 AND 
-WR_NAME = (SELECT USER_NAME FROM MEMBER WHERE user_id = 'admin')) b
-WHERE a.prf_name = b.wr_prfname) 
-
-SELECT * FROM 
-test_write;
-WHERE WR_SCORE >= 3 AND WR_NAME = (SELECT USER_NAME FROM MEMBER WHERE user_id = 'admin') AND ROWID IN (SELECT MAX(ROWID) FROM TEST_WRITE GROUP BY WR_PRFNAME);
-
-SELECT * from
-(SELECT * from
-performRec a,(SELECT wr_prfid FROM test_write WHERE WR_SCORE >= 3 AND 
-WR_NAME = (SELECT USER_NAME FROM MEMBER WHERE user_id = 'admin')) b
-WHERE a.PRF_ID = b.wr_prfid) a1, Perform b1
-WHERE a1.prf_id = b1.prf_id;
-
-
-SELECT USER_NAME FROM MEMBER WHERE user_id = 'admin';
-
-SELECT * FROM PERFORMREC;
 
 DROP TABLE Non_Member;
 
@@ -119,7 +59,7 @@ DROP SEQUENCE theater_seq;
 CREATE SEQUENCE theater_seq;
 
 
-CREATE TABLE  Theater  (
+CREATE TABLE Theater  (
 	th_uid 	number		NOT NULL,
 	th_id varchar(10)  NOT NULL,
 	th_name 	varchar2(100)		NOT NULL,
@@ -135,44 +75,74 @@ CREATE TABLE  Theater  (
 	th_opendate varchar2(40) NULL
 );
 
+
+
+
 SELECT * FROM THEATER t ;
+
+SELECT * FROM theater WHERE th_name = '국립극장';
+
 
 SELECT th_uid "uid", th_id "id", th_name "name", th_location "location", th_totalseat "totalseat", th_state "state", 
 	th_telno "telno", th_chartr "chartr", th_lng "lng", th_lat "lat", th_url "url", th_totalno "totalno",th_opendate "opendate" 
 	FROM Theater where th_id = 'FC002633';
 
-DROP TABLE  Review ;
 
-CREATE TABLE  Review  (
-	re_uid	number		NOT NULL,
-	re_title 	varchar(500)		NOT NULL,
-	re_content 	clob		NOT NULL,
-	re_regdate 	date	DEFAULT SYSDATE	NOT NULL,
-	re_score 	number		NULL,
-	prf_id 	number		NOT NULL,
-	user_id 	number		NOT NULL
-);
 DROP TABLE  Reservation ;
 
 CREATE TABLE  Reservation  (
-	res_number 	varchar2(30)		NOT NULL,
-	res_data 	date		NOT NULL,
-	res_visit 	number		NOT NULL,
-	res_paycost 	number		NOT NULL,
+	res_id 	varchar2(30)		NOT NULL,
+	res_prfdate varchar(100)  NOT NULL,
+	res_title varchar(150) NULL,
+	res_payment varchar(100) NULL,
 	user_uid 	number		NULL,
 	nm_uid 	number		NULL,
-	res_isCancel 	char(1)		NOT NULL,
-	res_seat 	varchar2(25)		NOT NULL,
-	tt_uid 	number		NOT NULL
+	res_isfinished 	char(1)		null,
+	res_iscancel	char(1)		NULL,
+	res_seat 	varchar2(25)    NULL,
+	tt_uid 	number		NULL,
+	res_ticketnum number null
 );
+
+INSERT INTO RESERVATION (res_id,res_prfdate) VALUES (concat(TO_CHAR(SYSDATE,'YYYY-MMDD'),'-0001'),sysdate);
+
+SELECT * FROM RESERVATION r ;
+
+CREATE SEQUENCE reservation_seq;
 
 DROP TABLE  Theater_Seat ;
 
 CREATE TABLE  Theater_Seat  (
-	seat_num 	varchar2(10)		NOT NULL,
-	th_uid 	number		NOT NULL
+	seat_num 	varchar2(10)  NOT NULL,
+	th_uid 	number		NOT NULL, 
+	prf_time varchar(50)  NOT NULL,
+	user_uid number     NOT NULL
 );
 
+
+
+
+SELECT seat_num "seat", th_uid, user_uidm prf_time "time" FROM Theater_Seat;
+
+SELECT * FROM theater_seat;
+
+insert into Theater_Seat (seat_num , th_uid , user_uid , prf_time) values
+ 		('A2', (SELECT th_uid from Theater where th_name = '63아트홀' ) , 
+    	 (SELECT user_uid from Member where user_id = 'asdqwd') , '4월 13일 14:00');
+
+SELECT th_totalseat - (select count(*) from theater_seat where th_uid = (SELECT TH_UID FROM THEATER WHERE th_name='2001 아울렛키즈홀 [구로]') ) "leftSeat" 
+FROM theater WHERE th_name = '2001 아울렛키즈홀 [구로]';
+
+(select count(*) from theater_seat where th_uid = (SELECT TH_UID FROM THEATER WHERE th_name='242') );
+
+insert into Theater_Seat (seat_num , th_uid , user_uid) values
+  ('A32', (SELECT th_uid from Theater where th_name ='242' ) , 
+     (SELECT user_uid from Member where user_id = 'asdqwd'));  
+
+    SELECT * FROM THEATER_SEAT ts ;
+
+    
+    
 DROP TABLE  Notice_Board ;
 
 CREATE TABLE  Notice_Board  (
@@ -253,7 +223,17 @@ CREATE SEQUENCE event_seq;
 
 DROP SEQUENCE event_seq;
 
+DROP TABLE  Review ;
 
+CREATE TABLE  Review  (
+	re_uid 	number		NOT NULL,
+	re_title 	varchar(500)		NOT NULL,
+	re_content 	clob		NOT NULL,
+	prf_uid 	number		NOT NULL,
+	re_regdate 	date	DEFAULT SYSDATE	NOT NULL,
+	re_score 	number		NULL,
+	user_uid 	number		NULL
+);
 
 DROP TABLE  FavoritePerform ;
 
@@ -290,6 +270,7 @@ ORDER BY r.prf_id) k, PERFORM p
 WHERE k.prf_id = p.prf_id;
 
 
+DROP TABLE perform CASCADE CONSTRAINTS;
 
 CREATE TABLE Perform (
 	prf_uid	number		NOT NULL,
@@ -300,15 +281,22 @@ CREATE TABLE Perform (
 	prf_fcltynm	varchar2(200)		NULL,
 	prf_poster	varchar2(200)		NULL,
 	prf_state	varchar2(20)		NOT NULL,
+	prf_runday varchar2(100)		NULL,
+	prf_runtime  varchar2(50)		NULL,
+	prf_ticketprice varchar2(100)   NULL,
 	prf_openrun	char(1)		NULL,
 	th_uid	varchar2(30)		NULL,
 	prf_avgsc	number(2,1)		NULL,
 	prf_summary clob NULL
 );
 
+SELECT count(*) FROM perform;
 
-
+<<<<<<< HEAD
+SELECT * FROM PERFORM;
+=======
 SELECT * FROM PERFORMrec;
+>>>>>>> branch 'master' of https://github.com/Jangho4273/RecoPAY.git
 SELECT * FROM THEATER t ;
 
 SELECT * FROM perform;

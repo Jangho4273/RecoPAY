@@ -5,56 +5,49 @@ import java.time.format.DateTimeFormatter;
 
 
 public class ReservationDTO {
-	private String res_number;	//공연예매번호
-	private LocalDateTime res_date;	//공연예매날짜
-	private int res_visit;	//관람인원수
-	private int res_paycost;	//결제금액
+	private String id;	//공연예매번호
+	private String prfdate;	//공연예매날짜
+	private String title;  //구매한 공연 제목
+	private String payment;    // 결재 금액 
 	private int user_uid;	//회원UID
 	private int nm_uid; 	//비회원 UID
-	private char res_isCancel;	//예매취소여부
-	private String res_seat;	//공연좌석
-	private int tt_uid;		//공연일정번호
+	private char isfinish;
+	private char iscancel;	//예매취소여부
+	private String seat;	//공연좌석
+	private int uid;		//공연일정번호
+	private int ticketnum; // 구매한 티켓 갯수
+	private String theaterName;
 	
-	public ReservationDTO() {
-		super();
-	}
 	
-	public ReservationDTO(String res_number, LocalDateTime res_date, int res_visit, int res_paycost, int user_uid,
-			int nm_uid, char res_isCancel, String res_seat, int tt_uid) {
-		super();
-		this.res_number = res_number;
-		this.res_date = res_date;
-		this.res_visit = res_visit;
-		this.res_paycost = res_paycost;
-		this.user_uid = user_uid;
-		this.nm_uid = nm_uid;
-		this.res_isCancel = res_isCancel;
-		this.res_seat = res_seat;
-		this.tt_uid = tt_uid;
+	public String getTheaterName() {
+		return theaterName;
 	}
-	public String getRes_number() {
-		return res_number;
+	public void setTheaterName(String theaterName) {
+		this.theaterName = theaterName;
 	}
-	public void setRes_number(String res_number) {
-		this.res_number = res_number;
+	public String getId() {
+		return id;
 	}
-	public String getRes_date() {
-		return this.res_date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss"));
+	public void setId(String id) {
+		this.id = id;
 	}
-	public void setRes_date(LocalDateTime res_date) {
-		this.res_date = res_date;
+	public String getPayment() {
+		return payment;
 	}
-	public int getRes_visit() {
-		return res_visit;
+	public String getPrfdate() {
+		return prfdate;
 	}
-	public void setRes_visit(int res_visit) {
-		this.res_visit = res_visit;
+	public void setPrfdate(String prfdate) {
+		this.prfdate = prfdate;
 	}
-	public int getRes_paycost() {
-		return res_paycost;
+	public void setPayment(String payment) {
+		this.payment = payment;
 	}
-	public void setRes_paycost(int res_paycost) {
-		this.res_paycost = res_paycost;
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public int getUser_uid() {
 		return user_uid;
@@ -68,28 +61,35 @@ public class ReservationDTO {
 	public void setNm_uid(int nm_uid) {
 		this.nm_uid = nm_uid;
 	}
-	public char getRes_isCancel() {
-		return res_isCancel;
+	public char getIsfinish() {
+		return isfinish;
 	}
-	public void setRes_isCancel(char res_isCancel) {
-		this.res_isCancel = res_isCancel;
+	public void setIsfinish(char isfinish) {
+		this.isfinish = isfinish;
 	}
-	public String getRes_seat() {
-		return res_seat;
+	public char getIscancel() {
+		return iscancel;
 	}
-	public void setRes_seat(String res_seat) {
-		this.res_seat = res_seat;
+	public void setIscancel(char iscancel) {
+		this.iscancel = iscancel;
 	}
-	public int getTt_uid() {
-		return tt_uid;
+	public String getSeat() {
+		return seat;
 	}
-	public void setTt_uid(int tt_uid) {
-		this.tt_uid = tt_uid;
+	public void setSeat(String seat) {
+		this.seat = seat;
+	}
+	public int getUid() {
+		return uid;
+	}
+	public void setUid(int uid) {
+		this.uid = uid;
+	}
+	public int getTicketnum() {
+		return ticketnum;
+	}
+	public void setTicketnum(int ticketnum) {
+		this.ticketnum = ticketnum;
 	}
 
-	@Override
-	public String toString() {
-		return String.format("ReservationDTO] %s : %s : %d : %d : %d : %d : %s : %s : %d", res_number , res_date, res_visit, res_paycost, user_uid, nm_uid, res_isCancel, res_seat, tt_uid);
-	}
-	
 }
