@@ -5,5 +5,5 @@ import java.util.List;
 public interface PerformDAO {
 	List<PerformDTO> select();
 	List<PerformDTO> viewByUid(int uid);
-	List<RecoDTO> recByUser(int userid);
+	List<RecoDTO> recByUser(String userid);
 }
