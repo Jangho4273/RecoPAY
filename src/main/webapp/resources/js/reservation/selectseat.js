@@ -3,7 +3,18 @@
  */
 
 var clickedArr = [];
-var clickedseat_val, totalseat_val;
+var clickedseat_val,totalseat_val ;
+
+
+// 페이지 이동 시 값 초기화 
+$(document).ready(function () {
+	clickedArr = [];
+	clickedseat_val = 0;
+	totalseat_val = 0;
+	
+});
+
+
 
 function reply_click(id) {
 	if (document.getElementById(id).style.backgroundColor != "rgb(245, 214, 130)") {
@@ -37,13 +48,17 @@ function reply_click(id) {
 
 	$('input[name=seat]').attr('value',clickedseat_val);
 	$('input[name=ticketnum]').attr('value',clickedArr.length);
-	
 
-	
 }
 
-
-
+function buy_but() {
+	if(clickedArr.length == 0) {
+		alert('좌석을 선택해주세요.');
+	} else {
+		document.frm.submit();
+	}
+	
+}
 
 
 

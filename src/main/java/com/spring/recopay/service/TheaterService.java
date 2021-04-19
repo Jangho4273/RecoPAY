@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.spring.recopay.domain.PerformDAO;
 import com.spring.recopay.domain.PerformDTO;
 import com.spring.recopay.domain.TheaterDAO;
+import com.spring.recopay.domain.TheaterDTO;
 import com.spring.recopay.domain.TheaterSeatDTO;
 
 @Service
@@ -42,9 +43,9 @@ public class TheaterService implements TheaterDAO{
 	}
 
 	@Override
-	public PerformDTO getMapCordXY(String name) {
+	public TheaterDTO getMapCordXY(int uid) {
 		// TODO Auto-generated method stub
-		return getSession().getMapCordXY(name);
+		return getSession().getMapCordXY(uid);
 	}
 
 	@Override
@@ -66,10 +67,8 @@ public class TheaterService implements TheaterDAO{
 	}
 
 	@Override
-	public List<TheaterSeatDTO> getLeftSeat(String theaterName, String time) {
+	public List<TheaterSeatDTO> getLeftSeat(int uid) {
 		// TODO Auto-generated method stub
-		return getSession().getLeftSeat(theaterName, time);
+		return getSession().getLeftSeat(uid);
 	}
-
-
 }

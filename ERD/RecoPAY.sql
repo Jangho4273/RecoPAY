@@ -81,11 +81,22 @@ CREATE TABLE Theater  (
 SELECT * FROM THEATER t ;
 
 SELECT * FROM theater WHERE th_name = '국립극장';
-
+SELECT th_lat "lat", th_lng "lng" FROM theater WHERE th_name = '국립극장';
 
 SELECT th_uid "uid", th_id "id", th_name "name", th_location "location", th_totalseat "totalseat", th_state "state", 
 	th_telno "telno", th_chartr "chartr", th_lng "lng", th_lat "lat", th_url "url", th_totalno "totalno",th_opendate "opendate" 
 	FROM Theater where th_id = 'FC002633';
+
+
+SELECT * FROM THEATER t ;
+SELECT * FROM THEATER_SEAT ts ;
+
+
+SELECT TH_TOTALSEAT "totalSeat",count(seat_num) "bookedSeat", PRF_TIME "time", prf_uid FROM  
+(SELECT t.TH_UID, ts.SEAT_NUM, ts.PRF_TIME, t.TH_TOTALSEAT, p2.PRF_UID 
+FROM THEATER t ,THEATER_SEAT ts , PERFORM p2
+WHERE t.TH_UID = ts.TH_UID AND p2.PRF_FCLTYNM = t.TH_NAME) WHERE prf_uid = 1211 
+GROUP BY TH_TOTALSEAT, PRF_TIME, prf_uid;
 
 
 DROP TABLE  Reservation ;
@@ -121,10 +132,10 @@ CREATE TABLE  Theater_Seat  (
 
 
 
-
 SELECT seat_num "seat", th_uid, user_uidm prf_time "time" FROM Theater_Seat;
 
 SELECT * FROM theater_seat;
+
 
 insert into Theater_Seat (seat_num , th_uid , user_uid , prf_time) values
  		('A2', (SELECT th_uid from Theater where th_name = '63아트홀' ) , 
@@ -290,7 +301,8 @@ CREATE TABLE Perform (
 	prf_summary clob NULL
 );
 
-SELECT count(*) FROM perform;
+
+SELECT * FROM perform;
 
 <<<<<<< HEAD
 SELECT * FROM PERFORM;

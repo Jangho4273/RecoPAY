@@ -121,6 +121,7 @@
 				<p class="text-center" style="font-size: 40px;">C</p>
 				<div class="row">
 					<c:forEach var="i" begin="0" end="98">
+
 						<c:set var="currentId" value="c${i }" />
 						<c:set var="isSeated" value="0" />
 
@@ -185,7 +186,7 @@
 	<!-- 예약 진행 버튼 시작 -->
 	<!-- Button trigger modal -->
 	<button type="button" class="btn btn-primary" data-toggle="modal"
-		data-target="#exampleModal">좌석 선택 완료</button>
+		data-target="#exampleModal" >좌석 선택 완료</button>
 
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -207,17 +208,18 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">닫기</button>
+						
 					<form action="<%=request.getContextPath() %>/reservation/buying"
-						method="post">
-						<input type="hidden" name="prfdate" value="${prfTime }" /><br>
-						<input type="hidden" name=title value="${list[0].name }" /><br>
-						<input type="hidden" name="payment" value="${prfPrice }" /><br>
+						method="post" name="frm">
+						<input type="hidden" name="prfdate" value="${prfTime }" />
+						<input type="hidden" name=title value="${list[0].name }" />
+						<input type="hidden" name="payment" value="${prfPrice }" />
 						<sec:authentication property="principal.username" var="user_id" />
-						<input type="hidden" name="uid" value="00" /><br> <input
+						<input type="hidden" name="uid" value="00" /> <input
 							type="hidden" name="seat" /><br> <input type="hidden"
 							name="ticketnum" /><br> <input type="hidden"
-							name="theaterName" value="${list[0].fcltynm }" /><br>
-						<button type="submit" class="btn btn-primary">티켓 구매하기</button>
+							name="theaterName" value="${list[0].fcltynm }" />
+						<button type="button" class="btn btn-primary" onclick="buy_but();">티켓 구매하기</button>
 					</form>
 
 				</div>

@@ -4,9 +4,13 @@ public class TheaterSeatDTO {
 	private String seat;
 	private int th_uid;
 	private int user_uid;
+	private int prf_uid;
 	private String time;
 	private String theaterName;
 	private int leftSeat;
+	private int totalSeat;
+	private int bookedSeat;
+
 	
 
 	public int getLeftSeat() {

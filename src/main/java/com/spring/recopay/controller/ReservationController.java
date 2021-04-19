@@ -97,20 +97,30 @@ public class ReservationController {
 
 		
 		int result = rs.insertBuyingTicket(dto);
-		int result2 = ts.insertSeat(dto.getSeat(), dto.getTheaterName(), "asdqwd" ,dto.getPrfdate());
 		
-		if(result + result2 == 2) {
+		String[] seatList = dto.getSeat().split(", ");
+		
+		for(int i=0; i<seatList.length; i++) {
+			ts.insertSeat(seatList[i], dto.getTheaterName(), "asdqwd" ,dto.getPrfdate());
+		}
+		
+		if(result > 0) {
 			return "reservation/reservationOk";
 		} else {
 			return "reservation/reservationFail";
 		}
 	}
 	
-	
+	// 영화관 정보 출력 
 	@RequestMapping("/reservation/{uid}")
 	public String reservationPerform(@PathVariable int uid, Model model) {
 		model.addAttribute("list", rs.viewByUid(uid));
 		model.addAttribute("uid", uid);
+		
+		model.addAttribute("location",ts.getMapCordXY(uid));
+		
+		//남은 좌석 수의 list 가져오기 
+		model.addAttribute("leftseatArr", ts.getLeftSeat(uid));
 		
 //		List<PerformDTO> dto = rs.list();
 //		

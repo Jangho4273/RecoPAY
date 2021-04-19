@@ -45,7 +45,7 @@
 
 <!-- Title -->
 <title>Reservation</title>
-
+		
 <!-- Favicon -->
 <link rel="icon"
 	href="<%=request.getContextPath()%>/resources/img/core-img/favicon.ico">
@@ -65,7 +65,7 @@
 </head>
 
 <body>
-
+	
 	<jsp:include page="/resources/jsp/header.jsp"></jsp:include>
 
 	<!-- ##### Breadcumb Area Start ##### -->
@@ -77,7 +77,9 @@
 		</div>
 	</section>
 	<!-- ##### Breadcumb Area End ##### -->
+	
 
+	
 	<!-- ##### Contact Area Start ##### -->
 	<section class="contact-area section-padding-100-0">
 		<div class="container">
@@ -228,7 +230,7 @@
 							<div class="time-right tit">
 
 
-								<button type="button" onclick="location.href='<%=request.getContextPath() %>/theater/map?lat=${map.lat }&lng=${map.lng }'">공연장 가는길 보기</button>
+								<button type="button" onclick="location.href='<%=request.getContextPath() %>/theater/map?lat=${location.lat }&lng=${location.lng }'">공연장 가는길 보기</button>
 
 							</div>
 				
@@ -237,16 +239,16 @@
 					
 					
 					
-					<form action="<%=request.getContextPath() %>/reservation/selectseat" method='post'>
+					<form name='formData' action="<%=request.getContextPath() %>/reservation/selectseat" method='post'>
 						
 								<select id="selectTime" name="prfTime">
-									<option value="1" selected="selected">공연시간선택</option>
+									<option value="0" selected="selected">공연시간선택</option>
 								</select> <select id="selectPrice" name="prfPrice">
-									<option value="1" selected="selected">공연가격선택</option>
+									<option value="0" selected="selected">공연가격선택</option>
 								</select>
 								<input type="hidden" name="uid" value="${uid }"/>
 		
-						<button id="buyingBtn">예매하기</button>
+						<button id="buyingBtn" type="button" onClick="res_click(this.id);">예매하기</button>
                     </form>
 					
 					
@@ -268,11 +270,12 @@
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<%-- <script src="${pageContext.request.contextPath }/js/reservation/reservationSelect.js"></script> --%>
-	<script
-		src="${pageContext.request.contextPath }/js/reservation/reservationDetail.js"></script>
+	<script src="${pageContext.request.contextPath }/js/reservation/reservationDetail.js"></script>
+	
 	<jsp:include page="/resources/jsp/footer.jsp"></jsp:include>
-
-
+	
+		<script> var leftSeatList = ${leftseatArr} </script>
+		
 </body>
 
 </html>
