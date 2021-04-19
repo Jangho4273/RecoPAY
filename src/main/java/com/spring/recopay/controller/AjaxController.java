@@ -3,11 +3,11 @@ package com.spring.recopay.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -161,7 +161,7 @@ public class AjaxController {
 	}
 	
 	// C. 글 작성
-	@PostMapping("")
+	@GetMapping("/a/b/w")
 	public AjaxWriteResult writeOk(WriteDTO dto) {
 		int count = 0;
 		
@@ -192,7 +192,7 @@ public class AjaxController {
 	}
 	
 	// D. 글 수정
-	@PutMapping("")
+	@GetMapping("a/b/u")
 	public AjaxWriteResult updateOk(WriteDTO dto) {
 		int count = 0;
 		
@@ -222,7 +222,7 @@ public class AjaxController {
 	}
 	
 	// F. 글 삭제
-	@DeleteMapping("")
+	@GetMapping("/a/b/d")
 	public AjaxWriteResult deleteOk(int [] uid) {
 		int count = 0;
 		
@@ -246,6 +246,12 @@ public class AjaxController {
 		result.setMessage(message.toString());
 		result.setCount(count);
 		return result;	
+	}
+	
+	public static String currentUserName() { 
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		User user = (User) authentication.getPrincipal(); 
+		return user.getUsername(); 
 	}
 	
 	
