@@ -7,17 +7,35 @@ public class TheaterSeatDTO {
 	private int prf_uid;
 	private String time;
 	private String theaterName;
-	private int leftSeat;
-	private int totalSeat;
-	private int bookedSeat;
+	private String leftSeat;
+	private String totalSeat;
+	private String bookedSeat;
 
 	
 
-	public int getLeftSeat() {
+	public String getLeftSeat() {
 		return leftSeat;
 	}
-	public void setLeftSeat(int leftSeat) {
+	public void setLeftSeat(String leftSeat) {
 		this.leftSeat = leftSeat;
+	}
+	public String getTotalSeat() {
+		return totalSeat;
+	}
+	public void setTotalSeat(String totalSeat) {
+		this.totalSeat = totalSeat;
+	}
+	public String getBookedSeat() {
+		return bookedSeat;
+	}
+	public void setBookedSeat(String bookedSeat) {
+		this.bookedSeat = bookedSeat;
+	}
+	public int getPrf_uid() {
+		return prf_uid;
+	}
+	public void setPrf_uid(int prf_uid) {
+		this.prf_uid = prf_uid;
 	}
 	public String getTheaterName() {
 		return theaterName;

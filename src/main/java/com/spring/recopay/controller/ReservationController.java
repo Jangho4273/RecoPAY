@@ -120,7 +120,14 @@ public class ReservationController {
 		model.addAttribute("location",ts.getMapCordXY(uid));
 		
 		//남은 좌석 수의 list 가져오기 
-		model.addAttribute("leftseatArr", ts.getLeftSeat(uid));
+//		List<TheaterSeatDTO> dto = ts.getLeftSeat(uid);
+//		System.out.println(dto.get(0).getTotalSeat());
+//		if(dto.size() == 0 ) {
+//			
+//		} else {
+//			model.addAttribute("leftseatArr", ts.getLeftSeat(uid));
+//		}
+		
 		
 //		List<PerformDTO> dto = rs.list();
 //		

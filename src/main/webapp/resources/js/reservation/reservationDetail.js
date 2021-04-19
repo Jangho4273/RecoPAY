@@ -5,6 +5,10 @@ var weekdaylist = ['월요일', '화요일', '수요일', '목요일', '금요�
 var clickedWeek;
 var clickedday;
 var clickedMon;
+var leftSeatList = [];
+var totalSeat;
+var timeList = [];
+
 
 // 페이지 최초 로딩 
 $(document).ready(function() {
@@ -366,7 +370,7 @@ $calBody.addEventListener('click', (e) => {
 	
 	parseticketPrice(ticketPrice);
 	
-	//alert(leftSeatList);
+	//alert(leftSeatList.time);
 	
 });
 

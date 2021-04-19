@@ -78,6 +78,15 @@
 	</section>
 	<!-- ##### Breadcumb Area End ##### -->
 	
+	<script> 
+		
+		//alert('${leftseatArr.totalSeat }');
+		//leftSeatList.push(${leftseatArr });
+		//timeList.push('${leftseatArr[i] }');
+		//totalSeat = '${leftseatArr.totalSeat}';
+		
+	</script>
+		
 
 	
 	<!-- ##### Contact Area Start ##### -->
@@ -247,6 +256,7 @@
 									<option value="0" selected="selected">공연가격선택</option>
 								</select>
 								<input type="hidden" name="uid" value="${uid }"/>
+								<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
 		
 						<button id="buyingBtn" type="button" onClick="res_click(this.id);">예매하기</button>
                     </form>
@@ -274,8 +284,23 @@
 	
 	<jsp:include page="/resources/jsp/footer.jsp"></jsp:include>
 	
-		<script> var leftSeatList = ${leftseatArr} </script>
 		
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

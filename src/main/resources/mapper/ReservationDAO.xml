@@ -7,9 +7,9 @@
     <!-- 티켓 구입  -->
     <insert id="insertBuyingTicket">
      insert into Reservation (res_id, res_prfdate, res_title, 
-     res_payment, user_uid, res_seat,res_ticketnum)
+     res_payment, user_id, res_seat,res_ticketnum)
       values(concat(TO_CHAR(SYSDATE,'YYYY-MMDD-'),reservation_seq.nextval),
-       #{prfdate}, #{title}, #{payment}, #{uid} , #{seat},#{ticketnum})   
+       #{prfdate}, #{title}, #{payment}, #{user_id} , #{seat},#{ticketnum} )   
     </insert>
 
  
