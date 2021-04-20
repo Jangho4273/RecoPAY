@@ -75,11 +75,11 @@
                                     		<li><a href="">종료된 이벤트</a></li>
                                     	</ul>
                                     </li>
-                                    <li><a href="<%=request.getContextPath() %>/servicecenter/notice">고객센터</a>
+                                    <li><a href="<%=request.getContextPath() %>/servicecenter/notice/notice">고객센터</a>
                                     	<ul class="dropdown">
-                                    		<li><a href="<%=request.getContextPath() %>/servicecenter/notice">공지사항</a></li>
-                                    		<li><a href="<%=request.getContextPath() %>/servicecenter/question">1대1문의</a></li>
-                                    		<li><a href="<%=request.getContextPath() %>/servicecenter/faq">자주묻는질문</a></li>
+                                    		<li><a href="<%=request.getContextPath() %>/servicecenter/notice/notice">공지사항</a></li>
+                                    		<li><a href="<%=request.getContextPath() %>/servicecenter/qna/qna">1대1문의</a></li>
+                                    		<li><a href="<%=request.getContextPath() %>/servicecenter/faq/faq">자주묻는질문</a></li>
                                     	</ul>
                                     </li>
                                     <li><a href="contact">소개</a>

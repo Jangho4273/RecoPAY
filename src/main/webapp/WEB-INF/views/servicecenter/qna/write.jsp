@@ -72,7 +72,7 @@ function chkSubmit(){
                             <div class="icon mr-30">
                                 <span class="icon-smartphone"></span>
                             </div>
-                            <p><a href="<%=request.getContextPath() %>/servicecenter/question">1대1 문의</a></p>
+                            <p><a href="<%=request.getContextPath() %>/servicecenter/qna">1대1 문의</a></p>
                         </div>
 
                         <!-- Single Contact Info -->
@@ -83,14 +83,8 @@ function chkSubmit(){
                             <p><a href="<%=request.getContextPath() %>/servicecenter/faq">자주 묻는 질문</a></p>
                         </div>
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ##### Contact Area End ##### -->
-
-  <!-- 게시판 글쓰기 양식 영역 시작 -->
+	
+	<!-- 게시판 글쓰기 양식 영역 시작 -->
 	<div class="container">
 		<div class="row">
 			<form method="post" action="writeOk" onsubmit="return chkSubmit()">
@@ -118,6 +112,14 @@ function chkSubmit(){
 		</div>
 	</div>
 	<!-- 게시판 글쓰기 양식 영역 끝 -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Contact Area End ##### -->
+
 	
 	<!-- 부트스트랩 참조 영역 -->
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="">
@@ -20,12 +21,17 @@
 
 </head>
 <script>
-function chkDelete(uid){
-	// 삭제 여부, 다시 확인 하고 진행하기
-	var r = confirm("삭제하시겠습니까?");
-	if(r){
-		location.href = 'deleteOk?uid=' + uid;
+function chkSubmit(){
+	frm = document.forms['frm'];
+	
+	var title = frm['title'].value.trim();
+
+	if(subject == ""){
+		alert("제목은 반드시 작성해야 합니다");
+        frm["title"].focus();
+        return false;
 	}
+	return true;
 }
 </script>
 <body>
@@ -66,7 +72,7 @@ function chkDelete(uid){
                             <div class="icon mr-30">
                                 <span class="icon-smartphone"></span>
                             </div>
-                            <p><a href="<%=request.getContextPath() %>/servicecenter/question">1대1 문의</a></p>
+                            <p><a href="<%=request.getContextPath() %>/servicecenter/qna">1대1 문의</a></p>
                         </div>
 
                         <!-- Single Contact Info -->
@@ -84,44 +90,34 @@ function chkDelete(uid){
     </section>
     <!-- ##### Contact Area End ##### -->
 
-	<!-- 게시판 글 보기 양식 영역 시작 -->
+  <!-- 게시판 글쓰기 양식 영역 시작 -->
 	<div class="container">
 		<div class="row">
-			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
-				<thead>
-					<tr>
-						<th colspan="2" style="background-color: #eeeeee; text-align: center;">게시판 글 보기</th>
-					</tr>
-				</thead>
-				
-				<body>
-				
-				UID : ${list[0].n_uid }<br>
-				작성자 : ${list[0].name }<br>
-				제목 : ${list[0].title }<br>
-				등록일 : ${list[0].uploadtime }<br>
-				조회수 : ${list[0].viewcnt }<br>
-				내용: ${list[0].content }<br>
-				<hr>
-				<div>
-				
-</div>
-	
-<hr>
-<br>
-<button onclick="location.href='update?uid=${list[0].n_uid}'">수정하기</button>
-<button onclick="location.href = 'notice'">목록보기</button>
-<button onclick="chkDelete(${list[0].n_uid})">삭제하기</button>
-<button onclick="location.href = 'write'">신규등록</button>
-
-			</table>
-			</body>
-			<a href="notice" class="btn btn-primary">목록</a>
-			
-	
+			<form method="post" action="writeOk" onsubmit="return chkSubmit()">
+				<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+					<thead>
+						<tr>
+							<th colspan="2" style="background-color: #eeeeee; text-align: center;">게시판 글쓰기 양식</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" class="form-control" placeholder="글 제목" name="title" maxlength="50"></td>
+						</tr>
+						<tr>
+							<td><input type="text" class="form-control" placeholder="글 작성자" name="name" maxlength="50"></td>
+						</tr>
+						<tr>
+							<td><textarea class="form-control" placeholder="글 내용" name="content" maxlength="2048" style="height: 350px;"></textarea></td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- 글쓰기 버튼 생성 -->
+				<input type="submit" class="btn btn-primary pull-right" value="글쓰기">
+			</form>
 		</div>
 	</div>
-	<!-- 게시판 글 보기 양식 영역 끝 -->
+	<!-- 게시판 글쓰기 양식 영역 끝 -->
 	
 	<!-- 부트스트랩 참조 영역 -->
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

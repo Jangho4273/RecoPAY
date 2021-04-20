@@ -90,9 +90,9 @@
                                     </li>
                                     <li><a href="contact">고객센터</a>
                                     	<ul class="dropdown">
-                                    		<li><a href="<%=request.getContextPath() %>/servicecenter/notice">공지사항</a></li>
-                                    		<li><a href="<%=request.getContextPath() %>/servicecenter/question">1대1문의</a></li>
-                                    		<li><a href="<%=request.getContextPath() %>/servicecenter/faq">자주묻는질문</a></li>
+                                    		<li><a href="<%=request.getContextPath() %>/servicecenter/notice/notice">공지사항</a></li>
+                                    		<li><a href="<%=request.getContextPath() %>/servicecenter/qna/qna">1대1문의</a></li>
+                                    		<li><a href="<%=request.getContextPath() %>/servicecenter/faq/faq">자주묻는질문</a></li>
                                     	</ul>
                                     </li>
                                     <li><a href="contact">소개</a>
@@ -153,7 +153,7 @@
                             <div class="icon mr-30">
                                 <span class="icon-placeholder"></span>                          
                             </div>
-                           <p><a href="<%=request.getContextPath() %>/servicecenter/notice">공지사항</a></p>
+                           <p><a href="<%=request.getContextPath() %>/servicecenter/notice/notice">공지사항</a></p>
                         </div>
 
                         <!-- Single Contact Info -->
@@ -161,7 +161,7 @@
                             <div class="icon mr-30">
                                 <span class="icon-smartphone"></span>
                             </div>
-                          <p><a href="<%=request.getContextPath() %>/servicecenter/question">1대1문의</a></p>
+                          <p><a href="<%=request.getContextPath() %>/servicecenter/qna/qna">1대1문의</a></p>
                         </div>
 
                         <!-- Single Contact Info -->
@@ -169,7 +169,7 @@
                             <div class="icon mr-30">
                                 <span class="icon-mail"></span>
                             </div>
-                          <p><a href="<%=request.getContextPath() %>/servicecenter/faq">자주묻는질문</a></p>
+                          <p><a href="<%=request.getContextPath() %>/servicecenter/faq/faq">자주묻는질문</a></p>
                         </div>
 
                         <!-- Contact Social Info -->

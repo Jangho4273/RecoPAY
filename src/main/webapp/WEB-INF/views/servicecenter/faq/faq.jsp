@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -13,7 +13,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>공지사항</title>
+    <title>FAQ</title>
 
     <!-- Favicon -->
     <link rel="icon" href="<%=request.getContextPath() %>/resources/img/core-img/favicon.ico">
@@ -30,8 +30,8 @@
     <!-- ##### Breadcumb Area Start ##### -->
     <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<%=request.getContextPath() %>/resources/img/bg-img/breadcumb.jpg);">
         <div class="bradcumbContent">
-            <p>공지사항</p>
-            <h2>환영합니다</h2>
+            <p>FAQ</p>
+            <h2>자주묻는질문</h2>
         </div>
     </section>
     <!-- ##### Breadcumb Area End ##### -->
@@ -53,7 +53,7 @@
                             <div class="icon mr-30">
                                 <span class="icon-placeholder"></span>
                             </div>
-                            <p><a href="<%=request.getContextPath() %>/servicecenter/notice">공지사항</a></p>
+                            <p><a href="<%=request.getContextPath() %>/servicecenter/notice/notice">공지사항</a></p>
                         </div>
 
                         <!-- Single Contact Info -->
@@ -61,7 +61,7 @@
                             <div class="icon mr-30">
                                 <span class="icon-smartphone"></span>
                             </div>
-                            <p><a href="<%=request.getContextPath() %>/servicecenter/question">1대1 문의</a></p>
+                            <p><a href="<%=request.getContextPath() %>/servicecenter/qna/qna">1대1 문의</a></p>
                         </div>
 
                         <!-- Single Contact Info -->
@@ -69,17 +69,17 @@
                             <div class="icon mr-30">
                                 <span class="icon-mail"></span>
                             </div>
-                            <p><a href="<%=request.getContextPath() %>/servicecenter/faq">자주 묻는 질문</a></p>
+                            <p><a href="<%=request.getContextPath() %>/servicecenter/faq/faq">자주 묻는 질문</a></p>
                         </div>
 
                     </div>
                 </div>
+
+
             </div>
         </div>
     </section>
-    <!-- ##### Contact Area End ##### -->
-
-  <!-- 게시판 메인 페이지 영역 시작 -->
+ <!-- 게시판 메인 페이지 영역 시작 -->
 	<div class="container">
 		<div class="row">
 			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
@@ -99,8 +99,8 @@
 		<c:otherwise>
 			<c:forEach var="dto" items="${list }">
 				<tr>
-					<td>${dto.n_uid }</td>  <%-- getN_uid() --%>
-					<td><a href="view?N_uid=${dto.n_uid }">${dto.title }</a></td>
+					<td>${dto.f_uid }</td>  <%-- getN_uid() --%>
+					<td><a href="view?f_uid=${dto.f_uid }">${dto.title }</a></td>
 					<td>${dto.name}</td>  <%-- getname() --%>
 					<td>${dto.viewcnt }</td>
 					<td>${dto.uploadtime }</td> <%-- getuploadTime() --%>
@@ -111,19 +111,10 @@
 				</tbody>
 			</table>
 			<!-- 글쓰기 버튼 생성 -->
-			<a href="write.do" class="btn btn-primary pull-right">글쓰기</a>
+			<a href="write" class="btn btn-primary pull-right">글쓰기</a>
 		</div>
 	</div>
 	<!-- 게시판 메인 페이지 영역 끝 -->
-	
-	<!-- 부트스트랩 참조 영역 -->
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="js/bootstrap.js"></script>
-</body>
-</html>
-
-    <!-- ##### Contact Area End ##### -->
-
 
 	<jsp:include page="/resources/jsp/footer.jsp"></jsp:include>
 	
