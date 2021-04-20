@@ -5,10 +5,9 @@ public class MemberDTO {
 	private String username;
 	private String password;
 	private String name;
-	private String addr;
+	private String addr2;
 	private int call;
 	private String emailbf;
-	private String emailaf;
 
 	
 
@@ -24,12 +23,7 @@ public class MemberDTO {
 	public void setEmailbf(String emailbf) {
 		this.emailbf = emailbf;
 	}
-	public String getEmailaf() {
-		return emailaf;
-	}
-	public void setEmailaf(String emailaf) {
-		this.emailaf = emailaf;
-	}
+	
 	public String getName() {
 		return name;
 	}
@@ -37,13 +31,14 @@ public class MemberDTO {
 		this.name = name;
 	}
 
-	public String getAddr() {
-		return addr;
-	}
-	public void setAddr(String addr) {
-		this.addr = addr;
-	}
 
+
+	public String getAddr2() {
+		return addr2;
+	}
+	public void setAddr2(String addr2) {
+		this.addr2 = addr2;
+	}
 	public String getUsername() {
 		return username;
 	}
