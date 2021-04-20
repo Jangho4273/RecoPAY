@@ -48,7 +48,7 @@
 						<!-- Single Top Item -->
 						<div class="single-top-item d-flex wow fadeInUp" data-wow-delay="100ms">
 							<div class="thumbnail">
-								<img src="img/bg-img/wt1.jpg" alt="">
+								<img src="<%=request.getContextPath() %>/img/bg-img/angelparrot.gif" alt="">
 							</div>
 							<div class="content-">
 								<h6>공석원</h6>
@@ -59,7 +59,7 @@
 						<!-- Single Top Item -->
 						<div class="single-top-item d-flex wow fadeInUp" data-wow-delay="150ms">
 							<div class="thumbnail">
-								<img src="img/bg-img/wt2.jpg" alt="">
+								<img src="<%=request.getContextPath() %>/img/bg-img/partyparrt.gif" alt="">
 							</div>
 							<div class="content-">
 								<h6>임장호</h6>
@@ -70,7 +70,7 @@
 						<!-- Single Top Item -->
 						<div class="single-top-item d-flex wow fadeInUp" data-wow-delay="200ms">
 							<div class="thumbnail">
-								<img src="img/bg-img/wt3.jpg" alt="">
+								<img src="<%=request.getContextPath() %>/img/bg-img/dogeparrot.gif" alt="">
 							</div>
 							<div class="content-">
 								<h6>이 삭</h6>
@@ -81,7 +81,7 @@
 						<!-- Single Top Item -->
 						<div class="single-top-item d-flex wow fadeInUp" data-wow-delay="250ms">
 							<div class="thumbnail">
-								<img src="img/bg-img/wt4.jpg" alt="">
+								<img src="<%=request.getContextPath() %>/img/bg-img/partyblob.gif" alt="">
 							</div>
 							<div class="content-">
 								<h6>박새별</h6>
@@ -92,7 +92,7 @@
 						<!-- Single Top Item -->
 						<div class="single-top-item d-flex wow fadeInUp" data-wow-delay="300ms">
 							<div class="thumbnail">
-								<img src="img/bg-img/wt5.jpg" alt="">
+								<img src="<%=request.getContextPath() %>/img/bg-img/quadparrot.gif" alt="">
 							</div>
 							<div class="content-">
 								<h6>강태민</h6>
@@ -137,7 +137,7 @@
             <div class="row align-items-end">
                 <div class="col-12 col-md-5 col-lg-4">
                     <div class="featured-artist-thumb">
-                        <img src="<%=request.getContextPath() %>/img/bg-img/fa.jpg" alt="">
+                        <img src="<%=request.getContextPath() %>/img/bg-img/recopaylogo.png" alt="">
                     </div>
                 </div>
                 <div class="col-12 col-md-7 col-lg-8">

@@ -42,7 +42,7 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-event-area mb-30">
                         <div class="event-thumbnail">
-                            <img src="img/bg-img/e6.jpg" alt="">
+                            <img src="<%=request.getContextPath() %>/img/bg-img/recopaylogo.png" alt="">
                         </div>
                         <div class="event-text">
                             <h4>Team RECOPAY</h4>
@@ -59,7 +59,7 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-event-area mb-30">
                         <div class="event-thumbnail">
-                            <img src="img/bg-img/e1.jpg" alt="">
+                            <img src="<%=request.getContextPath() %>/img/bg-img/th5.png" alt="">
                         </div>
                         <div class="event-text">
                             <h4>Im JangHo</h4>
@@ -76,7 +76,7 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-event-area mb-30">
                         <div class="event-thumbnail">
-                            <img src="img/bg-img/e2.jpg" alt="">
+                            <img src="<%=request.getContextPath() %>/img/bg-img/th1.jpg" alt="">
                         </div>
                         <div class="event-text">
                             <h4>Gong SukWon</h4>
@@ -93,7 +93,7 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-event-area mb-30">
                         <div class="event-thumbnail">
-                            <img src="img/bg-img/e3.jpg" alt="">
+                            <img src="<%=request.getContextPath() %>/img/bg-img/th2.jpg" alt="">
                         </div>
                         <div class="event-text">
                             <h4>Lee Sak</h4>
@@ -110,7 +110,7 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-event-area mb-30">
                         <div class="event-thumbnail">
-                            <img src="img/bg-img/e4.jpg" alt="">
+                            <img src="<%=request.getContextPath() %>/img/bg-img/th3.jpg" alt="">
                         </div>
                         <div class="event-text">
                             <h4>Park SaeByeol</h4>
@@ -127,7 +127,7 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-event-area mb-30">
                         <div class="event-thumbnail">
-                            <img src="img/bg-img/e5.jpg" alt="">
+                            <img src="<%=request.getContextPath() %>/img/bg-img/th4.jpg" alt="">
                         </div>
                         <div class="event-text">
                             <h4>Kang TaeMin</h4>

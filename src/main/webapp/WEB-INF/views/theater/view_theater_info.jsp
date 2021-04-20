@@ -23,6 +23,8 @@
 <!-- Stylesheet -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/style.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath }/resources/css/viewTheater.css">
 
 <!-- ##### Import ajax ##### -->
 <script
@@ -39,7 +41,7 @@
 	<jsp:include page="/resources/jsp/header.jsp"></jsp:include>
 	<!-- ##### Breadcumb Area Start ##### -->
 	<section class="breadcumb-area bg-img bg-overlay"
-		style="background-image: url(<%=request.getContextPath() %>/resources/img/bg-img/breadcumb.jpg);">
+		style="background-image: url(<%=request.getContextPath() %>/resources/img/bg-img/bg-3.jpg);">
 	</section>
 
 	<section class="elements-area mt-30 section-padding-100-0">
@@ -48,10 +50,10 @@
 
 				<!-- Single Post Start -->
 				<div class="single-blog-post mb-100 wow fadeInUp"
-					data-wow-delay="100ms">
+					data-wow-delay="100ms" style="width: 100%">
 
 					<!-- Blog Content -->
-					<div class="blog-content" style="width: 750px;">
+					<div class="blog-content">
 						<c:choose>
 							<c:when test="${empty list || fn:length(list) == 0 }">
 							</c:when>
@@ -59,25 +61,25 @@
 								<c:forEach var="dto" items="${list }" varStatus="vs">
 								
 									<!-- Post Title -->
-									<a href="#" class="post-title" id="theater_name">${dto.name } </a>
+									<a href="#" class="post-title titleSize" id="theater_name">${dto.name } </a>
 									<!-- Post Meta -->
 									<div class="post-meta d-flex mb-30">
 										<p class="tags">
-											<a href="${dto.url }" id="theater_homepage">${dto.url }</a>
+											<a href="${dto.url }" id="theater_homepage" class="pageSize">${dto.url }</a>
 										</p>
 									</div>
 										
-									<p>공연장 수 - ${dto.totalno }</p>
+									<p class="boldFont">공연장 수 </p><p class="pFont"> ${dto.totalno }</p>
 									<br>
-									<p>시설 특성 - ${dto.chartr }</p>
+									<p class="boldFont">시설 특성 </p><p class="pFont"> ${dto.chartr }</p>
 									<br>
-									<p>개관 연도 - ${dto.opendate }</p>
+									<p class="boldFont">개관 연도 </p><p class="pFont"> ${dto.opendate }</p>
 									<br>
-									<p>객석 수 - ${dto.totalseat }</p>
+									<p class="boldFont">객석 수 </p><p class="pFont"> ${dto.totalseat }</p>
 									<br>
-									<p>전화번호 - ${dto.telno }</p>
+									<p class="boldFont">전화번호 </p><p class="pFont"> ${dto.telno }</p>
 									<br>
-									<p>주소 - ${dto.location }</p>
+									<p class="boldFont">주소 </p><p class="pFont"> ${dto.location }</p>
 									<br>
 									
 									<script type="text/javascript">
@@ -90,10 +92,10 @@
 							</c:otherwise> 
 						</c:choose>
 
-						<div id="googleMap" style="width: 100%; height: 400px;"></div>
+						<div id="googleMap" style="width: 100%; height: 400px; margin-top: 10px;"></div>
 						<br>
 						
-						<button type="button" onclick="location.href='<%=request.getContextPath() %>/theater/map?lat=${list[0].lat }&lng=${list[0].lng }'">극장까지 가는 길 찾기</button>
+						<button type="button" onclick="location.href='<%=request.getContextPath() %>/theater/map?lat=${list[0].lat }&lng=${list[0].lng }'" class="searchBtn">극장까지 가는 길 찾기</button>
 						
 						<br>
 						<p style="font-weight: bold; font-size: x-large;">이 극장에서 상영중인
