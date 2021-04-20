@@ -4,7 +4,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="">
@@ -26,6 +25,17 @@
 	
 </head>
 
+<style>
+.resbtn {
+margin-bottom: 10px !important;
+}
+
+.res {
+min-width : 100% !important;
+}
+
+</style>
+
 <body>
 	<jsp:include page="/resources/jsp/header.jsp"></jsp:include>
 	 <!-- ##### Breadcumb Area Start ##### -->
@@ -39,7 +49,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-heading style-2">
-                        <p>아아아아아앙아아아아아아아아아아앙아</p>
+                        <p>What's New</p>
                         <h2>최 신 연 극</h2>
                     </div>
                 </div>
@@ -52,20 +62,12 @@
 				</c:when>
 				<c:otherwise>
 				<c:forEach var="dto" items="${list }" varStatus="vs" >
-                <div class="col-12 col-sm-6 col-md-4 col-lg-2" style=display:none; id="a${vs.index}">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-2 single-album" style=display:none; id="a${vs.index}">
                     <div class="single-album-area wow fadeInUp" data-wow-delay="100ms">
                         <div class="album-thumb">
                         	<a href="${pageContext.request.contextPath }/perform/intro/${dto.uid}">
                             <img src="${dto.poster}" alt="" >
                             </a>
-                            <!-- Album Price 
-                            <div class="album-price">
-                                <p>$0.90</p>
-                            </div> -->
-                            <!-- Play Icon 
-                            <div class="play-icon">
-                                <a href="#" class="video--play--btn"><span class="icon-play-button"></span></a>
-                            </div>-->
                         </div>
                         <div class="album-info">
                             <a href="#">
@@ -78,7 +80,12 @@
                             </a>
                             
                         </div>
-                    </div>
+
+						<div class="oneMusic-buttons-area resbtn">
+							<a
+								href="${pageContext.request.contextPath }/perform/intro/${dto.uid}" class="btn oneMusic-btn btn-2 res">소개보기<i class="fa fa-angle-double-right"></i></a>
+						</div>
+					</div>
                 </div>
                 </c:forEach>
 				</c:otherwise>

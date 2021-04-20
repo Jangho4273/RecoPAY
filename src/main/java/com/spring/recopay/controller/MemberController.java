@@ -116,7 +116,6 @@ public class MemberController {
 		if (logout != null) {
 			model.addAttribute("logout", "로그아웃!!");
 		}
-		
 	}
 
 	// 로그인 페이지 이동

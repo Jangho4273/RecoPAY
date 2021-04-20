@@ -215,7 +215,9 @@
 						<input type="hidden" name=title value="${list[0].name }" />
 						<input type="hidden" name="payment" value="${prfPrice }" />
 						<sec:authentication property="principal.username" var="user_id" />
-						<input type="hidden" name="uid" value="00" /> <input
+						<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
+                                    	 
+						<input type="hidden" name="user_id" value="${user_id }" /> <input
 							type="hidden" name="seat" /><br> <input type="hidden"
 							name="ticketnum" /><br> <input type="hidden"
 							name="theaterName" value="${list[0].fcltynm }" />

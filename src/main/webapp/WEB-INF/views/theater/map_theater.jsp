@@ -45,6 +45,16 @@
 
 </head>
 
+<style>
+.boldFont {
+	font-weight: bolder;
+	display: inline-block;
+	font-size: 18px;
+	
+}
+
+</style>
+
 <body>
 	<script>
 	
@@ -56,7 +66,7 @@
 	<jsp:include page="/resources/jsp/header.jsp"></jsp:include>
 	<!-- ##### Breadcumb Area Start ##### -->
 	<section class="breadcumb-area bg-img bg-overlay"
-		style="background-image: url(<%=request.getContextPath()%>/resources/img/bg-img/breadcumb.jpg);">
+		style="background-image: url(<%=request.getContextPath()%>/resources/img/bg-img/bg-2.jpg);">
 		<div class="bradcumbContent">
 			<p>공연장 정보</p>
 			<h2>공 연 장 길 찾 기</h2>
@@ -97,26 +107,37 @@
 						</div>
 					</div>
 				</div>
-
-				<div id="googleMap"
-					style="float: right; width: 720px; height: 720px;"></div>
-
-				<!-- ##### Import google map ##### -->
-				<script
-					src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAz5nIT_54PG7ke2yMKUiqwKR86mVMwJgk&callback=initMap"></script>
-
-				<div style="margin-left: 290px; width: 400px; height: 520px; font-weight: bold;">
-				<p id="totalDistance"></p>
-				<p id="payment">총 요금 : </p>
-				<p id="totalTime">소요 시간 : </p>
-				<p id="firstStartStation">출발역 : </p><p id="lastEndStation">도착역 : </p>
-				<p id="totalStationCount">몇 정거장? : </p>
 				
+				<div class="col-12 col-lg-9">
+					<div id="googleMap"
+						style="width: 100%; height: 720px; display: block;"></div>
+	
+					<!-- ##### Import google map ##### -->
+					<script
+						src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAz5nIT_54PG7ke2yMKUiqwKR86mVMwJgk&callback=initMap"></script>
+	
+					<div style="width: 100%; display: inline-block;">
+					<p id="totalDistance" class="boldFont"></p> 
+					<br>
+					<p id="payment" class="boldFont">총 요금 : </p>
+					<br>
+					<p id="totalTime" class="boldFont">소요 시간 : </p>
+					<br>
+					<p id="firstStartStation"class="boldFont">출발역 : </p>
+					<br>
+					<p id="lastEndStation"class="boldFont">도착역 : </p>
+					<br>
+					<p id="totalStationCount"class="boldFont">몇 정거장? : </p>
+					<br>
+					
+					</div>
+					<br><br><br>
 				</div>
-				<br><br><br>
+			</div>
+		</div>
+	</section>
 				
-				
-				<jsp:include page="/resources/jsp/footer.jsp"></jsp:include>
+	<jsp:include page="/resources/jsp/footer.jsp"></jsp:include>
 </body>
 
 </html>

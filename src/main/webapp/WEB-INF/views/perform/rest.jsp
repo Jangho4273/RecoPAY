@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -21,9 +20,10 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/rest.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://kit.fontawesome.com/bb29575d31.js"></script>
-	<script src="${pageContext.request.contextPath }/js/board.js?ver=1"></script>
+	<script src="${pageContext.request.contextPath }/js/board.js"></script>
 	
 	<script type="text/javascript">
 	
@@ -38,152 +38,13 @@
 		});
 	
 	</script>
-<style>
-/* 기본 버튼 */
 
-		/* 글 목록 */
-#list table { width: 100%;}
-#list table, #list th, #list td {
-	border: 1px solid black;
-	border-collapse: collapse;
-}
-
-#list td, #list th {
-	padding: 10px;	
-}
-
-#list .subject:hover {   /* 글 제목 위에 커서 올린 경우 */
-	text-decoration: underline;
-	color : orange;
-	cursor: pointer;
-}
-
-.clear1 {
-	clear: both;
-}
-
-.left1 {
-	float:left;
-}
-
-.right1 {
-	float:right;
-}
-
-/* 하단 버튼 */
-.d01 {
-	margin : 5px 0px;
-}
-
-/* 페이징 */
-.center {
-    text-align: center;
-}
-
-ul.pagination{
-	list-style-type:none
-}
-
-ul.pagination li{
-    display: inline-block;
-}
-
-ul.pagination a {
-    color: black;
-    float: left;
-    padding: 4px 8px;
-    text-decoration: none;
-    transition: background-color .3s;
-    /* border: 1px solid #ddd; */
-    /* margin: 0 4px; */
-    margin: 0px;
-}
-
-ul.pagination a.active {
-    background-color: #4CAF50;
-    color: white;
-    border: 1px solid #4CAF50;
-}
-
-ul.pagination a:hover:not(.active) {background-color: #ddd;}
-
-/* 모달 팝업 */
-.modal {   /* 모달 전체 적용 */	
-	background-color: rgba(0, 0, 0, 0.4);
-	width: 100%;
-	height: 100%;
-	position : fixed;
-	top: 0;
-	left: 0;
-	z-index: 1;
-	padding-top: 40px;  /* 내부여백  */
-	overflow: auto;
-	
-	display : none;  /* 기본적으로 안보이기 */  
-}
-
-.modal .modal-content {
-	background-color: #fefefe;  /* 배경은 흰색 */
-	width: 80%;   /* 화면대비 80% */
-	height: 70%;
-	margin: 5% auto 15% auto;  /* 위에서 5%,  아래에서 15%, 좌우 중앙정렬 */
-	border: 1px solid #888;  /* 테두리 */
-}
-
-.modal .container {
-	padding: 16px;
-	position: relative;  /* 이래야 안에 있는 absolute 들이 동작 */
-} 
-
-.modal .close {  /* close 버튼 */
-	font-size: 35px;	
-	font-weight: bold;
-	color: #000;
-	position: absolute;
-	right: 25px;
-	top: 0px;
-}
-
-.modal .close:hover,
-.modal .cloas:focus {
-	color: red;
-	cursor: pointer;
-}
-
-
-.modal input[type=text] {
-	width: 100%;
-	border: 1px solid #ccc;
-	margin: 8px 0;
-	padding: 12px 20px;
-	display: inline-block;
-	box-sizing: border-box;
-}
-
-.modal textarea {
-	width: 100%;
-	border: 1px solid #ccc;
-	
-	/*padding: 12px 20px;
-	display: inline-block;
-	
-	margin: 8px 0;
-	*/
-}
-
-.modal .fullbtn {
-	width: 100%;
-	cursor: pointer;
-}
-	
-	
-</style>
 </head>
 
 <body>
 	<jsp:include page="/resources/jsp/header.jsp"></jsp:include>
 	 <!-- ##### Breadcumb Area Start ##### -->
-    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<%=request.getContextPath() %>/resources/img/bg-img/breadcumb.jpg);">
+    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<%=request.getContextPath() %>/resources/img/bg-img/breadcumb.jpg); z-index: 0">
        
     </section>
 
@@ -268,11 +129,11 @@ ul.pagination a:hover:not(.active) {background-color: #ddd;}
 						<label for="subject"><b>글제목</b></label>
 						<input type="text" placeholder="글제목(필수)" name="subject" required>
 					
-						<sec:authentication property="principal.username" var="user_id" />
-						<input type="hidden" name="name" value="${user_id }">
+						<label for="name"><b>작성자</b></label>
+						<input type="text" placeholder="작성자(필수)" name="name" required>
 					      
 						<label for="content"><b>내용</b></label>
-						<textarea placeholder="글내용" name="content"></textarea>
+						<textarea placeholder="글내용" name="content" class="re_content"></textarea>
 
 						
 						
@@ -288,8 +149,7 @@ ul.pagination a:hover:not(.active) {background-color: #ddd;}
 						<div id="scoretext"></div>
 						<label for="prfname"><b>연극명</b></label>
 						<input style="width:60%;" type="text"  placeholder="연극명" name="prfname" id="prfna">
-						<input type="hidden" name="fprfid" id="fprfid">
-						<button id="findperf" type="button">찾아보기</button>
+						<button id="findperf" type="button" class="cusbtn">찾아보기</button>
 						
 						<div id="dlg_write1" class="modal" >
 							<div class="modal-content animate" id="frm">
@@ -299,7 +159,7 @@ ul.pagination a:hover:not(.active) {background-color: #ddd;}
 							
 							연극명: <input type="text" id="prfname" style="width:70%;">
 								
-							<button id="searchprf" type="button">검색</button>
+							<button id="searchprf" type="button" class="cusbtn">검색</button>
 							<div id="pertexts">
 							
 							</div>

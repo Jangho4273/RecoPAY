@@ -78,6 +78,22 @@
 	</section>
 	<!-- ##### Breadcumb Area End ##### -->
 	
+	<script> 
+		var bookedSeatNumList = [];
+		var bookedTimeList = [];
+		var theaterTotalSeat;
+		
+		<c:forEach items="${leftseatArr}" var="item1">
+		bookedSeatNumList.push('${item1.bookedSeat}');
+		bookedTimeList.push('${item1.time}');
+		</c:forEach>
+
+		theaterTotalSeat = '${totalSeat.totalSeat }';
+		<%--
+			//totalSeat = '${totalSeat.totalSeat }';
+		--%>
+	</script>
+		
 
 	
 	<!-- ##### Contact Area Start ##### -->
@@ -274,8 +290,23 @@
 	
 	<jsp:include page="/resources/jsp/footer.jsp"></jsp:include>
 	
-		<script> var leftSeatList = ${leftseatArr} </script>
 		
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,9 +7,9 @@
     <!-- 티켓 구입  -->
     <insert id="insertBuyingTicket">
      insert into Reservation (res_id, res_prfdate, res_title, 
-     res_payment, user_uid, res_seat,res_ticketnum)
+     res_payment, user_id, res_seat,res_ticketnum)
       values(concat(TO_CHAR(SYSDATE,'YYYY-MMDD-'),reservation_seq.nextval),
-       #{prfdate}, #{title}, #{payment}, #{uid} , #{seat},#{ticketnum})   
+       #{prfdate}, #{title}, #{payment}, #{user_id} , #{seat},#{ticketnum} )   
     </insert>
 
  
@@ -18,5 +18,14 @@
      insert into Member (res_id, res_prfdate, res_title, res_payment, user_uid, res_isfinished, res_seat,)
       values(member_seq.nextval, #{username}, #{password}, #{name}, #{emailbf} , #{addr}, #{call})   
     </insert>
+    
+    <select id="mypageByUserid" resultType="com.spring.recopay.domain.MypageDTO">
+	SELECT t.th_name "thName", t.TH_LOCATION "thLocation" , ts.seat_num "seatNum", ts.prf_time "prfTime", kk.prf_name "prfName" 
+	FROM theater t, theater_seat ts, MEMBER m,
+	(SELECT PRF_NAME FROM PERFORM p
+	WHERE p.th_uid = (SELECT t.th_id FROM theater_seat ts, theater t
+	WHERE ts.th_uid = t.TH_UID AND ROWNUM = 1) AND p.PRF_STATE = '공연중') kk
+	WHERE t.th_uid = ts.th_uid AND m.USER_ID  = #{userid}
+	</select>
 	
 </mapper>

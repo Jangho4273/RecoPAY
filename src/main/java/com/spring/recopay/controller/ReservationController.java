@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -68,8 +71,8 @@ public class ReservationController {
 	}
 	
 	@RequestMapping("/mypage")
-	public String mypage(HttpServletRequest request) {
-		
+	public String mypage(Model model) {
+		model.addAttribute("list", rs.mypageByUserid(currentUserName()));
 		return "reservation/mypage";
 	}
 	
@@ -101,7 +104,7 @@ public class ReservationController {
 		String[] seatList = dto.getSeat().split(", ");
 		
 		for(int i=0; i<seatList.length; i++) {
-			ts.insertSeat(seatList[i], dto.getTheaterName(), "asdqwd" ,dto.getPrfdate());
+			ts.insertSeat(seatList[i], dto.getTheaterName(), currentUserName() ,dto.getPrfdate());
 		}
 		
 		if(result > 0) {
@@ -111,28 +114,30 @@ public class ReservationController {
 		}
 	}
 	
+	public static String currentUserName() { 
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		User user = (User) authentication.getPrincipal(); 
+		return user.getUsername(); 
+	}
+	
 	// 영화관 정보 출력 
 	@RequestMapping("/reservation/{uid}")
 	public String reservationPerform(@PathVariable int uid, Model model) {
-		model.addAttribute("list", rs.viewByUid(uid));
+		List<PerformDTO> viewByUid = rs.viewByUid(uid);
+		model.addAttribute("list", viewByUid);
 		model.addAttribute("uid", uid);
 		
 		model.addAttribute("location",ts.getMapCordXY(uid));
 		
 		//남은 좌석 수의 list 가져오기 
-		model.addAttribute("leftseatArr", ts.getLeftSeat(uid));
+		List<TheaterSeatDTO> dto = ts.getLeftSeat(uid);
+		model.addAttribute("totalSeat", ts.getTotalSeatByUid(uid));
+//		System.out.println("TotalSeat : " + ts.getTotalSeat(uid).getTotalSeat());
+		model.addAttribute("leftseatArr", dto);
 		
-//		List<PerformDTO> dto = rs.list();
-//		
-//		for (PerformDTO e : dto) {
-//			if(e.getUid() == uid) {
-//				model.addAttribute("leftseat" , ts.getLeftSeat(e.getFcltynm(), e.getRunday()));
-//			}
-//		}
+
+
 		
-		
-		//String name = (String) model.getAttribute("name");
-		//model.addAttribute("map", ts.getMapCordXY(name));
 		return "reservation/reservationPerform";
 	}
 	

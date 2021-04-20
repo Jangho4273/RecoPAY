@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.recopay.domain.MypageDTO;
 import com.spring.recopay.domain.PerformDAO;
 import com.spring.recopay.domain.PerformDTO;
 import com.spring.recopay.domain.ReservationDAO;
@@ -41,6 +42,10 @@ public class ReservationService implements ReservationDAO {
 
 	public List<PerformDTO> viewByUid(int uid) {
 		return sessionGet().viewByUid(uid);
+	}
+	
+	public List<MypageDTO> mypageByUserid(String userid) {
+		return sqlSession.getMapper(ReservationDAO.class).mypageByUserid(userid);
 	}
 	
 

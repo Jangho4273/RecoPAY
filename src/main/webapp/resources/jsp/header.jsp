@@ -116,6 +116,8 @@
                                     		<li><a href="<%=request.getContextPath() %>/introduce/homeintro">RecoPAY 소개</a></li>
                                     	</ul>
                                     </li>
+                                    <li><a href="<%=request.getContextPath() %>/reservation/mypage">mypage</a>
+                                    </li>
                                 </ul>
 								
 								<sec:authorize access="isAuthenticated()">

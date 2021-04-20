@@ -7,7 +7,7 @@ DROP SEQUENCE member_seq;
 
 DROP TABLE member CASCADE CONSTRAINTS;
 
-CREATE TABLE Member (
+CREATE TABLE member (
 	user_uid	number		NOT NULL,
 	user_id	varchar2(30)		NOT NULL,
 	user_password	varchar2(60)		NOT NULL,
@@ -92,12 +92,22 @@ SELECT * FROM THEATER t ;
 SELECT * FROM THEATER_SEAT ts ;
 
 
-SELECT TH_TOTALSEAT "totalSeat",count(seat_num) "bookedSeat", PRF_TIME "time", prf_uid FROM  
-(SELECT t.TH_UID, ts.SEAT_NUM, ts.PRF_TIME, t.TH_TOTALSEAT, p2.PRF_UID 
+SELECT count(seat_num) "bookedSeat", PRF_TIME "time", prf_uid FROM  
+(SELECT t.TH_UID, ts.SEAT_NUM, ts.PRF_TIME, p2.PRF_UID 
 FROM THEATER t ,THEATER_SEAT ts , PERFORM p2
-WHERE t.TH_UID = ts.TH_UID AND p2.PRF_FCLTYNM = t.TH_NAME) WHERE prf_uid = 1211 
-GROUP BY TH_TOTALSEAT, PRF_TIME, prf_uid;
+WHERE t.TH_UID = ts.TH_UID AND p2.PRF_FCLTYNM = t.TH_NAME) WHERE prf_uid = 425 
+GROUP BY PRF_TIME, prf_uid;
 
+			SELECT count(seat_num) "bookedSeat", PRF_TIME "time", prf_uid FROM  
+			(SELECT t.TH_UID, ts.SEAT_NUM, ts.PRF_TIME, p2.PRF_UID 
+			FROM THEATER t ,THEATER_SEAT ts , PERFORM p2
+			WHERE t.TH_UID = ts.TH_UID AND p2.PRF_FCLTYNM = t.TH_NAME) WHERE prf_uid = 425
+			GROUP BY PRF_TIME, prf_uid;
+
+
+
+
+SELECT * FROM PERFORM p WHERE PRF_UID = 1211;
 
 DROP TABLE  Reservation ;
 
@@ -106,7 +116,7 @@ CREATE TABLE  Reservation  (
 	res_prfdate varchar(100)  NOT NULL,
 	res_title varchar(150) NULL,
 	res_payment varchar(100) NULL,
-	user_uid 	number		NULL,
+	user_id 	varchar2(200)		NULL,
 	nm_uid 	number		NULL,
 	res_isfinished 	char(1)		null,
 	res_iscancel	char(1)		NULL,
@@ -135,6 +145,8 @@ CREATE TABLE  Theater_Seat  (
 SELECT seat_num "seat", th_uid, user_uidm prf_time "time" FROM Theater_Seat;
 
 SELECT * FROM theater_seat;
+
+
 
 
 insert into Theater_Seat (seat_num , th_uid , user_uid , prf_time) values
@@ -279,7 +291,6 @@ FROM PerformRec r, favperform f, Perform p
 WHERE f.user_uid=1 and r.prf_id = f.prf_uid AND r.relprf_id = p.prf_id
 ORDER BY r.prf_id) k, PERFORM p
 WHERE k.prf_id = p.prf_id;
-
 
 DROP TABLE perform CASCADE CONSTRAINTS;
 

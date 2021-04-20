@@ -9,7 +9,7 @@ public class ReservationDTO {
 	private String prfdate;	//공연예매날짜
 	private String title;  //구매한 공연 제목
 	private String payment;    // 결재 금액 
-	private int user_uid;	//회원UID
+	private String user_id;	//회원UID
 	private int nm_uid; 	//비회원 UID
 	private char isfinish;
 	private char iscancel;	//예매취소여부
@@ -19,6 +19,13 @@ public class ReservationDTO {
 	private String theaterName;
 	
 	
+	
+	public String getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
 	public String getTheaterName() {
 		return theaterName;
 	}
@@ -49,12 +56,7 @@ public class ReservationDTO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public int getUser_uid() {
-		return user_uid;
-	}
-	public void setUser_uid(int user_uid) {
-		this.user_uid = user_uid;
-	}
+
 	public int getNm_uid() {
 		return nm_uid;
 	}
