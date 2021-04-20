@@ -47,6 +47,10 @@ public class ReservationService implements ReservationDAO {
 	public List<MypageDTO> mypageByUserid(String userid) {
 		return sqlSession.getMapper(ReservationDAO.class).mypageByUserid(userid);
 	}
+
+	public int deleteSeatid(int uid) {
+		return sqlSession.getMapper(ReservationDAO.class).deleteSeatid(uid);
+	}
 	
 
 }

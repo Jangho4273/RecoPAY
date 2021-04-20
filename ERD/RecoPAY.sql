@@ -153,13 +153,14 @@ CREATE SEQUENCE reservation_seq;
 DROP TABLE  Theater_Seat ;
 
 CREATE TABLE  Theater_Seat  (
+	seat_uid NUMBER NOT NULL,
 	seat_num 	varchar2(10)  NOT NULL,
 	th_uid 	number		NOT NULL, 
 	prf_time varchar(50)  NOT NULL,
 	user_uid number     NOT NULL
 );
 
-
+CREATE SEQUENCE theater_seat_seq;
 
 
 SELECT seat_num "seat", th_uid, user_uidm prf_time "time" FROM Theater_Seat;
@@ -361,11 +362,10 @@ CREATE TABLE Perform (
 
 SELECT * FROM perform;
 
-<<<<<<< HEAD
+EXP recopay/recopay FILE=C:\DevRoot\perform.exp tables=Perform;
+
 SELECT * FROM PERFORM;
-=======
 SELECT * FROM PERFORMrec;
->>>>>>> branch 'master' of https://github.com/Jangho4273/RecoPAY.git
 SELECT * FROM THEATER t ;
 
 SELECT * FROM perform;

@@ -77,4 +77,5 @@ public class TheaterService implements TheaterDAO{
 		// TODO Auto-generated method stub
 		return getSession().getTotalSeatByUid(uid);
 	}
+
 }

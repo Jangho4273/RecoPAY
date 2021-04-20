@@ -39,8 +39,8 @@
 
 	<!-- 선택한 좌석 insert -->
     <insert id="insertSeat">
-		insert into Theater_Seat (seat_num , th_uid , user_uid , prf_time) values
- 		 (#{param1}, (SELECT th_uid from Theater where th_name = #{param2} ) , 
+		insert into Theater_Seat (seat_uid, seat_num , th_uid , user_uid , prf_time) values
+ 		 (theater_seat_seq.nextval, #{param1}, (SELECT th_uid from Theater where th_name = #{param2} ) , 
     	 (SELECT user_uid from Member where user_id = #{param3}) , #{param4})
     </insert>
     

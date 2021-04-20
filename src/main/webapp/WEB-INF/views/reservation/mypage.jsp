@@ -82,6 +82,7 @@ td, th {
 						<th>위치</th>
 						<th>공연시간</th>
 						<th>좌석위치</th>
+						<th>예매취소</th>
 					<c:forEach var="dto" items="${list }" varStatus="vs" >
 						<tr>
 							<td>${dto.prfName }</td>
@@ -89,6 +90,7 @@ td, th {
 							<td>${dto.thLocation }</td>
 							<td>${dto.prfTime }</td>
 							<td>${dto.seatNum }</td>
+							<td><button type="button" onclick="location.href='${pageContext.request.contextPath}/reservation/delete/${dto.seatUid }'"  >삭제</button></td>
 						</tr>
 					</c:forEach>
 					</table>

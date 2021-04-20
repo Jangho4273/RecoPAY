@@ -1,11 +1,20 @@
 package com.spring.recopay.domain;
 
 public class MypageDTO {
+	private int seatUid;
 	private String thName;
 	private String thLocation;
 	private String prfName;
 	private String prfTime;
 	private String seatNum;
+	
+	
+	public int getSeatUid() {
+		return seatUid;
+	}
+	public void setSeatUid(int seatUid) {
+		this.seatUid = seatUid;
+	}
 	public String getThName() {
 		return thName;
 	}

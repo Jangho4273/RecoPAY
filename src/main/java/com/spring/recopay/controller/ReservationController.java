@@ -146,4 +146,10 @@ public class ReservationController {
 
 		return "reservation/ticketCheck";
 	}
+	
+	@RequestMapping("/delete/{uid}")
+	public String deleteSeat(@PathVariable int uid, Model model) {
+		model.addAttribute("cnt", rs.deleteSeatid(uid));
+		return "reservation/deleteOk";
+	}
 }
