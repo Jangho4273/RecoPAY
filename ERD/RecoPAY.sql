@@ -41,16 +41,35 @@ CREATE TABLE Non_Member (
 DROP TABLE Qna_Board;
 
 CREATE TABLE Qna_Board (
-	qna_uid	number		NOT NULL,
-	user_uid	number		NOT NULL,
+	qna_q_uid	number		NOT NULL,
+	user_uid	number		,
 	qna_title 	varchar2(50)		NOT NULL,
 	qna_content 	clob		NOT NULL,
 	qna_uploadedtime 	date	DEFAULT SYSDATE	NULL,
-	qna_img 	varchar2(50)		NULL,
+	qna_name 	varchar2(50)		NULL,
 	qna_viewcnt 	number	DEFAULT 0	NULL,
-	qna_answer 	varchar2(1000)		NULL
+	qna_answer 	varchar2(1000)	
 );
 
+SELECT qna_q_uid "q_uid", qna_title "title", qna_content "content", qna_name "name", qna_viewcnt "viewcnt", qna_uploadedtime "uploadtime"
+FROM Qna_Board
+ORDER BY qna_q_uid DESC;
+	
+CREATE SEQUENCE qna_seq;
+
+DROP TABLE  Comment_Board CASCADE CONSTRAINTS;
+
+CREATE TABLE Comment_Board(
+  cno number NOT NULL, 
+  bno number NOT NULL, 
+  writer varchar2(20) NOT NULL,
+  content CLOB NULL, 
+  reg_date date DEFAULT SYSDATE NOT NULL
+);
+
+CREATE SEQUENCE comment_seq;
+
+DROP SEQUENCE comment_seq;
 
 DROP TABLE  Theater CASCADE CONSTRAINTS;
 
@@ -142,6 +161,7 @@ CREATE TABLE  Theater_Seat  (
 
 
 
+
 SELECT seat_num "seat", th_uid, user_uidm prf_time "time" FROM Theater_Seat;
 
 SELECT * FROM theater_seat;
@@ -169,30 +189,56 @@ insert into Theater_Seat (seat_num , th_uid , user_uid) values
 DROP TABLE  Notice_Board ;
 
 CREATE TABLE  Notice_Board  (
-	notice_uid 	number		NOT NULL,
-	notice_title 	varchar2(50)		NOT NULL,
-	notice_content 	varchar2(2000)		NOT NULL,
-	notice_uploadedtime 	date		NULL,
-	notice_img 	varchar2(50)		NULL,
-	notice_viewcnt 	number	DEFAULT 0	NULL,
-	user_uid 	number		NOT NULL,
-	notice_type 	varchar2(20)		NOT NULL
+	notice_n_uid 	number		NOT NULL,
+	notice_title 	varchar2(50) 	NOT NULL ,
+	notice_content 	varchar2(2000) 	NOT NULL ,
+	notice_uploadedtime 	DATE 	DEFAULT 	SYSDATE,
+	notice_name 	varchar2(50)	NOT NULL ,
+	notice_viewcnt 	number	DEFAULT 0,
+	user_uid 	number		,
+	notice_type 	varchar2(20)
 );
+
+SELECT notice_n_uid "n_uid", notice_title "title", notice_content "content", notice_name "name", notice_viewcnt "viewcnt", notice_uploadedtime "uploadtime"
+FROM Notice_Board
+WHERE notice_n_uid = '41';
+
+
+SELECT notice_n_uid "n_uid", notice_title "title", notice_content "content", notice_name "name", notice_viewcnt "viewcnt", notice_uploadedtime "uploadtime"
+FROM Notice_Board
+ORDER BY notice_n_uid DESC;
+
+UPDATE Notice_Board 
+SET notice_title = '#{a.title }', notice_content = '#{a.content }' 
+WHERE notice_n_uid = '41';
+	
+SELECT * FROM NOTICE_BOARD nb ;
+
+CREATE SEQUENCE notice_seq;
+
+CREATE SEQUENCE userid_seq;
 
 DROP TABLE  Faq_Board ;
 
 CREATE TABLE  Faq_Board  (
-	faq_uid 	number		NOT NULL,
+	faq_f_uid 	number		NOT NULL,
 	faq_title 	varchar2(50)		NOT NULL,
 	faq_content 	varchar2(2000)		NOT NULL,
-	faq_uploadedtime 	date		NULL,
-	faq_img 	varchar2(50)		NULL,
-	faq_viewcnt 	number	DEFAULT 0	NULL,
-	user_uid 	number		NOT NULL,
-	faq_type 	varchar2(20)		NOT NULL
+	faq_uploadedtime 	date		DEFAULT		SYSDATE,
+	faq_name 	varchar2(50)		NULL,
+	faq_viewcnt 	number	DEFAULT 0,
+	user_uid 	number		,
+	faq_type 	varchar2(20)
 );
 
 select sysdate from dual;
+
+SELECT faq_f_uid "f_uid", faq_title  "title", faq_content "content", faq_name "name", faq_viewcnt "viewcnt", faq_uploadedtime "uploadtime"
+FROM Faq_Board
+ORDER BY faq_f_uid DESC;
+
+CREATE SEQUENCE faq_seq;		
+
 
 DROP TABLE  Event_Board ;
 
