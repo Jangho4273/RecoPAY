@@ -106,9 +106,9 @@
                                     <li><a href="<%=request.getContextPath() %>/servicecenter/notice/notice">고객센터</a>
 
                                     	<ul class="dropdown">
-                                    		<li><a href="">공지사항</a></li>
-                                    		<li><a href="">1:1문의</a></li>
-                                    		<li><a href="">자주하는 질문</a></li>
+                                    		<li><a href="<%=request.getContextPath() %>/servicecenter/notice/notice">공지사항</a></li>
+                                    		<li><a href="<%=request.getContextPath() %>/servicecenter/qna/qna">1:1문의</a></li>
+                                    		<li><a href="<%=request.getContextPath() %>/servicecenter/faq/faq">자주하는 질문</a></li>
                                     	</ul>
                                     </li>
                                     <li><a href="<%=request.getContextPath() %>/introduce">소개</a>
