@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -68,8 +71,8 @@ public class ReservationController {
 	}
 	
 	@RequestMapping("/mypage")
-	public String mypage(HttpServletRequest request) {
-		
+	public String mypage(Model model) {
+		model.addAttribute("list", rs.mypageByUserid(currentUserName()));
 		return "reservation/mypage";
 	}
 	
@@ -101,7 +104,7 @@ public class ReservationController {
 		String[] seatList = dto.getSeat().split(", ");
 		
 		for(int i=0; i<seatList.length; i++) {
-			ts.insertSeat(seatList[i], dto.getTheaterName(), "asdqwd" ,dto.getPrfdate());
+			ts.insertSeat(seatList[i], dto.getTheaterName(), currentUserName() ,dto.getPrfdate());
 		}
 		
 		if(result > 0) {
@@ -109,6 +112,12 @@ public class ReservationController {
 		} else {
 			return "reservation/reservationFail";
 		}
+	}
+	
+	public static String currentUserName() { 
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		User user = (User) authentication.getPrincipal(); 
+		return user.getUsername(); 
 	}
 	
 	// 영화관 정보 출력 
@@ -136,5 +145,11 @@ public class ReservationController {
 	public String ticketCheck(HttpServletRequest request) {
 
 		return "reservation/ticketCheck";
+	}
+	
+	@RequestMapping("/delete/{uid}")
+	public String deleteSeat(@PathVariable int uid, Model model) {
+		model.addAttribute("cnt", rs.deleteSeatid(uid));
+		return "reservation/deleteOk";
 	}
 }

@@ -7,7 +7,7 @@ DROP SEQUENCE member_seq;
 
 DROP TABLE member CASCADE CONSTRAINTS;
 
-CREATE TABLE Member (
+CREATE TABLE member (
 	user_uid	number		NOT NULL,
 	user_id	varchar2(30)		NOT NULL,
 	user_password	varchar2(60)		NOT NULL,
@@ -94,7 +94,7 @@ CREATE TABLE Theater  (
 	th_opendate varchar2(40) NULL
 );
 
-
+SELECT * FROM THEATER;
 
 
 SELECT * FROM THEATER t ;
@@ -153,13 +153,14 @@ CREATE SEQUENCE reservation_seq;
 DROP TABLE  Theater_Seat ;
 
 CREATE TABLE  Theater_Seat  (
+	seat_uid NUMBER NOT NULL,
 	seat_num 	varchar2(10)  NOT NULL,
 	th_uid 	number		NOT NULL, 
 	prf_time varchar(50)  NOT NULL,
 	user_uid number     NOT NULL
 );
 
-
+CREATE SEQUENCE theater_seat_seq;
 
 
 SELECT seat_num "seat", th_uid, user_uidm prf_time "time" FROM Theater_Seat;
@@ -325,7 +326,7 @@ CREATE TABLE PerformRec (
 	sim number(4,3) NOT null
 )
 
-SELECT * FROM performRec
+SELECT * FROM performRec;
 
 INSERT INTO favperform VALUES(1,'PF173066' ,1);
 INSERT INTO favperform VALUES(2, 'PF172498' ,1);
@@ -361,11 +362,10 @@ CREATE TABLE Perform (
 
 SELECT * FROM perform;
 
-<<<<<<< HEAD
+EXP recopay/recopay FILE=C:\DevRoot\perform.exp tables=Perform;
+
 SELECT * FROM PERFORM;
-=======
 SELECT * FROM PERFORMrec;
->>>>>>> branch 'master' of https://github.com/Jangho4273/RecoPAY.git
 SELECT * FROM THEATER t ;
 
 SELECT * FROM perform;
