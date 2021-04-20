@@ -56,12 +56,7 @@ public class ReservationDTO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public int getUser_uid() {
-		return user_uid;
-	}
-	public void setUser_uid(int user_uid) {
-		this.user_uid = user_uid;
-	}
+
 	public int getNm_uid() {
 		return nm_uid;
 	}

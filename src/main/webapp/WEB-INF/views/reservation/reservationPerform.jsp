@@ -79,12 +79,19 @@
 	<!-- ##### Breadcumb Area End ##### -->
 	
 	<script> 
+		var bookedSeatNumList = [];
+		var bookedTimeList = [];
+		var theaterTotalSeat;
 		
-		//alert('${leftseatArr.totalSeat }');
-		//leftSeatList.push(${leftseatArr });
-		//timeList.push('${leftseatArr[i] }');
-		//totalSeat = '${leftseatArr.totalSeat}';
-		
+		<c:forEach items="${leftseatArr}" var="item1">
+		bookedSeatNumList.push('${item1.bookedSeat}');
+		bookedTimeList.push('${item1.time}');
+		</c:forEach>
+
+		theaterTotalSeat = '${totalSeat.totalSeat }';
+		<%--
+			//totalSeat = '${totalSeat.totalSeat }';
+		--%>
 	</script>
 		
 

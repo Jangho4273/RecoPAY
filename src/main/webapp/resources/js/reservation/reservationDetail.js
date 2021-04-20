@@ -5,15 +5,15 @@ var weekdaylist = ['월요일', '화요일', '수요일', '목요일', '금요�
 var clickedWeek;
 var clickedday;
 var clickedMon;
-var leftSeatList = [];
-var totalSeat;
 var timeList = [];
+
+
 
 
 // 페이지 최초 로딩 
 $(document).ready(function() {
 	loadPage(pfid);
-	
+
 });
 
 function loadPage(pid) {
@@ -32,7 +32,7 @@ function loadPage(pid) {
 
 function showDetail(xmlDOM) {
 
-	
+
 
 	var table = "";
 
@@ -59,13 +59,13 @@ function showDetail(xmlDOM) {
 
 	table += "<tr><th>기획·제작</th><td class='tdcontent'>"
 	table += $(xmlDOM).find("entrpsnm").text()
-	
+
 	table += "<tr><th>상영 시간</th><td class='tdcontent'>"
 	table += $(xmlDOM).find("prfruntime").text()
-	
+
 
 	$("#demoXML").html(table);
-	
+
 
 
 	//document.getElementById("cal-date").innerHTML = "";
@@ -145,10 +145,10 @@ function loadYYMM(fullDate) {
 	if (mm === init.today.getMonth() && yy === init.today.getFullYear()) {
 		markToday = init.today.getDate();
 	}
-	
+
 	document.querySelector('.cal-month').textContent = init.monList[mm];
 	document.querySelector('.cal-year').textContent = yy + "년 ";
-	
+
 	clickedMon = init.monList[mm];
 
 	let trtd = '';
@@ -232,10 +232,10 @@ function parseticketPrice(targetString) {
 	for (var i = 0; i < haplist.length; i++) {
 		if (haplist.length > 1) {
 			document.getElementById("showtime").innerHTML += haplist[i] + "원 <br>";
-			document.getElementById("selectPrice").innerHTML += "<option>"+haplist[i]+"원 </option>";
+			document.getElementById("selectPrice").innerHTML += "<option>" + haplist[i]+   "원 </option>";
 		} else {
 			document.getElementById("showtime").innerHTML += haplist[i] + " <br>";
-			document.getElementById("selectPrice").innerHTML += "<option>"+haplist[i]+" </option>";
+			document.getElementById("selectPrice").innerHTML += "<option>" + haplist[i]+   " </option>";
 		}
 
 	}
@@ -355,29 +355,39 @@ $calBody.addEventListener('click', (e) => {
 		init.activeDate.setDate(day);
 		//reloadTodo();
 	}
-	
 
+
+	var leftseatNum = theaterTotalSeat;
 	document.getElementById("showtime").innerHTML = "-" + clickedday + "일 공연시간-<br>";
 	document.getElementById("selectTime").innerHTML = "<option value='0' selected='selected'>공연시간선택</option>";
 	for (var i = 0; i < parsedTimeArr.length; i++) {
 		if (clickedWeek == parsedTimeArr[i].weekday) {
-			document.getElementById("showtime").innerHTML += parsedTimeArr[i].timeday + " (잔여좌석:40)<br>";
-			document.getElementById("selectTime").innerHTML += "<option>"+ clickedMon + " " +clickedday+"일 " +parsedTimeArr[i].timeday+"</option>";
+			var clickedDayFormat = clickedMon + " " + clickedday + "일 " + parsedTimeArr[i].timeday;
+			if (bookedTimeList.length == 0) {
+				leftseatNum = theaterTotalSeat;
+			} else {
+				for (var j = 0; j < bookedTimeList.length; j++) {
+					if (clickedDayFormat == bookedTimeList[j]) {
+						leftseatNum = theaterTotalSeat - bookedSeatNumList[j];
+					}
+				}
+			}
+
+			document.getElementById("showtime").innerHTML += parsedTimeArr[i].timeday + " (잔여좌석:" + leftseatNum + ")<br>";
+			document.getElementById("selectTime").innerHTML += "<option>" + clickedMon + " " + clickedday + "일 " + parsedTimeArr[i].timeday + "</option>";
 		}
 	}
-	
+
 	document.getElementById("showtime").innerHTML += "<br><br>";
-	
+
 	parseticketPrice(ticketPrice);
-	
-	//alert(leftSeatList.time);
 	
 });
 
 
 function res_click(vall) {
 
-	if(document.getElementById("selectTime").value != 0 && document.getElementById("selectPrice").value != 0) {
+	if (document.getElementById("selectTime").value != 0 && document.getElementById("selectPrice").value != 0) {
 		document.formData.submit();
 	} else {
 		alert('가격 & 일정을 선택해주세요.');

@@ -92,11 +92,20 @@ SELECT * FROM THEATER t ;
 SELECT * FROM THEATER_SEAT ts ;
 
 
-SELECT TH_TOTALSEAT "totalSeat",count(seat_num) "bookedSeat", PRF_TIME "time", prf_uid FROM  
-(SELECT t.TH_UID, ts.SEAT_NUM, ts.PRF_TIME, t.TH_TOTALSEAT, p2.PRF_UID 
+SELECT count(seat_num) "bookedSeat", PRF_TIME "time", prf_uid FROM  
+(SELECT t.TH_UID, ts.SEAT_NUM, ts.PRF_TIME, p2.PRF_UID 
 FROM THEATER t ,THEATER_SEAT ts , PERFORM p2
 WHERE t.TH_UID = ts.TH_UID AND p2.PRF_FCLTYNM = t.TH_NAME) WHERE prf_uid = 425 
-GROUP BY TH_TOTALSEAT, PRF_TIME, prf_uid;
+GROUP BY PRF_TIME, prf_uid;
+
+			SELECT count(seat_num) "bookedSeat", PRF_TIME "time", prf_uid FROM  
+			(SELECT t.TH_UID, ts.SEAT_NUM, ts.PRF_TIME, p2.PRF_UID 
+			FROM THEATER t ,THEATER_SEAT ts , PERFORM p2
+			WHERE t.TH_UID = ts.TH_UID AND p2.PRF_FCLTYNM = t.TH_NAME) WHERE prf_uid = 425
+			GROUP BY PRF_TIME, prf_uid;
+
+
+
 
 SELECT * FROM PERFORM p WHERE PRF_UID = 1211;
 
@@ -282,7 +291,6 @@ FROM PerformRec r, favperform f, Perform p
 WHERE f.user_uid=1 and r.prf_id = f.prf_uid AND r.relprf_id = p.prf_id
 ORDER BY r.prf_id) k, PERFORM p
 WHERE k.prf_id = p.prf_id;
-
 
 DROP TABLE perform CASCADE CONSTRAINTS;
 

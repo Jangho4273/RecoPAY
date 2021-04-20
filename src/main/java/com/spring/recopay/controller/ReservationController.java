@@ -114,32 +114,21 @@ public class ReservationController {
 	// 영화관 정보 출력 
 	@RequestMapping("/reservation/{uid}")
 	public String reservationPerform(@PathVariable int uid, Model model) {
-		model.addAttribute("list", rs.viewByUid(uid));
+		List<PerformDTO> viewByUid = rs.viewByUid(uid);
+		model.addAttribute("list", viewByUid);
 		model.addAttribute("uid", uid);
 		
 		model.addAttribute("location",ts.getMapCordXY(uid));
 		
 		//남은 좌석 수의 list 가져오기 
-//		List<TheaterSeatDTO> dto = ts.getLeftSeat(uid);
-//		System.out.println(dto.get(0).getTotalSeat());
-//		if(dto.size() == 0 ) {
-//			
-//		} else {
-//			model.addAttribute("leftseatArr", ts.getLeftSeat(uid));
-//		}
+		List<TheaterSeatDTO> dto = ts.getLeftSeat(uid);
+		model.addAttribute("totalSeat", ts.getTotalSeatByUid(uid));
+//		System.out.println("TotalSeat : " + ts.getTotalSeat(uid).getTotalSeat());
+		model.addAttribute("leftseatArr", dto);
 		
+
+
 		
-//		List<PerformDTO> dto = rs.list();
-//		
-//		for (PerformDTO e : dto) {
-//			if(e.getUid() == uid) {
-//				model.addAttribute("leftseat" , ts.getLeftSeat(e.getFcltynm(), e.getRunday()));
-//			}
-//		}
-		
-		
-		//String name = (String) model.getAttribute("name");
-		//model.addAttribute("map", ts.getMapCordXY(name));
 		return "reservation/reservationPerform";
 	}
 	

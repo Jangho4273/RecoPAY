@@ -64,12 +64,19 @@
 	<!-- 남은 좌석 수 가져오기 -->
 	<select id="getLeftSeat" resultType="com.spring.recopay.domain.TheaterSeatDTO">
 		<![CDATA[ 
-			SELECT TH_TOTALSEAT "totalSeat",count(seat_num) "bookedSeat", PRF_TIME "time", prf_uid FROM  
-			(SELECT t.TH_UID, ts.SEAT_NUM, ts.PRF_TIME, t.TH_TOTALSEAT, p2.PRF_UID 
+			SELECT count(seat_num) "bookedSeat", PRF_TIME "time", prf_uid FROM  
+			(SELECT t.TH_UID, ts.SEAT_NUM, ts.PRF_TIME, p2.PRF_UID 
 			FROM THEATER t ,THEATER_SEAT ts , PERFORM p2
 			WHERE t.TH_UID = ts.TH_UID AND p2.PRF_FCLTYNM = t.TH_NAME) WHERE prf_uid = #{uid}
-			GROUP BY TH_TOTALSEAT, PRF_TIME, prf_uid
+			GROUP BY PRF_TIME, prf_uid
 		]]>	
+	</select>
+	
+	<select id="getTotalSeatByUid" resultType="com.spring.recopay.domain.TheaterSeatDTO">
+	<![CDATA[ 
+		select th_totalseat "totalSeat" from (select * from theater t, perform p where t.TH_ID = p.TH_UID) 
+		where PRF_UID = #{uid}
+	]]>	
 	</select>
 	
 </mapper>

@@ -10,5 +10,6 @@ public interface TheaterDAO {
 	List<TheaterSeatDTO> getAllBookedSeats();
 	List<TheaterSeatDTO> getBookedSeatsByNameAndTime(String time, String theaterName);
 	List<TheaterSeatDTO> getLeftSeat(int uid);
+	TheaterSeatDTO getTotalSeatByUid(int uid);
 }
 
