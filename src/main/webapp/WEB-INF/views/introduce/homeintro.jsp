@@ -95,7 +95,7 @@
                     <div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="100ms">
                         <!-- Post Thumb -->
                         <div class="blog-post-thumb mt-30">
-                            <a href="#"><img src="<%=request.getContextPath() %>/img/bg-img/blog3.jpg" alt=""></a>
+                            <a href="#"><img src="<%=request.getContextPath() %>/img/bg-img/blog6.jpeg" alt=""></a>
                             <!-- Post Date -->
                             <div class="post-date">
                                 <span>30</span>
@@ -121,7 +121,7 @@
                     <div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="100ms">
                         <!-- Post Thumb -->
                         <div class="blog-post-thumb mt-30">
-                            <a href="#"><img src="<%=request.getContextPath() %>/img/bg-img/blog3.jpg" alt=""></a>
+                            <a href="#"><img src="<%=request.getContextPath() %>/img/bg-img/blog4.jpg" alt=""></a>
                             <!-- Post Date -->
                             <div class="post-date">
                                 <span>7</span>
@@ -147,7 +147,7 @@
                     <div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="100ms">
                         <!-- Post Thumb -->
                         <div class="blog-post-thumb mt-30">
-                            <a href="#"><img src="<%=request.getContextPath() %>/img/bg-img/blog3.jpg" alt=""></a>
+                            <a href="#"><img src="<%=request.getContextPath() %>/img/bg-img/blog5.jpg" alt=""></a>
                             <!-- Post Date -->
                             <div class="post-date">
                                 <span>12</span>
@@ -180,17 +180,7 @@
 
  	<jsp:include page="/resources/jsp/footer.jsp"></jsp:include>
 
-    <!-- ##### All Javascript Script ##### -->
-    <!-- jQuery-2.2.4 js -->
-    <script src="js/jquery/jquery-2.2.4.min.js"></script>
-    <!-- Popper js -->
-    <script src="js/bootstrap/popper.min.js"></script>
-    <!-- Bootstrap js -->
-    <script src="js/bootstrap/bootstrap.min.js"></script>
-    <!-- All Plugins js -->
-    <script src="js/plugins/plugins.js"></script>
-    <!-- Active js -->
-    <script src="js/active.js"></script>
+
 </body>
 
 </html>

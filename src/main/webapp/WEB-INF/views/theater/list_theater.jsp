@@ -47,14 +47,37 @@
 
 
 </head>
+<style>
+.searchBtn {
+  background-color: #FFFFFF;
+  border: 1px solid;
+  color: black;
+  padding: 5px 9px;
+  text-align: center;
+  font-size: 14px;
+  margin: 4px 8px 2px 1px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  
+}
 
+.searchBtn:hover {opacity: 1;
+background-color: gray;
+color: white;
+border: none;
+}
+
+</style>
 <body>
 
 	<jsp:include page="/resources/jsp/header.jsp"></jsp:include>
 
 	<!-- ##### Breadcumb Area Start ##### -->
 	<section class="breadcumb-area bg-img bg-overlay"
-		style="background-image: url(<%=request.getContextPath()%>/resources/img/bg-img/breadcumb.jpg);">
+		style="background-image: url(<%=request.getContextPath()%>/resources/img/bg-img/bg-1.jpg);">
 		<div class="bradcumbContent">
 			<p>공연장 정보</p>
 			<h2>공 연 장 리 스 트</h2>
@@ -104,7 +127,7 @@
 						<option value="위치" selected="selected">위치</option>
 						<option value="극장명">극장명</option>
 					</select> <input id="searchName" />
-					<button type="button" id="searchbut">검색</button>
+					<button type="button" id="searchbut" class="searchBtn">검색</button>
 
 
 					<input name="radiobut" type="radio" value="total" checked="checked">모두</input> 

@@ -32,8 +32,11 @@
 
 }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> branch 'master' of https://github.com/Jangho4273/RecoPAY.git
 </style>
 <meta charset="UTF-8">
 <title>Header</title>
@@ -83,41 +86,45 @@
                                     <li><a href="<%=request.getContextPath() %>/perform">연극</a>
                                     	<ul class="dropdown">
                                     		<li><a href="<%=request.getContextPath() %>/perform/intro">연극소개</a></li>
-                                    		<li><a href="<%=request.getContextPath() %>/perform/genre">장르</a></li>
+                                    		<li><a href="<%=request.getContextPath() %>/perform/genre">추천</a></li>
                                     		<li><a href="<%=request.getContextPath() %>/perform/rest">후기</a></li>
                                     	</ul>
                                     </li>
-                                    <li><a href="schedule">예매</a>
+                                    <li><a href="<%=request.getContextPath() %>/reservation">예매</a>
                                     	<ul class="dropdown">
                                     		<li><a href="<%=request.getContextPath() %>/reservation/schedule">연극 일정</a></li>
                                     		<li><a href="<%=request.getContextPath() %>/reservation/select">연극 예매</a></li>
                                     		<li><a href="<%=request.getContextPath() %>/reservation/ticketCheck">예매 확인 및 취소</a></li>
                                     	</ul>
                                     </li>
-                                    <li><a href="theater">극장</a>
+                                    <li><a href="<%=request.getContextPath() %>/theater">극장</a>
                                    		<ul class="dropdown">
                                     		<li><a href="<%=request.getContextPath() %>/theater/list">공연장 정보</a></li>
                                     		<li><a href="<%=request.getContextPath() %>/theater/map">오시는 길</a></li>
                                     	</ul>
                                     </li>
-                                    <li><a href="contact">Event</a>
+                                    <li><a href="<%=request.getContextPath() %>/event/list">Event</a>
                                     	<ul class="dropdown">
                                     		<li><a href="<%=request.getContextPath() %>/event/list">이벤트</a></li>
                                     	</ul>
                                     </li>
-                                    <li><a href="contact">고객센터</a>
+
+                                    <li><a href="<%=request.getContextPath() %>/servicecenter/notice/notice">고객센터</a>
+
                                     	<ul class="dropdown">
-                                    		<li><a href="">공지사항</a></li>
-                                    		<li><a href="">1:1문의</a></li>
-                                    		<li><a href="">자주하는 질문</a></li>
+                                    		<li><a href="<%=request.getContextPath() %>/servicecenter/notice/notice">공지사항</a></li>
+                                    		<li><a href="<%=request.getContextPath() %>/servicecenter/qna/qna">1:1문의</a></li>
+                                    		<li><a href="<%=request.getContextPath() %>/servicecenter/faq/faq">자주하는 질문</a></li>
                                     	</ul>
                                     </li>
-                                    <li><a href="contact">소개</a>
+                                    <li><a href="<%=request.getContextPath() %>/introduce">소개</a>
                                     	<ul class="dropdown">
-                                    		<li><a href="">인사말</a></li>
-                                    		<li><a href="">조직도</a></li>
-                                    		<li><a href="">RecoPAY 소개</a></li>
+                                    		<li><a href="<%=request.getContextPath() %>/introduce/introduce">인사말</a></li>
+                                    		<li><a href="<%=request.getContextPath() %>/introduce/chart">조직도</a></li>
+                                    		<li><a href="<%=request.getContextPath() %>/introduce/homeintro">RecoPAY 소개</a></li>
                                     	</ul>
+                                    </li>
+                                    <li><a href="<%=request.getContextPath() %>/reservation/mypage">mypage</a>
                                     </li>
                                 </ul>
 								

@@ -215,6 +215,7 @@ d<%@ page language="java" contentType="text/html; charset=UTF-8"
    <jsp:include page="/resources/jsp/footer.jsp"></jsp:include>
     <!-- ##### Footer Area Start ##### -->
 
+<<<<<<< HEAD
     <!-- ##### All Javascript Script ##### -->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
@@ -288,6 +289,9 @@ d<%@ page language="java" contentType="text/html; charset=UTF-8"
     
     
     
+=======
+
+>>>>>>> branch 'master' of https://github.com/Jangho4273/RecoPAY.git
 </body>
 
 </html>

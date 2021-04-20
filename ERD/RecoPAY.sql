@@ -5,7 +5,9 @@ SELECT * FROM MEMBER;
 CREATE SEQUENCE member_seq;
 DROP SEQUENCE member_seq;
 
-CREATE TABLE Member (
+DROP TABLE member CASCADE CONSTRAINTS;
+
+CREATE TABLE member (
 	user_uid	number		NOT NULL,
 	user_id	varchar2(30)		NOT NULL,
 	user_password	varchar2(60)		NOT NULL,
@@ -17,6 +19,12 @@ CREATE TABLE Member (
 	user_auth varchar2(40)  DEFAULT 'ROLE_MEMBER' NOT NULL,
 	user_enabled NUMBER  DEFAULT 1 NOT NULL
 );
+
+UPDATE MEMBER SET user_auth='ROLE_ADMIN' WHERE user_id = 'asdqwd';
+
+SELECT * FROM MEMBER;
+
+
 
 UPDATE MEMBER SET user_auth='ROLE_ADMIN' WHERE user_id = 'admin';
 
@@ -33,16 +41,35 @@ CREATE TABLE Non_Member (
 DROP TABLE Qna_Board;
 
 CREATE TABLE Qna_Board (
-	qna_uid	number		NOT NULL,
-	user_uid	number		NOT NULL,
+	qna_q_uid	number		NOT NULL,
+	user_uid	number		,
 	qna_title 	varchar2(50)		NOT NULL,
 	qna_content 	clob		NOT NULL,
 	qna_uploadedtime 	date	DEFAULT SYSDATE	NULL,
-	qna_img 	varchar2(50)		NULL,
+	qna_name 	varchar2(50)		NULL,
 	qna_viewcnt 	number	DEFAULT 0	NULL,
-	qna_answer 	varchar2(1000)		NULL
+	qna_answer 	varchar2(1000)	
 );
 
+SELECT qna_q_uid "q_uid", qna_title "title", qna_content "content", qna_name "name", qna_viewcnt "viewcnt", qna_uploadedtime "uploadtime"
+FROM Qna_Board
+ORDER BY qna_q_uid DESC;
+	
+CREATE SEQUENCE qna_seq;
+
+DROP TABLE  Comment_Board CASCADE CONSTRAINTS;
+
+CREATE TABLE Comment_Board(
+  cno number NOT NULL, 
+  bno number NOT NULL, 
+  writer varchar2(20) NOT NULL,
+  content CLOB NULL, 
+  reg_date date DEFAULT SYSDATE NOT NULL
+);
+
+CREATE SEQUENCE comment_seq;
+
+DROP SEQUENCE comment_seq;
 
 DROP TABLE  Theater CASCADE CONSTRAINTS;
 
@@ -51,7 +78,7 @@ DROP SEQUENCE theater_seq;
 CREATE SEQUENCE theater_seq;
 
 
-CREATE TABLE  Theater  (
+CREATE TABLE Theater  (
 	th_uid 	number		NOT NULL,
 	th_id varchar(10)  NOT NULL,
 	th_name 	varchar2(100)		NOT NULL,
@@ -67,61 +94,152 @@ CREATE TABLE  Theater  (
 	th_opendate varchar2(40) NULL
 );
 
+SELECT * FROM THEATER;
+
+
 SELECT * FROM THEATER t ;
+
+SELECT * FROM theater WHERE th_name = '국립극장';
+SELECT th_lat "lat", th_lng "lng" FROM theater WHERE th_name = '국립극장';
 
 SELECT th_uid "uid", th_id "id", th_name "name", th_location "location", th_totalseat "totalseat", th_state "state", 
 	th_telno "telno", th_chartr "chartr", th_lng "lng", th_lat "lat", th_url "url", th_totalno "totalno",th_opendate "opendate" 
 	FROM Theater where th_id = 'FC002633';
 
 
+SELECT * FROM THEATER t ;
+SELECT * FROM THEATER_SEAT ts ;
+
+
+SELECT count(seat_num) "bookedSeat", PRF_TIME "time", prf_uid FROM  
+(SELECT t.TH_UID, ts.SEAT_NUM, ts.PRF_TIME, p2.PRF_UID 
+FROM THEATER t ,THEATER_SEAT ts , PERFORM p2
+WHERE t.TH_UID = ts.TH_UID AND p2.PRF_FCLTYNM = t.TH_NAME) WHERE prf_uid = 425 
+GROUP BY PRF_TIME, prf_uid;
+
+			SELECT count(seat_num) "bookedSeat", PRF_TIME "time", prf_uid FROM  
+			(SELECT t.TH_UID, ts.SEAT_NUM, ts.PRF_TIME, p2.PRF_UID 
+			FROM THEATER t ,THEATER_SEAT ts , PERFORM p2
+			WHERE t.TH_UID = ts.TH_UID AND p2.PRF_FCLTYNM = t.TH_NAME) WHERE prf_uid = 425
+			GROUP BY PRF_TIME, prf_uid;
+
+
+
+
+SELECT * FROM PERFORM p WHERE PRF_UID = 1211;
+
 DROP TABLE  Reservation ;
 
 CREATE TABLE  Reservation  (
-	res_number 	varchar2(30)		NOT NULL,
-	res_data 	date		NOT NULL,
-	res_visit 	number		NOT NULL,
-	res_paycost 	number		NOT NULL,
-	user_uid 	number		NULL,
+	res_id 	varchar2(30)		NOT NULL,
+	res_prfdate varchar(100)  NOT NULL,
+	res_title varchar(150) NULL,
+	res_payment varchar(100) NULL,
+	user_id 	varchar2(200)		NULL,
 	nm_uid 	number		NULL,
-	res_isCancel 	char(1)		NOT NULL,
-	res_seat 	varchar2(25)		NOT NULL,
-	tt_uid 	number		NOT NULL
+	res_isfinished 	char(1)		null,
+	res_iscancel	char(1)		NULL,
+	res_seat 	varchar2(25)    NULL,
+	tt_uid 	number		NULL,
+	res_ticketnum number null
 );
+
+INSERT INTO RESERVATION (res_id,res_prfdate) VALUES (concat(TO_CHAR(SYSDATE,'YYYY-MMDD'),'-0001'),sysdate);
+
+SELECT * FROM RESERVATION r ;
+
+CREATE SEQUENCE reservation_seq;
 
 DROP TABLE  Theater_Seat ;
 
 CREATE TABLE  Theater_Seat  (
-	seat_num 	varchar2(10)		NOT NULL,
-	th_uid 	number		NOT NULL
+	seat_uid NUMBER NOT NULL,
+	seat_num 	varchar2(10)  NOT NULL,
+	th_uid 	number		NOT NULL, 
+	prf_time varchar(50)  NOT NULL,
+	user_uid number     NOT NULL
 );
 
+CREATE SEQUENCE theater_seat_seq;
+
+
+SELECT seat_num "seat", th_uid, user_uidm prf_time "time" FROM Theater_Seat;
+
+SELECT * FROM theater_seat;
+
+
+
+
+insert into Theater_Seat (seat_num , th_uid , user_uid , prf_time) values
+ 		('A2', (SELECT th_uid from Theater where th_name = '63아트홀' ) , 
+    	 (SELECT user_uid from Member where user_id = 'asdqwd') , '4월 13일 14:00');
+
+SELECT th_totalseat - (select count(*) from theater_seat where th_uid = (SELECT TH_UID FROM THEATER WHERE th_name='2001 아울렛키즈홀 [구로]') ) "leftSeat" 
+FROM theater WHERE th_name = '2001 아울렛키즈홀 [구로]';
+
+(select count(*) from theater_seat where th_uid = (SELECT TH_UID FROM THEATER WHERE th_name='242') );
+
+insert into Theater_Seat (seat_num , th_uid , user_uid) values
+  ('A32', (SELECT th_uid from Theater where th_name ='242' ) , 
+     (SELECT user_uid from Member where user_id = 'asdqwd'));  
+
+    SELECT * FROM THEATER_SEAT ts ;
+
+    
+    
 DROP TABLE  Notice_Board ;
 
 CREATE TABLE  Notice_Board  (
-	notice_uid 	number		NOT NULL,
-	notice_title 	varchar2(50)		NOT NULL,
-	notice_content 	varchar2(2000)		NOT NULL,
-	notice_uploadedtime 	date		NULL,
-	notice_img 	varchar2(50)		NULL,
-	notice_viewcnt 	number	DEFAULT 0	NULL,
-	user_uid 	number		NOT NULL,
-	notice_type 	varchar2(20)		NOT NULL
+	notice_n_uid 	number		NOT NULL,
+	notice_title 	varchar2(50) 	NOT NULL ,
+	notice_content 	varchar2(2000) 	NOT NULL ,
+	notice_uploadedtime 	DATE 	DEFAULT 	SYSDATE,
+	notice_name 	varchar2(50)	NOT NULL ,
+	notice_viewcnt 	number	DEFAULT 0,
+	user_uid 	number		,
+	notice_type 	varchar2(20)
 );
+
+SELECT notice_n_uid "n_uid", notice_title "title", notice_content "content", notice_name "name", notice_viewcnt "viewcnt", notice_uploadedtime "uploadtime"
+FROM Notice_Board
+WHERE notice_n_uid = '41';
+
+
+SELECT notice_n_uid "n_uid", notice_title "title", notice_content "content", notice_name "name", notice_viewcnt "viewcnt", notice_uploadedtime "uploadtime"
+FROM Notice_Board
+ORDER BY notice_n_uid DESC;
+
+UPDATE Notice_Board 
+SET notice_title = '#{a.title }', notice_content = '#{a.content }' 
+WHERE notice_n_uid = '41';
+	
+SELECT * FROM NOTICE_BOARD nb ;
+
+CREATE SEQUENCE notice_seq;
+
+CREATE SEQUENCE userid_seq;
 
 DROP TABLE  Faq_Board ;
 
 CREATE TABLE  Faq_Board  (
-	faq_uid 	number		NOT NULL,
+	faq_f_uid 	number		NOT NULL,
 	faq_title 	varchar2(50)		NOT NULL,
 	faq_content 	varchar2(2000)		NOT NULL,
-	faq_uploadedtime 	date		NULL,
-	faq_img 	varchar2(50)		NULL,
-	faq_viewcnt 	number	DEFAULT 0	NULL,
-	user_uid 	number		NOT NULL,
-	faq_type 	varchar2(20)		NOT NULL
+	faq_uploadedtime 	date		DEFAULT		SYSDATE,
+	faq_name 	varchar2(50)		NULL,
+	faq_viewcnt 	number	DEFAULT 0,
+	user_uid 	number		,
+	faq_type 	varchar2(20)
 );
 
 select sysdate from dual;
+
+SELECT faq_f_uid "f_uid", faq_title  "title", faq_content "content", faq_name "name", faq_viewcnt "viewcnt", faq_uploadedtime "uploadtime"
+FROM Faq_Board
+ORDER BY faq_f_uid DESC;
+
+CREATE SEQUENCE faq_seq;		
+
 
 DROP TABLE  Event_Board ;
 
@@ -208,7 +326,7 @@ CREATE TABLE PerformRec (
 	sim number(4,3) NOT null
 )
 
-SELECT * FROM performRec
+SELECT * FROM performRec;
 
 INSERT INTO favperform VALUES(1,'PF173066' ,1);
 INSERT INTO favperform VALUES(2, 'PF172498' ,1);
@@ -221,7 +339,7 @@ WHERE f.user_uid=1 and r.prf_id = f.prf_uid AND r.relprf_id = p.prf_id
 ORDER BY r.prf_id) k, PERFORM p
 WHERE k.prf_id = p.prf_id;
 
-
+DROP TABLE perform CASCADE CONSTRAINTS;
 
 CREATE TABLE Perform (
 	prf_uid	number		NOT NULL,
@@ -232,6 +350,9 @@ CREATE TABLE Perform (
 	prf_fcltynm	varchar2(200)		NULL,
 	prf_poster	varchar2(200)		NULL,
 	prf_state	varchar2(20)		NOT NULL,
+	prf_runday varchar2(100)		NULL,
+	prf_runtime  varchar2(50)		NULL,
+	prf_ticketprice varchar2(100)   NULL,
 	prf_openrun	char(1)		NULL,
 	th_uid	varchar2(30)		NULL,
 	prf_avgsc	number(2,1)		NULL,
@@ -239,7 +360,11 @@ CREATE TABLE Perform (
 );
 
 
+SELECT * FROM perform;
 
+EXP recopay/recopay FILE=C:\DevRoot\perform.exp tables=Perform;
+
+SELECT * FROM PERFORM;
 SELECT * FROM PERFORMrec;
 SELECT * FROM THEATER t ;
 

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.spring.recopay.domain.PerformDAO;
 import com.spring.recopay.domain.PerformDTO;
 import com.spring.recopay.domain.TheaterDAO;
+import com.spring.recopay.domain.TheaterDTO;
+import com.spring.recopay.domain.TheaterSeatDTO;
 
 @Service
 public class TheaterService implements TheaterDAO{
@@ -40,5 +42,40 @@ public class TheaterService implements TheaterDAO{
 		return getSession().viewById(id);
 	}
 
+	@Override
+	public TheaterDTO getMapCordXY(int uid) {
+		// TODO Auto-generated method stub
+		return getSession().getMapCordXY(uid);
+	}
+
+	@Override
+	public int insertSeat(String seat, String theaterName, String userId, String time) {
+		// TODO Auto-generated method stub
+		return getSession().insertSeat(seat, theaterName, userId,time);
+	}
+
+	@Override
+	public List<TheaterSeatDTO> getAllBookedSeats() {
+		// TODO Auto-generated method stub
+		return getSession().getAllBookedSeats();
+	}
+
+	@Override
+	public List<TheaterSeatDTO> getBookedSeatsByNameAndTime(String time, String theaterName) {
+		// TODO Auto-generated method stub
+		return getSession().getBookedSeatsByNameAndTime(time, theaterName);
+	}
+
+	@Override
+	public List<TheaterSeatDTO> getLeftSeat(int uid) {
+		// TODO Auto-generated method stub
+		return getSession().getLeftSeat(uid);
+	}
+
+	@Override
+	public TheaterSeatDTO getTotalSeatByUid(int uid) {
+		// TODO Auto-generated method stub
+		return getSession().getTotalSeatByUid(uid);
+	}
 
 }
