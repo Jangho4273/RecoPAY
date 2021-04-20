@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- Faq -->
+<mapper namespace="com.spring.recopay.domain.CommentDAO">
+ 
+    <select id="commentCount" resultType="com.spring.recopay.domain.CommentDTO">
+        SELECT
+            Q_UID, CONTENT, WRITER, REGDATE
+        FROM Comment_Board
+        WHERE CNO = #{cno}
+    </select>
+    
+    <select id="commentList" resultType="com.spring.recopay.domain.CommentDTO">
+        SELECT
+            *
+        FROM COMMENT
+    </select>
+    
+    
+    <insert id="commentInsert" parameterType="com.spring.recopay.domain.CommentDTO">
+        INSERT INTO
+        COMMENT (CNO, Q_UID, CONTENT, WRITER)
+        VALUES(qna_seq.nextval,#{q_uid},#{content},#{writer}) 
+    </insert>
+    
+    <update id="commentUpdate" parameterType="com.spring.recopay.domain.CommentDTO">
+        UPDATE COMMENT
+            SET
+            CONTENT = #{content}
+        WHERE CNO = #{cno}
+    </update>
+    
+    <delete id="commentDelete" parameterType="int">
+        DELETE FROM COMMENT WHERE CNO = #{cno}
+    </delete>
+</mapper>
