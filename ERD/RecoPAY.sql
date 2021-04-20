@@ -75,7 +75,7 @@ CREATE TABLE Theater  (
 	th_opendate varchar2(40) NULL
 );
 
-
+SELECT * FROM THEATER;
 
 
 SELECT * FROM THEATER t ;
@@ -267,7 +267,7 @@ CREATE TABLE PerformRec (
 	sim number(4,3) NOT null
 )
 
-SELECT * FROM performRec
+SELECT * FROM performRec;
 
 INSERT INTO favperform VALUES(1,'PF173066' ,1);
 INSERT INTO favperform VALUES(2, 'PF172498' ,1);

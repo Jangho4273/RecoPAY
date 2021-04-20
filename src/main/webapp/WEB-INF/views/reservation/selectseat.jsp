@@ -219,6 +219,7 @@
 							type="hidden" name="seat" /><br> <input type="hidden"
 							name="ticketnum" /><br> <input type="hidden"
 							name="theaterName" value="${list[0].fcltynm }" />
+						<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
 						<button type="button" class="btn btn-primary" onclick="buy_but();">티켓 구매하기</button>
 					</form>
 
