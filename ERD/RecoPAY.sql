@@ -28,16 +28,6 @@ SELECT * FROM MEMBER;
 
 UPDATE MEMBER SET user_auth='ROLE_ADMIN' WHERE user_id = 'admin';
 
-DROP TABLE Non_Member;
-
-CREATE TABLE Non_Member (
-	nm_uid	number		NOT NULL,
-	nm_pw	varchar2(30)		NOT NULL,
-	nm_phone	varchar2(20)		NOT NULL,
-	nm_number	varchar2(30)		NOT NULL,
-	nm_name	varchar2(30)		NOT NULL
-);
-
 DROP TABLE Qna_Board;
 
 CREATE TABLE Qna_Board (
@@ -342,7 +332,7 @@ WHERE k.prf_id = p.prf_id;
 DROP TABLE perform CASCADE CONSTRAINTS;
 
 CREATE TABLE Perform (
-	prf_uid	number		NOT NULL,
+	prf_uid	number		NOT NULL PRIMARY key,
 	prf_id	varchar2(15)		NOT NULL,
 	prf_name	varchar2(200)		NOT NULL,
 	prf_from	varchar2(20)		NULL,

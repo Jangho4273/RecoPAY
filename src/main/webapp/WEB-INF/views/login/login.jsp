@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -23,9 +24,7 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/style.css">
 
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-<script src="./lib/kakao.min.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 
@@ -44,7 +43,7 @@
 	</section>
 	<!-- ##### Breadcumb Area End ##### -->
 
-<<<<<<< HEAD
+
 	<!-- ##### Login Area Start ##### -->
 	<section class="login-area section-padding-100">
 		<div class="container">
@@ -95,7 +94,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
 	</section>
 	<!-- ##### Login Area End ##### -->
 
@@ -103,19 +101,7 @@
 	<jsp:include page="/resources/jsp/footer.jsp"></jsp:include>
 	<!-- ##### Footer Area Start ##### -->
 
-	<!-- ##### All Javascript Script ##### -->
-	<!-- jQuery-2.2.4 js -->
-	<script src="js/jquery/jquery-2.2.4.min.js"></script>
-	<!-- Popper js -->
-	<script src="js/bootstrap/popper.min.js"></script>
-	<!-- Bootstrap js -->
-	<script src="js/bootstrap/bootstrap.min.js"></script>
-	<!-- All Plugins js -->
-	<script src="js/plugins/plugins.js"></script>
-	<!-- Active js -->
-	<script src="js/active.js"></script>
-=======
->>>>>>> branch 'master' of https://github.com/Jangho4273/RecoPAY.git
+
 </body>
 
 </html>

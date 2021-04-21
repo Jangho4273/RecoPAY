@@ -11,11 +11,11 @@
       values(member_seq.nextval, #{username}, #{password}, #{name}, #{emailbf} , #{addr2}, #{call})   
     </insert>
     
-    <!-- <select id="idChk" resultType="int">
+    <select id="checkSignup" resultType="int">
   	
   		select count(*) from Member where user_id = #{username}
   	
-  	</select>-->
+  	</select>
 	
 	
 	<!-- 회원 가입 -->

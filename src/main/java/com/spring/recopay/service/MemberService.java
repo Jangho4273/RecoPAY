@@ -36,6 +36,11 @@ public class MemberService {
 	public void register(MemberDTO memberDTO) throws Exception{
 		sessionGet().register(memberDTO);
 	}
+
+	public int checkSignup(String username) {
+		return sessionGet().checkSignup(username);
+		
+	}
 	
 
 //	//login
