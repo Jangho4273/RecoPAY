@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -80,7 +81,7 @@
 							<th>조회수</th>
 							<th>작성일</th>
 							<th>평점</th>
-							<th>연극명</th>
+							<th>연극명</th>	
 						</thead>
 						<tbody>
 						
@@ -129,8 +130,8 @@
 						<label for="subject"><b>글제목</b></label>
 						<input type="text" placeholder="글제목(필수)" name="subject" required>
 					
-						<label for="name"><b>작성자</b></label>
-						<input type="text" placeholder="작성자(필수)" name="name" required>
+						<sec:authentication property="principal.username" var="user_id" />
+						<input type="hidden" name="name" value="${user_id }">
 					      
 						<label for="content"><b>내용</b></label>
 						<textarea placeholder="글내용" name="content" class="re_content"></textarea>
@@ -149,6 +150,7 @@
 						<div id="scoretext"></div>
 						<label for="prfname"><b>연극명</b></label>
 						<input style="width:60%;" type="text"  placeholder="연극명" name="prfname" id="prfna">
+						<input type="hidden" name="fprfid" id="fprfid">
 						<button id="findperf" type="button" class="cusbtn">찾아보기</button>
 						
 						<div id="dlg_write1" class="modal" >

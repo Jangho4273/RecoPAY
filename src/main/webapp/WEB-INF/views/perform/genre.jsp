@@ -13,7 +13,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>Perform</title>
+    <title>Recommend</title>
 
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/favicon.ico">
@@ -39,7 +39,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-heading style-2">
-                        <p>아아아아아앙아아아아아아아아아아앙아</p>
+                        <p>Do you have any recommendations?</p>
                         <h2>추천별</h2>
                     </div>
                 </div>
