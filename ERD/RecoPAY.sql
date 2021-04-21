@@ -20,7 +20,7 @@ CREATE TABLE member (
 	user_enabled NUMBER  DEFAULT 1 NOT NULL
 );
 
-UPDATE MEMBER SET user_auth='ROLE_ADMIN' WHERE user_id = 'asdqwd';
+UPDATE MEMBER SET user_auth='ROLE_ADMIN' WHERE user_id = 'admin';
 
 SELECT * FROM MEMBER;
 
@@ -40,6 +40,7 @@ CREATE TABLE Qna_Board (
 	qna_answer 	varchar2(1000)	
 );
 
+
 SELECT qna_q_uid "q_uid", qna_title "title", qna_content "content", qna_name "name", qna_viewcnt "viewcnt", qna_uploadedtime "uploadtime"
 FROM Qna_Board
 ORDER BY qna_q_uid DESC;
@@ -50,7 +51,7 @@ DROP TABLE  Comment_Board CASCADE CONSTRAINTS;
 
 CREATE TABLE Comment_Board(
   cno number NOT NULL, 
-  bno number NOT NULL, 
+  qna_q_uid	 number		NOT NULL, 
   writer varchar2(20) NOT NULL,
   content CLOB NULL, 
   reg_date date DEFAULT SYSDATE NOT NULL

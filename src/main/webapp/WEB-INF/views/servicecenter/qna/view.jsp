@@ -45,7 +45,7 @@ function chkDelete(uid){
     <!-- ##### Breadcumb Area End ##### -->
 
     <!-- ##### Contact Area Start ##### -->
-    <section class="contact-area section-padding-100-0">
+    <section class="contact-area section-padding-100-0 mb-50">
         <div class="container">
             <div class="row">
 
@@ -82,12 +82,65 @@ function chkDelete(uid){
 
                     </div>
                 </div>
+                
+                <div class="col-12 col-lg-9">
+	                <table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+					<thead>
+						<tr>
+							<th colspan="2" style="background-color: #eeeeee; text-align: center;">게시판 답글 달기</th>
+						</tr>
+					</thead>
+					
+					UID : ${list[0].q_uid }<br>
+					작성자 : ${list[0].name }<br>
+					제목 : ${list[0].title }<br>
+					등록일 : ${list[0].uploadtime }<br>
+					조회수 : ${list[0].viewcnt }<br>
+					내용: ${list[0].content }<br>
+					<hr>
+					
+					<button onclick="location.href='update?uid=${list[0].q_uid}'">수정하기</button>
+					<button onclick="location.href = 'qna'">목록보기</button>
+					<button onclick="chkDelete(${list[0].q_uid})">삭제하기</button>
+					<button onclick="location.href = 'write'">신규등록</button>
+
+					</table>
+					
+					<c:forEach var="dto" items="${commentlist }" varStatus="vs">
+					<p> 댓글 내용 : ${dto.content }  , 작성자(${dto.writer }) </p><br>
+					</c:forEach>
+					<a href="qna" class="btn btn-primary">목록</a>
+
+					<form name="commentInsertForm" method="post"
+						action="/recopay/comment/insert">
+						<div class="input-group">
+							<input type="hidden" name="${_csrf.parameterName }"
+								value="${_csrf.token }" /> <input type="hidden" name="q_uid"
+								value="<%=request.getAttribute("uid")%>" /> <input type="text"
+								class="form-control" id="content" name="content"
+								placeholder="내용을 입력하세요."> <span class="input-group-btn">
+								<button class="btn btn-default" type="submit"
+									name="commentInsertBtn">등록</button>
+							</span>
+						</div>
+					</form>
+
+					<div class="container">
+						<div class="commentList"></div>
+					</div>
+					
+						 
+					<%@ include file="comment.jsp" %>
+
+					<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+					<script src="js/bootstrap.js"></script>
+				</div>
             </div>
         </div>
     </section>
     <!-- ##### Contact Area End ##### -->
 
-	<!-- 게시판 글 보기 양식 영역 시작 -->
+<%-- 	<!-- 게시판 글 보기 양식 영역 시작 -->
 	<div class="container">
 		<div class="row">
 			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
@@ -118,6 +171,9 @@ function chkDelete(uid){
 <button onclick="location.href = 'write'">신규등록</button>
 
 			</table>
+			<c:forEach var="dto" items="${commentlist }" varStatus="vs">
+				<p> 댓글 내용 : ${dto.content }  , 작성자(${dto.writer }) </p><br>
+			</c:forEach>
 			</body>
 			<a href="qna" class="btn btn-primary">목록</a>
 			
@@ -126,14 +182,13 @@ function chkDelete(uid){
 	</div>
 	<!-- 게시판 글 보기 양식 영역 끝 -->
 	
-	 <!--  댓글  -->
+<!--  댓글  -->
     <div class="container">
-        <label for="content">comment</label>
-        <form name="commentInsertForm">
+        <form name="commentInsertForm" method="post" action="/recopay/comment/insert">
             <div class="input-group">
-               <input type="hidden" name="bno" value="${detail.bno}"/>
+            <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
+               <input type="hidden" name="q_uid" value="<%= request.getAttribute("uid") %>"/>
                <input type="text" class="form-control" id="content" name="content" placeholder="내용을 입력하세요.">
-               <input type="text" sytle ="width:50%" class="form-control" id="writer" name="writer" placeholder="작성자를 입력하세요.">
                <span class="input-group-btn">
                     <button class="btn btn-default" type="submit" name="commentInsertBtn">등록</button>
                </span>
@@ -145,12 +200,13 @@ function chkDelete(uid){
 	        <div class="commentList"></div>
 	    </div>
 	</div>
-<%@ include file="comment.jsp" %>
+	 
+<%@ include file="comment.jsp" %>	 
 	 
 	</script>	
 	<!-- 부트스트랩 참조 영역 -->
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="js/bootstrap.js"></script>
+	<script src="js/bootstrap.js"></script> --%>
 </body>
 </html>
 

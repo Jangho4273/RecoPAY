@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <script>
-var bno = '${detail.bno}'; //게시글 번호
+var q_uid = '${detail.q_uid}'; //게시글 번호
  
 $('[name=commentInsertBtn]').click(function(){ //댓글 등록 버튼 클릭시 
     var insertData = $('[name=commentInsertForm]').serialize(); //commentInsertForm의 내용을 가져옴
@@ -14,9 +14,9 @@ $('[name=commentInsertBtn]').click(function(){ //댓글 등록 버튼 클릭시
 //댓글 목록 
 function commentList(){
     $.ajax({
-        url : '/comment/list',
+        url : '../list',
         type : 'get',
-        data : {'bno':bno},
+        data : {'q_uid':q_uid},
         success : function(data){
             var a =''; 
             $.each(data, function(key, value){ 
@@ -36,7 +36,7 @@ function commentList(){
 //댓글 등록
 function commentInsert(insertData){
     $.ajax({
-        url : '/comment/insert',
+        url : '../insert',
         type : 'post',
         data : insertData,
         success : function(data){
@@ -66,7 +66,7 @@ function commentUpdateProc(cno){
     var updateContent = $('[name=content_'+cno+']').val();
     
     $.ajax({
-        url : '/comment/update',
+        url : '../update',
         type : 'post',
         data : {'content' : updateContent, 'cno' : cno},
         success : function(data){
@@ -78,7 +78,7 @@ function commentUpdateProc(cno){
 //댓글 삭제 
 function commentDelete(cno){
     $.ajax({
-        url : '/comment/delete/'+cno,
+        url : '../delete/'+cno,
         type : 'post',
         success : function(data){
             if(data == 1) commentList(bno); //댓글 삭제후 목록 출력 

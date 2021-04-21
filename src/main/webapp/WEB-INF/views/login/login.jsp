@@ -58,7 +58,7 @@
 
 
 							<form method='post'
-								action="${pageContext.request.contextPath}/login">
+								action="${pageContext.request.contextPath}/index">
 								<div class="form-group">
 									<label for="username">ID</label> <input type="text"
 										name='username' class="form-control" id="username"
