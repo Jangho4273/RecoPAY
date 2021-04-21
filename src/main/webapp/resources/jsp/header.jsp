@@ -10,7 +10,7 @@
 
     width:100px;
 
-    background-color: #f8585b;
+ 	background-color: rgba( 0, 0, 0, 0.2 );
 
     border: none;
 
@@ -30,8 +30,14 @@
 
     cursor: pointer;
 
+	transition: 0.4s;
 }
-
+#zzzz:hover {
+	opacity: 1;
+	background-color: #000000;
+	color: white;
+	border: none;
+}
 
 
 </style>
@@ -97,8 +103,7 @@
                                     <li><a href="<%=request.getContextPath() %>/theater">극장</a>
                                    		<ul class="dropdown">
                                     		<li><a href="<%=request.getContextPath() %>/theater/list">공연장 정보</a></li>
-                                    		<li><a href="<%=request.getContextPath() %>/theater/map?lat=37.552315&lng=126.99963">오시는 길</a></li>
-                                    				
+                                    		<li><a href="<%=request.getContextPath() %>/theater/map">오시는 길</a></li>
                                     	</ul>
                                     </li>
                                     <li><a href="<%=request.getContextPath() %>/event/list">Event</a>
@@ -122,20 +127,22 @@
                                     		<li><a href="<%=request.getContextPath() %>/introduce/homeintro">RecoPAY 소개</a></li>
                                     	</ul>
                                     </li>
+                                    <sec:authorize access="isAuthenticated()">
                                     <li><a href="<%=request.getContextPath() %>/reservation/mypage">mypage</a>
                                     </li>
+                                    </sec:authorize>
                                 </ul>
 								
 								<sec:authorize access="isAuthenticated()">
 								<!-- Login/Register & Cart Button -->
-                                <div class="login-register-cart-button d-flex align-items-center">
+                                <div class="login-register-cart-button d-flex align-items-center" style="margin-left: 30px; width: 265px;">
                                     <!-- Login/Register -->
-                                    <div class="login-register-btn mr-50">
+                                    <div class="login-register-btn mr-50" style="width: 100%">
                                     	<sec:authentication property="principal.username" var="user_id" />
-                                    	<p style="color:white;">${user_id } 님, 환영합니다.</p>
-										<form action="${pageContext.request.contextPath }/login/logout" method='post'>
+                                    	<p style="color:white; display: inline-block;">${user_id } 님, 환영합니다.</p>
+										<form action="${pageContext.request.contextPath }/login/logout" method='post' style="width: 40%; display: inline-block;">
 										<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
-										<button style="width:50px; height:40px; "id="zzzz" class="">Logout</button>
+										<button id="zzzz" class="">Logout</button>
                                         </form>
                                     </div>
                                 </div>

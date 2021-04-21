@@ -81,7 +81,7 @@
 							<th>조회수</th>
 							<th>작성일</th>
 							<th>평점</th>
-							<th>연극명</th>	
+							<th>연극명</th>
 						</thead>
 						<tbody>
 						
@@ -130,9 +130,9 @@
 						<label for="subject"><b>글제목</b></label>
 						<input type="text" placeholder="글제목(필수)" name="subject" required>
 					
-						<sec:authentication property="principal.username" var="user_id" />
-						<input type="hidden" name="name" value="${user_id }">
-					      
+						<sec:authentication property="principal.username" var="user_id"/>
+						<input type="hidden" name="name" value="${user_id }"/>				      
+						
 						<label for="content"><b>내용</b></label>
 						<textarea placeholder="글내용" name="content" class="re_content"></textarea>
 

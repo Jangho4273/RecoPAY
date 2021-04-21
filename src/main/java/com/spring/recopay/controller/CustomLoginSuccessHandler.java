@@ -31,7 +31,6 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 
 		System.out.println("ROLE NAMES: " + roleNames);
 		
-<<<<<<< HEAD
 		
 //		if(roleNames.contains("ROLE_ADMIN")) {
 //			uri = request.getContextPath() + "/admin";
@@ -39,7 +38,6 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 		
 
 		// 만약 사용자가 ROLE_ADMIN 권한을 가졌다면 로그인 후 곧바로 /sample/admin 으로 이동
-=======
 		RequestCache requestCache = new HttpSessionRequestCache();
 		SavedRequest savedRequest = requestCache.getRequest(request, response);
 		String uri = "/";
@@ -53,7 +51,6 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 			uri = prevPage;
 		}
 		
->>>>>>> branch 'master' of https://github.com/Jangho4273/RecoPAY.git
 		if (roleNames.contains("ROLE_ADMIN")) {
 			response.sendRedirect(uri);
 			return;

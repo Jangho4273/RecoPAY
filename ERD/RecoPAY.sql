@@ -25,7 +25,7 @@ UPDATE MEMBER SET user_auth='ROLE_ADMIN' WHERE user_id = 'asdqwd';
 SELECT * FROM MEMBER;
 
 
-UPDATE MEMBER SET user_auth='ROLE_ADMIN' WHERE user_id = 'admin';
+UPDATE MEMBER SET user_auth='ROLE_ADMIN, ROLE_MEMBER' WHERE user_id = 'admin';
 
 DROP TABLE Qna_Board;
 
@@ -332,7 +332,8 @@ CREATE TABLE test_write (
 	wr_viewcnt NUMBER DEFAULT 0,
 	wr_regdate DATE DEFAULT sysdate,
 	wr_score NUMBER,
-	wr_prfname varchar2(50)
+	wr_prfname varchar2(50),
+	wr_prfid varchar2(100)
 );
 
 alter table test_write modify (wr_prfname varchar2(200)) ;

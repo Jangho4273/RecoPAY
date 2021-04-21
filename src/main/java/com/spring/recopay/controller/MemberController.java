@@ -15,11 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-<<<<<<< HEAD
 import org.springframework.web.bind.annotation.ResponseBody;
-=======
->>>>>>> branch 'master' of https://github.com/Jangho4273/RecoPAY.git
-
 import com.spring.recopay.domain.MemberDTO;
 import com.spring.recopay.service.MemberService;
 

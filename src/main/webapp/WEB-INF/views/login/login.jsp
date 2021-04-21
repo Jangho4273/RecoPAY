@@ -25,7 +25,8 @@
 	href="<%=request.getContextPath()%>/resources/style.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
 
 <body>
@@ -43,10 +44,7 @@
 	</section>
 	<!-- ##### Breadcumb Area End ##### -->
 
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'master' of https://github.com/Jangho4273/RecoPAY.git
 	<!-- ##### Login Area Start ##### -->
 	<section class="login-area section-padding-100">
 		<div class="container">
@@ -82,8 +80,40 @@
 								</small>
 
 							</form>
-							<br> <br>
-							 
+							<br><br>
+							
+							<a id="kakao-login-btn"></a>
+							<a href="http://developers.kakao.com/logout"></a>
+							<script type='text/javascript'>
+							  //<![CDATA[
+							    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+							    Kakao.init('bda5f34546ed9283d43c539c531b9455');  //여기서 아까 발급받은 키 중 javascript키를 사용해준다.
+							    // 카카오 로그인 버튼을 생성합니다.
+							    Kakao.Auth.createLoginButton({
+							      container: '#kakao-login-btn',
+							      success: function(authObj) {
+							        alert(JSON.stringify(authObj));
+							      },
+							      fail: function(err) {
+							         alert(JSON.stringify(err));
+							      }
+							    });
+							  //]]>
+							</script>
+							
+							 <!-- 네이버아이디로로그인 버튼 노출 영역 -->
+							 <div id="naver_id_login"></div>
+							  <!-- //네이버아이디로로그인 버튼 노출 영역 -->
+							 <script type="text/javascript">
+							  	var naver_id_login = new naver_id_login("oH9DaoWLy8tPxy8Q46Pb", "http://localhost:8080/recopay");
+							  	var state = naver_id_login.getUniqState();
+							  	naver_id_login.setButton("green", 10,48);
+							  	naver_id_login.setDomain("http://localhost:8080/recopay");
+							  	naver_id_login.setState(state);
+							  	naver_id_login.setPopup();
+							  	naver_id_login.init_naver_id_login();
+							 </script>
+
 
 							
 							</div>

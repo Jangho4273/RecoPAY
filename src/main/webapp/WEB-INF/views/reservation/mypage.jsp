@@ -26,6 +26,29 @@ table, th, td {
 td, th {
 	padding: 10px;	
 }
+
+.delbtn{
+   width:80px;
+   height: 40px;
+ 	background-color: rgba( 0, 0, 0, 0.2 );
+    border: none;
+    color:#fff;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px;
+    cursor: pointer;
+	transition: 0.4s;
+}
+
+.delbtn:hover{
+	opacity: 1;
+	background-color: #000000;
+	color: white;
+	border: none;
+	
+}
 </style>
 <!-- Title -->
 <title>좌석 선택</title>
@@ -60,7 +83,6 @@ td, th {
 		style="background-image: url(<%=request.getContextPath() %>/resources/img/bg-img/breadcumb.jpg);">
 	</section>
 	<div style="text-align:center;">
-	<h3>마이페이지</h3>
 	</div>
 	<section class="elements-area mt-30 section-padding-100-0">
 		<div class="container">
@@ -69,6 +91,7 @@ td, th {
 				<!-- Single Post Start -->
 				<div class="single-blog-post mb-100 wow fadeInUp"
 					data-wow-delay="100ms">
+					<h3 style="text-align: center; margin-bottom: 50px;">마이페이지</h3>
 					
 					
 					
@@ -90,7 +113,7 @@ td, th {
 							<td>${dto.thLocation }</td>
 							<td>${dto.prfTime }</td>
 							<td>${dto.seatNum }</td>
-							<td><button type="button" onclick="location.href='${pageContext.request.contextPath}/reservation/delete/${dto.seatUid }'"  >삭제</button></td>
+							<td><button type="button" onclick="location.href='${pageContext.request.contextPath}/reservation/delete/${dto.seatUid }'" class="delbtn" >삭제</button></td>
 						</tr>
 					</c:forEach>
 					</table>

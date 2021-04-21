@@ -368,7 +368,7 @@ function updatePerf(jsonObj) {
 		result += "<option value='"+ items[i].name +"' id='prf" + i + "'>" + items[i].name + "</option>\n";
     }
     result += "</select>";
-    result += "<button id='ok' type='button'>확인</button>";
+    result += "<button id='ok' type='button' class='cusbtn'>확인</button>";
    	$("#pertexts").html(result);  // 업데이트
    	$("#pertexts").show();
    	$("#ok").click(function() {
