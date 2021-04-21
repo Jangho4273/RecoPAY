@@ -18,7 +18,7 @@
 <title>Theater</title>
 
 <!-- Favicon -->
-<link rel="icon" href="img/core-img/favicon.ico">
+<link rel="icon" href="<%=request.getContextPath()%>/img/core-img/favicon.ico">
 
 <!-- Stylesheet -->
 <link rel="stylesheet"
@@ -39,7 +39,7 @@
 	<jsp:include page="/resources/jsp/header.jsp"></jsp:include>
 	<!-- ##### Breadcumb Area Start ##### -->
 	<section class="breadcumb-area bg-img bg-overlay"
-		style="background-image: url(<%=request.getContextPath() %>/resources/img/bg-img/breadcumb.jpg);">
+		style="background-image: url(<%=request.getContextPath() %>/img/bg-img/bg-1.jpg);">
 	</section>
 
 	<section class="elements-area mt-30 section-padding-100-0">

@@ -55,7 +55,7 @@ td, th {
 
 <!-- Favicon -->
 <link rel="icon"
-	href="<%=request.getContextPath()%>/resources/img/core-img/favicon.ico">
+	href="<%=request.getContextPath()%>/img/core-img/favicon.ico">
 
 <!-- Stylesheet -->
 <link rel="stylesheet"
@@ -80,7 +80,7 @@ td, th {
 <jsp:include page="/resources/jsp/header.jsp"></jsp:include>
 	<!-- ##### Breadcumb Area Start ##### -->
 	<section class="breadcumb-area bg-img bg-overlay"
-		style="background-image: url(<%=request.getContextPath() %>/resources/img/bg-img/breadcumb.jpg);">
+		style="background-image: url(<%=request.getContextPath() %>/resources/img/bg-img/bg-3.jpg);">
 	</section>
 	<div style="text-align:center;">
 	</div>

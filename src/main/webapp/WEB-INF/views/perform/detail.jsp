@@ -17,7 +17,7 @@
 <title>Perform Detail</title>
 
 <!-- Favicon -->
-<link rel="icon" href="img/core-img/favicon.ico">
+<link rel="icon" href="<%=request.getContextPath()%>/img/core-img/favicon.ico">
 
 <!-- Stylesheet -->
 <link rel="stylesheet"
@@ -52,7 +52,7 @@ th, td {
 	<jsp:include page="/resources/jsp/header.jsp"></jsp:include>
 	<!-- ##### Breadcumb Area Start ##### -->
 	<section class="breadcumb-area bg-img bg-overlay"
-		style="background-image: url(<%=request.getContextPath()%>/resources/img/bg-img/breadcumb.jpg);">
+		style="background-image: url(<%=request.getContextPath()%>/img/bg-img/bg-2.jpg);">
 
 	</section>
 

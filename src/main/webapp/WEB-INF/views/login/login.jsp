@@ -37,7 +37,7 @@
 
 	<!-- ##### Breadcumb Area Start ##### -->
 	<section class="breadcumb-area bg-img bg-overlay"
-		style="background-image: url(img/bg-img/breadcumb3.jpg);">
+		style="background-image: url(<%=request.getContextPath()%>/img/bg-img/bg-4.jpg);">
 		<div class="bradcumbContent">
 			<h2>Login</h2>
 		</div>
