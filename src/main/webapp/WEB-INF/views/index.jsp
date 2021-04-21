@@ -43,6 +43,24 @@ margin-bottom: 10px !important;
 
 	<jsp:include page="/resources/jsp/header.jsp"></jsp:include>
 	
+	<!-- <script type="text/javascript">
+        var naver_id_login = new naver_id_login("oH9DaoWLy8tPxy8Q46Pb", "http://localhost:8090/recopay"); // 역시 마찬가지로 'localhost'가 포함된 CallBack URL
+        
+        // 접근 토큰 값 출력
+        alert(naver_id_login.oauthParams.access_token);
+        
+        // 네이버 사용자 프로필 조회
+        naver_id_login.get_naver_userprofile("naverSignInCallback()");
+        
+        // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+        function naverSignInCallback() {
+            alert(naver_id_login.getProfileData('email'));
+            alert(naver_id_login.getProfileData('nickname'));
+            alert(naver_id_login.getProfileData('profile_image'));
+        }
+    </script>-->
+	
+	
     <!-- ##### Hero Area Start ##### -->
     <section class="hero-area">
         <div class="hero-slides owl-carousel">
@@ -235,7 +253,7 @@ margin-bottom: 10px !important;
                                 <div class="oneMusic-tab-content">
                                     <!-- Tab Text -->
                                     <div class="oneMusic-tab-text">
-                                        <p>공연이 시작되고 나면 원칙적으로 입장이 불가능합니다.<br>그러나, 하우스매니저 또는 하우스 어셔(극장 안내 도우미) 분들께서 출입문 앞에서 잠시 기다려달라고 요청드린 후 공연의 흐름에 따라 막이 전환되는 타이밍이나 공연의 흐름을 방해하지 않을 타이밍에 입장시켜드립니다.<br>이때는 자신의 좌석을 찾기보다는 출입문에 가까운 좌석에 앉으시어 관람하시다가 2막 시작되기전 인터미션에 자신의 좌석으로 이동하시는 것이 바람직합니다. 그러니, 늦지 않는 것이 제일 좋습니다.</p>
+                                        <p>공연이 시작되고 나면 원칙적으로 입장이 불가능합니다. <br>그러나, 하우스매니저 또는 하우스 어셔(극장 안내 도우미) 분들께서 출입문 앞에서 잠시 기다려달라고 요청드린 후 공연의 흐름에 따라 막이 전환되는 타이밍이나 공연의 흐름을 방해하지 않을 타이밍에 입장시켜드립니다.<br>이때는 자신의 좌석을 찾기보다는 출입문에 가까운 좌석에 앉으시어 관람하시다가 2막 시작되기전 인터미션에 자신의 좌석으로 이동하시는 것이 바람직합니다. 그러니, 늦지 않는 것이 제일 좋습니다.</p>
                                     </div>
                                 </div>
                             </div>

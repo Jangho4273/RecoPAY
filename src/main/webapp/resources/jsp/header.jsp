@@ -32,11 +32,17 @@
 
 }
 
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> branch 'master' of https://github.com/Jangho4273/RecoPAY.git
 </style>
 <meta charset="UTF-8">
 <title>Header</title>
 </head>
 <body>
+
 
     <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
@@ -103,11 +109,13 @@
                                     		<li><a href="<%=request.getContextPath() %>/event/list">이벤트</a></li>
                                     	</ul>
                                     </li>
-                                    <li><a href="<%=request.getContextPath() %>/servicecenter">고객센터</a>
+
+                                    <li><a href="<%=request.getContextPath() %>/servicecenter/notice/notice">고객센터</a>
+
                                     	<ul class="dropdown">
-                                    		<li><a href="">공지사항</a></li>
-                                    		<li><a href="">1:1문의</a></li>
-                                    		<li><a href="">자주하는 질문</a></li>
+                                    		<li><a href="<%=request.getContextPath() %>/servicecenter/notice/notice">공지사항</a></li>
+                                    		<li><a href="<%=request.getContextPath() %>/servicecenter/qna/qna">1:1문의</a></li>
+                                    		<li><a href="<%=request.getContextPath() %>/servicecenter/faq/faq">자주하는 질문</a></li>
                                     	</ul>
                                     </li>
                                     <li><a href="<%=request.getContextPath() %>/introduce">소개</a>
@@ -116,6 +124,8 @@
                                     		<li><a href="<%=request.getContextPath() %>/introduce/chart">조직도</a></li>
                                     		<li><a href="<%=request.getContextPath() %>/introduce/homeintro">RecoPAY 소개</a></li>
                                     	</ul>
+                                    </li>
+                                    <li><a href="<%=request.getContextPath() %>/reservation/mypage">mypage</a>
                                     </li>
                                 </ul>
 								

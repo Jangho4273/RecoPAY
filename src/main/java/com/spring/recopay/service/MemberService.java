@@ -18,6 +18,7 @@ public class MemberService {
 //	@Autowired
 //	private MemberDAO memberDAO;
 	
+	
 	@Autowired
 	public void setSqlSession(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
@@ -36,6 +37,7 @@ public class MemberService {
 		sessionGet().register(memberDTO);
 	}
 	
+
 //	//login
 //	public MemberDTO login(MemberDTO memberDTO) throws Exception{
 //		return sessionGet().select();

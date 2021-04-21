@@ -49,7 +49,7 @@
 					
 					<h5> 예매가 완료되었습니다. </h5>
 
-					<button type="button" onclick="location.href='<%=request.getContextPath() %>/reservation/mypage"> 예약 확인하기(MyPage) </button>
+					<button type="button" onclick="location.href='<%=request.getContextPath() %>/reservation/mypage'"> 예약 확인하기(MyPage) </button>
 					
 					
 					</div>

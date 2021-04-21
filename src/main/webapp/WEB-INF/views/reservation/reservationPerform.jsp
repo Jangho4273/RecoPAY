@@ -264,7 +264,6 @@
 								</select>
 								<input type="hidden" name="uid" value="${uid }"/>
 								<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
-		
 						<button id="buyingBtn" type="button" onClick="res_click(this.id);">예매하기</button>
                     </form>
 					

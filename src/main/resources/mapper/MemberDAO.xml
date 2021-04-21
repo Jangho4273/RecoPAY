@@ -8,8 +8,14 @@
     <!-- 회원 가입 -->
     <insert id="register">
      insert into Member (user_uid, user_id, user_password, user_name, user_email, user_addr, user_isCall)
-      values(member_seq.nextval, #{username}, #{password}, #{name}, #{emailbf} , #{addr}, #{call})   
+      values(member_seq.nextval, #{username}, #{password}, #{name}, #{emailbf} , #{addr2}, #{call})   
     </insert>
+    
+    <!-- <select id="idChk" resultType="int">
+  	
+  		select count(*) from Member where user_id = #{username}
+  	
+  	</select>-->
 	
 	
 	<!-- 회원 가입 -->

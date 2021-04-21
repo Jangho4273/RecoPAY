@@ -25,17 +25,6 @@
 	
 </head>
 
-<style>
-.resbtn {
-margin-bottom: 10px !important;
-}
-
-.res {
-min-width : 100% !important;
-}
-
-</style>
-
 <body>
 	<jsp:include page="/resources/jsp/header.jsp"></jsp:include>
 	 <!-- ##### Breadcumb Area Start ##### -->
@@ -81,10 +70,6 @@ min-width : 100% !important;
                             
                         </div>
 
-						<div class="oneMusic-buttons-area resbtn">
-							<a
-								href="${pageContext.request.contextPath }/perform/intro/${dto.uid}" class="btn oneMusic-btn btn-2 res">소개보기<i class="fa fa-angle-double-right"></i></a>
-						</div>
 					</div>
                 </div>
                 </c:forEach>
