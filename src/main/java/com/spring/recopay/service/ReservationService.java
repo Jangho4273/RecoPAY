@@ -42,6 +42,12 @@ public class ReservationService implements ReservationDAO {
 	public List<PerformDTO> viewByUid(int uid) {
 		return sessionGet().viewByUid(uid);
 	}
+
+	@Override
+	public List<PerformDTO> getAllNotFinishedPerform() {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(ReservationDAO.class).getAllNotFinishedPerform();
+	}
 	
 
 }

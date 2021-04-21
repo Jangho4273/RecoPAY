@@ -94,7 +94,8 @@
                                     <li><a href="<%=request.getContextPath() %>/theater">극장</a>
                                    		<ul class="dropdown">
                                     		<li><a href="<%=request.getContextPath() %>/theater/list">공연장 정보</a></li>
-                                    		<li><a href="<%=request.getContextPath() %>/theater/map">오시는 길</a></li>
+                                    		<li><a href="<%=request.getContextPath() %>/theater/map?lat=37.552315&lng=126.99963">오시는 길</a></li>
+                                    				
                                     	</ul>
                                     </li>
                                     <li><a href="<%=request.getContextPath() %>/event/list">Event</a>

@@ -18,5 +18,13 @@
      insert into Member (res_id, res_prfdate, res_title, res_payment, user_uid, res_isfinished, res_seat,)
       values(member_seq.nextval, #{username}, #{password}, #{name}, #{emailbf} , #{addr}, #{call})   
     </insert>
+    
+    <select id="getAllNotFinishedPerform" resultType="com.spring.recopay.domain.PerformDTO">
+    	
+		SELECT PRF_UID "uid",prf_name "name" , TO_CHAR(TO_DATE(prf_to) ,'YYYY-MM-DD') AS startDay, TO_CHAR(TO_DATE(prf_from) ,'YYYY-MM-DD') AS endDay  
+		FROM perform 
+		WHERE PRF_STATE = '공연중'	
+    	
+    </select>
 	
 </mapper>

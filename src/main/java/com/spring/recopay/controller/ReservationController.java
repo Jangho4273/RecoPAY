@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.spring.recopay.domain.PerformDTO;
 import com.spring.recopay.domain.ReservationDTO;
 import com.spring.recopay.domain.TheaterSeatDTO;
+import com.spring.recopay.service.PerformService;
 import com.spring.recopay.service.ReservationService;
 import com.spring.recopay.service.TheaterService;
 
@@ -30,7 +31,7 @@ public class ReservationController {
 
 	private ReservationService rs;
 	private TheaterService ts;
-	
+
 	
 	@Autowired
 	public void setRs(ReservationService rs) {
@@ -51,7 +52,8 @@ public class ReservationController {
 	}
 	
 	@RequestMapping("/schedule")
-	public String schedule(HttpServletRequest request) {
+	public String schedule(HttpServletRequest request,Model model) {
+		model.addAttribute("list", rs.getAllNotFinishedPerform());
 		return "reservation/schedule";
 	}
 	
