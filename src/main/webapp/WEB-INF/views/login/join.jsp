@@ -1,125 +1,156 @@
-d<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <!-- Title -->
-    <title>RecoPay</title>
+<!-- Title -->
+<title>RecoPay</title>
 
-    <!-- Favicon -->
-    <link rel="icon" href="<%=request.getContextPath() %>/img/core-img/favicon.ico">
+<!-- Favicon -->
+<link rel="icon" href="<%=request.getContextPath() %>/img/core-img/favicon.ico">
 
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/style.css">
-    <style>
-    /* 중복아이디 존재하지 않는경우 */
-	.username_test_1{
-		color : green;
-		display : none;
-	}
-	/* 중복아이디 존재하는 경우 */
-	.username_test_2{
-		color : red;
-		display : none;
-	}
-    
-    </style>
+<!-- Stylesheet -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
 
 </head>
 
-	
+<style>
+.joinbtn{
+   width:25%;
+   height: 50px;
+    background-color: rgba( 255, 255, 255 );
+    border: 1px solid;
+    color:#000;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px;
+    cursor: pointer;
+   transition: 0.4s;
+   font-family: Arial;
+}
+
+.joinbtn:hover{
+   opacity: 1;
+   background-color: #000000;
+   color: white;
+   border: none;
+   font: Arial;
+   
+}
+
+</style>
+
 
 <body>
-<jsp:include page="/resources/jsp/header.jsp"></jsp:include>
-    <!-- ##### Header Area End ##### -->
+	<jsp:include page="/resources/jsp/header.jsp"></jsp:include>
+	<!-- ##### Header Area End ##### -->
 
-    <!-- ##### Breadcumb Area Start ##### -->
-    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/breadcumb3.jpg);">
-        <div class="bradcumbContent">
-            <h2>Join</h2>
-        </div>
-    </section>
-    <!-- ##### Breadcumb Area End ##### -->
+	<!-- ##### Breadcumb Area Start ##### -->
+	<section class="breadcumb-area bg-img bg-overlay"
+		style="background-image: url(<%=request.getContextPath() %>/resources/img/bg-img/bg-3.jpg);">
+		<div class="bradcumbContent">
+			<h2>Join</h2>
+		</div>
+	</section>
+	<!-- ##### Breadcumb Area End ##### -->
 
-    <!-- ##### Login Area Start ##### -->
-    <section class="login-area section-padding-100">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 col-lg-8">
-                    <div class="login-content">
-                        <h3>Welcome</h3>
-                        <!-- Login Form -->
-                        <div class="login-form">
-                    
-                        
-                            <form role ="form" autocomplete="off" method="post" action="${pageContext.request.contextPath}/login/join" name="userInfo" >
+	<!-- ##### Login Area Start ##### -->
+	<section class="login-area section-padding-100">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-12 col-lg-8">
+					<div class="login-content">
+						<h3>Welcome</h3>
+						<!-- Login Form -->
+						<div class="login-form">
 
 
-                                <div class="form-group">
-                                    <label for="username">ID</label>
-                                    <input type="text" name='username' class="form-control" id="username" placeholder="Enter ID" required>
-                                    <!-- <button type="button" class="id_overlap_button" onclick="id_overlap_check()">중복검사</button>-->
-                                </div>
-                                <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input type="password" name='password' class="form-control" id="password" placeholder="Password" required >
-                            	</div>
-                                <div class="form-group">
-                                    <label for="passwordCheck">Password 확인</label>
-                                    <input type="password" name='passwordCheck' class="form-control" id="passwordCheck" placeholder="Password" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" name='name' class="form-control" id="name" placeholder="Name" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="emailbf">E-mail</label>
-                                    <input type="email" name='emailbf' class="form-control" id="emailbf" placeholder="Email" required>
-                                </div>
-                                <div class="form-group">
-	                                <div><label for="addr1">Address</label></div>
-	                                	<div>
-	                                		<input type="text" style = "width:50%" name='addr1' class="form-control" id="addr1" placeholder="우편번호" readonly="readonly" required>
-	                                		<input type = "button" onclick="execDaumPostcode();" value="우편번호 찾기">
-	                                	</div>
-	                               	</div>
-	                                <div class="form-group">
-	                                    <input type="text" name="addr2" class="form-control" id="addr2"  placeholder="도로명주소" readonly="readonly" required>
-	                                </div>
-	                                <div class="form-group">
-	                                    <input type="text" name="addr3" class="form-control" id="addr3"  placeholder="상세주소" required>
-	                                </div>
-	                                <div class="form-group">
-	                                    <label for="call">정보 수신 여부</label><br>
-	                                    <input type="radio" name="call" value = "0"  id="call"/>수신안함<br>
-	                                    <input type="radio" name="call" value = "1"  id="call"/>이메일수신
-	                                </div>
-	                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
-	                                <button type="submit" class="btn oneMusic-btn mt-30" onclick="test()">Join</button>
-	                           </form>
-	                                <br><br>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <script>
-		
- 
- 
-	</script>
+							<form role="form" autocomplete="off" method="post"
+								action="${pageContext.request.contextPath}/login/join"
+								name="userInfo">
 
-    
-    <<script type="text/javascript">
+
+								<div class="form-group">
+									<label for="username" style="display: block;">ID</label> <input type="text" style="width: 70%; display:inline-block;"
+										name='username' class="form-control" id="username"
+										placeholder="Enter ID" required>
+									<button type="button" class="id_overlap_button joinbtn" id="btn2" >중복확인</button>
+									<div id ="checkMsg"></div>
+								</div>
+								<div class="form-group">
+									<label for="password">Password</label> <input type="password"
+										name='password' class="form-control" id="password"
+										placeholder="Password" required>
+								</div>
+								<div class="form-group">
+									<label for="passwordCheck">Password 확인</label> <input
+										type="password" name='passwordCheck' class="form-control"
+										id="passwordCheck" placeholder="Password" required>
+								</div>
+								<div class="form-group">
+									<label for="name">Name</label> <input type="text" name='name'
+										class="form-control" id="name" placeholder="Name" required>
+								</div>
+								<div class="form-group">
+									<label for="emailbf">E-mail</label> <input type="email"
+										name='emailbf' class="form-control" id="emailbf"
+										placeholder="Email" required>
+								</div>
+								<div class="form-group">
+									<div>
+										<label for="addr1" style="display: block;">Address</label>
+									</div>
+									<div>
+										<input type="text" style="width: 50%; display: inline-block;" name='addr1'
+											class="form-control" id="addr1" placeholder="우편번호"
+											readonly="readonly" required> <input type="button"
+											onclick="execDaumPostcode();" value="우편번호 찾기" class="joinbtn">
+									</div>
+								</div>
+								<div class="form-group">
+									<input type="text" name="addr2" class="form-control" id="addr2"
+										placeholder="도로명주소" readonly="readonly" required>
+								</div>
+								<div class="form-group">
+									<input type="text" name="addr3" class="form-control" id="addr3"
+										placeholder="상세주소" required>
+								</div>
+								<div class="form-group">
+									<label for="call">정보 수신 여부</label><br> <input type="radio"
+										name="call" value="0" id="call" /><p style="display: inline-block; margin-right: 50px;">수신안함</p> <input
+										type="radio" name="call" value="1" id="call" />이메일수신
+								</div>
+								<input type="hidden" name="${_csrf.parameterName}"
+									value="${_csrf.token}" />
+								<button type="submit" class="btn oneMusic-btn mt-30"
+									onclick="test()">Join</button>
+							</form>
+							<br> <br>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<script type="text/javascript">
 	    function test() {
 	      var p1 = document.getElementById('password').value;
 	      var p2 = document.getElementById('passwordCheck').value;
@@ -132,8 +163,44 @@ d<%@ page language="java" contentType="text/html; charset=UTF-8"
 	      }
 	
 	    }
+	 </script>
+	
+	<script>
+	
+	$("#btn2").click(function javascript_onclikc(){
+		var username = $('#username').val(); 
+		$.ajax({ 
+			type: "GET", 
+			url: "./loginCk/" + username, 
+			cache : false,
+			success: function(data, status){
+				if(status == "success") {
+					if(data == 0){ 
+						$('#checkMsg').html('<p style="color:blue">사용가능</p>'); 
+					} 
+					else{ $('#checkMsg').html('<p style="color:red">사용불가능</p>'); 
+					} 
+				}
+				else {
+					alert("실패");
+				}
+			} 
+		}); //end ajax 
+	}); //end on
+
+
+		
+		
+		
+				
+	
+
+
+
+
+
 	  </script>
-    <!-- <script>
+	<!-- <script>
   //아이디 중복검사
     $('.username').on("propertychange change keyup paste input", function(){
 
@@ -149,8 +216,8 @@ d<%@ page language="java" contentType="text/html; charset=UTF-8"
     });// function 종료
     
     </script>-->
-    
-    <!-- <script>
+
+	<!-- <script>
     function joinform_check() {
     	  //변수에 담아주기
     	  var uid = document.getElementById("username");
@@ -206,16 +273,20 @@ d<%@ page language="java" contentType="text/html; charset=UTF-8"
       	    return false;
       	  };
 	</script>-->
-    
-    
-    
-    <!-- ##### Login Area End ##### -->
 
-    <!-- ##### Footer Area Start ##### -->
-   <jsp:include page="/resources/jsp/footer.jsp"></jsp:include>
-    <!-- ##### Footer Area Start ##### -->
 
-<<<<<<< HEAD
+
+	<!-- ##### Login Area End ##### -->
+
+	<!-- ##### Footer Area Start ##### -->
+	<jsp:include page="/resources/jsp/footer.jsp"></jsp:include>
+	<!-- ##### Footer Area Start ##### -->
+
+	
+	<!-- ##### All Javascript Script ##### -->
+	<script
+		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script>
     <!-- ##### All Javascript Script ##### -->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
@@ -276,22 +347,8 @@ d<%@ page language="java" contentType="text/html; charset=UTF-8"
      
     
     </script>
-    <!-- jQuery-2.2.4 js -->
-    <script src="js/jquery/jquery-2.2.4.min.js"></script>
-    <!-- Popper js -->
-    <script src="js/bootstrap/popper.min.js"></script>
-    <!-- Bootstrap js -->
-    <script src="js/bootstrap/bootstrap.min.js"></script>
-    <!-- All Plugins js -->
-    <script src="js/plugins/plugins.js"></script>
-    <!-- Active js -->
-    <script src="js/active.js"></script>
-    
-    
-    
-=======
 
->>>>>>> branch 'master' of https://github.com/Jangho4273/RecoPAY.git
+	
 </body>
 
 </html>

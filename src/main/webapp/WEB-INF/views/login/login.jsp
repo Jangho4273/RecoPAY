@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -23,10 +24,9 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/style.css">
 
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-<script src="./lib/kakao.min.js"></script> 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
 
 <body>
@@ -43,6 +43,7 @@
 		</div>
 	</section>
 	<!-- ##### Breadcumb Area End ##### -->
+
 
 	<!-- ##### Login Area Start ##### -->
 	<section class="login-area section-padding-100">
@@ -79,8 +80,40 @@
 								</small>
 
 							</form>
-							<br> <br>
-							 
+							<br><br>
+							
+							<a id="kakao-login-btn"></a>
+							<a href="http://developers.kakao.com/logout"></a>
+							<script type='text/javascript'>
+							  //<![CDATA[
+							    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+							    Kakao.init('bda5f34546ed9283d43c539c531b9455');  //여기서 아까 발급받은 키 중 javascript키를 사용해준다.
+							    // 카카오 로그인 버튼을 생성합니다.
+							    Kakao.Auth.createLoginButton({
+							      container: '#kakao-login-btn',
+							      success: function(authObj) {
+							        alert(JSON.stringify(authObj));
+							      },
+							      fail: function(err) {
+							         alert(JSON.stringify(err));
+							      }
+							    });
+							  //]]>
+							</script>
+							
+							 <!-- 네이버아이디로로그인 버튼 노출 영역 -->
+							 <div id="naver_id_login"></div>
+							  <!-- //네이버아이디로로그인 버튼 노출 영역 -->
+							 <script type="text/javascript">
+							  	var naver_id_login = new naver_id_login("oH9DaoWLy8tPxy8Q46Pb", "http://localhost:8080/recopay");
+							  	var state = naver_id_login.getUniqState();
+							  	naver_id_login.setButton("green", 10,48);
+							  	naver_id_login.setDomain("http://localhost:8080/recopay");
+							  	naver_id_login.setState(state);
+							  	naver_id_login.setPopup();
+							  	naver_id_login.init_naver_id_login();
+							 </script>
+
 
 							
 							</div>
@@ -94,7 +127,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
 	</section>
 	<!-- ##### Login Area End ##### -->
 
@@ -102,17 +134,6 @@
 	<jsp:include page="/resources/jsp/footer.jsp"></jsp:include>
 	<!-- ##### Footer Area Start ##### -->
 
-	<!-- ##### All Javascript Script ##### -->
-	<!-- jQuery-2.2.4 js -->
-	<script src="js/jquery/jquery-2.2.4.min.js"></script>
-	<!-- Popper js -->
-	<script src="js/bootstrap/popper.min.js"></script>
-	<!-- Bootstrap js -->
-	<script src="js/bootstrap/bootstrap.min.js"></script>
-	<!-- All Plugins js -->
-	<script src="js/plugins/plugins.js"></script>
-	<!-- Active js -->
-	<script src="js/active.js"></script>
 </body>
 
 </html>

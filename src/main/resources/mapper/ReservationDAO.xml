@@ -19,6 +19,15 @@
       values(member_seq.nextval, #{username}, #{password}, #{name}, #{emailbf} , #{addr}, #{call})   
     </insert>
     
+
+    <select id="getAllNotFinishedPerform" resultType="com.spring.recopay.domain.PerformDTO">
+    	
+		SELECT PRF_UID "uid",prf_name "name" , TO_CHAR(TO_DATE(prf_to) ,'YYYY-MM-DD') AS startDay, TO_CHAR(TO_DATE(prf_from) ,'YYYY-MM-DD') AS endDay  
+		FROM perform 
+		WHERE PRF_STATE = '공연중'	
+    	
+    </select>
+
     <select id="mypageByUserid" resultType="com.spring.recopay.domain.MypageDTO">
 	SELECT ts.seat_uid "seatUid", t.th_name "thName", t.TH_LOCATION "thLocation", ts.seat_num "seatNum", ts.prf_time "prfTime", kk.prf_name "prfName" FROM theater t, theater_seat ts, MEMBER m,
 	(SELECT DISTINCT p.prf_name, p.prf_id, a.th_id FROM 
@@ -31,5 +40,5 @@
 	<delete id="deleteSeatid"> 
         DELETE FROM theater_seat WHERE seat_uid = #{uid} 
     </delete>
-	
+
 </mapper>

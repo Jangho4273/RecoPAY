@@ -149,7 +149,7 @@
 						<div class="col-12">
 							<div class="section-heading style-2 title">
 								<h2>${list[0].name }</h2>
-								<h5>${list[0].from }~${list[0].to }</h5>
+								<h5>${list[0].startDay }~${list[0].endDay }</h5>
 							</div>
 							<hr>
 						</div>

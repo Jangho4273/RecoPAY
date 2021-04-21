@@ -5,8 +5,8 @@ public class PerformDTO {
 	private int uid;
 	private String id		;
 	private String name	    ;
-    private String from	    ;
-    private String to		;
+    private String startDay	 ;
+    private String endDay	;
 	private String fcltynm  ;
 	private String poster	;
 	private String state	;
@@ -17,6 +17,19 @@ public class PerformDTO {
     private String runtime; // 총 상영 시간 ex) 1시간 30분 
 
     
+    
+	public String getStartDay() {
+		return startDay;
+	}
+	public void setStartDay(String startDay) {
+		this.startDay = startDay;
+	}
+	public String getEndDay() {
+		return endDay;
+	}
+	public void setEndDay(String endDay) {
+		this.endDay = endDay;
+	}
 	public String getTicketprice() {
 		return ticketprice;
 	}
@@ -53,18 +66,8 @@ public class PerformDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getFrom() {
-		return from;
-	}
-	public void setFrom(String from) {
-		this.from = from;
-	}
-	public String getTo() {
-		return to;
-	}
-	public void setTo(String to) {
-		this.to = to;
-	}
+
+	
 	public String getFcltynm() {
 		return fcltynm;
 	}

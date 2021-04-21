@@ -37,7 +37,7 @@
     <!-- ##### Breadcumb Area End ##### -->
 
     <!-- ##### Contact Area Start ##### -->
-    <section class="contact-area section-padding-100-0">
+    <section class="contact-area section-padding-100-0 mb-50">
         <div class="container">
             <div class="row">
 
@@ -75,10 +75,48 @@
                     </div>
                 </div>
 
+				<div class="col-12 col-lg-9">
+					<table class="table table-striped"
+						style="text-align: center; border: 1px solid #dddddd">
+						<thead>
+							<tr>
+								<th style="background-color: #eeeeee; text-align: center;">번호</th>
+								<th style="background-color: #eeeeee; text-align: center;">제목</th>
+								<th style="background-color: #eeeeee; text-align: center;">작성자</th>
+								<th style="background-color: #eeeeee; text-align: center;">조회수</th>
+								<th style="background-color: #eeeeee; text-align: center;">작성일</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:choose>
+								<c:when test="${empty list || fn:length(list) == 0 }">
+								</c:when>
+								<c:otherwise>
+									<c:forEach var="dto" items="${list }">
+										<tr>
+											<td>${dto.f_uid }</td>
+											<%-- getN_uid() --%>
+											<td><a href="view?f_uid=${dto.f_uid }">${dto.title }</a></td>
+											<td>${dto.name}</td>
+											<%-- getname() --%>
+											<td>${dto.viewcnt }</td>
+											<td>${dto.uploadtime }</td>
+											<%-- getuploadTime() --%>
+										</tr>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
+						</tbody>
+					</table>
+					<!-- 글쓰기 버튼 생성 -->
+					<a href="write" class="btn btn-primary pull-right">글쓰기</a>
+				</div>
 
-            </div>
+			</div>
         </div>
     </section>
+    
+ <%--    
  <!-- 게시판 메인 페이지 영역 시작 -->
 	<div class="container">
 		<div class="row">
@@ -99,11 +137,11 @@
 		<c:otherwise>
 			<c:forEach var="dto" items="${list }">
 				<tr>
-					<td>${dto.f_uid }</td>  <%-- getN_uid() --%>
+					<td>${dto.f_uid }</td>  getN_uid()
 					<td><a href="view?f_uid=${dto.f_uid }">${dto.title }</a></td>
-					<td>${dto.name}</td>  <%-- getname() --%>
+					<td>${dto.name}</td>  getname()
 					<td>${dto.viewcnt }</td>
-					<td>${dto.uploadtime }</td> <%-- getuploadTime() --%>
+					<td>${dto.uploadtime }</td> getuploadTime()
 				</tr>			
 			</c:forEach>
 		</c:otherwise>
@@ -115,7 +153,7 @@
 		</div>
 	</div>
 	<!-- 게시판 메인 페이지 영역 끝 -->
-
+ --%>
 	<jsp:include page="/resources/jsp/footer.jsp"></jsp:include>
 	
 

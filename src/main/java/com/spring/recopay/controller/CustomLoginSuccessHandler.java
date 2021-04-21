@@ -31,6 +31,13 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 
 		System.out.println("ROLE NAMES: " + roleNames);
 		
+		
+//		if(roleNames.contains("ROLE_ADMIN")) {
+//			uri = request.getContextPath() + "/admin";
+//		}
+		
+
+		// 만약 사용자가 ROLE_ADMIN 권한을 가졌다면 로그인 후 곧바로 /sample/admin 으로 이동
 		RequestCache requestCache = new HttpSessionRequestCache();
 		SavedRequest savedRequest = requestCache.getRequest(request, response);
 		String uri = "/";

@@ -25,18 +25,7 @@ UPDATE MEMBER SET user_auth='ROLE_ADMIN' WHERE user_id = 'asdqwd';
 SELECT * FROM MEMBER;
 
 
-
-UPDATE MEMBER SET user_auth='ROLE_ADMIN' WHERE user_id = 'admin';
-
-DROP TABLE Non_Member;
-
-CREATE TABLE Non_Member (
-	nm_uid	number		NOT NULL,
-	nm_pw	varchar2(30)		NOT NULL,
-	nm_phone	varchar2(20)		NOT NULL,
-	nm_number	varchar2(30)		NOT NULL,
-	nm_name	varchar2(30)		NOT NULL
-);
+UPDATE MEMBER SET user_auth='ROLE_ADMIN, ROLE_MEMBER' WHERE user_id = 'admin';
 
 DROP TABLE Qna_Board;
 
@@ -111,23 +100,6 @@ SELECT * FROM THEATER t ;
 SELECT * FROM THEATER_SEAT ts ;
 
 
-SELECT count(seat_num) "bookedSeat", PRF_TIME "time", prf_uid FROM  
-(SELECT t.TH_UID, ts.SEAT_NUM, ts.PRF_TIME, p2.PRF_UID 
-FROM THEATER t ,THEATER_SEAT ts , PERFORM p2
-WHERE t.TH_UID = ts.TH_UID AND p2.PRF_FCLTYNM = t.TH_NAME) WHERE prf_uid = 425 
-GROUP BY PRF_TIME, prf_uid;
-
-			SELECT count(seat_num) "bookedSeat", PRF_TIME "time", prf_uid FROM  
-			(SELECT t.TH_UID, ts.SEAT_NUM, ts.PRF_TIME, p2.PRF_UID 
-			FROM THEATER t ,THEATER_SEAT ts , PERFORM p2
-			WHERE t.TH_UID = ts.TH_UID AND p2.PRF_FCLTYNM = t.TH_NAME) WHERE prf_uid = 425
-			GROUP BY PRF_TIME, prf_uid;
-
-
-
-
-SELECT * FROM PERFORM p WHERE PRF_UID = 1211;
-
 DROP TABLE  Reservation ;
 
 CREATE TABLE  Reservation  (
@@ -160,14 +132,13 @@ CREATE TABLE  Theater_Seat  (
 	user_uid number     NOT NULL
 );
 
+
 CREATE SEQUENCE theater_seat_seq;
 
 
 SELECT seat_num "seat", th_uid, user_uidm prf_time "time" FROM Theater_Seat;
 
 SELECT * FROM theater_seat;
-
-
 
 
 insert into Theater_Seat (seat_num , th_uid , user_uid , prf_time) values
@@ -186,7 +157,7 @@ insert into Theater_Seat (seat_num , th_uid , user_uid) values
     SELECT * FROM THEATER_SEAT ts ;
 
     
-    
+
 DROP TABLE  Notice_Board ;
 
 CREATE TABLE  Notice_Board  (
@@ -256,30 +227,7 @@ CREATE TABLE  Event_Board  (
 	event_isfinish char(1) NULL
 );
 
-INSERT INTO EVENT_BOARD (event_uid, 
-event_title , event_contents, event_img ,user_uid , event_startdate , event_enddate , event_isfinish) 
-VALUES (event_seq.nextval, 'test','test','test',123,TO_DATE('2021-04-01','YYYY-MM-DD'),TO_DATE('2021-04-01','YYYY-MM-DD'),'1');
 
-SELECT event_uid "uid", event_title "title", event_contents "contents", event_img "img", 
-user_uid "user_uid", TO_DATE(TO_CHAR(event_startdate,'YYYY-MM-DD')) "startdate" , 
-TO_DATE(TO_CHAR(event_enddate,'YYYY-MM-DD')) "enddate", 
-event_isfinish "isfinish", (event_enddate - event_startdate) AS remainday, 
-(TO_DATE(TO_CHAR(event_enddate,'YYYY-MM-DD')) - TO_DATE(TO_CHAR(SYSDATE,'YYYY-MM-DD'))) AS remainfromtoday, 
-(1-((TO_DATE(TO_CHAR(event_enddate,'YYYY-MM-DD')) - TO_DATE(TO_CHAR(SYSDATE,'YYYY-MM-DD')))/(event_enddate - event_startdate)))*100 AS percentage
-FROM EVENT_BOARD 
-ORDER BY percentage ASC;
-
-SELECT 
-count(*) AS total, 
-count(event_isfinish == 1) AS finished, 
-count(event_isfinish == 0) AS ongoing 
-FROM EVENT_BOARD ;
-
-		SELECT 
-			(SELECT count(*) FROM EVENT_BOARD) total,
-			(SELECT count(*) FROM EVENT_BOARD WHERE EVENT_ISFINISH = 1) AS finished,
-			(SELECT count(*) FROM EVENT_BOARD WHERE EVENT_ISFINISH = 0) AS ongoing 
-		FROM dual;
 
 
 
@@ -343,7 +291,11 @@ WHERE k.prf_id = p.prf_id;
 DROP TABLE perform CASCADE CONSTRAINTS;
 
 CREATE TABLE Perform (
+<<<<<<< HEAD
 	prf_uid	number		NOT NULL PRIMARY KEY,
+=======
+	prf_uid	number		NOT NULL PRIMARY key,
+>>>>>>> branch 'master' of https://github.com/Jangho4273/RecoPAY.git
 	prf_id	varchar2(15)		NOT NULL,
 	prf_name	varchar2(200)		NOT NULL,
 	prf_from	varchar2(20)		NULL,
@@ -360,8 +312,9 @@ CREATE TABLE Perform (
 	prf_summary clob NULL
 );
 
-
-SELECT * FROM perform;
+SELECT PRF_UID "uid",prf_name "name" , TO_CHAR(TO_DATE(prf_to) ,'YYYY-MM-DD') AS startDay, TO_CHAR(TO_DATE(prf_from) ,'YYYY-MM-DD') AS endDay  
+FROM perform 
+WHERE PRF_STATE = '공연중';
 
 EXP recopay/recopay FILE=C:\DevRoot\perform.exp tables=Perform;
 
@@ -384,7 +337,8 @@ CREATE TABLE test_write (
 	wr_viewcnt NUMBER DEFAULT 0,
 	wr_regdate DATE DEFAULT sysdate,
 	wr_score NUMBER,
-	wr_prfname varchar2(50)
+	wr_prfname varchar2(50),
+	wr_prfid varchar2(100)
 );
 
 alter table test_write modify (wr_prfname varchar2(200)) ;

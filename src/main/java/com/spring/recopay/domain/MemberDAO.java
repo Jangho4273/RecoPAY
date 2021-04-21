@@ -7,6 +7,8 @@ public interface MemberDAO {
 
 	MemberDTO select();
 	
+	int checkSignup(String username);
+	
 //	public int idCheck(String username);
 //	void registerMember(MemberDTO memberDTO);
 	

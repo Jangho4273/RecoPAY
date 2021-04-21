@@ -11,10 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 import com.spring.recopay.domain.MemberDTO;
 import com.spring.recopay.service.MemberService;
 
@@ -30,6 +31,14 @@ public class MemberController {
 
 	@Autowired
 	private BCryptPasswordEncoder bcryptPasswordEncoder;
+	
+	@ResponseBody 
+	@RequestMapping(value = "/loginCk/{username}") 
+	public String checkSignup(@PathVariable String username, HttpServletRequest request, Model model) { 
+		int rowcount = service.checkSignup(username); 
+		return String.valueOf(rowcount); 
+	}
+
 
 	@Autowired
 	public void setService(MemberService service) {
@@ -80,7 +89,8 @@ public class MemberController {
 	}
 	
 	@PostMapping("/login")
-	public void loginInput2(String error, String logout, Model model) {
+	public void loginInput2(String error, String logout, HttpServletRequest request, Model model) {
+		
 		System.out.println("error: " + error);
 		System.out.println("logout: " + logout);
 
