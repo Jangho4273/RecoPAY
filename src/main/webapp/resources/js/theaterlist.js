@@ -5,29 +5,28 @@ var theaterName = [];
 var id = [];
 var presearchedArr = [];
 var onPerformanceArr = [];
+var onPerformanceTheaterNameArr = [];
 var isSearch = 0;
 var selectOption = "";
 var api_key = "b9540b392fb0493c963e4b00ad293087";
 var eddate = getFormatDate(new Date());
 
-
 $(document).ready(function() {
 
-
-
 	loadPage();
+	loadxml();
 
 	$("#but").click(function() {
 		if (isSearch == 0) {
 			viewrow += 10;
 			loadPage();
 		}
-
 	});
 
 	$("#searchbut").click(function() {
 		isSearch = 1;
 		hideAllPage();
+		presearchedArr = [];
 		selectOption = document.getElementById("selectOption");
 		var tbIndex = document.getElementById("selectOption").options.selectedIndex;
 		selectOption.options[tbIndex].value
@@ -39,7 +38,7 @@ $(document).ready(function() {
 					presearchedArr.push(id[i]);
 				}
 			}
-			
+
 		} else if (selectOption.options[tbIndex].value == "극장명") {
 			for (var i = 0; i < locationName.length; i++) {
 				if (theaterName[i].indexOf($(searchName).val()) != -1) {
@@ -48,23 +47,48 @@ $(document).ready(function() {
 				}
 			}
 		}
-		
+
 		resultNo = presearchedArr.length;
-		alert("총 몇개? : " + resultNo);
+		alert("검색 결과 : " + resultNo + "개");
 	});
 
 	$("input:radio[name=radiobut]").click(function() {
 		if ($("input:radio[name=radiobut]:checked").val() == "ongoing") {
 			//상영중으로 check 될 ㅅ ㅣ
-			
 			hideAllPage();
-			selectOption = document.getElementById("selectOption");
+
+			electOption = document.getElementById("selectOption");
 			var tbIndex = document.getElementById("selectOption").options.selectedIndex;
-			if(selectOption.options[tbIndex].value == "위치") {
-				onPerformanceArr = [];
-				loadxml();
+			selectOption.options[tbIndex].value
+			var totalcnt = 0;
+			if (selectOption.options[tbIndex].value == "극장명") {
+				//극장명로 되어 있으면 
+				//alert(document.getElementById('td1').childNodes[0].nodeValue);
+				if (presearchedArr.length > 0) {
+					for (var i = 0; i < presearchedArr.length; i++) {
+						for (var j = 0; j < onPerformanceArr.length; j++) {
+							if (theaterName[parseInt(presearchedArr[i])].indexOf(theaterName[parseInt(onPerformanceArr[j])]) != -1) {
+								$("#a" + presearchedArr[i].trim()).show();
+								totalcnt++;
+							}
+						}
+					}
+				}
+
+			} else {
+				// 위치으로 되어 있으면 
+				if (presearchedArr.length > 0) {
+
+					for (var i = 0; i < presearchedArr.length; i++) {
+						for (var j = 0; j < onPerformanceTheaterNameArr.length; j++) {
+							if (onPerformanceTheaterNameArr[j] == theaterName[parseInt(presearchedArr[i])]) {
+								$("#a" + presearchedArr[i].trim()).show();
+							}
+						}
+					}
+				}
 			}
-			
+
 		} else {
 			// 모두에 check
 
@@ -125,7 +149,7 @@ function parsePerformanceXML(xmlDOM) {
 function loadxml() {
 	// prfstate=02  -> 공연중 
 	var url = "http://www.kopis.or.kr/openApi/restful/pblprfr?service=" + api_key +
-		"&stdate=20160601&eddate=" + eddate + "&cpage=1&rows=300&prfstate=02";
+		"&stdate=20160601&eddate=" + eddate + "&cpage=1&rows=400&prfstate=02";
 	console.log(url);
 	$.ajax({
 		url: url,
@@ -146,6 +170,8 @@ function setOnPerformanceArr(theaterNamee) {
 	for (var i = 0; i < theaterName.length; i++) {
 		if (theaterNamee.trim() == theaterName[i].trim()) {
 			onPerformanceArr.push(id[i]);
+			onPerformanceTheaterNameArr.push(theaterName[i].trim())
 		}
 	}
+
 }

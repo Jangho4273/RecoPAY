@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.ResponseBody;
+=======
+>>>>>>> branch 'master' of https://github.com/Jangho4273/RecoPAY.git
 
 import com.spring.recopay.domain.MemberDTO;
 import com.spring.recopay.service.MemberService;
@@ -78,8 +81,14 @@ public class MemberController {
 //	}
 
 	@GetMapping("/login")
-	public void loginInput(String error, String logout, Model model) {
+	public void loginInput(HttpServletRequest request, String error, String logout, Model model) {
 		System.out.println("login page 입성");
+		
+		String uri = request.getHeader("Referer");
+		if (!uri.contains("/login")) {
+			request.getSession().setAttribute("prevPage", request.getHeader("Referer"));
+		}
+		
 		
 	}
 	

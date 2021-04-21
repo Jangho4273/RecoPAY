@@ -12,7 +12,7 @@
 	
 	
 	<select id="viewByUid" resultType="com.spring.recopay.domain.PerformDTO">
-	SELECT prf_uid "uid", prf_id "id", prf_name "name", prf_from "from", prf_to "to", prf_fcltynm "fcltynm", 
+	SELECT prf_uid "uid", prf_id "id", prf_name "name", prf_from "startDay", prf_to "endDay", prf_fcltynm "fcltynm", 
 	prf_poster "poster", prf_state "state", prf_openrun "openrun", th_uid "tuid",prf_ticketprice "ticketprice", prf_runday "runday", prf_runtime "runtime" 
 	FROM Perform
 	WHERE prf_uid=#{uid}

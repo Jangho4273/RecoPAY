@@ -275,6 +275,7 @@ d<%@ page language="java" contentType="text/html; charset=UTF-8"
 	</script>-->
 
 
+<<<<<<< HEAD
 
 	<!-- ##### Login Area End ##### -->
 
@@ -287,6 +288,12 @@ d<%@ page language="java" contentType="text/html; charset=UTF-8"
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
+=======
+<<<<<<< HEAD
+    <!-- ##### All Javascript Script ##### -->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+>>>>>>> branch 'master' of https://github.com/Jangho4273/RecoPAY.git
     /* 다음 주소 연동 */
 	function execDaumPostcode() {
 	
@@ -344,9 +351,30 @@ d<%@ page language="java" contentType="text/html; charset=UTF-8"
      
     
     </script>
+<<<<<<< HEAD
+=======
+    <!-- jQuery-2.2.4 js -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="js/active.js"></script>
+    
+    
+    
+=======
+>>>>>>> branch 'master' of https://github.com/Jangho4273/RecoPAY.git
 
+<<<<<<< HEAD
 
 	
+=======
+>>>>>>> branch 'master' of https://github.com/Jangho4273/RecoPAY.git
+>>>>>>> branch 'master' of https://github.com/Jangho4273/RecoPAY.git
 </body>
 
 </html>

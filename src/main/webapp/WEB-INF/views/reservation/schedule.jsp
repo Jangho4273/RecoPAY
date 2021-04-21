@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -46,6 +49,20 @@
 	href="<%=request.getContextPath() %>/resources/calender/css/icons.css">
 </head>
 
+<script>
+	var startDayList = [];
+	var endDayList = [];
+	var titleList = [];
+
+	
+	<c:forEach items="${list}" var="item1">
+		startDayList.push("${item1.startDay}");
+		startDayList.push("${item1.endDay}");
+		titleList.push("${item1.name}");
+	</c:forEach>
+
+</script>
+
 <body>
 
 	<jsp:include page="/resources/jsp/header.jsp"></jsp:include>
@@ -64,7 +81,7 @@
 	<section class="contact-area section-padding-100-0">
 		<div class="container">
 			<div class="row">
-
+				
 				<div class="col-12 col-lg-3">
 					<div class="contact-content mb-100">
 						<!-- Title -->

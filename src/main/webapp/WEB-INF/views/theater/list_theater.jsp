@@ -162,8 +162,8 @@ border: none;
 
 										<td><a
 											href="<%=request.getContextPath()%>/theater/view/${dto.id }">${dto.name }</a></td>
-										<td>${dto.location }</td>
-										<td>${dto.totalseat }</td>
+										<td id="td${vs.index}">${dto.location }</td>
+										<td >${dto.totalseat }</td>
 										<td>${dto.telno }</td>
 										<td>${dto.chartr }</td>
 									</tr>

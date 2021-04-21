@@ -7,9 +7,13 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
+import org.springframework.security.web.savedrequest.RequestCache;
+import org.springframework.security.web.savedrequest.SavedRequest;
 
 public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 
@@ -18,8 +22,8 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 			Authentication authentication) throws IOException, ServletException {
 		
 		System.out.println("Login Success");
+		HttpSession session = request.getSession();
 
-		// Authentication 객체를 이용해서 사용자가 가진 모든 권한을 문자열로 체크가능
 		List<String> roleNames = new ArrayList<>();
 		authentication.getAuthorities().forEach(authority -> {
 			roleNames.add(authority.getAuthority());
@@ -27,6 +31,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 
 		System.out.println("ROLE NAMES: " + roleNames);
 		
+<<<<<<< HEAD
 		
 //		if(roleNames.contains("ROLE_ADMIN")) {
 //			uri = request.getContextPath() + "/admin";
@@ -34,13 +39,28 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 		
 
 		// 만약 사용자가 ROLE_ADMIN 권한을 가졌다면 로그인 후 곧바로 /sample/admin 으로 이동
+=======
+		RequestCache requestCache = new HttpSessionRequestCache();
+		SavedRequest savedRequest = requestCache.getRequest(request, response);
+		String uri = "/";
+		
+		String prevPage = (String) request.getSession().getAttribute("prevPage");
+		
+		
+		if (savedRequest != null) {
+			uri = savedRequest.getRedirectUrl();
+		} else if (prevPage != null && !prevPage.equals("")) {
+			uri = prevPage;
+		}
+		
+>>>>>>> branch 'master' of https://github.com/Jangho4273/RecoPAY.git
 		if (roleNames.contains("ROLE_ADMIN")) {
-			response.sendRedirect(request.getContextPath() + "/index");
+			response.sendRedirect(uri);
 			return;
 		}
 
 		if (roleNames.contains("ROLE_MEMBER")) {
-			response.sendRedirect(request.getContextPath() + "/index");
+			response.sendRedirect(uri);
 			return;
 		}
 	}

@@ -58,6 +58,8 @@
 <body>
 	<script>
 	
+				
+
 		endLocationY = <%= Float.parseFloat(request.getParameter("lat")) %>
 		endLocationX = <%= Float.parseFloat(request.getParameter("lng")) %>
 		
