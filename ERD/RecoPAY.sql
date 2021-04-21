@@ -304,6 +304,7 @@ CREATE TABLE  Review  (
 	re_score 	number		NULL,
 	user_uid 	number		NULL
 );
+SELECT * FROM review;
 
 DROP TABLE  FavoritePerform ;
 
@@ -342,7 +343,7 @@ WHERE k.prf_id = p.prf_id;
 DROP TABLE perform CASCADE CONSTRAINTS;
 
 CREATE TABLE Perform (
-	prf_uid	number		NOT NULL,
+	prf_uid	number		NOT NULL PRIMARY KEY,
 	prf_id	varchar2(15)		NOT NULL,
 	prf_name	varchar2(200)		NOT NULL,
 	prf_from	varchar2(20)		NULL,
