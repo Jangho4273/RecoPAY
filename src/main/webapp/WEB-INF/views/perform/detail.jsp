@@ -67,8 +67,8 @@ th, td {
 					<div style="margin: 40px 0 0 0"
 						class="load-more-btn text-center wow fadeInUp"
 						data-wow-delay="300ms">
-						<button id="buta" type="button" class="btn oneMusic-btn">
-							예매처 바로가기 <i class="fa fa-angle-double-right"></i>
+						<button id="buta" type="button" class="btn oneMusic-btn" onclick="location.href='${pageContext.request.contextPath}/reservation/reservation/${list[0].uid}'">
+							예매처 바로가기 <i class="fa fa-angle-double-right" ></i>
 						</button>
 					</div>
 				</div>

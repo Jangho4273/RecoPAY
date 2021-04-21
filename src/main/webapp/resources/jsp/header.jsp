@@ -32,11 +32,8 @@
 
 }
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> branch 'master' of https://github.com/Jangho4273/RecoPAY.git
 </style>
 <meta charset="UTF-8">
 <title>Header</title>
@@ -135,10 +132,10 @@
                                     <!-- Login/Register -->
                                     <div class="login-register-btn mr-50">
                                     	<sec:authentication property="principal.username" var="user_id" />
-                                    	${user_id } 님, 환영합니다.
+                                    	<p style="color:white;">${user_id } 님, 환영합니다.</p>
 										<form action="${pageContext.request.contextPath }/login/logout" method='post'>
 										<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
-										<button id="zzzz" class="">Logout</button>
+										<button style="width:50px; height:40px; "id="zzzz" class="">Logout</button>
                                         </form>
                                     </div>
                                 </div>

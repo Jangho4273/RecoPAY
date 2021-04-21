@@ -44,7 +44,6 @@
 	</section>
 	<!-- ##### Breadcumb Area End ##### -->
 
-<<<<<<< HEAD
 	<!-- ##### Login Area Start ##### -->
 	<section class="login-area section-padding-100">
 		<div class="container">
@@ -114,8 +113,6 @@
 	<script src="js/plugins/plugins.js"></script>
 	<!-- Active js -->
 	<script src="js/active.js"></script>
-=======
->>>>>>> branch 'master' of https://github.com/Jangho4273/RecoPAY.git
 </body>
 
 </html>
