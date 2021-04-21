@@ -25,7 +25,7 @@ public class HomeController {
 		this.rs = rs;
 	}
 
-	@RequestMapping(value = {"/", "/index"}, method = {RequestMethod.GET, RequestMethod.POST})
+	@GetMapping(value = {"/", "/index"})
 	public String index(Model model) {
 		model.addAttribute("list", rs.list());
 		return "/index";
