@@ -1,5 +1,7 @@
 package com.spring.recopay.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.recopay.domain.MemberDTO;
 import com.spring.recopay.service.MemberService;
@@ -68,8 +68,14 @@ public class MemberController {
 //	}
 
 	@GetMapping("/login")
-	public void loginInput(String error, String logout, Model model) {
+	public void loginInput(HttpServletRequest request, String error, String logout, Model model) {
 		System.out.println("login page 입성");
+		
+		String uri = request.getHeader("Referer");
+		if (!uri.contains("/login")) {
+			request.getSession().setAttribute("prevPage", request.getHeader("Referer"));
+		}
+		
 		
 	}
 	
