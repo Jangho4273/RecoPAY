@@ -22,6 +22,38 @@
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/style.css">
 
 </head>
+<style>
+
+.qnabtn{
+   width:80px;
+   height: 40px;
+ 	background-color: rgba( 0, 0, 0, 0.2 );
+    border: none;
+    color:#fff;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px;
+    cursor: pointer;
+	transition: 0.4s;
+}
+
+.qnabtn:hover{
+	opacity: 1;
+	background-color: #000000;
+	color: white;
+	border: none;
+	
+}
+
+.pFont{
+    margin-bottom: 0px;
+    font-size: 20px;
+    font-weight: bold;
+}
+</style>
+
 <script>
 function chkDelete(uid){
 	// 삭제 여부, 다시 확인 하고 진행하기
@@ -60,7 +92,7 @@ function chkDelete(uid){
                             <div class="icon mr-30">
                                 <span class="icon-placeholder"></span>
                             </div>
-                            <p><a href="<%=request.getContextPath() %>/servicecenter/notice">공지사항</a></p>
+                            <p><a href="<%=request.getContextPath() %>/servicecenter/notice/notice">공지사항</a></p>
                         </div>
 
                         <!-- Single Contact Info -->
@@ -68,7 +100,7 @@ function chkDelete(uid){
                             <div class="icon mr-30">
                                 <span class="icon-smartphone"></span>
                             </div>
-                            <p><a href="<%=request.getContextPath() %>/servicecenter/qna">1대1 문의</a></p>
+                            <p><a href="<%=request.getContextPath() %>/servicecenter/qna/qna">1대1 문의</a></p>
                         </div>
 
                         <!-- Single Contact Info -->
@@ -76,7 +108,7 @@ function chkDelete(uid){
                             <div class="icon mr-30">
                                 <span class="icon-mail"></span>
                             </div>
-                            <p><a href="<%=request.getContextPath() %>/servicecenter/faq">자주 묻는 질문</a></p>
+                            <p><a href="<%=request.getContextPath() %>/servicecenter/faq/faq">자주 묻는 질문</a></p>
                         </div>
 
                     </div>
@@ -90,25 +122,24 @@ function chkDelete(uid){
 						</tr>
 					</thead>
 					
-					UID : ${list[0].q_uid }<br>
-					작성자 : ${list[0].name }<br>
-					제목 : ${list[0].title }<br>
-					등록일 : ${list[0].uploadtime }<br>
-					조회수 : ${list[0].viewcnt }<br>
-					내용: ${list[0].content }<br>
+					<p class="pFont">UID : ${list[0].q_uid }</p>
+					<p class="pFont">작성자 : ${list[0].name }</p>
+					<p class="pFont">제목 : ${list[0].title }</p>
+					<p class="pFont">등록일 : ${list[0].uploadtime }</p>
+					<p class="pFont">조회수 : ${list[0].viewcnt }</p>
+					<p class="pFont">내용: ${list[0].content }</p>
 					<hr>
 					
-					<button onclick="location.href='update?uid=${list[0].q_uid}'">수정하기</button>
-					<button onclick="location.href = 'qna'">목록보기</button>
-					<button onclick="chkDelete(${list[0].q_uid})">삭제하기</button>
-					<button onclick="location.href = 'write'">신규등록</button>
+					<button onclick="location.href='update?uid=${list[0].q_uid}'" class="qnabtn">수정하기</button>
+					<button onclick="location.href = 'qna'" class="qnabtn">목록보기</button>
+					<button onclick="chkDelete(${list[0].q_uid})" class="qnabtn">삭제하기</button>
+					<button onclick="location.href = 'write'" class="qnabtn">신규등록</button>
 
 					</table>
 					
 					<c:forEach var="dto" items="${commentlist }" varStatus="vs">
-					<p> 댓글 내용 : ${dto.content }  , 작성자(${dto.writer }) </p><br>
+					<p> 댓글 내용 : ${dto.content }  , 작성자(${dto.writer }) </p>
 					</c:forEach>
-					<a href="qna" class="btn btn-primary">목록</a>
 
 					<form name="commentInsertForm" method="post"
 						action="/recopay/comment/insert">
@@ -133,7 +164,6 @@ function chkDelete(uid){
 					<%@ include file="comment.jsp" %>
 
 					<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-					<script src="js/bootstrap.js"></script>
 				</div>
             </div>
         </div>

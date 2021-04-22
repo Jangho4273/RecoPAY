@@ -23,6 +23,42 @@
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/style.css">
 
 </head>
+
+
+<style>
+
+.noticebtn{
+   width:80px;
+   height: 40px;
+ 	background-color: rgba( 0, 0, 0, 0.2 );
+    border: none;
+    color:#fff;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px;
+    cursor: pointer;
+	transition: 0.4s;
+}
+
+.noticebtn:hover{
+	opacity: 1;
+	background-color: #000000;
+	color: white;
+	border: none;
+	
+}
+
+.pFont {
+	width: 10%; 
+	margin-bottom: 0px;
+	font-size: 20px;
+    font-weight: bold;
+	
+}
+</style>
+
 <script>
 function chkSubmit(){
 	frm = document.forms['frm'];
@@ -50,7 +86,7 @@ function chkSubmit(){
     <!-- ##### Breadcumb Area End ##### -->
 
     <!-- ##### Contact Area Start ##### -->
-    <section class="contact-area section-padding-100-0">
+    <section class="contact-area section-padding-100-0 mb-50">
         <div class="container">
             <div class="row">
 
@@ -66,7 +102,7 @@ function chkSubmit(){
                             <div class="icon mr-30">
                                 <span class="icon-placeholder"></span>
                             </div>
-                            <p><a href="<%=request.getContextPath() %>/servicecenter/notice">공지사항</a></p>
+                            <p><a href="<%=request.getContextPath() %>/servicecenter/notice/notice">공지사항</a></p>
                         </div>
 
                         <!-- Single Contact Info -->
@@ -74,7 +110,7 @@ function chkSubmit(){
                             <div class="icon mr-30">
                                 <span class="icon-smartphone"></span>
                             </div>
-                            <p><a href="<%=request.getContextPath() %>/servicecenter/qna">1대1 문의</a></p>
+                            <p><a href="<%=request.getContextPath() %>/servicecenter/qna/qna">1대1 문의</a></p>
                         </div>
 
                         <!-- Single Contact Info -->
@@ -82,16 +118,36 @@ function chkSubmit(){
                             <div class="icon mr-30">
                                 <span class="icon-mail"></span>
                             </div>
-                            <p><a href="<%=request.getContextPath() %>/servicecenter/faq">자주 묻는 질문</a></p>
+                            <p><a href="<%=request.getContextPath() %>/servicecenter/faq/faq">자주 묻는 질문</a></p>
                         </div>
 
                     </div>
                 </div>
-            </div>
+				<div class="col-12 col-lg-9">
+						<h2>수정</h2>
+						<hr>
+						<form name="frm" action="updateOk" method="post"
+							onsubmit="return chkSubmit()">
+							<input type="hidden" name="N_uid" value="${list[0].n_uid }" />
+							<p class="pFont" style="width: 100%;">작성자: ${list[0].name }</p>
+							<%-- 작성자 이름은 변경 불가 --%>
+							<p class="pFont">제목: </p><input type="text" name="title" value="${list[0].title }" style="width: 100%; font-size: 20px;"/>
+							<p class="pFont">내용: </p>
+							<textarea name="content" style="width: 100%; height: 150px; font-size: 15px;">${list[0].content }</textarea>
+							<br>
+							<br> <input type="submit" value="수정" class="noticebtn"/> <input type="hidden"
+								name="${_csrf.parameterName }" value="${_csrf.token }" />
+							<button onclick="history.back();" class="noticebtn">이전으로</button>
+							<button onclick="location.href='notice'" class="noticebtn">목록보기</button>
+						</form>
+						<br>
+
+				</div>
+			</div>
         </div>
     </section>
     <!-- ##### Contact Area End ##### -->
-
+<%-- 
   <!-- 게시판 글쓰기 수정 영역 시작 -->
 	<div class="container">
 		<div class="row">
@@ -99,7 +155,7 @@ function chkSubmit(){
 		<h2>수정</h2>
 		<form name="frm" action="updateOk" method="post" onsubmit="return chkSubmit()">
 			<input type="hidden" name="N_uid" value="${list[0].n_uid }"/>
-			작성자: ${list[0].name }<br> <%-- 작성자 이름은 변경 불가 --%>
+			작성자: ${list[0].name }<br> 작성자 이름은 변경 불가
 			제목:
 			<input type="text" name="title" value="${list[0].title }"/><br>
 			내용:<br>
@@ -117,7 +173,7 @@ function chkSubmit(){
 		</div>
 	</div>
 	<!-- 게시판 글쓰기 수정 영역 끝 -->
-	
+	 --%>
 	<!-- 부트스트랩 참조 영역 -->
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>

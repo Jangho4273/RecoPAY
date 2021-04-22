@@ -63,7 +63,7 @@ function chkSubmit(){
                             <div class="icon mr-30">
                                 <span class="icon-placeholder"></span>
                             </div>
-                            <p><a href="<%=request.getContextPath() %>/servicecenter/notice">공지사항</a></p>
+                            <p><a href="<%=request.getContextPath() %>/servicecenter/notice/notice">공지사항</a></p>
                         </div>
 
                         <!-- Single Contact Info -->
@@ -71,7 +71,7 @@ function chkSubmit(){
                             <div class="icon mr-30">
                                 <span class="icon-smartphone"></span>
                             </div>
-                            <p><a href="<%=request.getContextPath() %>/servicecenter/qna">1대1 문의</a></p>
+                            <p><a href="<%=request.getContextPath() %>/servicecenter/qna/qna">1대1 문의</a></p>
                         </div>
 
                         <!-- Single Contact Info -->
@@ -79,7 +79,7 @@ function chkSubmit(){
                             <div class="icon mr-30">
                                 <span class="icon-mail"></span>
                             </div>
-                            <p><a href="<%=request.getContextPath() %>/servicecenter/faq">자주 묻는 질문</a></p>
+                            <p><a href="<%=request.getContextPath() %>/servicecenter/faq/faq">자주 묻는 질문</a></p>
                         </div>
 					</div>
                 </div>
