@@ -13,7 +13,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>공지사항</title>
+    <title>Qna</title>
 
     <!-- Favicon -->
     <link rel="icon" href="<%=request.getContextPath() %>/resources/img/core-img/favicon.ico">
@@ -38,8 +38,7 @@ function chkDelete(uid){
     <!-- ##### Breadcumb Area Start ##### -->
     <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<%=request.getContextPath() %>/resources/img/bg-img/bg-4.jpg);">
         <div class="bradcumbContent">
-            <p>공지사항</p>
-            <h2>환영합니다</h2>
+            <h2>1대1문의</h2>
         </div>
     </section>
     <!-- ##### Breadcumb Area End ##### -->
@@ -121,6 +120,7 @@ function chkDelete(uid){
 								placeholder="내용을 입력하세요."> <span class="input-group-btn">
 								<button class="btn btn-default" type="submit"
 									name="commentInsertBtn">등록</button>
+								<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
 							</span>
 						</div>
 					</form>

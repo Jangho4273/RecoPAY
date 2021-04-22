@@ -41,8 +41,7 @@ function chkSubmit(){
     <!-- ##### Breadcumb Area Start ##### -->
     <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<%=request.getContextPath() %>/resources/img/bg-img/bg-3.jpg);">
         <div class="bradcumbContent">
-            <p>공지사항</p>
-            <h2>환영합니다</h2>
+            <h2>공지사항</h2>
         </div>
     </section>
     <!-- ##### Breadcumb Area End ##### -->
@@ -115,6 +114,7 @@ function chkSubmit(){
 						<!-- 글쓰기 버튼 생성 -->
 						<input type="submit" class="btn btn-primary pull-right"
 							value="글쓰기">
+						<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
 					</form>
 				</div>
             </div>

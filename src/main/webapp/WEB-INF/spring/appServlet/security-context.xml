@@ -15,20 +15,18 @@
 
 		<security:intercept-url pattern = "/reservation/reservation/*" access = "isAuthenticated()"/>
 		<security:intercept-url pattern = "/perform/**" access = "isAuthenticated()"/>
-		<!-- <security:intercept-url pattern = "/servicecenter/qna/**" access = "hasRole('ROLE_MEMBER')"/>
+		<security:intercept-url pattern = "/servicecenter/qna/**" access = "isAuthenticated()"/>
 		
-		<security:intercept-url pattern = "/servicecenter/faq/view" access = "hasRole('ROLE_MEMBER')"/>
-		<security:intercept-url pattern = "/servicecenter/faq/faq" access = "hasRole('ROLE_MEMBER')"/>
+		<security:intercept-url pattern = "/servicecenter/faq/view" access = "isAuthenticated()"/>
+		<security:intercept-url pattern = "/servicecenter/faq/faq" access = "isAuthenticated()"/>
 		<security:intercept-url pattern = "/servicecenter/faq/**" access = "hasRole('ROLE_ADMIN')"/>
 	
+		<security:intercept-url pattern = "/servicecenter/notice/view" access = "isAuthenticated()"/>
+		<security:intercept-url pattern = "/servicecenter/notice/notice" access = "isAuthenticated()"/>
+		<security:intercept-url pattern = "/servicecenter/notice/**" access = "hasRole('ROLE_ADMIN')"/>
 		
-		<security:intercept-url pattern = "/servicecenter/notice/view" access = "hasRole('ROLE_MEMBER')"/>
-		<security:intercept-url pattern = "/servicecenter/notice/notice" access = "hasRole('ROLE_MEMBER')"/>
-		<security:intercept-url pattern = "/servicecenter/notice/deleteOk" access = "hasRole('ROLE_ADMIN')"/>
-		<security:intercept-url pattern = "/servicecenter/notice/update" access = "hasRole('ROLE_ADMIN')"/>
-		<security:intercept-url pattern = "/servicecenter/notice/updateOk" access = "hasRole('ROLE_ADMIN')"/>
-		<security:intercept-url pattern = "/servicecenter/notice/writeOk" access = "hasRole('ROLE_ADMIN')"/>
-		<security:intercept-url pattern = "/servicecenter/notice/write" access = "hasRole('ROLE_ADMIN')"/> -->
+		<security:intercept-url pattern="/**" access="permitAll" />
+
 		
 
 		<security:form-login login-page="/login/login" authentication-success-handler-ref="customLoginSuccess"/>

@@ -10,7 +10,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>공지사항</title>
+    <title>FAQ</title>
 
     <!-- Favicon -->
     <link rel="icon" href="<%=request.getContextPath() %>/resources/img/core-img/favicon.ico">
@@ -35,8 +35,7 @@ function chkDelete(uid){
     <!-- ##### Breadcumb Area Start ##### -->
     <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<%=request.getContextPath() %>/resources/img/bg-img/bg-4.jpg);">
         <div class="bradcumbContent">
-            <p>공지사항</p>
-            <h2>환영합니다</h2>
+            <h2>자주묻는질문</h2>
         </div>
     </section>
     <!-- ##### Breadcumb Area End ##### -->

@@ -14,7 +14,7 @@
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title -->
-<title>RecoPay</title>
+<title>Login</title>
 
 <!-- Favicon -->
 <link rel="icon"
@@ -58,7 +58,7 @@
 
 
 							<form method='post'
-								action="${pageContext.request.contextPath}/index">
+								action="${pageContext.request.contextPath}/login">
 								<div class="form-group">
 									<label for="username">ID</label> <input type="text"
 										name='username' class="form-control" id="username"
