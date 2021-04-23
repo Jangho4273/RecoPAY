@@ -58,7 +58,7 @@ flex-direction: row !important;
 	<jsp:include page="/resources/jsp/header.jsp"></jsp:include>
 	<!-- ##### Breadcumb Area Start ##### -->
 	<section class="breadcumb-area bg-img bg-overlay"
-		style="background-image: url(<%=request.getContextPath()%>/resources/img/bg-img/breadcumb.jpg);">
+		style="background-image: url(<%=request.getContextPath()%>/img/bg-img/bg-1.jpg);">
 		<div class="bradcumbContent">
 			<p>이벤트 정보</p>
 			<h2>공연 이벤트 정보</h2>

@@ -14,7 +14,7 @@
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title -->
-<title>RecoPay</title>
+<title>회원가입</title>
 
 <!-- Favicon -->
 <link rel="icon" href="<%=request.getContextPath() %>/img/core-img/favicon.ico">

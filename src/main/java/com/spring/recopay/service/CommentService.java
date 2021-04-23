@@ -16,17 +16,17 @@ public class CommentService {
 	@Autowired
 	private SqlSession sqlSession;
 
-	public List<CommentDTO> list(){
+	public List<CommentDTO> selectCommentByUid(int q_uid){
 		dao = sqlSession.getMapper(CommentDAO.class);
-		return dao.commentList();
+		return dao.selectCommentByUid(q_uid);
 	}
     
-	public int Count() {
+	public int count() {
 		dao = sqlSession.getMapper(CommentDAO.class);
 		return dao.commentCount();
     }
 	
-	public int Insert(CommentDTO dto) {
+	public int insert(CommentDTO dto) {
 		dao = sqlSession.getMapper(CommentDAO.class); // MyBatis 사용 댓글쓰기
 		return dao.commentInsert(dto); 
 	}

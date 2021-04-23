@@ -29,7 +29,7 @@
 
 <!-- Favicon -->
 <link rel="icon"
-	href="<%=request.getContextPath() %>/resources/img/core-img/favicon.ico">
+	href="<%=request.getContextPath() %>/img/core-img/favicon.ico">
 
 <!-- Stylesheet -->
 <link rel="stylesheet"
@@ -69,9 +69,9 @@
 
 	<!-- ##### Breadcumb Area Start ##### -->
 	<section class="breadcumb-area bg-img bg-overlay"
-		style="background-image: url(<%=request.getContextPath() %>/resources/img/bg-img/breadcumb.jpg);">
+		style="background-image: url(<%=request.getContextPath() %>/img/bg-img/bg-4.jpg);">
 		<div class="bradcumbContent">
-			<p>무엇을 볼 것이냐?</p>
+			<p>Now Opening Perform</p>
 			<h2>연 극 일 정</h2>
 		</div>
 	</section>

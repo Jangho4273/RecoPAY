@@ -14,11 +14,11 @@ function getPerformanceXML() {
 	
 	// prfstate=02  -> 공연중 추가해야댐 
 	var url = "http://www.kopis.or.kr/openApi/restful/pblprfr?service=" + api_key +
-	"&stdate=20160601&eddate="+ eddate +"&cpage=1&rows=10&prfplccd=" + id;
+	"&stdate=20160601&eddate="+ eddate +"&cpage=1&rows=900&prfplccd=" + id + "&prfstate=02";
 	console.log(url);
 	
 	
-	$.ajax({
+	$.ajax({ 
 		url: url,
 		type: "GET",
 		cache: false,
@@ -45,7 +45,6 @@ function parsePerformanceXML(xmlDOM) {
 			document.getElementById("poster_img").innerHTML = img;
 			img_url = "";
 		}
-
 	});
 }
 
@@ -67,9 +66,7 @@ function setMap(lat, lng) {
 		center: new google.maps.LatLng(lat, lng),
 		zoom: 16
 	}
-
 	var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-
 	var marker = new google.maps.Marker({
 		position: new google.maps.LatLng(lat, lng),
 		map: map,

@@ -9,7 +9,7 @@ public interface CommentDAO {
     public int commentCount();
  
     // 댓글 목록
-    public List<CommentDTO> commentList();
+    public List<CommentDTO> selectCommentByUid(int q_uid);
  
     // 댓글 작성
     public int commentInsert(CommentDTO comment);

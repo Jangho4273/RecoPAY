@@ -48,7 +48,7 @@
 		
 <!-- Favicon -->
 <link rel="icon"
-	href="<%=request.getContextPath()%>/resources/img/core-img/favicon.ico">
+	href="<%=request.getContextPath()%>/img/core-img/favicon.ico">
 
 <!-- Stylesheet -->
 <link rel="stylesheet"
@@ -70,7 +70,7 @@
 
 	<!-- ##### Breadcumb Area Start ##### -->
 	<section class="breadcumb-area bg-img bg-overlay"
-		style="background-image: url(<%=request.getContextPath()%>/resources/img/bg-img/breadcumb.jpg);">
+		style="background-image: url(<%=request.getContextPath()%>/img/bg-img/bg-2.jpg);">
 		<div class="bradcumbContent">
 			<p>예매하시겠습니까 고갱님?</p>
 			<h2>예매</h2>

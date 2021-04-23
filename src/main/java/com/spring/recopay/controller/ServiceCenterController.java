@@ -1,5 +1,6 @@
 package com.spring.recopay.controller;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring.recopay.domain.FaqDTO;
 import com.spring.recopay.domain.QnaDTO;
+import com.spring.recopay.domain.CommentDTO;
 import com.spring.recopay.domain.ServiceCenterDTO;
 import com.spring.recopay.service.FaqService;
 import com.spring.recopay.service.QnaService;
+import com.spring.recopay.service.CommentService;
 import com.spring.recopay.service.ServiceCenterService;
 
 @Controller
@@ -22,6 +25,8 @@ public class ServiceCenterController {
 	private ServiceCenterService cs;
 	private FaqService fs;
 	private QnaService qs;
+	private CommentService coms;
+	
 	
 	@Autowired
 	public void setCs(ServiceCenterService cs) {
@@ -36,6 +41,14 @@ public class ServiceCenterController {
 	public void setqs(QnaService qs) {
 		this.qs = qs;
 	}
+	
+	@Autowired
+	public void setComs(CommentService coms) {
+		this.coms = coms;
+	}
+	
+	@Inject
+	private CommentService commentService;
 	
 	public ServiceCenterController() {}
 	
@@ -153,8 +166,11 @@ public class ServiceCenterController {
 	}
 	@GetMapping("/qna/view")
 	public String qa_viewByUid(HttpServletRequest request, int q_uid, Model model) {
+		request.setAttribute("uid", q_uid);
 		model.addAttribute("list", qs.viewByUid(q_uid));
+		model.addAttribute("commentlist", coms.selectCommentByUid(q_uid));
 		return "servicecenter/qna/view";
+		
 	}
 	@RequestMapping("/qna/update")
 	public String qa_update(int uid, Model model, ServiceCenterDTO dto) {	

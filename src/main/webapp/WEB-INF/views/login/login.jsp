@@ -14,7 +14,7 @@
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title -->
-<title>RecoPay</title>
+<title>Login</title>
 
 <!-- Favicon -->
 <link rel="icon"
@@ -37,7 +37,7 @@
 
 	<!-- ##### Breadcumb Area Start ##### -->
 	<section class="breadcumb-area bg-img bg-overlay"
-		style="background-image: url(img/bg-img/breadcumb3.jpg);">
+		style="background-image: url(<%=request.getContextPath()%>/img/bg-img/bg-4.jpg);">
 		<div class="bradcumbContent">
 			<h2>Login</h2>
 		</div>

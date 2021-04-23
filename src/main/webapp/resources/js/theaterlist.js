@@ -30,6 +30,10 @@ $(document).ready(function() {
 		selectOption = document.getElementById("selectOption");
 		var tbIndex = document.getElementById("selectOption").options.selectedIndex;
 		selectOption.options[tbIndex].value
+		
+		if($(searchName).val() == "" ) {
+			presearchedArr = [];
+		}
 
 		if (selectOption.options[tbIndex].value == "위치") {
 			for (var i = 0; i < locationName.length; i++) {
@@ -59,8 +63,15 @@ $(document).ready(function() {
 
 			electOption = document.getElementById("selectOption");
 			var tbIndex = document.getElementById("selectOption").options.selectedIndex;
-			selectOption.options[tbIndex].value
+			
 			var totalcnt = 0;
+			
+			if (presearchedArr.length == 0 ) {
+				for(var i=0;i<onPerformanceArr.length; i++) {
+					$("#a" + onPerformanceArr[i].trim()).show();
+				}
+			}
+			
 			if (selectOption.options[tbIndex].value == "극장명") {
 				//극장명로 되어 있으면 
 				//alert(document.getElementById('td1').childNodes[0].nodeValue);
@@ -78,7 +89,6 @@ $(document).ready(function() {
 			} else {
 				// 위치으로 되어 있으면 
 				if (presearchedArr.length > 0) {
-
 					for (var i = 0; i < presearchedArr.length; i++) {
 						for (var j = 0; j < onPerformanceTheaterNameArr.length; j++) {
 							if (onPerformanceTheaterNameArr[j] == theaterName[parseInt(presearchedArr[i])]) {

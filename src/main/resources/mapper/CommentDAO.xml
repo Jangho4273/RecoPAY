@@ -10,18 +10,23 @@
         WHERE CNO = #{cno}
     </select>
     
-    <select id="commentList" resultType="com.spring.recopay.domain.CommentDTO">
+    <select id="selectCommentByUid" resultType="com.spring.recopay.domain.CommentDTO">
         SELECT
             *
-        FROM COMMENT
+        FROM Comment_Board
+        WHERE qna_q_uid = #{q_uid}
     </select>
     
     
     <insert id="commentInsert" parameterType="com.spring.recopay.domain.CommentDTO">
         INSERT INTO
-        COMMENT (CNO, Q_UID, CONTENT, WRITER)
-        VALUES(qna_seq.nextval,#{q_uid},#{content},#{writer}) 
+        Comment_Board (cno, qna_q_uid, CONTENT, WRITER)
+        VALUES(#{cno},#{q_uid},#{content},#{writer}) 
     </insert>
+    
+    
+	    
+    
     
     <update id="commentUpdate" parameterType="com.spring.recopay.domain.CommentDTO">
         UPDATE COMMENT

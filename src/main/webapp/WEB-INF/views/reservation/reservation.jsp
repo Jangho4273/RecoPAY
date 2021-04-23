@@ -14,7 +14,7 @@
     <title>Reservation</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="<%=request.getContextPath() %>/resources/img/core-img/favicon.ico">
+    <link rel="icon" href="<%=request.getContextPath() %>/img/core-img/favicon.ico">
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/style.css">
@@ -28,7 +28,7 @@
 	<jsp:include page="/resources/jsp/header.jsp"></jsp:include>
 	
     <!-- ##### Breadcumb Area Start ##### -->
-    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<%=request.getContextPath() %>/resources/img/bg-img/breadcumb.jpg);">
+    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<%=request.getContextPath() %>/img/bg-img/bg-1.jpg);">
         <div class="bradcumbContent">
             <p>예매하시겠습니까 고갱님?</p>
             <h2>예매</h2>

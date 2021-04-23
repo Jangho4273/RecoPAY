@@ -15,24 +15,18 @@
 
 		<security:intercept-url pattern = "/reservation/reservation/*" access = "isAuthenticated()"/>
 		<security:intercept-url pattern = "/perform/**" access = "isAuthenticated()"/>
-		<!-- security:intercept-url pattern = "/servicecenter/qna/**" access = "hasRole('ROLE_MEMBER')"/>
+		<security:intercept-url pattern = "/servicecenter/qna/**" access = "isAuthenticated()"/>
 		
-		<security:intercept-url pattern = "/servicecenter/faq/view" access = "hasRole('ROLE_MEMBER')"/>
-		<security:intercept-url pattern = "/servicecenter/faq/faq" access = "hasRole('ROLE_MEMBER')"/>
-		<security:intercept-url pattern = "/servicecenter/faq/deleteOk" access = "hasRole('ROLE_ADMIN')"/>
-		<security:intercept-url pattern = "/servicecenter/faq/update" access = "hasRole('ROLE_ADMIN')"/>
-		<security:intercept-url pattern = "/servicecenter/faq/updateOk" access = "hasRole('ROLE_ADMIN')"/>
-		<security:intercept-url pattern = "/servicecenter/faq/writeOk" access = "hasRole('ROLE_ADMIN')"/>
-		<security:intercept-url pattern = "/servicecenter/faq/write" access = "hasRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern = "/servicecenter/faq/view" access = "isAuthenticated()"/>
+		<security:intercept-url pattern = "/servicecenter/faq/faq" access = "isAuthenticated()"/>
+		<security:intercept-url pattern = "/servicecenter/faq/**" access = "hasRole('ROLE_ADMIN')"/>
+	
+		<security:intercept-url pattern = "/servicecenter/notice/view" access = "isAuthenticated()"/>
+		<security:intercept-url pattern = "/servicecenter/notice/notice" access = "isAuthenticated()"/>
+		<security:intercept-url pattern = "/servicecenter/notice/**" access = "hasRole('ROLE_ADMIN')"/>
 		
-		<security:intercept-url pattern = "/servicecenter/qna/view" access = "hasRole('ROLE_MEMBER')"/>
-		<security:intercept-url pattern = "/servicecenter/qna/qna" access = "hasRole('ROLE_MEMBER')"/>
-		<security:intercept-url pattern = "/servicecenter/qna/deleteOk" access = "hasRole('ROLE_ADMIN')"/>
-		<security:intercept-url pattern = "/servicecenter/qna/update" access = "hasRole('ROLE_ADMIN')"/>
-		<security:intercept-url pattern = "/servicecenter/qna/updateOk" access = "hasRole('ROLE_ADMIN')"/>
-		<security:intercept-url pattern = "/servicecenter/qna/writeOk" access = "hasRole('ROLE_ADMIN')"/>
-		<security:intercept-url pattern = "/servicecenter/qna/write" access = "hasRole('ROLE_ADMIN')"/>
-		<security:intercept-url pattern = "/servicecenter/qna/comment" access = "hasRole('ROLE_MEMBER')"/>-->
+		<security:intercept-url pattern="/**" access="permitAll" />
+
 		
 
 		<security:form-login login-page="/login/login" authentication-success-handler-ref="customLoginSuccess"/>

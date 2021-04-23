@@ -14,7 +14,7 @@
     <title>Introduce</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="<%=request.getContextPath()%>/img/core-img/favicon.ico">
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/style.css">
@@ -25,7 +25,7 @@
 	<jsp:include page="/resources/jsp/header.jsp"></jsp:include>
 	
     <!-- ##### Breadcumb Area Start ##### -->
-    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<%=request.getContextPath() %>/img/bg-img/breadcumb3.jpg);">
+    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<%=request.getContextPath() %>/img/bg-img/bg-2.jpg);">
         <div class="bradcumbContent">
             <p>팀프로젝트 진행</p>
             <h2>RecoPAY 소개</h2>

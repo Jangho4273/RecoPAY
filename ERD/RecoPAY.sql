@@ -20,7 +20,7 @@ CREATE TABLE member (
 	user_enabled NUMBER  DEFAULT 1 NOT NULL
 );
 
-UPDATE MEMBER SET user_auth='ROLE_ADMIN' WHERE user_id = 'asdqwd';
+UPDATE MEMBER SET user_auth='ROLE_ADMIN' WHERE user_id = 'admin';
 
 SELECT * FROM MEMBER;
 
@@ -40,6 +40,7 @@ CREATE TABLE Qna_Board (
 	qna_answer 	varchar2(1000)	
 );
 
+
 SELECT qna_q_uid "q_uid", qna_title "title", qna_content "content", qna_name "name", qna_viewcnt "viewcnt", qna_uploadedtime "uploadtime"
 FROM Qna_Board
 ORDER BY qna_q_uid DESC;
@@ -50,7 +51,7 @@ DROP TABLE  Comment_Board CASCADE CONSTRAINTS;
 
 CREATE TABLE Comment_Board(
   cno number NOT NULL, 
-  bno number NOT NULL, 
+  qna_q_uid	 number		NOT NULL, 
   writer varchar2(20) NOT NULL,
   content CLOB NULL, 
   reg_date date DEFAULT SYSDATE NOT NULL
@@ -291,8 +292,12 @@ WHERE k.prf_id = p.prf_id;
 DROP TABLE perform CASCADE CONSTRAINTS;
 
 CREATE TABLE Perform (
+<<<<<<< HEAD
 	prf_uid	number		NOT NULL PRIMARY KEY,
 	prf_uid	number		NOT NULL PRIMARY key,
+=======
+	prf_uid	number		NOT NULL ,
+>>>>>>> branch 'master' of https://github.com/Jangho4273/RecoPAY.git
 	prf_id	varchar2(15)		NOT NULL,
 	prf_name	varchar2(200)		NOT NULL,
 	prf_from	varchar2(20)		NULL,
@@ -300,9 +305,9 @@ CREATE TABLE Perform (
 	prf_fcltynm	varchar2(200)		NULL,
 	prf_poster	varchar2(200)		NULL,
 	prf_state	varchar2(20)		NOT NULL,
-	prf_runday varchar2(100)		NULL,
+	prf_runday varchar2(200)		NULL,
 	prf_runtime  varchar2(50)		NULL,
-	prf_ticketprice varchar2(100)   NULL,
+	prf_ticketprice varchar2(200)   NULL,
 	prf_openrun	char(1)		NULL,
 	th_uid	varchar2(30)		NULL,
 	prf_avgsc	number(2,1)		NULL,

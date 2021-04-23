@@ -23,7 +23,7 @@
 
 <!-- Favicon -->
 <link rel="icon"
-	href="<%=request.getContextPath()%>/resources/img/core-img/favicon.ico">
+	href="<%=request.getContextPath()%>/img/core-img/favicon.ico">
 
 <!-- Stylesheet -->
 <link rel="stylesheet"
@@ -52,7 +52,7 @@
 
 	<!-- ##### Breadcumb Area Start ##### -->
 	<section class="breadcumb-area bg-img bg-overlay"
-		style="background-image: url(<%=request.getContextPath()%>/resources/img/bg-img/breadcumb.jpg);">
+		style="background-image: url(<%=request.getContextPath()%>/img/bg-img/bg-3.jpg);">
 		<div class="bradcumbContent">
 			<p>공연장 좌석 선택</p>
 			<h2>어디 좌석 선택할래?</h2>

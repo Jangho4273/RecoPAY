@@ -11,7 +11,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>공지사항</title>
+    <title>FAQ</title>
 
     <!-- Favicon -->
     <link rel="icon" href="<%=request.getContextPath() %>/resources/img/core-img/favicon.ico">
@@ -39,10 +39,9 @@ function chkSubmit(){
 	<jsp:include page="/resources/jsp/header.jsp"></jsp:include>
 	
     <!-- ##### Breadcumb Area Start ##### -->
-    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<%=request.getContextPath() %>/resources/img/bg-img/breadcumb.jpg);">
+    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<%=request.getContextPath() %>/resources/img/bg-img/bg-3.jpg);">
         <div class="bradcumbContent">
-            <p>공지사항</p>
-            <h2>환영합니다</h2>
+            <h2>자주묻는질문</h2>
         </div>
     </section>
     <!-- ##### Breadcumb Area End ##### -->
@@ -64,7 +63,7 @@ function chkSubmit(){
                             <div class="icon mr-30">
                                 <span class="icon-placeholder"></span>
                             </div>
-                            <p><a href="<%=request.getContextPath() %>/servicecenter/notice">공지사항</a></p>
+                            <p><a href="<%=request.getContextPath() %>/servicecenter/notice/notice">공지사항</a></p>
                         </div>
 
                         <!-- Single Contact Info -->
@@ -72,7 +71,7 @@ function chkSubmit(){
                             <div class="icon mr-30">
                                 <span class="icon-smartphone"></span>
                             </div>
-                            <p><a href="<%=request.getContextPath() %>/servicecenter/qna">1대1 문의</a></p>
+                            <p><a href="<%=request.getContextPath() %>/servicecenter/qna/qna">1대1 문의</a></p>
                         </div>
 
                         <!-- Single Contact Info -->
@@ -80,7 +79,7 @@ function chkSubmit(){
                             <div class="icon mr-30">
                                 <span class="icon-mail"></span>
                             </div>
-                            <p><a href="<%=request.getContextPath() %>/servicecenter/faq">자주 묻는 질문</a></p>
+                            <p><a href="<%=request.getContextPath() %>/servicecenter/faq/faq">자주 묻는 질문</a></p>
                         </div>
 
                     </div>
@@ -115,6 +114,7 @@ function chkSubmit(){
 						<!-- 글쓰기 버튼 생성 -->
 						<input type="submit" class="btn btn-primary pull-right"
 							value="글쓰기">
+						<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
 					</form>
 				</div>
             </div>

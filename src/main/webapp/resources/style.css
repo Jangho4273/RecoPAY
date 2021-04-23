@@ -439,7 +439,7 @@ img {
           margin-top: 15px; } }
       .header-area .oneMusic-main-menu .login-register-cart-button .login-register-btn {
         position: relative;
-        z-index: 10; }
+         }
         .header-area .oneMusic-main-menu .login-register-cart-button .login-register-btn a {
           -webkit-transition-duration: 500ms;
           transition-duration: 500ms;

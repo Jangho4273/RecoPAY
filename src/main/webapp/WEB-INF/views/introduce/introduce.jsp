@@ -14,7 +14,7 @@
     <title>Introduce</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="<%=request.getContextPath()%>/img/core-img/favicon.ico">
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/style.css">
@@ -25,7 +25,7 @@
 	<jsp:include page="/resources/jsp/header.jsp"></jsp:include>
 	
     <!-- ##### Breadcumb Area Start ##### -->
-    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<%=request.getContextPath() %>/img/bg-img/breadcumb3.jpg);">
+    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<%=request.getContextPath() %>/img/bg-img/bg-3.jpg);">
         <div class="bradcumbContent">
             <p>어서오시라는거지~</p>
             <h2>인 사 말</h2>

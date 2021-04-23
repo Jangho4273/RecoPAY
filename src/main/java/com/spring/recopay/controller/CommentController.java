@@ -1,11 +1,15 @@
 package com.spring.recopay.controller;
 
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,29 +25,19 @@ public class CommentController {
     CommentService commentService;
     
     
-    @RequestMapping("/list") //댓글 리스트
-    @ResponseBody
-    private List<CommentDTO> commentList(Model model){
-        
-        return  commentService.list();
-    }
     
-    @RequestMapping("/insert") //댓글 작성 
-    @ResponseBody
-    private int mCommentServiceInsert(@RequestParam int bno, @RequestParam String content){
-        
-        CommentDTO comment = new CommentDTO();
-        comment.setBno(bno);
-        comment.setContent(content);
-        //로그인 기능을 구현했거나 따로 댓글 작성자를 입력받는 폼이 있다면 입력 받아온 값으로 사용하면 됩니다. 저는 따로 폼을 구현하지 않았기때문에 임시로 "test"라는 값을 입력해놨습니다.
-        comment.setWriter("test");  
-        
-        return  commentService.Insert(comment);
+    @PostMapping("/insert") //댓글 작성 
+    private String commentInsert(CommentDTO dto,Model model,HttpServletRequest request){
+    	request.setAttribute("uid", dto.getQ_uid());
+    	 dto.setWriter(currentUserName());
+    	  model.addAttribute("result", commentService.insert(dto));
+    
+        return "servicecenter/qna/commentwriteOk";
     }
     
     @RequestMapping("/update") //댓글 수정
     @ResponseBody
-    private int mCommentServiceUpdateProc(@RequestParam int cno, @RequestParam String content){
+    private int commentUpdate(@RequestParam int cno, @RequestParam String content){
         
         CommentDTO comment = new CommentDTO();
         comment.setCno(cno);
@@ -54,9 +48,15 @@ public class CommentController {
     
     @RequestMapping("/delete/{cno}") //댓글 삭제  
     @ResponseBody
-    private int mCommentServiceDelete(@PathVariable int[] cno){
+    private int commentDelete(@PathVariable int[] cno){
         
         return  commentService.delete(cno);
     }
+    
+	public static String currentUserName() { 
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		User user = (User) authentication.getPrincipal(); 
+		return user.getUsername(); 
+	}
     
 }

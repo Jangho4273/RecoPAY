@@ -28,10 +28,9 @@
 	<jsp:include page="/resources/jsp/header.jsp"></jsp:include>
 	
     <!-- ##### Breadcumb Area Start ##### -->
-    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<%=request.getContextPath() %>/resources/img/bg-img/breadcumb.jpg);">
+    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<%=request.getContextPath() %>/resources/img/bg-img/bg-1.jpg);">
         <div class="bradcumbContent">
-            <p>공지사항</p>
-            <h2>환영합니다</h2>
+            <h2>공지사항</h2>
         </div>
     </section>
     <!-- ##### Breadcumb Area End ##### -->
