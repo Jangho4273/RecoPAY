@@ -57,6 +57,11 @@ public class AjaxService {
 		dao = sqlSession.getMapper(AjaxDAO.class); 
 		return dao.getPrfnames(prfname);
 	}
+
+	public List<WriteDTO> getPrfnames1(String prfname) {
+		dao = sqlSession.getMapper(AjaxDAO.class); 
+		return dao.getPrfnames1(prfname);
+	}
 	
 	
 }

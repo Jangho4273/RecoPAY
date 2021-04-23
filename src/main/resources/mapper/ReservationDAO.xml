@@ -35,6 +35,7 @@
 	WHERE ts.th_uid = t.TH_UID) a, perform p
 	WHERE a.th_id = p.th_uid AND p.prf_state = '공연중') kk
 	WHERE t.th_uid = ts.th_uid AND m.USER_ID = #{uesrid} AND kk.th_id = t.th_id
+	ORDER BY seat_uid desc
 	</select>
 	
 	<delete id="deleteSeatid"> 

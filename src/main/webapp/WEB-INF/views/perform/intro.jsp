@@ -40,11 +40,13 @@
                     <div class="section-heading style-2">
                         <p>What's New</p>
                         <h2>최 신 연 극</h2>
+                        <br>
+                        <input type="text" id="prfn">&nbsp;&nbsp;&nbsp;<button id="prfser" type="button">검색</button>
                     </div>
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" id="ah">
                 <!-- Single Album Area -->
                 <c:choose>
 				<c:when test="${empty list || fn:length(list) == 0 }">
@@ -76,6 +78,9 @@
 				</c:otherwise>
 				</c:choose>
             </div>
+            
+             <div class="row" id="ah1">
+             </div>
             
 
             <div class="row">

@@ -22,6 +22,43 @@ public class AjaxController {
 	@Autowired
 	AjaxService ajaxService;
 	
+	@GetMapping("prfrun/{prfname}")
+	public AjaxWriteList prfnamesRun(@PathVariable String prfname) {
+		List<WriteDTO> list = null;
+		System.out.println(prfname);
+		// response 에 필요한 값들
+		StringBuffer message = new StringBuffer();
+		String status = "FAIL";  // 기본 FAIL
+
+		try {
+			list = ajaxService.getPrfnames1(prfname); 
+			
+			if(list.size() == 0) { // ★
+				message.append("[해당 데이터가 없습니다]");
+			} else {
+				status = "OK";					
+			}
+			
+		} catch(NumberFormatException e) {
+			e.printStackTrace();
+			message.append("[유효하지 않은 parameter]");
+		} catch (Exception e) { // ★  
+		
+			e.printStackTrace();
+			message.append("[트랜잭션 에러:" + e.getMessage() + "]");
+		}
+		
+		AjaxWriteList result = new AjaxWriteList();
+		result.setStatus(status);
+		result.setMessage(message.toString());
+		
+		if(list != null) {			
+			result.setCount(list.size());
+			result.setList(list);
+		}
+		
+		return result;
+	}
 	// 해당 검색에 해당하는 prfname 가져오기
 	@GetMapping("prf/{prfname}")
 	public AjaxWriteList prfnames(@PathVariable String prfname) {

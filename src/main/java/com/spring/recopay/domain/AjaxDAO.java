@@ -36,4 +36,6 @@ public interface AjaxDAO {
 	public int deleteByUid(int [] uids);
 	
 	public List<WriteDTO> getPrfnames(String prfname);
+
+	public List<WriteDTO> getPrfnames1(String prfname);
 }

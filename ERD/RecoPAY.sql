@@ -291,11 +291,8 @@ WHERE k.prf_id = p.prf_id;
 DROP TABLE perform CASCADE CONSTRAINTS;
 
 CREATE TABLE Perform (
-<<<<<<< HEAD
 	prf_uid	number		NOT NULL PRIMARY KEY,
-=======
 	prf_uid	number		NOT NULL PRIMARY key,
->>>>>>> branch 'master' of https://github.com/Jangho4273/RecoPAY.git
 	prf_id	varchar2(15)		NOT NULL,
 	prf_name	varchar2(200)		NOT NULL,
 	prf_from	varchar2(20)		NULL,
@@ -316,7 +313,6 @@ SELECT PRF_UID "uid",prf_name "name" , TO_CHAR(TO_DATE(prf_to) ,'YYYY-MM-DD') AS
 FROM perform 
 WHERE PRF_STATE = '공연중';
 
-EXP recopay/recopay FILE=C:\DevRoot\perform.exp tables=Perform;
 
 SELECT * FROM PERFORM;
 SELECT * FROM PERFORMrec;

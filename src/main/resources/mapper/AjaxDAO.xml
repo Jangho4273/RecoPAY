@@ -60,7 +60,7 @@
 	-->
 	<insert id="insert" flushCache="true">
 		INSERT INTO test_write
-			(wr_uid, wr_subject, wr_content, wr_name, wr_score, wr_prfname, wr_prfid )
+			(wr_uid, wr_subject, wr_content, wr_name, wr_score, wr_prfname, wr_prfid)
 		VALUES
 			(test_write_seq.nextval, 
 			#{subject}, #{content}, (SELECT USER_name
@@ -73,10 +73,9 @@
 	 -->	
  	<update id="update" flushCache="true">
 		UPDATE test_write 
-		SET wr_subject = #{subject}, wr_content = #{content}, wr_score = #{score}, wr_prfname = #{prfname}
+		SET wr_subject = #{subject}, wr_content = #{content}, wr_score = #{score}, wr_prfname = #{prfname}, wr_prfid = #{fprfid}
 		WHERE wr_uid = #{uid}
 	</update>
-	
  	<!-- 배열을 파라미터로 받는 경우
 	collection : 전달받은 인자값 이름(변수 이름)
 	* 배열을 파라미터로 받을때 collection 에 꼭! array 로!!
@@ -108,6 +107,14 @@
 		FROM Perform 
 		WHERE prf_name
 		LIKE '%'||#{prfname}||'%'
+	</select>
+	
+	 <select id="getPrfnames1" 
+		resultType="com.spring.recopay.domain.PerformDTO">
+		SELECT prf_uid "uid", prf_id "id", prf_name "name", prf_from "from", prf_to "to", prf_fcltynm "fcltynm", 
+		prf_poster "poster", prf_state "state", prf_openrun "openrun", th_uid "tuid"
+		FROM Perform 
+		WHERE prf_name LIKE '%'||#{prfname}||'%'
 	</select>
 
 
